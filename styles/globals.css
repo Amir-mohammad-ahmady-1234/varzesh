@@ -52,6 +52,7 @@
   --main-transition: all 0.4s ease-in-out;
 }
 @theme {
+  --color-bg-primary: #06111b;
   /* ================================
      Primary Colors (اصلی)
   ================================== */
@@ -107,7 +108,7 @@
 
 body,
 * {
-  @apply font-IRANYekan;
+  @apply font-IRANYekan bg-bg-primary;
 }
 
 .container {
