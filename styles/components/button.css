@@ -1,0 +1,56 @@
+/* ================================
+   Buttons
+================================== */
+
+/* Base Button */
+.button {
+  font-family: var(--font-IRANYekan);
+  font-weight: 600;
+  border-radius: var(--radius-medium);
+  padding: 0.6rem 1.5rem;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* Primary Button */
+.button-primary {
+  background-color: var(--color-primary-100);
+  color: var(--color-neutral-200);
+  border: 2px solid transparent;
+}
+
+.button-primary:hover {
+  background-color: transparent;
+  color: var(--color-primary-100);
+  border-color: var(--color-primary-100);
+}
+
+.button-primary:active {
+  opacity: 0.8;
+}
+
+/* Secondary Button */
+.button-secondary {
+  background-color: var(--color-secondary-100);
+  color: var(--color-neutral-200);
+  border: 2px solid transparent;
+}
+
+.button-secondary:hover {
+  background-color: transparent;
+  color: var(--color-secondary-100);
+  border-color: var(--color-secondary-100);
+}
+
+.button-secondary:active {
+  opacity: 0.8;
+}
+/* ========================
+   ✅ Buttons SECTION END
+======================== */

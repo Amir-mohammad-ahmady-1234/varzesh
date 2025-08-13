@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "./components/sizetext.css";
+@import "./components/button.css";
 /* ==========================
    🔧 SYSTEM SECTION START
 ========================== */
@@ -51,19 +52,56 @@
   --main-transition: all 0.4s ease-in-out;
 }
 @theme {
+  /* ================================
+     Primary Colors (اصلی)
+  ================================== */
+  --color-primary-100: #582ff5;
+  --color-primary-200: #4927cc;
+  --color-primary-300: #7452f7;
+  --color-primary-400: #9074f8;
+  --color-primary-500: #ab97fa;
+  --color-primary-600: #2c187b;
+
+  /* ================================
+     Secondary Colors (دوم)
+  ================================== */
+  --color-secondary-100: #ff5b2d;
+  --color-secondary-200: #ff8149;
+  --color-secondary-300: #d4761f;
+  --color-secondary-400: #ffb46e;
+  --color-secondary-500: #804713;
+
+  /* ================================
+     Tertiary Colors (سوم)
+  ================================== */
+  --color-tertiary-100: #0d2237;
+  --color-tertiary-200: #07111c;
+  --color-tertiary-300: #091725;
+  --color-tertiary-400: #0b1c2e;
+  --color-tertiary-500: #354758;
+
+  /* ================================
+     Neutral / Gray / Background (چهارم)
+  ================================== */
+  --color-neutral-100: #ffffff;
+  --color-neutral-200: #e5e4e9;
+  --color-neutral-300: #eeedf0;
+  --color-neutral-400: #bfbec2;
+  --color-neutral-500: #e9e8ed;
+  /* Breakpoints */
   --breakpoint-mobile: 450px;
   --breakpoint-tablet: 768px;
   --breakpoint-laptop: 992px;
   --breakpoint-desktop: 1440px;
-
+  /* Border Radius */
   --radius-xlarge: 48px;
   --radius-large: 32px;
   --radius-medium: 16px;
   --radius-small: 12px;
   --radius-extrasmall: 8px;
-
+  /* Transitions */
   --transition-delay: 0.4s;
-
+  /* Fonts */
   --font-IRANYekan: var(--font-yekan);
 }
 
