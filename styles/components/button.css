@@ -47,7 +47,7 @@
 }
 .button-primary:hover {
   background-color: transparent;
-  color: var(--color-primary-100);
+  color: var(--color-neutral-200);
   border-color: var(--color-primary-100);
 }
 
@@ -94,7 +94,7 @@
 }
 .button-primary:hover {
   background-color: transparent;
-  color: var(--color-primary-100);
+  color: var(--color-neutral-200);
   border-color: var(--color-primary-100);
 }
 /* ========================

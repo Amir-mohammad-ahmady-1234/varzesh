@@ -90,7 +90,7 @@
   --color-neutral-400: #bfbec2;
   --color-neutral-500: #e9e8ed;
   /* Breakpoints */
-  --breakpoint-mobile: 450px;
+  --breakpoint-mobile: 375px;
   --breakpoint-tablet: 768px;
   --breakpoint-laptop: 992px;
   --breakpoint-desktop: 1440px;
@@ -106,13 +106,15 @@
   --font-IRANYekan: var(--font-yekan);
 }
 
-body,
-* {
-  @apply font-IRANYekan bg-bg-primary;
+body {
+  @apply font-IRANYekan bg-bg-primary text-neutral-50;
 }
 
 .container {
-  @apply w-full max-w-full my-0 px-12 py-0 grid grid-cols-12 gap-x-6 max-laptop:px-5 max-mobile:max-w-[390px] max-tablet:px-5 max-tablet:grid-cols-4 max-tablet:gap-x-4;
+  @apply grid grid-cols-10 gap-x-6 mx-auto
+         md:max-w-[1344px] px-5    
+         tablet:grid-cols-4 tablet:gap-x-4 tablet:px-5
+         mobile:max-w-[345px] mobile:px-3;
 }
 /* ========================
    ✅ SYSTEM SECTION END
