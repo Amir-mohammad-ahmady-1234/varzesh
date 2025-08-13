@@ -1,0 +1,80 @@
+@import "tailwindcss";
+@import "./components/sizetext.css";
+/* ==========================
+   🔧 SYSTEM SECTION START
+========================== */
+@font-face {
+  font-family: "IRANYekan";
+  src: url("/fonts/YekanBakh-ExtraBlack.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IRANYekan";
+  src: url("/fonts/YekanBakh-ExtraBold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IRANYekan";
+  src: url("/fonts/YekanBakh-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IRANYekan";
+  src: url("/fonts/YekanBakh-Thin.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "IRANYekan";
+  src: url("/fonts/YekanBakh-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+:root {
+  --font-yekan: "IRANYekan";
+  --main-transition: all 0.4s ease-in-out;
+}
+@theme {
+  --breakpoint-mobile: 450px;
+  --breakpoint-tablet: 768px;
+  --breakpoint-laptop: 992px;
+  --breakpoint-desktop: 1440px;
+
+  --radius-xlarge: 48px;
+  --radius-large: 32px;
+  --radius-medium: 16px;
+  --radius-small: 12px;
+  --radius-extrasmall: 8px;
+
+  --transition-delay: 0.4s;
+
+  --font-IRANYekan: var(--font-yekan);
+}
+
+body,
+* {
+  @apply font-IRANYekan;
+}
+
+.container {
+  @apply w-full max-w-full my-0 px-12 py-0 grid grid-cols-12 gap-x-6 max-laptop:px-5 max-mobile:max-w-[390px] max-tablet:px-5 max-tablet:grid-cols-4 max-tablet:gap-x-4;
+}
+/* ========================
+   ✅ SYSTEM SECTION END
+======================== */
