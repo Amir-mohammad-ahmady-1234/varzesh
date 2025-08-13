@@ -3,11 +3,30 @@ import React from "react";
 function page() {
   return (
     <>
-      <button className="button">
-        <p className="text-2xl">sadas</p>
-      </button>
-      <button className="button-primary button">rf</button>
-      <button className="button-secondary button"> sdf</button>
+      <div className="flex flex-col">
+        <div>
+          {" "}
+          <button className="button-primary sm rounded-2xl">Small</button>
+          <button className="button-primary md w-100">Medium</button>
+          <button className="button-primary lg">Large</button>
+          <button className="button-primary xl">Click Me</button>
+        </div>
+        <div>
+          {" "}
+          <button className="button-secondary sm">Small</button>
+          <button className="button-secondary md">Medium</button>
+          <button className="button-secondary lg ">Large</button>
+          <button className="button-secondary xl">Click Me</button>
+        </div>
+      </div>
+
+      <h1>این یک عنوان h1 است</h1>
+      <h2>این یک عنوان h2 است</h2>
+      <h3>این یک عنوان h3 است</h3>
+      <h4>این یک عنوان h4 است</h4>
+      <h5>این یک عنوان h5 است</h5>
+      <h6>این یک عنوان h6 است</h6>
+      <h7>این یک عنوان h7 است</h7>
     </>
   );
 }

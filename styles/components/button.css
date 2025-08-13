@@ -24,7 +24,27 @@
   color: var(--color-neutral-200);
   border: 2px solid transparent;
 }
+.button-primary.sm {
+  padding: 0.4rem 1rem;
+  font-size: 0.85rem;
+}
 
+/* Medium Primary Button (Default) */
+.button-primary.md {
+  padding: 0.6rem 1.5rem;
+  font-size: 1rem;
+}
+
+/* Large Primary Button */
+.button-primary.lg {
+  padding: 0.8rem 2rem;
+  font-size: 1.15rem;
+}
+/* xLarge Primary Button */
+.button-primary.xl {
+  padding: 1rem 2.5rem;
+  font-size: 1.5rem;
+}
 .button-primary:hover {
   background-color: transparent;
   color: var(--color-primary-100);
@@ -50,6 +70,32 @@
 
 .button-secondary:active {
   opacity: 0.8;
+}
+.button-secondary.sm {
+  padding: 0.4rem 1rem;
+  font-size: 0.85rem;
+}
+
+/* Medium Primary Button (Default) */
+.button-secondary.md {
+  padding: 0.6rem 1.5rem;
+  font-size: 1rem;
+}
+
+/* Large Primary Button */
+.button-secondary.lg {
+  padding: 0.8rem 2rem;
+  font-size: 1.15rem;
+}
+/* xLarge Primary Button */
+.button-secondary.xl {
+  padding: 1rem 2.5rem;
+  font-size: 1.5rem;
+}
+.button-primary:hover {
+  background-color: transparent;
+  color: var(--color-primary-100);
+  border-color: var(--color-primary-100);
 }
 /* ========================
    ✅ Buttons SECTION END
