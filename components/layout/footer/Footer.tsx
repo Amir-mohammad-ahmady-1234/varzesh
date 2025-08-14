@@ -42,37 +42,16 @@ import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 function Footer() {
   return (
     <footer>
-      <div className="bg-primary-100 flex items-center justify-center gap-[215px] p-4">
-        <Image
-          src={"/img/footer/Union.png"}
-          alt="footericons"
-          width={60}
-          height={60}
-        />
-        <Image
-          src={"/img/footer/Union(1).png"}
-          alt="footericons"
-          width={60}
-          height={60}
-        />
-        <Image
-          src={"/img/footer/Vector(1).png"}
-          alt="footericons"
-          width={60}
-          height={60}
-        />
-        <Image
-          src={"/img/footer/Vector(2).png"}
-          alt="footericons"
-          width={60}
-          height={60}
-        />
-        <Image
-          src={"/img/footer/Vector(3).png"}
-          alt="footericons"
-          width={60}
-          height={60}
-        />
+      <div className="bg-primary-100 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-[215px] p-4">
+        {[
+          "/img/footer/Union.png",
+          "/img/footer/Union(1).png",
+          "/img/footer/Vector(1).png",
+          "/img/footer/Vector(2).png",
+          "/img/footer/Vector(3).png",
+        ].map((src, i) => (
+          <Image key={i} src={src} alt="footericons" width={60} height={60} />
+        ))}
       </div>
       <div className="w-full md:w-[1344px] mx-auto">
         <div>
