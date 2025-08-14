@@ -1,8 +1,7 @@
-import { z, ZodError } from "zod";
+import { z } from "zod";
 import prisma from "../../lib/db";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
-const secretKey = "abcde12345";
 const createUserSchema = z.object({
   firstname: z.string().min(2, "نام باید حداقل ۲ حرف باشد"),
   phone: z
@@ -18,8 +17,7 @@ export default async function CreateUsers(data: CreateUserParams) {
   const result = createUserSchema.safeParse(data);
 
   if (!result.success) {
-    const zodError = result.error as ZodError<CreateUserParams>;
-    return { success: false, errors: zodError.format() };
+    return { success: false, errors: result.error.format() };
   }
 
   const validatedDataRegister = result.data;
@@ -37,10 +35,10 @@ export default async function CreateUsers(data: CreateUserParams) {
     {
       roleToSet,
     },
-    secretKey,
+    process.env.JWT_SECRET!,
     { expiresIn: "30d" }
   );
-  const hashedPassword = await bcrypt.hash(validatedDataRegister.password, 5);
+  const hashedPassword = await bcrypt.hash(validatedDataRegister.password, 10);
   const user = await prisma.user.create({
     data: {
       firstname: validatedDataRegister.firstname,
