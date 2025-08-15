@@ -46,7 +46,7 @@ export function HeaderNav() {
   const [openDropdown, setOpenDropdown] = useState<number | null>(null);
 
   return (
-    <nav className="hidden md:flex items-center gap-6">
+    <nav className="hidden md:flex items-center gap-6 ">
       {headerItems.map((item) => (
         <div
           key={item.id}
@@ -54,11 +54,11 @@ export function HeaderNav() {
           onMouseEnter={() => setOpenDropdown(item.id)}
           onMouseLeave={() => setOpenDropdown(null)}
         >
-          <button className="px-3 py-2 text-neutral-50 hover:text-primary-500 transition-colors flex items-center gap-2">
-            <MdOutlineKeyboardArrowDown />
-            {item.name}
-          </button>
           <DropdownMenuHeader item={item} isOpen={openDropdown === item.id} />
+          <button className="px-3 py-2 text-neutral-50 hover:text-primary-500 transition-colors flex items-center gap-2 ">
+            {item.name}
+            <MdOutlineKeyboardArrowDown />
+          </button>
         </div>
       ))}
     </nav>

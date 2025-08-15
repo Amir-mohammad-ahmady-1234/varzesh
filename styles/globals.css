@@ -106,6 +106,10 @@
   --font-IRANYekan: var(--font-yekan);
 }
 
+* {
+  @apply font-IRANYekan;
+}
+
 body {
   @apply font-IRANYekan bg-bg-primary text-neutral-50;
 }
