@@ -26,15 +26,15 @@ export async function POST(req: Request) {
 
     const { phone, password } = result.data;
 
-    const user = await prisma.user.findUnique({ where: { phone } });
-    if (!user) {
+    const existUser = await prisma.user.findUnique({ where: { phone } });
+    if (!existUser) {
       return NextResponse.json(
         { success: false, message: "اطلاعات ورود نادرست است" },
         { status: 401 }
       );
     }
 
-    const match = await bcrypt.compare(password, user.password);
+    const match = await bcrypt.compare(password, existUser.password);
     if (!match) {
       return NextResponse.json(
         { success: false, message: "اطلاعات ورود نادرست است" },
@@ -42,7 +42,7 @@ export async function POST(req: Request) {
       );
     }
 
-    const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET!, {
+    const token = jwt.sign({ userId: existUser.id }, process.env.JWT_SECRET!, {
       expiresIn: "30d",
     });
 
@@ -58,7 +58,7 @@ export async function POST(req: Request) {
   } catch (error) {
     console.error(error);
     return NextResponse.json(
-      { success: false, message: "خطای سرور" },
+      { ok: false, message: "خطای سرور" },
       { status: 500 }
     );
   }
