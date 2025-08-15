@@ -3,7 +3,7 @@ import { useState } from "react";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import DropdownMenuHeader from "./DropdownMenuHeader";
 
-const headerItems = [
+export const headerItems = [
   {
     id: 1,
     name: "بیشتر",
