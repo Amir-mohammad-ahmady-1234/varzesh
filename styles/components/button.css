@@ -18,6 +18,11 @@
   gap: 0.5rem;
   transition: all 0.15s ease-in-out;
 }
+
+.button:disabled {
+  background-color: var(--color-neutral-600);
+}
+
 .button:active {
   transform: translateY(2px) scale(0.98);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) inset;

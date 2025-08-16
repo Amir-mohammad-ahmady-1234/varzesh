@@ -3,7 +3,7 @@ import React from "react";
 
 function SubmitButton({
   children,
-  checked,
+  checked = true,
   page,
 }: {
   children?: React.ReactNode;
@@ -15,19 +15,23 @@ function SubmitButton({
       {children}
       <div>
         <button
-          disabled={checked}
-          className="w-full button button-primary md rounded-xl disabled:bg-neutral-400"
+          disabled={!checked}
+          className="w-full max-w-[600px] h-full max-h-[45px] button button-primary md rounded-xl !text-2xl"
         >
           {page === "regester" ? "ثبت نام" : "ورود"}
         </button>
 
-        <div className="flex items-center justify-between mt-2">
+        <div
+          className={`flex ${
+            page === "regester" && "flex-row-reverse"
+          } items-center justify-between mt-2`}
+        >
           {page === "login" && (
             <Link href="/forget-password/phone" className="text-secondary-300">
               رمز عبور را فراموش کردید؟
             </Link>
           )}
-          <p className="text-sm text-left">
+          <p className="text-sm text-lef">
             {page === "regester"
               ? "از قبل ثبت نام کرده اید؟"
               : "اگر عضو سایت نیستید؟"}

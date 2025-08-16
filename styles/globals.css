@@ -77,7 +77,7 @@
      Tertiary Colors (سوم)
   ================================== */
   --color-tertiary-100: #0d2237;
-  
+
   --color-tertiary-200: #07111c;
   --color-tertiary-300: #091725;
   --color-tertiary-400: #0b1c2e;
@@ -91,6 +91,7 @@
   --color-neutral-300: #eeedf0;
   --color-neutral-400: #bfbec2;
   --color-neutral-500: #e9e8ed;
+  --color-neutral-600: #b2b2b7;
 
   /* ================================
      Errors / red / Background (پنجم)
