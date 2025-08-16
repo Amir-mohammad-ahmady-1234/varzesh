@@ -35,7 +35,7 @@ export default function Sidebar({ isSidebarOpen, setIsSidebarOpen }: Props) {
             <div key={item.id} className="text-white">
               <button
                 onClick={() => toggleDropdown(item.id)}
-                className="w-full flex justify-between items-center font-medium hover:text-primary-100 transition-colors py-2"
+                className="w-full flex items-center  font-medium hover:bg-primary-200 hover:text-primary-100 transition-colors py-2"
               >
                 {item.dropdown && (
                   <span>
@@ -46,7 +46,7 @@ export default function Sidebar({ isSidebarOpen, setIsSidebarOpen }: Props) {
                     )}
                   </span>
                 )}
-                {item.name}
+                <span className="text-right">{item.name}</span>
               </button>
 
               <div className="text-right">

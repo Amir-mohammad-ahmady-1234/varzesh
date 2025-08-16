@@ -11,7 +11,7 @@ function DropdownMenuHeader({
   if (!isOpen || !item.dropdown) return null;
 
   return (
-    <div className="absolute top-full left-0 mt-2 min-w-[180px] bg-bg-secondary shadow-lg rounded-md overflow-hidden z-50 text-right">
+    <div className="absolute top-full left-0 mt-2 min-w-[180px] bg-bg-secondary text-center shadow-lg rounded-md overflow-hidden z-50 ">
       {item.dropdown.map((subItem) => (
         <Link
           key={subItem.id}

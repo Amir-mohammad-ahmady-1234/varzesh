@@ -27,8 +27,8 @@ export async function POST(req: Request) {
 
     const { firstname, phone, password } = result.data;
 
-    const existingUser = await prisma.user.findUnique({ where: { phone } });
-    if (existingUser) {
+    const existUser = await prisma.user.findUnique({ where: { phone } });
+    if (existUser) {
       return NextResponse.json(
         { success: false, message: "این شماره تلفن قبلاً ثبت شده است" },
         { status: 409 }
@@ -66,7 +66,7 @@ export async function POST(req: Request) {
   } catch (error) {
     console.error(error);
     return NextResponse.json(
-      { success: false, message: "خطای سرور" },
+      { ok: false, message: "خطای سرور" },
       { status: 500 }
     );
   }
