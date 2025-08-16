@@ -1,4 +1,5 @@
 import React from "react";
+import SubmitButton from "./SubmitButton";
 
 const classes = {
   inputClass: "input input-md input-primary",
@@ -7,7 +8,13 @@ const classes = {
   labelClass: "md:w-52 text-right",
 };
 
-function RegesterForm() {
+function RegesterForm({
+  checked,
+  setChecked,
+}: {
+  checked: boolean;
+  setChecked: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
   return (
     <form className="flex flex-col items-center space-y-4 w-full max-w-[589px]">
       <div className={classes.inputAndLabelContainer}>
@@ -58,6 +65,7 @@ function RegesterForm() {
           placeholder="تکرار رمز عبور"
         />
       </div>
+      <SubmitButton checked={checked} setChecked={setChecked} />
     </form>
   );
 }

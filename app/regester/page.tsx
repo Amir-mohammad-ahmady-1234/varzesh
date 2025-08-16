@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import RegesterForm from "../../components/regesterForm/RegesterForm";
 import OAuthButtons from "../../components/regesterForm/OAuthButtons";
-import SubmitButton from "../../components/regesterForm/SubmitButton";
 
 function Page() {
   const [checked, setChecked] = useState(false);
@@ -20,21 +19,7 @@ function Page() {
       {/* main content */}
       <div className="flex flex-col items-center px-4 space-y-6 relative z-10">
         {/* form */}
-        <RegesterForm />
-
-        {/* accept rules */}
-        <div className="flex items-center space-x-2 self-auto w-full max-w-[589px]">
-          <input
-            type="checkbox"
-            className="cursor-pointer appearance-none size-7 border-2 border-primary-100 rounded-md transition duration-400 checked:bg-primary-200 checked:border-neutral-800"
-            checked={checked}
-            onChange={(e) => setChecked(e.target.checked)}
-          />
-          <label>شرایط و قوانین استفاده از سایت را میپذیرم</label>
-        </div>
-
-        {/* submit regester */}
-        <SubmitButton />
+        <RegesterForm checked={checked} setChecked={setChecked} />
 
         {/* regester with OAuth ( OAuth: regster with google or email ) */}
         <OAuthButtons />
