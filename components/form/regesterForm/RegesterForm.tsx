@@ -1,9 +1,24 @@
-import React from "react";
-import Input from "../../common/Input";
+'use client'
 
-function RegesterForm({ children }: { children: React.ReactNode }) {
+import React, { useActionState } from "react";
+import Input from "../../common/Input";
+import { userRegester, userRegesterState } from "../../../lib/action";
+
+const initialState: userRegesterState = { message: null };
+
+function RegesterForm({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const [state, formAction] = useActionState(userRegester, initialState);
+
   return (
-    <form className="flex flex-col items-center space-y-4 w-full max-w-[589px]">
+    <form
+      action={formAction}
+      className="flex flex-col items-center space-y-4 w-full max-w-[589px]"
+    >
+      <p>{state.message}</p>
       <Input
         name="name"
         type="text"
