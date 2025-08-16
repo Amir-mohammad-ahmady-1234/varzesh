@@ -1,0 +1,58 @@
+/* ================================
+   Inputs
+================================== */
+
+/* Base Input */
+.input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  text-align: right;
+  border-radius: var(--radius-medium);
+  border: 1px solid var(--color-primary-100);
+  font-family: var(--font-IRANYekan);
+  transition: all 0.2s ease-in-out;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-primary-200);
+  box-shadow: 0 0 0 2px rgba(0, 119, 255, 0.2);
+}
+
+/* Input Sizes */
+.input.sm {
+  padding: 0.35rem 0.6rem;
+  font-size: 0.85rem;
+}
+
+/* Default Input Size */
+.input.md {
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+}
+.input.lg {
+  padding: 0.75rem 1rem;
+  font-size: 1.15rem;
+}
+.input.xl {
+  padding: 1rem 1.25rem;
+  font-size: 1.3rem;
+}
+
+/* Primary Input */
+.input-primary {
+  border-color: var(--color-primary-100);
+}
+
+.input-secondary {
+  border-color: var(--color-secondary-100);
+}
+
+.input-error {
+  border-color: var(--color-error-500);
+  background-color: rgba(255, 0, 0, 0.05);
+}
+
+/* ========================
+   ✅ Inputs SECTION END
+======================== */
