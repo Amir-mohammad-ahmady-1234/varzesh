@@ -1,13 +1,17 @@
 "use server";
 
-export interface userRegesterState {
-  message: string | null;
-}
+import { createUserSchema } from "../app/api/auth/register/route";
 
-// function isInvalidText(text: FormDataEntryValue | null) {
-//   if (typeof text !== "string") return;
-//   return !text || text.trim() === "";
-// }
+export interface userRegesterState {
+  message: {
+    firstname?: string;
+    phone?: string;
+    password?: string;
+    repeatPass?: string;
+    otherErr?: string;
+    success?: string;
+  };
+}
 
 export async function userRegester(
   prevState: userRegesterState,
@@ -17,14 +21,46 @@ export async function userRegester(
     firstname: formData.get("name"),
     phone: formData.get("phone"),
     password: formData.get("password"),
+    repeatPass: formData.get("repeat-password"),
   };
 
-  const res = await fetch("http://localhost:3000/api/auth/register", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
-  });
-  const result = await res.json();
-  console.log(result);
-  return result;
+  const validateData = createUserSchema.safeParse(data);
+
+  if (!validateData.success) {
+    const fieldErrors: Record<string, string> = {};
+
+    validateData.error.issues.forEach((err) => {
+      const field = err.path[0] as string;
+      fieldErrors[field] = err.message;
+    });
+
+    return {
+      message: { ...fieldErrors },
+    };
+  }
+
+  if (
+    (typeof data.repeatPass === "string" && !data.repeatPass.trim()) ||
+    data.repeatPass !== data.password
+  )
+    return {
+      message: { repeatPass: "تکرار رمز باید با رمز مطاقبت داشته باشد" },
+    };
+
+  try {
+    const res = await fetch("http://localhost:3000/api/auth/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(validateData.data),
+    });
+
+    const result = await res.json();
+
+    return { message: result.message };
+  } catch (error) {
+    console.log(error);
+    return {
+      message: { otherErr: "خطای غیرمنتظره رخ داد" },
+    };
+  }
 }

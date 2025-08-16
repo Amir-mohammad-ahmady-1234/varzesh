@@ -4,7 +4,7 @@ import prisma from "../../../../lib/db";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-const createUserSchema = z.object({
+export const createUserSchema = z.object({
   firstname: z.string().min(2, "نام باید حداقل ۲ حرف باشد"),
   phone: z
     .string()

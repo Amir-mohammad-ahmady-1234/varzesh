@@ -16,7 +16,9 @@ function SubmitButton({
       <div>
         <button
           disabled={!checked}
-          className="w-full max-w-[600px] h-full max-h-[45px] button button-primary md rounded-xl !text-2xl"
+          className={`w-full max-w-[600px] h-full max-h-[45px] button button-primary md rounded-xl !text-2xl ${
+            !checked && "!cursor-not-allowed"
+          }`}
         >
           {page === "regester" ? "ثبت نام" : "ورود"}
         </button>
