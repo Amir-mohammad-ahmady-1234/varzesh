@@ -1,14 +1,9 @@
-"use client";
-
-import React, { useState } from "react";
-import RegesterForm from "../../components/regesterForm/RegesterForm";
+import React from "react";
 import OAuthButtons from "../../components/regesterForm/OAuthButtons";
 import SubmitButton from "../../components/regesterForm/SubmitButton";
-import RulesAccept from "../../components/regesterForm/RulesAccept";
+import LoginForm from "../../components/loginForm/LoginForm";
 
-function Page() {
-  const [checked, setChecked] = useState(false);
-
+function page() {
   return (
     <>
       {/* دایره های پراکنده برای مهدی */}
@@ -21,14 +16,9 @@ function Page() {
       {/* main content */}
       <div className="flex flex-col items-center px-4 space-y-6 relative z-10">
         {/* form */}
-        <RegesterForm>
-          <SubmitButton checked={checked} page="regester">
-            <RulesAccept
-              checked={checked}
-              setChecked={setChecked}
-            ></RulesAccept>
-          </SubmitButton>
-        </RegesterForm>
+        <LoginForm>
+          <SubmitButton page="login" />
+        </LoginForm>
 
         {/* regester with OAuth ( OAuth: regster with google or email ) */}
         <OAuthButtons />
@@ -37,4 +27,4 @@ function Page() {
   );
 }
 
-export default Page;
+export default page;

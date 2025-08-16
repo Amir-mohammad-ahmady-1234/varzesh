@@ -1,35 +1,44 @@
 import Link from "next/link";
 import React from "react";
-import RulesAccept from "./RulesAccept";
 
 function SubmitButton({
+  children,
   checked,
-  setChecked,
+  page,
 }: {
-  checked: boolean;
-  setChecked: React.Dispatch<React.SetStateAction<boolean>>;
+  children?: React.ReactNode;
+  checked?: boolean;
+  page: string;
 }) {
   return (
     <div className="w-full max-w-[600px] m-3 space-y-7">
-      <RulesAccept checked={checked} setChecked={setChecked} />
-
+      {children}
       <div>
         <button
           disabled={checked}
           className="w-full button button-primary md rounded-xl disabled:bg-neutral-400"
         >
-          ثبت نام
+          {page === "regester" ? "ثبت نام" : "ورود"}
         </button>
 
-        <p className="text-sm text-left">
-          از قبل ثبت نام کرده اید؟{" "}
-          <Link
-            href="login"
-            className="text-lg font-bold text-secondary-100 underline underline-offset-4"
-          >
-            ورود
-          </Link>
-        </p>
+        <div className="flex items-center justify-between mt-2">
+          {page === "login" && (
+            <Link href="/forget-password/phone" className="text-secondary-300">
+              رمز عبور را فراموش کردید؟
+            </Link>
+          )}
+          <p className="text-sm text-left">
+            {page === "regester"
+              ? "از قبل ثبت نام کرده اید؟"
+              : "اگر عضو سایت نیستید؟"}
+            <Link
+              href={page === "regester" ? "/login" : "/regester"}
+              className="text-lg font-bold text-secondary-100 underline underline-offset-4"
+            >
+              {page === "regester" ? "ورود" : "ثبت نام"}
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
   );

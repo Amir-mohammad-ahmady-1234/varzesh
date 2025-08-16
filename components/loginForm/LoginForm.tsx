@@ -7,21 +7,9 @@ const classes = {
   labelClass: "md:w-52 text-right",
 };
 
-function RegesterForm({ children }: { children: React.ReactNode }) {
+function LoginForm({ children }: { children: React.ReactNode }) {
   return (
     <form className="flex flex-col items-center space-y-4 w-full max-w-[589px]">
-      <div className={classes.inputAndLabelContainer}>
-        <label className={classes.labelClass} htmlFor="name">
-          *نام و نام خوانوادگی
-        </label>
-        <input
-          className={classes.inputClass}
-          id="name"
-          name="name"
-          type="text"
-          placeholder="نام و نام خوانوادگی"
-        />
-      </div>
       <div className={classes.inputAndLabelContainer}>
         <label className={classes.labelClass} htmlFor="phone">
           *شماره موبایل
@@ -46,21 +34,9 @@ function RegesterForm({ children }: { children: React.ReactNode }) {
           placeholder="رمز عبور"
         />
       </div>
-      <div className={classes.inputAndLabelContainer}>
-        <label className={classes.labelClass} htmlFor="repeat-password">
-          *تکرار رمز عبور
-        </label>
-        <input
-          className={classes.inputClass}
-          id="repeat-password"
-          name="repeat-password"
-          type="password"
-          placeholder="تکرار رمز عبور"
-        />
-      </div>
       {children}
     </form>
   );
 }
 
-export default RegesterForm;
+export default LoginForm;
