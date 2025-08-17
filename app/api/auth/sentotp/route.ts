@@ -10,7 +10,10 @@ export async function POST(req: Request) {
     });
 
     if (!existUser) {
-      return NextResponse.json({ ok: false, message: "user not found" });
+      return NextResponse.json(
+        { ok: false, message: "کاربری با این مشخصات پیدا نشد" },
+        { status: 400 }
+      );
     }
 
     if (
@@ -18,11 +21,17 @@ export async function POST(req: Request) {
       !existUser.otpExpiresAt ||
       new Date() > new Date(existUser.otpExpiresAt)
     ) {
-      return NextResponse.json({ ok: false, message: "expired" });
+      return NextResponse.json(
+        { ok: false, message: "زمان دریافت کد به پابان رسید" },
+        { status: 400 }
+      );
     }
 
     if (existUser.otpCode !== otp) {
-      return NextResponse.json({ ok: false, message: "incorrect otp" });
+      return NextResponse.json(
+        { ok: false, message: "کد و شماره همخوانی ندارد" },
+        { status: 400 }
+      );
     }
 
     await prisma.user.update({

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { FiMenu, FiSearch, FiUser } from "react-icons/fi";
 type Props = {
@@ -23,9 +24,12 @@ function MobileHeader({ setIsSidebarOpen }: Props) {
         <button className="button-primary sm rounded-md">
           <FiSearch />
         </button>
-        <button className="button-primary sm rounded-md">
-          <FiUser className="text-lg" />
-        </button>
+
+        <Link href="/regester">
+          <button className="button-primary sm rounded-md cursor-pointer">
+            <FiUser className="text-lg" />
+          </button>
+        </Link>
       </div>
     </div>
   );

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "../styles/globals.css";
 import Header from "../components/layout/header/Header";
 import Footer from "../components/layout/footer/Footer";
+import { Toaster } from "react-hot-toast";
+import { GuestTracker } from "../components/GuestTracker";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,10 +17,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="flex flex-col min-h-screen" dir="rtl">
+      <body className="flex flex-col min-h-screen space-y-20" dir="rtl">
         <Header />
 
+        <GuestTracker />
         <main className="flex-grow">{children}</main>
+        <Toaster position="top-center" />
 
         <Footer />
       </body>

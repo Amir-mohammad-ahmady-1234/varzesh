@@ -10,13 +10,19 @@ export async function POST(req: Request) {
     });
 
     if (!existUser) {
-      return NextResponse.json({ message: "User has already registered " });
+      return NextResponse.json(
+        { message: "کاربری با این شماره یافت نشد" },
+        { status: 400 }
+      );
     }
     if (
       existUser.otpExpiresAt &&
       new Date() < new Date(existUser.otpExpiresAt)
     ) {
-      return NextResponse.json({ message: "OTP هنوز معتبر است" });
+      return NextResponse.json(
+        { message: "OTP هنوز معتبر است" },
+        { status: 400 }
+      );
     }
     const secret = authenticator.generateSecret();
     const otp = authenticator.generate(secret);
