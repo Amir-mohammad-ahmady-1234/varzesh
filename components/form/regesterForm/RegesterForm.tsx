@@ -1,6 +1,6 @@
 "use client";
 
-import React, { startTransition, useActionState } from "react";
+import React, { startTransition, useActionState, useEffect } from "react";
 import toast from "react-hot-toast";
 import { redirect } from "next/navigation";
 
@@ -17,13 +17,15 @@ const initialState: userRegesterState = {
 function RegesterForm({ children }: { children: React.ReactNode }) {
   const [state, formAction] = useActionState(userRegester, initialState);
 
-  if (state.message === "ورود موفق") {
-    toast.success("ورود موفق");
-    redirect("/");
-  }
-
-  if (state.message.otherErr)
-    toast.error(state.message.otherErr, { duration: 3000 });
+  useEffect(() => {
+    if (state.message === "ورود موفق") {
+      toast.success("ورود موفق");
+      redirect("/");
+    }
+    if (state.message.otherErr) {
+      toast.error(state.message.otherErr, { duration: 3000 });
+    }
+  }, [state.message]);
 
   return (
     <form

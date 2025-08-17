@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 import { z } from "zod";
 import prisma from "../../../../lib/db";
 
-const LoginSchema = z.object({
+export const LoginSchema = z.object({
   phone: z
     .string()
     .regex(/^09\d{9}$/, "شماره تلفن باید معتبر باشد")
