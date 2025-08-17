@@ -1,6 +1,6 @@
 import React from "react";
 
-import Circles from "../../components/form/ui/Circles";
+import Circles from "../../components/common/Circles";
 import SubmitButton from "../../components/common/SubmitButton";
 import ResetPassForm from "../../components/form/resetPassForm/ResetPassForm";
 

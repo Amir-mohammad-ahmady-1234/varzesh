@@ -2,10 +2,10 @@
 
 import React, { useState } from "react";
 import RegesterForm from "../../components/form/regesterForm/RegesterForm";
-import OAuthButtons from "../../components/form/regesterForm/OAuthButtons";
+import OAuthButtons from "../../components/common/OAuthButtons";
 import SubmitButton from "../../components/common/SubmitButton";
 import RulesAccept from "../../components/form/regesterForm/RulesAccept";
-import Circles from "../../components/form/ui/Circles";
+import Circles from "../../components/common/Circles";
 
 function Page() {
   const [checked, setChecked] = useState(false);

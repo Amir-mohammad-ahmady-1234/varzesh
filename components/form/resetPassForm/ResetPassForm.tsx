@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import Step1 from "./Step1Form";
 import Step2 from "./Step2Form";
 import SubmitButton from "../../common/SubmitButton";
-import OAuthButtons from "../regesterForm/OAuthButtons";
+import OAuthButtons from "../../common/OAuthButtons";
 import Step3 from "./Step3Form";
 
 function ResetPassForm({ children }: { children: React.ReactNode }) {
