@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 import { HeaderNav } from "./HeaderNav";
 import SearchFormHeader from "./SearchFormHeader";
+import Link from "next/link";
 
 function DesktopHeader() {
   return (
@@ -11,7 +12,11 @@ function DesktopHeader() {
         <HeaderNav />
         <div className="flex items-center gap-3">
           <SearchFormHeader />
-          <button className="button-primary sm rounded-md">ثبت نام</button>
+          <Link href="/regester">
+            <button className="button-primary sm rounded-md cursor-pointer">
+              ثبت نام
+            </button>
+          </Link>
         </div>
       </div>
     </div>

@@ -20,16 +20,18 @@ function SubmitButton({
             !checked && "!cursor-not-allowed"
           }`}
         >
-          {page === "regester" ? "ثبت نام" : "ورود"}
+          {page === "regester" && "ثبت نام"}
+          {page === "login" && "ورود"}
+          {page === "resetPass" && "دریافت کد"}
         </button>
 
         <div
           className={`flex ${
-            page === "regester" && "flex-row-reverse"
+            page === "regester" || (page === "resetPass" && "flex-row-reverse")
           } items-center justify-between mt-2`}
         >
           {page === "login" && (
-            <Link href="/forget-password/phone" className="text-secondary-300">
+            <Link href="/resetPass" className="text-secondary-300">
               رمز عبور را فراموش کردید؟
             </Link>
           )}

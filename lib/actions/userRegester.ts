@@ -9,7 +9,6 @@ export interface userRegesterState {
     password?: string;
     repeatPass?: string;
     otherErr?: string;
-    success?: string;
   };
 }
 
@@ -59,8 +58,7 @@ export async function userRegester(
     if (!res.ok) return { message: { otherErr: result.message } };
 
     return { message: result.message };
-  } catch (error) {
-    console.log(error);
+  } catch {
     return {
       message: { otherErr: "خطای غیرمنتظره رخ داد" },
     };
