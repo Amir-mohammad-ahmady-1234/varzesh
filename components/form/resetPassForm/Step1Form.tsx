@@ -28,7 +28,7 @@ function Step1({ children, phone, setPhone, setOtp, setStep }: Props) {
     if (typeof state.message === "object" && state.message.otherErr) {
       toast.error(state.message.otherErr, { duration: 3000 });
     }
-  }, [state.message, phone, setStep, setOtp]);
+  }, [state.message, setStep, setOtp]);
 
   return (
     <form

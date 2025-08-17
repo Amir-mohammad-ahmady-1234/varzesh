@@ -4,7 +4,7 @@ import React, { useState } from "react";
 
 import Step1 from "./Step1Form";
 import Step2 from "./Step2Form";
-import SubmitButton from "../regesterForm/SubmitButton";
+import SubmitButton from "../../common/SubmitButton";
 import OAuthButtons from "../regesterForm/OAuthButtons";
 
 function ResetPassForm({ children }: { children: React.ReactNode }) {
@@ -28,7 +28,7 @@ function ResetPassForm({ children }: { children: React.ReactNode }) {
   if (step === 2)
     return (
       <Step2 otp={otp} setOtp={setOtp} setStep={setStep}>
-        <SubmitButton page="resetPass_step2" />
+        <SubmitButton page="resetPass_step2" setStep={setStep} />
         <OAuthButtons />
       </Step2>
     );

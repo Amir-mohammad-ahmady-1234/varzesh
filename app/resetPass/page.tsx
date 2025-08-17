@@ -1,7 +1,7 @@
 import React from "react";
 
 import Circles from "../../components/form/ui/Circles";
-import SubmitButton from "../../components/form/regesterForm/SubmitButton";
+import SubmitButton from "../../components/common/SubmitButton";
 import ResetPassForm from "../../components/form/resetPassForm/ResetPassForm";
 
 function page() {

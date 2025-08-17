@@ -19,6 +19,7 @@ function Step2({ children, otp, setOtp, setStep }: Props) {
 
   useEffect(() => {
     if (state.message === true) {
+      localStorage.removeItem('phone')
       setStep(3);
     }
     if (state.message.otherErr) {

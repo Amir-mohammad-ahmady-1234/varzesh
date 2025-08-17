@@ -1,6 +1,6 @@
 import React from "react";
 import OAuthButtons from "../../components/form/regesterForm/OAuthButtons";
-import SubmitButton from "../../components/form/regesterForm/SubmitButton";
+import SubmitButton from "../../components/common/SubmitButton";
 import LoginForm from "../../components/form/loginForm/LoginForm";
 import Circles from "../../components/form/ui/Circles";
 

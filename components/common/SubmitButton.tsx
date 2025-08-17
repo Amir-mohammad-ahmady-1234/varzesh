@@ -1,14 +1,17 @@
 import Link from "next/link";
 import React from "react";
+import OtpTimer from "../form/resetPassForm/OtpTimer";
 
 function SubmitButton({
   children,
   checked = true,
   page,
+  setStep,
 }: {
   children?: React.ReactNode;
   checked?: boolean;
   page: string;
+  setStep?: React.Dispatch<React.SetStateAction<number>>;
 }) {
   return (
     <div className="w-full max-w-[600px] m-3 space-y-7">
@@ -28,15 +31,16 @@ function SubmitButton({
 
         <div
           className={`flex ${
-            (page === "regester" ||
-              page === "resetPass" ||
-              page === "resetPass_step2") &&
-            "flex-row-reverse"
+            (page === "regester" || page === "resetPass") && "flex-row-reverse"
           } items-center justify-between mt-2`}
         >
-          {page === "login" && (
+          {(page === "login" || page === "resetPass_step2") && (
             <Link href="/resetPass" className="text-secondary-300">
-              رمز عبور را فراموش کردید؟
+              {page === "login" ? (
+                "رمز عبور را فراموش کردید؟"
+              ) : (
+                <OtpTimer setStep={setStep} />
+              )}
             </Link>
           )}
           <p className="text-sm text-lef">
