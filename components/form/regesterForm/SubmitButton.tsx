@@ -23,11 +23,15 @@ function SubmitButton({
           {page === "regester" && "ثبت نام"}
           {page === "login" && "ورود"}
           {page === "resetPass" && "دریافت کد"}
+          {page === "resetPass_step2" && "تایید کد otp"}
         </button>
 
         <div
           className={`flex ${
-            page === "regester" || (page === "resetPass" && "flex-row-reverse")
+            (page === "regester" ||
+              page === "resetPass" ||
+              page === "resetPass_step2") &&
+            "flex-row-reverse"
           } items-center justify-between mt-2`}
         >
           {page === "login" && (

@@ -1,54 +1,39 @@
 "use client";
 
-import React, {
-  startTransition,
-  useActionState,
-  useEffect,
-  useState,
-} from "react";
-import Input from "../../common/Input";
-import { resetPassState, ResetPassword } from "../../../lib/actions/resetPass";
-import toast from "react-hot-toast";
+import React, { useState } from "react";
 
-const initialState: resetPassState = { message: {} };
+import Step1 from "./Step1Form";
+import Step2 from "./Step2Form";
+import SubmitButton from "../regesterForm/SubmitButton";
+import OAuthButtons from "../regesterForm/OAuthButtons";
 
 function ResetPassForm({ children }: { children: React.ReactNode }) {
-  const [state, formAction] = useActionState(ResetPassword, initialState);
+  const [phone, setPhone] = useState("");
+  const [step, setStep] = useState(1);
   const [otp, setOtp] = useState("");
 
-  useEffect(() => {
-    if (typeof state.message === "string") {
-      toast.success(`کد ورود شما: ${state.message}`);
-      setOtp(state.message);
-    }
-    if (typeof state.message === "object" && state.message.otherErr) {
-      toast.error(state.message.otherErr, { duration: 3000 });
-    }
-  }, [state.message]);
+  if (step === 1)
+    return (
+      <Step1
+        phone={phone}
+        setPhone={setPhone}
+        setOtp={setOtp}
+        setStep={setStep}
+      >
+        {children}
+        <OAuthButtons />
+      </Step1>
+    );
 
-  return (
-    <form
-      // action={formAction}
-      onSubmit={(e) => {
-        e.preventDefault();
-        const formData = new FormData(e.currentTarget);
+  if (step === 2)
+    return (
+      <Step2 otp={otp} setOtp={setOtp} setStep={setStep}>
+        <SubmitButton page="resetPass_step2" />
+        <OAuthButtons />
+      </Step2>
+    );
 
-        startTransition(() => {
-          formAction(formData);
-        });
-      }}
-      className="flex flex-col items-center space-y-4 w-full max-w-[589px]"
-    >
-      <Input
-        name="phone"
-        type="text"
-        placeholder="شماره موبایل"
-        title="شماره موبایل"
-        err={typeof state.message === "object" ? state.message.phone ?? "" : ""}
-      />
-      {children}
-    </form>
-  );
+  if (step === 3) return <h1>step3</h1>;
 }
 
 export default ResetPassForm;

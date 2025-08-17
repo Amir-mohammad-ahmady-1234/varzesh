@@ -1,26 +1,23 @@
 import z from "zod";
 
-export interface resetPassState {
+export interface getOtpState {
   message: {
     phone?: string;
     otherErr?: string;
   };
 }
 
-const resetPassSchema = z.object({
+const getOtpStateSchema = z.object({
   phone: z
     .string()
     .regex(/^09\d{9}$/, "شماره تلفن باید معتبر باشد")
     .length(11, "شماره تلفن باید ۱۱ رقم باشد"),
 });
 
-export async function ResetPassword(
-  prevState: resetPassState,
-  formData: FormData
-) {
+export async function getOtp(prevState: getOtpState, formData: FormData) {
   const data = { phone: formData.get("phone") };
 
-  const validateData = resetPassSchema.safeParse(data);
+  const validateData = getOtpStateSchema.safeParse(data);
 
   if (!validateData.success) {
     const fieldErrors: Record<string, string> = {};
@@ -46,7 +43,6 @@ export async function ResetPassword(
     console.log(result);
 
     if (!res.ok) {
-      console.log(result.message);
       return { message: { otherErr: result.message } };
     }
 
