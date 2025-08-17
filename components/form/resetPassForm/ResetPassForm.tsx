@@ -6,6 +6,7 @@ import Step1 from "./Step1Form";
 import Step2 from "./Step2Form";
 import SubmitButton from "../../common/SubmitButton";
 import OAuthButtons from "../regesterForm/OAuthButtons";
+import Step3 from "./Step3Form";
 
 function ResetPassForm({ children }: { children: React.ReactNode }) {
   const [phone, setPhone] = useState("");
@@ -33,7 +34,12 @@ function ResetPassForm({ children }: { children: React.ReactNode }) {
       </Step2>
     );
 
-  if (step === 3) return <h1>step3</h1>;
+  if (step === 3)
+    return (
+      <Step3>
+        <SubmitButton page="resetPass_step3" />
+      </Step3>
+    );
 }
 
 export default ResetPassForm;

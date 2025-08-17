@@ -27,6 +27,7 @@ function SubmitButton({
           {page === "login" && "ورود"}
           {page === "resetPass" && "دریافت کد"}
           {page === "resetPass_step2" && "تایید کد otp"}
+          {page === "resetPass_step3" && "تغییر رمز عبور"}
         </button>
 
         <div

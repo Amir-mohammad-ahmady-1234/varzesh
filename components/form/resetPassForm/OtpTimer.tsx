@@ -7,7 +7,7 @@ type OtpTimerProps = {
   setStep?: React.Dispatch<React.SetStateAction<number>>;
 };
 
-function OtpTimer({ duration = 30, setStep }: OtpTimerProps) {
+function OtpTimer({ duration = 300, setStep }: OtpTimerProps) {
   const [timeLeft, setTimeLeft] = useState(duration);
 
   useEffect(() => {
@@ -38,7 +38,11 @@ function OtpTimer({ duration = 30, setStep }: OtpTimerProps) {
           </span>
         </>
       )}
-      {timeLeft <= 0 && <span className="text-sm" onClick={() => setStep?.(1)}>دریافت مجدد</span>}
+      {timeLeft <= 0 && (
+        <span className="text-sm" onClick={() => setStep?.(1)}>
+          دریافت مجدد
+        </span>
+      )}
     </div>
   );
 }

@@ -10,7 +10,10 @@ export async function POST(req: Request) {
     });
 
     if (!existUser) {
-      return NextResponse.json({ ok: false, message: "user not found" });
+      return NextResponse.json(
+        { ok: false, message: "کاربری با این مشخصات یافت نشد" },
+        { status: 400 }
+      );
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
