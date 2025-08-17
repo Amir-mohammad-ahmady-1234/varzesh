@@ -1,6 +1,6 @@
 "use server";
 
-import { createUserSchema } from "../app/api/auth/register/route";
+import { createUserSchema } from "../../app/api/auth/register/route";
 
 export interface userRegesterState {
   message: {

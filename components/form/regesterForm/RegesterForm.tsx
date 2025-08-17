@@ -4,7 +4,10 @@ import React, { startTransition, useActionState } from "react";
 import toast from "react-hot-toast";
 import { redirect } from "next/navigation";
 
-import { userRegester, userRegesterState } from "../../../lib/action";
+import {
+  userRegester,
+  userRegesterState,
+} from "../../../lib/actions/userRegester";
 import Input from "../../common/Input";
 
 const initialState: userRegesterState = {
