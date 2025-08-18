@@ -1,11 +1,12 @@
 "use client";
 
 import React, { useState } from "react";
-import RegesterForm from "../../components/form/regesterForm/RegesterForm";
-import OAuthButtons from "../../components/common/OAuthButtons";
-import SubmitButton from "../../components/common/SubmitButton";
-import RulesAccept from "../../components/form/regesterForm/RulesAccept";
-import Circles from "../../components/common/Circles";
+
+import Circles from "../../../components/common/Circles";
+import RegesterForm from "../../../components/auth/regesterForm/RegesterForm";
+import SubmitButton from "../../../components/common/SubmitButton";
+import RulesAccept from "../../../components/auth/regesterForm/RulesAccept";
+import OAuthButtons from "../../../components/common/OAuthButtons";
 
 function Page() {
   const [checked, setChecked] = useState(false);

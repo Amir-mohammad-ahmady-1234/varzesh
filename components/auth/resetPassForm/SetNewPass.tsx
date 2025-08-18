@@ -17,7 +17,7 @@ function Step3({ children }: Props) {
     if (state.message === true) {
       toast.success("رمز جدید با موفقیت ثبت شد", { duration: 3000 });
       localStorage.removeItem("phone");
-      redirect("/login");
+      redirect("/auth/login");
     }
 
     if (state.message.otherErr) {

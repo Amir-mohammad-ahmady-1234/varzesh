@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import OtpTimer from "../form/resetPassForm/OtpTimer";
+import OtpTimer from "../auth/resetPassForm/OtpTimer";
 
 function SubmitButton({
   children,
@@ -25,18 +25,18 @@ function SubmitButton({
         >
           {page === "regester" && "ثبت نام"}
           {page === "login" && "ورود"}
-          {page === "resetPass" && "دریافت کد"}
-          {page === "resetPass_step2" && "تایید کد otp"}
-          {page === "resetPass_step3" && "تغییر رمز عبور"}
+          {page === "sendPhone" && "دریافت کد"}
+          {page === "sendOtp" && "تایید کد otp"}
+          {page === "setNewPass" && "تغییر رمز عبور"}
         </button>
 
         <div
           className={`flex ${
-            (page === "regester" || page === "resetPass") && "flex-row-reverse"
+            (page === "regester" || page === "sendPhone") && "flex-row-reverse"
           } items-center justify-between mt-2`}
         >
-          {(page === "login" || page === "resetPass_step2") && (
-            <Link href="/resetPass" className="text-secondary-300">
+          {(page === "login" || page === "sendOtp") && (
+            <Link href="/auth/resetPass" className="text-secondary-300">
               {page === "login" ? (
                 "رمز عبور را فراموش کردید؟"
               ) : (
@@ -49,7 +49,7 @@ function SubmitButton({
               ? "از قبل ثبت نام کرده اید؟"
               : "اگر عضو سایت نیستید؟"}
             <Link
-              href={page === "regester" ? "/login" : "/regester"}
+              href={page === "regester" ? "/auth/login" : "/auth/regester"}
               className="text-lg font-bold text-secondary-100 underline underline-offset-4"
             >
               {page === "regester" ? "ورود" : "ثبت نام"}
