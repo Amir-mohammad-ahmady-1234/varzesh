@@ -1,7 +1,15 @@
-import React, { ReactNode } from "react";
+import React from "react";
 
-function Container({ children }: { children: ReactNode }) {
-  return <div className="container">{children}</div>;
+function Container({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}): React.ReactElement {
+  return (
+    <div className={`container ${className || ""}`.trim()}>{children}</div>
+  );
 }
 
 export default Container;
