@@ -1,8 +1,8 @@
 import React, { startTransition, useActionState, useEffect } from "react";
 import toast from "react-hot-toast";
 import { redirect } from "next/navigation";
-import { resetPassState, restPass } from "../../../../lib/actions/resetPass";
 import Input from "../../../common/Input";
+import { resetPassState, restPass } from "../../../../lib/actions/auth/resetPass";
 
 interface Props {
   children: React.ReactNode;

@@ -1,6 +1,9 @@
 import React, { startTransition, useActionState, useEffect } from "react";
 import toast from "react-hot-toast";
-import { VerifyOtp, VerifyOtpState } from "../../../../lib/actions/VerifyOtp";
+import {
+  VerifyOtp,
+  VerifyOtpState,
+} from "../../../../lib/actions/auth/VerifyOtp";
 import Input from "../../../common/Input";
 
 interface Props {

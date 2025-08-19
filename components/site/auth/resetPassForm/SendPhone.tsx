@@ -2,8 +2,8 @@
 
 import React, { startTransition, useActionState, useEffect } from "react";
 import toast from "react-hot-toast";
-import { getOtp, getOtpState } from "../../../../lib/actions/getOtp";
 import Input from "../../../common/Input";
+import { getOtp, getOtpState } from "../../../../lib/actions/auth/getOtp";
 
 interface Props {
   children: React.ReactNode;

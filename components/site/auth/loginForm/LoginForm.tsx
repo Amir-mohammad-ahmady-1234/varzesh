@@ -3,8 +3,8 @@
 import React, { startTransition, useActionState, useEffect } from "react";
 import toast from "react-hot-toast";
 import { redirect } from "next/navigation";
-import { userLogin, userLoginState } from "../../../../lib/actions/userLogin";
 import Input from "../../../common/Input";
+import { userLogin, userLoginState } from "../../../../lib/actions/auth/userLogin";
 
 const initialState: userLoginState= {
   message: {},

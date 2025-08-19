@@ -1,22 +1,29 @@
 "use server";
 
-import { LoginSchema } from "../../app/api/auth/login/route";
+import { createUserSchema } from "../../../app/api/auth/register/route";
 
-export interface userLoginState {
+export interface userRegesterState {
   message: {
+    firstname?: string;
     phone?: string;
     password?: string;
+    repeatPass?: string;
     otherErr?: string;
   };
 }
 
-export async function userLogin(prevState: userLoginState, formData: FormData) {
+export async function userRegester(
+  prevState: userRegesterState,
+  formData: FormData
+) {
   const data = {
+    firstname: formData.get("name"),
     phone: formData.get("phone"),
     password: formData.get("password"),
+    repeatPass: formData.get("repeat-password"),
   };
 
-  const validateData = LoginSchema.safeParse(data);
+  const validateData = createUserSchema.safeParse(data);
 
   if (!validateData.success) {
     const fieldErrors: Record<string, string> = {};
@@ -31,8 +38,16 @@ export async function userLogin(prevState: userLoginState, formData: FormData) {
     };
   }
 
+  if (
+    (typeof data.repeatPass === "string" && !data.repeatPass.trim()) ||
+    data.repeatPass !== data.password
+  )
+    return {
+      message: { repeatPass: "تکرار رمز باید با رمز مطاقبت داشته باشد" },
+    };
+
   try {
-    const res = await fetch("http://localhost:3000/api/auth/login", {
+    const res = await fetch("http://localhost:3000/api/auth/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(validateData.data),
