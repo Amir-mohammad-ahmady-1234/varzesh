@@ -39,34 +39,35 @@ export async function POST(req: Request) {
         { status: 409 }
       );
     }
-
+    console.log("USER EXISTS:", existUser);
     const roleToSet: "ADMIN" | "USER" =
       phone === "09134117901" ? "ADMIN" : "USER";
-
-    const token = jwt.sign({ role: roleToSet }, process.env.JWT_SECRET!, {
-      expiresIn: "30d",
-    });
-
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    await prisma.user.create({
+    const newUser = await prisma.user.create({
       data: {
         firstname,
         phone,
         password: hashedPassword,
         role: roleToSet,
-        jwt: token,
       },
     });
 
-    const res = NextResponse.json({ success: true, message: "ورود موفق" });
+    const token = jwt.sign(
+      { role: roleToSet, userId: newUser.id },
+      process.env.JWT_SECRET!,
+      {
+        expiresIn: "30d",
+      }
+    );
+
+    const res = NextResponse.json({ success: true, message: "ثبت‌ نام موفق" });
     res.cookies.set("token", token, {
       httpOnly: true,
       path: "/",
       maxAge: 30 * 24 * 60 * 60,
       secure: process.env.NODE_ENV === "production",
     });
-
     return res;
   } catch (error) {
     console.error(error);

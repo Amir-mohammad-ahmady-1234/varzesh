@@ -1,7 +1,7 @@
 "use server";
 
 import { createUserSchema } from "../../../app/api/auth/register/route";
-
+const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
 export interface userRegesterState {
   message: {
     firstname?: string;
@@ -47,14 +47,14 @@ export async function userRegester(
     };
 
   try {
-    const res = await fetch("http://localhost:3000/api/auth/register", {
+    const res = await fetch(`${baseUrl}/api/auth/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(validateData.data),
     });
 
     const result = await res.json();
-
+    console.error("خطا:", result.message);
     if (!res.ok) return { message: { otherErr: result.message } };
 
     return { message: result.message };
