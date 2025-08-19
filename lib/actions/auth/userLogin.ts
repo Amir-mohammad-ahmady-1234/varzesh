@@ -37,8 +37,10 @@ export async function userLogin(prevState: userLoginState, formData: FormData) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(validateData.data),
     });
+    console.log(res);
 
     const result = await res.json();
+    console.log(result);
 
     if (!res.ok) return { message: { otherErr: result.message } };
 
