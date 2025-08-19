@@ -387,7 +387,7 @@ export default function UserDetailPage() {
                     )
                   ) {
                     // Handle delete user
-                    router.push("/users");
+                    router.push("/admin/users");
                   }
                 }}
               >
