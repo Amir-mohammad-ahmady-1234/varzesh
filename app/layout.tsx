@@ -3,7 +3,6 @@ import "../styles/globals.css";
 import type { Metadata } from "next";
 import { Toaster } from "react-hot-toast";
 import { GuestTracker } from "../components/GuestTracker";
-import CheckUser from "../lib/check/Check";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,7 +14,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  await CheckUser();
   return (
     <html lang="fa">
       <body dir="rtl">
