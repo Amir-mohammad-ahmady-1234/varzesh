@@ -614,7 +614,7 @@ export default function Dashboard() {
                           ? "info"
                           : game.status === "finished"
                           ? "secondary"
-                          : "primary"
+                          : "success"
                       }
                     >
                       {game.status === "live"

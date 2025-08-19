@@ -198,7 +198,7 @@ export const mockNotifications: Notification[] = [
     type: "warning",
     isRead: false,
     createdAt: "2024-01-20T14:30:00Z",
-    actionUrl: "/chat-rooms/1",
+    actionUrl: "admin/chat-rooms/1",
   },
   {
     id: "2",
@@ -207,7 +207,7 @@ export const mockNotifications: Notification[] = [
     type: "info",
     isRead: false,
     createdAt: "2024-01-20T13:15:00Z",
-    actionUrl: "/support",
+    actionUrl: "admin/support",
   },
   {
     id: "3",
