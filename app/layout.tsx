@@ -4,7 +4,6 @@ import type { Metadata } from "next";
 import { Toaster } from "react-hot-toast";
 import { GuestTracker } from "../components/GuestTracker";
 import CheckUser from "../lib/check/Check";
-import SessionAuth from "../components/common/SessionAuth";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,11 +15,10 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const token = await CheckUser();
+  await CheckUser();
   return (
     <html lang="fa">
       <body dir="rtl">
-        {!token && <SessionAuth />}
         <GuestTracker />
         {children}
         <Toaster position="top-center" />
