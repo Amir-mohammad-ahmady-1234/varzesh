@@ -14,6 +14,7 @@ export interface ChatRoom {
   name: string;
   description?: string;
   gameId?: string;
+  type: "game" | "general" | "private";
   status: "active" | "inactive";
   participantCount: number;
   messageCount: number;

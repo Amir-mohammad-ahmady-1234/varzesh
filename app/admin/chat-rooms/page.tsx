@@ -51,7 +51,6 @@ export default function ChatRoomsPage() {
   >("lastActivity");
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("desc");
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedRoom, setSelectedRoom] = useState<string | null>(null);
   const [showRoomModal, setShowRoomModal] = useState(false);
   const [viewMode, setViewMode] = useState<"list" | "grid">("list");
   const [isLiveMode, setIsLiveMode] = useState(false);
@@ -78,12 +77,22 @@ export default function ChatRoomsPage() {
       return matchesSearch && matchesStatus && matchesType;
     })
     .sort((a, b) => {
-      let aValue: string | number = a[sortBy as keyof typeof a] || 0;
-      let bValue: string | number = b[sortBy as keyof typeof b] || 0;
+      let aValue: string | number;
+      let bValue: string | number;
 
       if (sortBy === "lastActivity") {
-        aValue = new Date(aValue as string).getTime();
-        bValue = new Date(bValue as string).getTime();
+        aValue = new Date(a.lastActivity || a.createdAt).getTime();
+        bValue = new Date(b.lastActivity || b.createdAt).getTime();
+      } else if (sortBy === "participants") {
+        aValue = a.participantCount;
+        bValue = b.participantCount;
+      } else if (sortBy === "messages") {
+        aValue = a.messageCount;
+        bValue = b.messageCount;
+      } else {
+        // sortBy === "name"
+        aValue = a.name.toLowerCase();
+        bValue = b.name.toLowerCase();
       }
 
       if (sortOrder === "asc") {
@@ -112,10 +121,6 @@ export default function ChatRoomsPage() {
       setSortBy(column);
       setSortOrder("desc");
     }
-  };
-
-  const getStatusColor = (status: string) => {
-    return status === "active" ? "text-green-600" : "text-gray-400";
   };
 
   const getStatusText = (status: string) => {
@@ -323,7 +328,9 @@ export default function ChatRoomsPage() {
                     key={status}
                     variant={statusFilter === status ? "primary" : "outline"}
                     size="sm"
-                    onClick={() => setStatusFilter(status as any)}
+                    onClick={() =>
+                      setStatusFilter(status as "all" | "active" | "inactive")
+                    }
                     className="cursor-pointer"
                   >
                     {status === "all" ? "همه" : getStatusText(status)}
@@ -340,7 +347,11 @@ export default function ChatRoomsPage() {
                     key={type}
                     variant={typeFilter === type ? "primary" : "outline"}
                     size="sm"
-                    onClick={() => setTypeFilter(type as any)}
+                    onClick={() =>
+                      setTypeFilter(
+                        type as "all" | "game" | "general" | "private"
+                      )
+                    }
                     className="cursor-pointer"
                   >
                     {type === "all" ? "همه" : getTypeText(type)}
@@ -425,26 +436,154 @@ export default function ChatRoomsPage() {
           {paginatedRooms.map((room) => {
             const TypeIcon = getTypeIcon(room.type || "general");
             return (
-              <Card
+              <div
                 key={room.id}
-                className="hover:shadow-lg transition-all duration-200 cursor-pointer border-l-4"
+                className="hover:shadow-lg transition-all duration-200 cursor-pointer border-l-4 rounded-xl"
                 style={{
                   borderLeftColor:
                     room.status === "active" ? "#10b981" : "#6b7280",
                 }}
-                hover
                 onClick={() => handleRoomClick(room.id)}
               >
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-4 flex-1">
-                    <div className="flex items-center gap-3">
-                      <div className="relative">
-                        <div className="p-3 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg shadow-sm">
-                          <TypeIcon className="w-6 h-6 text-white" />
+                <Card>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-4 flex-1">
+                      <div className="flex items-center gap-3">
+                        <div className="relative">
+                          <div className="p-3 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg shadow-sm">
+                            <TypeIcon className="w-6 h-6 text-white" />
+                          </div>
+                          <div
+                            className={cn(
+                              "absolute -top-1 -right-1 w-4 h-4 rounded-full border-2 border-white",
+                              room.status === "active"
+                                ? "bg-green-500"
+                                : "bg-gray-400"
+                            )}
+                          >
+                            {isLiveMode && room.status === "active" && (
+                              <div className="absolute inset-0 rounded-full bg-green-500 animate-ping"></div>
+                            )}
+                          </div>
+                        </div>
+                        <div>
+                          <div className="flex items-center gap-2 mb-1">
+                            <h3 className="font-semibold text-lg text-gray-900 dark:text-gray-100">
+                              {room.name}
+                            </h3>
+                            <Badge
+                              variant={
+                                room.status === "active"
+                                  ? "success"
+                                  : "secondary"
+                              }
+                              size="sm"
+                            >
+                              {getStatusText(room.status)}
+                            </Badge>
+                            <Badge variant="secondary" size="sm">
+                              {getTypeText(room.type || "general")}
+                            </Badge>
+                          </div>
+                          {room.description && (
+                            <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                              {room.description}
+                            </p>
+                          )}
+                          <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
+                            <div className="flex items-center gap-1">
+                              <MdPeople className="w-4 h-4" />
+                              <span>
+                                {room.participantCount.toLocaleString("fa-IR")}{" "}
+                                شرکت‌کننده
+                              </span>
+                            </div>
+                            <div className="flex items-center gap-1">
+                              <MdMessage className="w-4 h-4" />
+                              <span>
+                                {room.messageCount.toLocaleString("fa-IR")} پیام
+                              </span>
+                            </div>
+                            {room.lastActivity && (
+                              <div className="flex items-center gap-1">
+                                <MdAccessTime className="w-4 h-4" />
+                                <span>
+                                  آخرین فعالیت:{" "}
+                                  {new Date(
+                                    room.lastActivity
+                                  ).toLocaleDateString("fa-IR", {
+                                    month: "short",
+                                    day: "numeric",
+                                    hour: "2-digit",
+                                    minute: "2-digit",
+                                  })}
+                                </span>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <Button
+                        size="sm"
+                        variant="ghost"
+                        onClick={() => {
+                          handleRoomClick(room.id);
+                        }}
+                        className="cursor-pointer"
+                      >
+                        <MdVisibility className="w-4 h-4" />
+                      </Button>
+                      <Button
+                        size="sm"
+                        variant="ghost"
+                        onClick={() => {
+                          // setSelectedRoom(room.id); // Removed
+                          setShowRoomModal(true);
+                        }}
+                        className="cursor-pointer"
+                      >
+                        <MdSettings className="w-4 h-4" />
+                      </Button>
+                      <Button
+                        size="sm"
+                        variant="ghost"
+                        onClick={() => {
+                          // Handle more options
+                        }}
+                        className="cursor-pointer"
+                      >
+                        <MdMoreVert className="w-4 h-4" />
+                      </Button>
+                    </div>
+                  </div>
+                </Card>
+              </div>
+            );
+          })}
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {paginatedRooms.map((room) => {
+            const TypeIcon = getTypeIcon(room.type || "general");
+            return (
+              <div
+                key={room.id}
+                className="cursor-pointer hover:shadow-lg transition-all duration-200"
+                onClick={() => handleRoomClick(room.id)}
+              >
+                <Card>
+                  <div className="relative">
+                    <div className="text-center">
+                      <div className="relative mx-auto mb-4">
+                        <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg mx-auto">
+                          <TypeIcon className="w-8 h-8 text-white" />
                         </div>
                         <div
                           className={cn(
-                            "absolute -top-1 -right-1 w-4 h-4 rounded-full border-2 border-white",
+                            "absolute -top-1 -right-1 w-5 h-5 rounded-full border-2 border-white",
                             room.status === "active"
                               ? "bg-green-500"
                               : "bg-gray-400"
@@ -455,192 +594,64 @@ export default function ChatRoomsPage() {
                           )}
                         </div>
                       </div>
-                      <div>
-                        <div className="flex items-center gap-2 mb-1">
-                          <h3 className="font-semibold text-lg text-gray-900 dark:text-gray-100">
-                            {room.name}
-                          </h3>
-                          <Badge
-                            variant={
-                              room.status === "active" ? "success" : "secondary"
-                            }
-                            size="sm"
-                          >
-                            {getStatusText(room.status)}
-                          </Badge>
-                          <Badge variant="secondary" size="sm">
-                            {getTypeText(room.type || "general")}
-                          </Badge>
-                        </div>
-                        {room.description && (
-                          <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
-                            {room.description}
-                          </p>
-                        )}
-                        <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
-                          <div className="flex items-center gap-1">
-                            <MdPeople className="w-4 h-4" />
-                            <span>
-                              {room.participantCount.toLocaleString("fa-IR")}{" "}
-                              شرکت‌کننده
-                            </span>
-                          </div>
-                          <div className="flex items-center gap-1">
-                            <MdMessage className="w-4 h-4" />
-                            <span>
-                              {room.messageCount.toLocaleString("fa-IR")} پیام
-                            </span>
-                          </div>
-                          {room.lastActivity && (
-                            <div className="flex items-center gap-1">
-                              <MdAccessTime className="w-4 h-4" />
-                              <span>
-                                آخرین فعالیت:{" "}
-                                {new Date(room.lastActivity).toLocaleDateString(
-                                  "fa-IR",
-                                  {
-                                    month: "short",
-                                    day: "numeric",
-                                    hour: "2-digit",
-                                    minute: "2-digit",
-                                  }
-                                )}
-                              </span>
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
 
-                  <div className="flex items-center gap-2">
-                    <Button
-                      size="sm"
-                      variant="ghost"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleRoomClick(room.id);
-                      }}
-                      className="cursor-pointer"
-                    >
-                      <MdVisibility className="w-4 h-4" />
-                    </Button>
-                    <Button
-                      size="sm"
-                      variant="ghost"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setSelectedRoom(room.id);
-                        setShowRoomModal(true);
-                      }}
-                      className="cursor-pointer"
-                    >
-                      <MdSettings className="w-4 h-4" />
-                    </Button>
-                    <Button
-                      size="sm"
-                      variant="ghost"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        // Handle more options
-                      }}
-                      className="cursor-pointer"
-                    >
-                      <MdMoreVert className="w-4 h-4" />
-                    </Button>
-                  </div>
-                </div>
-              </Card>
-            );
-          })}
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {paginatedRooms.map((room) => {
-            const TypeIcon = getTypeIcon(room.type || "general");
-            return (
-              <Card
-                key={room.id}
-                className="cursor-pointer hover:shadow-lg transition-all duration-200"
-                hover
-                onClick={() => handleRoomClick(room.id)}
-              >
-                <div className="relative">
-                  <div className="text-center">
-                    <div className="relative mx-auto mb-4">
-                      <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg mx-auto">
-                        <TypeIcon className="w-8 h-8 text-white" />
-                      </div>
-                      <div
-                        className={cn(
-                          "absolute -top-1 -right-1 w-5 h-5 rounded-full border-2 border-white",
-                          room.status === "active"
-                            ? "bg-green-500"
-                            : "bg-gray-400"
-                        )}
-                      >
-                        {isLiveMode && room.status === "active" && (
-                          <div className="absolute inset-0 rounded-full bg-green-500 animate-ping"></div>
-                        )}
-                      </div>
-                    </div>
+                      <h3 className="font-semibold text-lg text-gray-900 dark:text-gray-100 mb-2">
+                        {room.name}
+                      </h3>
 
-                    <h3 className="font-semibold text-lg text-gray-900 dark:text-gray-100 mb-2">
-                      {room.name}
-                    </h3>
-
-                    <div className="flex items-center justify-center gap-2 mb-3">
-                      <Badge
-                        variant={
-                          room.status === "active" ? "success" : "secondary"
-                        }
-                        size="sm"
-                      >
-                        {getStatusText(room.status)}
-                      </Badge>
-                      <Badge variant="secondary" size="sm">
-                        {getTypeText(room.type || "general")}
-                      </Badge>
-                    </div>
-
-                    {room.description && (
-                      <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">
-                        {room.description}
-                      </p>
-                    )}
-
-                    <div className="space-y-2 text-sm text-gray-500 dark:text-gray-400">
-                      <div className="flex items-center justify-center gap-1">
-                        <MdPeople className="w-4 h-4" />
-                        <span>
-                          {room.participantCount.toLocaleString("fa-IR")}{" "}
-                          شرکت‌کننده
-                        </span>
+                      <div className="flex items-center justify-center gap-2 mb-3">
+                        <Badge
+                          variant={
+                            room.status === "active" ? "success" : "secondary"
+                          }
+                          size="sm"
+                        >
+                          {getStatusText(room.status)}
+                        </Badge>
+                        <Badge variant="secondary" size="sm">
+                          {getTypeText(room.type || "general")}
+                        </Badge>
                       </div>
-                      <div className="flex items-center justify-center gap-1">
-                        <MdMessage className="w-4 h-4" />
-                        <span>
-                          {room.messageCount.toLocaleString("fa-IR")} پیام
-                        </span>
-                      </div>
-                      {room.lastActivity && (
+
+                      {room.description && (
+                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">
+                          {room.description}
+                        </p>
+                      )}
+
+                      <div className="space-y-2 text-sm text-gray-500 dark:text-gray-400">
                         <div className="flex items-center justify-center gap-1">
-                          <MdAccessTime className="w-4 h-4" />
-                          <span className="text-xs">
-                            {new Date(room.lastActivity).toLocaleDateString(
-                              "fa-IR",
-                              {
-                                month: "short",
-                                day: "numeric",
-                              }
-                            )}
+                          <MdPeople className="w-4 h-4" />
+                          <span>
+                            {room.participantCount.toLocaleString("fa-IR")}{" "}
+                            شرکت‌کننده
                           </span>
                         </div>
-                      )}
+                        <div className="flex items-center justify-center gap-1">
+                          <MdMessage className="w-4 h-4" />
+                          <span>
+                            {room.messageCount.toLocaleString("fa-IR")} پیام
+                          </span>
+                        </div>
+                        {room.lastActivity && (
+                          <div className="flex items-center justify-center gap-1">
+                            <MdAccessTime className="w-4 h-4" />
+                            <span className="text-xs">
+                              {new Date(room.lastActivity).toLocaleDateString(
+                                "fa-IR",
+                                {
+                                  month: "short",
+                                  day: "numeric",
+                                }
+                              )}
+                            </span>
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
-              </Card>
+                </Card>
+              </div>
             );
           })}
         </div>

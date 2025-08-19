@@ -1,6 +1,8 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+
+import { useState, useEffect, useRef, useMemo } from "react";
 import { useParams, useRouter } from "next/navigation";
+
 import MainLayout from "../../../../components/admin/layout/MainLayout";
 import PageHeader from "../../../../components/admin/ui/PageHeader";
 import Card from "../../../../components/admin/ui/Card";
@@ -48,44 +50,47 @@ export default function ChatRoomDetailPage() {
   );
 
   // Mock messages data
-  const mockMessages: Message[] = [
-    {
-      id: "1",
-      userId: "user1",
-      username: "علی احمدی",
-      content: "سلام بچه‌ها، بازی شروع شد!",
-      timestamp: "2024-01-20T20:00:00Z",
-    },
-    {
-      id: "2",
-      userId: "user2",
-      username: "محمد رضایی",
-      content: "پرسپولیس حتماً برنده میشه",
-      timestamp: "2024-01-20T20:01:00Z",
-    },
-    {
-      id: "3",
-      userId: "user3",
-      username: "فاطمه محمدی",
-      content: "استقلال بهتر بازی می‌کنه",
-      timestamp: "2024-01-20T20:02:00Z",
-      isReported: true,
-    },
-    {
-      id: "4",
-      userId: "user4",
-      username: "حسن کریمی",
-      content: "گل زدن!!! 🎉",
-      timestamp: "2024-01-20T20:15:00Z",
-    },
-    {
-      id: "5",
-      userId: "user5",
-      username: "مریم احمدی",
-      content: "چه بازی جذابی!",
-      timestamp: "2024-01-20T20:16:00Z",
-    },
-  ];
+  const mockMessages = useMemo<Message[]>(
+    () => [
+      {
+        id: "1",
+        userId: "user1",
+        username: "علی احمدی",
+        content: "سلام بچه‌ها، بازی شروع شد!",
+        timestamp: "2024-01-20T20:00:00Z",
+      },
+      {
+        id: "2",
+        userId: "user2",
+        username: "محمد رضایی",
+        content: "پرسپولیس حتماً برنده میشه",
+        timestamp: "2024-01-20T20:01:00Z",
+      },
+      {
+        id: "3",
+        userId: "user3",
+        username: "فاطمه محمدی",
+        content: "استقلال بهتر بازی می‌کنه",
+        timestamp: "2024-01-20T20:02:00Z",
+        isReported: true,
+      },
+      {
+        id: "4",
+        userId: "user4",
+        username: "حسن کریمی",
+        content: "گل زدن!!! 🎉",
+        timestamp: "2024-01-20T20:15:00Z",
+      },
+      {
+        id: "5",
+        userId: "user5",
+        username: "مریم احمدی",
+        content: "چه بازی جذابی!",
+        timestamp: "2024-01-20T20:16:00Z",
+      },
+    ],
+    []
+  );
 
   useEffect(() => {
     // Simulate loading messages
@@ -95,7 +100,7 @@ export default function ChatRoomDetailPage() {
     }, 1000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [mockMessages]);
 
   useEffect(() => {
     // Auto scroll to bottom when new messages arrive
@@ -283,7 +288,7 @@ export default function ChatRoomDetailPage() {
                             {formatTime(message.timestamp)}
                           </span>
                           {message.isReported && (
-                            <Badge variant="destructive" className="text-xs">
+                            <Badge variant="warning" className="text-xs">
                               گزارش شده
                             </Badge>
                           )}
