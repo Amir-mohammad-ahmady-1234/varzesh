@@ -16,8 +16,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="flex flex-col min-h-screen space-y-20" dir="rtl">
+    <html lang="fa">
+      <body className="flex flex-col min-h-screen " dir="rtl">
         <Header />
 
         <GuestTracker />

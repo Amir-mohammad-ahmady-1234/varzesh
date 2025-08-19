@@ -7,8 +7,8 @@ type Props = {
 };
 function MobileHeader({ setIsSidebarOpen }: Props) {
   return (
-    <div className="flex items-center justify-between md:hidden w-[375px]">
-      <div className="flex-1 flex justify-start items-center gap-2">
+    <div className="flex md:hidden items-center justify-center w-full">
+      <div className=" flex justify-start items-center gap-2">
         <button
           onClick={() => setIsSidebarOpen(true)}
           className="button-primary sm rounded-md "
@@ -16,11 +16,11 @@ function MobileHeader({ setIsSidebarOpen }: Props) {
           <FiMenu />
         </button>
       </div>
-      <div className="flex-1 flex  mx-auto">
+      <div className=" flex  mx-auto">
         <Image src="/img/logo/logo.png" alt="logo" width={100} height={100} />
       </div>
 
-      <div className="flex-1 flex gap-2">
+      <div className=" flex gap-2">
         <button className="button-primary sm rounded-md">
           <FiSearch />
         </button>

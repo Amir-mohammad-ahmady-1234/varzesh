@@ -17,7 +17,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="w-full md:w-[1344px] mx-auto p-4">
+      <header className="p-4">
         {/* mobile  */}
         <MobileHeader setIsSidebarOpen={setIsSidebarOpen} />
 

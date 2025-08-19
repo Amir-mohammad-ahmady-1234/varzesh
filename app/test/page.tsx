@@ -29,6 +29,8 @@ function page() {
       <h4>این یک عنوان h4 است</h4>
       <h5>این یک عنوان h5 است</h5>
       <h6>این یک عنوان h6 است</h6>
+
+      <input type="text" placeholder="ad" />
     </>
   );
 }
