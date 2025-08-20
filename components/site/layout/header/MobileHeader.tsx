@@ -25,7 +25,7 @@ function MobileHeader({ setIsSidebarOpen }: Props) {
           <FiSearch />
         </button>
 
-        <Link href="/auth/regester">
+        <Link href="/auth/register">
           <button className="button-primary sm rounded-md cursor-pointer">
             <FiUser className="text-lg" />
           </button>

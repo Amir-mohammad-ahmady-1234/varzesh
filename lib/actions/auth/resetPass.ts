@@ -1,3 +1,4 @@
+const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
 import z from "zod";
 
 export interface resetPassState {
@@ -48,7 +49,7 @@ export async function restPass(prevState: resetPassState, formData: FormData) {
     };
 
   try {
-    const res = await fetch("http://localhost:3000/api/auth/resetpas", {
+    const res = await fetch(`${baseUrl}/api/auth/resetpas`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

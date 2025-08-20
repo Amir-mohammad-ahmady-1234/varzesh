@@ -1,3 +1,5 @@
+const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+
 export interface VerifyOtpState {
   message: {
     otp?: string;
@@ -17,7 +19,7 @@ export async function VerifyOtp(prevState: VerifyOtpState, formData: FormData) {
     };
 
   try {
-    const res = await fetch("http://localhost:3000/api/auth/sentotp", {
+    const res = await fetch(`${baseUrl}/api/auth/sentotp`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),

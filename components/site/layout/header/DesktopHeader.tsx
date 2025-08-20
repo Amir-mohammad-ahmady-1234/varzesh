@@ -12,7 +12,7 @@ function DesktopHeader() {
         <HeaderNav />
         <div className="flex items-center gap-3">
           <SearchFormHeader />
-          <Link href="/auth/regester">
+          <Link href="/auth/register">
             <button className="button-primary sm rounded-md cursor-pointer">
               ثبت نام
             </button>

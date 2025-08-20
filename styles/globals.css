@@ -119,12 +119,10 @@
   --font-IRANYekan: var(--font-yekan);
 }
 
-* {
-  @apply font-IRANYekan;
-}
-
 body {
-  @apply font-IRANYekan bg-bg-primary text-neutral-50;
+  font-family: "IRANYekan", sans-serif;
+  background-color: var(--color-bg-primary);
+  color: var(--color-neutral-50);
 }
 
 .container {
