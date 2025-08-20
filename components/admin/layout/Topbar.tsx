@@ -14,20 +14,12 @@ import {
 import { cn } from "../../../lib/utils";
 import Input from "../ui/Input";
 import Button from "../ui/Button";
-import { useClickOutside } from "../../../hooks/use-click-outside";
 
 export default function Topbar() {
   const { theme, setTheme } = useTheme();
   const [isRTL, setIsRTL] = useState(true);
   const [showNotifications, setShowNotifications] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
-
-  const notificationRef = useClickOutside<HTMLDivElement>(() =>
-    setShowNotifications(false)
-  );
-  const userMenuRef = useClickOutside<HTMLDivElement>(() =>
-    setShowUserMenu(false)
-  );
 
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
@@ -90,7 +82,7 @@ export default function Topbar() {
             <MdLanguage className="w-5 h-5" />
           </Button>
 
-          <div className="relative" ref={notificationRef}>
+          <div className="relative">
             <Button
               variant="ghost"
               size="sm"
@@ -153,7 +145,7 @@ export default function Topbar() {
             )}
           </div>
 
-          <div className="relative" ref={userMenuRef}>
+          <div className="relative">
             <button
               onClick={() => setShowUserMenu(!showUserMenu)}
               className="flex items-center gap-2 p-2 hover:bg-accent rounded-lg transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-ring"

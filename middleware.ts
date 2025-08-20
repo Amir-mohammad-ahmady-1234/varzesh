@@ -10,7 +10,7 @@ export async function middleware(req: NextRequest) {
   if (publicPaths.includes(url.pathname)) {
     return NextResponse.next();
   }
-  if (!token) {
+  if (token) {
     url.pathname = "/auth/login";
     return NextResponse.redirect(url);
   }

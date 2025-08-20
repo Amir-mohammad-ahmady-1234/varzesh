@@ -41,7 +41,7 @@ export default function Sidebar() {
               <div className="w-8 h-8 bg-sidebar-primary rounded-lg flex items-center justify-center">
                 <MdSportsFootball className="w-5 h-5 text-sidebar-primary-foreground" />
               </div>
-              <h1 className="text-lg font-bold">پنل مدیریت</h1>
+              <h5 className="text-lg font-bold">پنل مدیریت</h5>
             </div>
           )}
           <button
