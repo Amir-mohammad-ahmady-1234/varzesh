@@ -5,6 +5,7 @@ const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
 export interface userRegesterState {
   message: {
     firstname?: string;
+    email?: string;
     phone?: string;
     password?: string;
     repeatPass?: string;
@@ -19,6 +20,7 @@ export async function userRegester(
   const data = {
     firstname: formData.get("name"),
     phone: formData.get("phone"),
+    email: formData.get("email"),
     password: formData.get("password"),
     repeatPass: formData.get("repeat-password"),
   };

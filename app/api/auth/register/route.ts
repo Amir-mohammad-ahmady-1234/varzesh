@@ -6,6 +6,7 @@ import jwt from "jsonwebtoken";
 
 export const createUserSchema = z.object({
   firstname: z.string().min(2, "نام باید حداقل ۲ حرف باشد"),
+  email: z.string().email({ message: "Invalid email address" }),
   phone: z
     .string()
     .regex(/^09\d{9}$/, "شماره تلفن باید معتبر باشد")
@@ -30,7 +31,7 @@ export async function POST(req: Request) {
       );
     }
 
-    const { firstname, phone, password } = result.data;
+    const { firstname, phone, password, email } = result.data;
 
     const existUser = await prisma.user.findUnique({ where: { phone } });
     if (existUser) {
@@ -40,6 +41,16 @@ export async function POST(req: Request) {
       );
     }
     console.log("USER EXISTS:", existUser);
+    const existingEmail = email
+      ? await prisma.user.findUnique({ where: { email } })
+      : null;
+
+    if (existingEmail) {
+      return NextResponse.json(
+        { success: false, message: "این ایمیل قبلاً ثبت شده است" },
+        { status: 400 }
+      );
+    }
     const roleToSet: "ADMIN" | "USER" =
       phone === "09134117901" ? "ADMIN" : "USER";
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -50,6 +61,7 @@ export async function POST(req: Request) {
         phone,
         password: hashedPassword,
         role: roleToSet,
+        email,
       },
     });
 

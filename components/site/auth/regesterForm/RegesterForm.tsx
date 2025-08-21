@@ -54,6 +54,13 @@ function RegesterForm({ children }: { children: React.ReactNode }) {
         title="شماره موبایل"
         err={state.message.phone}
       />
+      <Input
+        name="email"
+        type="text"
+        placeholder="ایمیل خود را وارد کنید"
+        title="ایمیل ادرس"
+        err={state.message.phone}
+      />
 
       <Input
         name="password"
