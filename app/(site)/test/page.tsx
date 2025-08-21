@@ -1,7 +1,11 @@
 import React from "react";
 import Container from "../../../components/common/Container";
+import GetProfileDataUser from "../../../server/user/paneluser/GetProfileDataUser";
 
-function page() {
+async function page() {
+  const user = await GetProfileDataUser(1);
+  console.log(user);
+
   return (
     <>
       <div className="flex flex-col">
