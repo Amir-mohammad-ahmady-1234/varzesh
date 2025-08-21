@@ -1,6 +1,7 @@
 "use server";
 
 import z from "zod";
+const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
 
 export interface getOtpState {
   message: {
@@ -35,7 +36,7 @@ export async function getOtp(prevState: getOtpState, formData: FormData) {
   }
 
   try {
-    const res = await fetch("http://localhost:3000/api/auth/resereq", {
+    const res = await fetch(`${baseUrl}/api/auth/resereq`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),

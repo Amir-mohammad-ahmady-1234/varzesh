@@ -49,7 +49,7 @@ function SubmitButton({
               ? "از قبل ثبت نام کرده اید؟"
               : "اگر عضو سایت نیستید؟"}
             <Link
-              href={page === "regester" ? "/login" : "/regester"}
+              href={page === "regester" ? "/auth/login" : "/auth/register"}
               className="text-lg font-bold text-secondary-100 underline underline-offset-4 "
             >
               {page === "regester" ? "ورود" : "ثبت نام"}

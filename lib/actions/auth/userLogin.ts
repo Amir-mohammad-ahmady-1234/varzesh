@@ -1,6 +1,7 @@
 "use server";
 
 import { LoginSchema } from "../../../app/api/auth/login/route";
+const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
 
 export interface userLoginState {
   message: {
@@ -32,15 +33,13 @@ export async function userLogin(prevState: userLoginState, formData: FormData) {
   }
 
   try {
-    const res = await fetch("http://localhost:3000/api/auth/login", {
+    const res = await fetch(`${baseUrl}/api/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(validateData.data),
     });
-    console.log(res);
 
     const result = await res.json();
-    console.log(result);
 
     if (!res.ok) return { message: { otherErr: result.message } };
 
