@@ -14,18 +14,23 @@ const initialState: userRegesterState = {
 };
 
 function RegesterForm({ children }: { children: React.ReactNode }) {
-  const [state, formAction] = useActionState(userRegester, initialState);
-
+  const [state, formAction] = useActionState<userRegesterState, FormData>(
+    userRegester,
+    initialState
+  );
   useEffect(() => {
-    if (state.message === "ورود موفق") {
-      toast.success("ورود موفق");
+    if (state.message === "ثبت‌ نام موفق") {
+      toast.success("ثبت‌ نام موفق");
       redirect("/");
+    }
+
+    if (state.message.otherErr) {
+      toast.error(state.message.otherErr);
     }
   }, [state.message]);
 
   return (
     <form
-      // action={formAction}
       onSubmit={(e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
@@ -34,13 +39,13 @@ function RegesterForm({ children }: { children: React.ReactNode }) {
           formAction(formData);
         });
       }}
-      className="flex flex-col items-center space-y-2 w-full max-w-[589px]"
+      className="flex flex-col items-center space-y-4 w-full max-w-[589px]"
     >
       <Input
         name="name"
         type="text"
-        placeholder="نام و نام خوانوادگی"
-        title="نام و نام خوانوادگی"
+        placeholder="نام و نام خانوادگی"
+        title="نام و نام خانوادگی"
         err={state.message.firstname}
       />
 
@@ -51,12 +56,13 @@ function RegesterForm({ children }: { children: React.ReactNode }) {
         title="شماره موبایل"
         err={state.message.phone}
       />
+
       <Input
         name="email"
-        type="text"
+        type="email"
         placeholder="ایمیل خود را وارد کنید"
-        title="ایمیل ادرس"
-        err={state.message.phone}
+        title="ایمیل آدرس"
+        err={state.message.email}
       />
 
       <Input
@@ -65,14 +71,6 @@ function RegesterForm({ children }: { children: React.ReactNode }) {
         placeholder="رمز عبور"
         title="رمز عبور"
         err={state.message.password}
-      />
-
-      <Input
-        name="repeat-password"
-        type="password"
-        placeholder="تکرار رمز عبور"
-        title="تکرار رمز عبور"
-        err={state.message.repeatPass}
       />
 
       {children}
