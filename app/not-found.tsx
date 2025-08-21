@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const NotFound = () => {
@@ -19,12 +20,16 @@ const NotFound = () => {
           سایت ورزش سه را از این موضوع با خبر سازید.
         </p>
         <div className="flex items-center justify-center gap-4">
-          <button className="button-primary sm rounded">
-            بازگشت به صفحه اصلی
-          </button>
-          <button className="button-secondary sm rounded">
-            اطلاع به مدیریت سایت
-          </button>
+          <Link href="/">
+            <button className="button-primary sm rounded">
+              بازگشت به صفحه اصلی
+            </button>
+          </Link>
+          <Link href="/about">
+            <button className="button-secondary sm rounded">
+              اطلاع به مدیریت سایت
+            </button>
+          </Link>
         </div>
       </div>
     </div>
