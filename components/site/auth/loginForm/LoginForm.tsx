@@ -53,12 +53,7 @@ function LoginForm({ children }: { children?: React.ReactNode }) {
         title="رمز عبور"
         err={state.message.password}
       />
-      <button
-        type="submit"
-        className="bg-orange-500 text-white px-6 py-2 rounded hover:bg-orange-600 transition"
-      >
-        ورود
-      </button>
+
       {children}
     </form>
   );
