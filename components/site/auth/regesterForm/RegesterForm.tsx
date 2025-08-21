@@ -18,6 +18,8 @@ function RegesterForm({ children }: { children: React.ReactNode }) {
     userRegester,
     initialState
   );
+  console.log(state);
+
   useEffect(() => {
     if (state.message === "ثبت‌ نام موفق") {
       toast.success("ثبت‌ نام موفق");

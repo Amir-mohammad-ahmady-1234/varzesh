@@ -40,7 +40,6 @@ export async function POST(req: Request) {
         { status: 409 }
       );
     }
-    console.log("USER EXISTS:", existUser);
     const existingEmail = email
       ? await prisma.user.findUnique({ where: { email } })
       : null;
