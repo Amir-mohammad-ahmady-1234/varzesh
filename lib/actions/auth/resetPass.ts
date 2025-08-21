@@ -51,6 +51,7 @@ export async function restPass(prevState: resetPassState, formData: FormData) {
   try {
     const res = await fetch(`${baseUrl}/api/auth/resetpas`, {
       method: "POST",
+      credentials: "include",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         phone: data.phone,
