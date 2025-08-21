@@ -10,7 +10,7 @@ export default async function GetUserById() {
       userId: string;
       role: string;
     };
-    if (decodedjwt.role === "ADMIN") {
+    if (decodedjwt.role === "USER") {
       return false;
     }
     const userid = Number(decodedjwt.userId);
