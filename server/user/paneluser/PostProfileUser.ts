@@ -1,7 +1,29 @@
-type TProfileUser = {};
-export default async function PostProfileUser({
-  email,
-  Profileimage,
-}: TProfileUser) {
-  const exsistuser;
+import prisma from "../../../lib/db";
+import { uploadFile } from "../../../utils/uploadFile";
+type TPostProfileUser = {
+  id: number;
+  email: string;
+  file: File;
+};
+export async function PostProfileUser({ id, email, file }: TPostProfileUser) {
+  try {
+    if (!id || !email || !file) {
+      return { error: "اطلاعات ارسالی ناقص است", status: 400 };
+    }
+
+    const existUser = await prisma.user.findUnique({ where: { id } });
+    if (!existUser) {
+      return { error: "کاربر با این اطلاعات وجود ندارد!", status: 404 };
+    }
+
+    const dbPath = await uploadFile(file, "uploads");
+    await prisma.user.update({
+      where: { id },
+      data: { email, profileImage: dbPath },
+    });
+
+    return { message: "کاربر آپدیت شد", path: dbPath, status: 200 };
+  } catch {
+    return { error: "مشکلی در سرور رخ داده است", status: 500 };
+  }
 }
