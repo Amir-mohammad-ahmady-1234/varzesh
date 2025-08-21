@@ -3,7 +3,7 @@
 import type React from "react"
 import { useEffect } from "react"
 import { FiX } from "react-icons/fi"
-import { cn } from "../../../lib/utils"
+import { cn } from "../../lib/utils"
 
 interface ModalProps {
   isOpen: boolean

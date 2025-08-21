@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { cn } from "../../../lib/utils"
+import { cn } from "../../lib/utils"
 
 interface ButtonProps {
   children: React.ReactNode
@@ -33,7 +33,7 @@ export default function Button({
   )
 
   const variants = {
-    primary: "bg-blue-600 text-white hover:bg-blue-700 active:bg-blue-800 shadow-blue-200/50",
+    primary: "bg-[color-bg-primary] text-white hover:bg-blue-700 active:bg-blue-800 shadow-blue-200/50",
     secondary:
       "bg-gray-100 text-gray-900 hover:bg-gray-200 active:bg-gray-300 border border-gray-200 dark:bg-gray-800 dark:text-gray-100 dark:hover:bg-gray-700 dark:border-gray-700",
     outline:
