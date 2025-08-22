@@ -1,11 +1,11 @@
 /** Create new game page with form */
 import Sidebar from "../../../../components/admin/layout/Sidebar";
 import Topbar from "../../../../components/admin/layout/Topbar";
-import Card from "../../../../components/admin/ui/Card";
-import Button from "../../../../components/admin/ui/Button";
-import Input from "../../../../components/admin/ui/Input";
-import Textarea from "../../../../components/admin/ui/Textarea";
-import FormField from "../../../../components/admin/ui/FormField";
+import Card from "../../../../styles/ui/Card";
+import Button from "../../../../styles/ui/Button";
+import Input from "../../../../styles/ui/Input";
+import Textarea from "../../../../styles/ui/Textarea";
+import FormField from "../../../../styles/ui/FormField";
 import Link from "next/link";
 
 export default function NewGamePage() {

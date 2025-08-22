@@ -1,17 +1,17 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { cn } from "../../lib/utils"
+import type React from "react";
+import { cn } from "../../lib/utils";
 
 interface ButtonProps {
-  children: React.ReactNode
-  variant?: "primary" | "secondary" | "ghost" | "destructive" | "outline"
-  size?: "sm" | "md" | "lg"
-  className?: string
-  onClick?: () => void
-  disabled?: boolean
-  type?: "button" | "submit" | "reset"
-  loading?: boolean
+  children: React.ReactNode;
+  variant?: "primary" | "secondary" | "ghost" | "destructive" | "outline";
+  size?: "sm" | "md" | "lg" | "xl";
+  className?: string;
+  onClick?: () => void;
+  disabled?: boolean;
+  type?: "button" | "submit" | "reset";
+  loading?: boolean;
 }
 
 export default function Button({
@@ -25,29 +25,35 @@ export default function Button({
   loading = false,
 }: ButtonProps) {
   const baseClasses = cn(
-    "inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-all duration-200",
-    "focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2",
-    "disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none",
-    "cursor-pointer select-none",
-    "shadow-sm hover:shadow-md active:scale-[0.98]",
-  )
+    `font-IRANYekan font-semibold 
+    rounded-extrasmall disabled:bg-neutral-600
+    px-6 py-2 
+    border-2 border-transparent 
+    cursor-pointer 
+    inline-flex items-center justify-center 
+    gap-2 
+    transition-all duration-150 ease-in-out`
+  );
 
   const variants = {
-    primary: "bg-[color-bg-primary] text-white hover:bg-blue-700 active:bg-blue-800 shadow-blue-200/50",
+    primary:
+      "bg-primary-100 text-neutral-200 border border-transparent transition-all duration-150 ease-in-out hover:border-primary-100 hover:text-neutral-200 hover:bg-transparent active:bg-primary-100 active:translate-y-[2px] active:scale-[0.98] active:opacity-90",
     secondary:
-      "bg-gray-100 text-gray-900 hover:bg-gray-200 active:bg-gray-300 border border-gray-200 dark:bg-gray-800 dark:text-gray-100 dark:hover:bg-gray-700 dark:border-gray-700",
+      "bg-secondary-100 text-neutral-200 border border-transparent transition-all duration-150 ease-in-out hover:bg-transparent hover:text-secondary-100 hover:border-secondary-100 active:translate-y-[2px] active:scale-[0.98] active:shadow-[inset_0_2px_4px_rgba(0,0,0,0.2)] active:bg-secondary-100",
     outline:
       "bg-transparent text-gray-700 hover:bg-gray-50 active:bg-gray-100 border border-gray-300 dark:text-gray-300 dark:hover:bg-gray-800 dark:border-gray-600",
     ghost:
       "bg-transparent text-gray-700 hover:bg-gray-100 active:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-800",
-    destructive: "bg-red-600 text-white hover:bg-red-700 active:bg-red-800 shadow-red-200/50",
-  }
+    destructive:
+      "bg-red-600 text-white hover:bg-red-700 active:bg-red-800 shadow-red-200/50",
+  };
 
   const sizes = {
-    sm: "px-3 py-1.5 text-sm h-8",
-    md: "px-4 py-2 text-sm h-9",
-    lg: "px-6 py-3 text-base h-11",
-  }
+    sm: "px-[1rem] py-[0.4rem] text-[0.85rem]",
+    md: "px-[1.5rem] py-[0.6rem] text-[1rem]",
+    lg: "px-[2rem] py-[0.8rem] text-[1.15rem]",
+    xl: "px-[2.5rem] py-[1rem] text-[1.5rem]",
+  };
 
   return (
     <button
@@ -57,9 +63,21 @@ export default function Button({
       disabled={disabled || loading}
       aria-disabled={disabled || loading}
     >
+      {children}
       {loading && (
-        <svg className="animate-spin -ml-1 mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24">
-          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+        <svg
+          className="animate-spin -ml-1 mr-2 h-4 w-4"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <circle
+            className="opacity-25"
+            cx="12"
+            cy="12"
+            r="10"
+            stroke="currentColor"
+            strokeWidth="4"
+          />
           <path
             className="opacity-75"
             fill="currentColor"
@@ -67,7 +85,6 @@ export default function Button({
           />
         </svg>
       )}
-      {children}
     </button>
-  )
+  );
 }

@@ -22,15 +22,14 @@ const NotFound = () => {
         </p>
         <div className="flex items-center justify-center gap-4">
           <Link href="/">
-            {/* <button className="button-primary sm rounded">
+            <Button variant="primary" size="sm" className="rounded-sm">
               بازگشت به صفحه اصلی
-            </button> */}
-            <Button variant="primary">بازگشت به صفحه اصلی</Button>
+            </Button>
           </Link>
           <Link href="/about">
-            <button className="button-secondary sm rounded">
+            <Button variant="secondary" size="sm" className="rounded-sm">
               اطلاع به مدیریت سایت
-            </button>
+            </Button>
           </Link>
         </div>
       </div>

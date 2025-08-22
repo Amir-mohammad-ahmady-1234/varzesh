@@ -31,17 +31,18 @@ import {
   Line,
 } from "recharts";
 
-import CardTitle from "../../../components/admin/ui/CardTitle";
+import CardTitle from "../../../styles/ui/CardTitle";
 import { mockDashboardStats } from "../../../mocks/mock-data";
 import MainLayout from "../../../components/admin/layout/MainLayout";
-import PageHeader from "../../../components/admin/ui/PageHeader";
-import Badge from "../../../components/admin/ui/Badge";
+import PageHeader from "../../../styles/ui/PageHeader";
+import Badge from "../../../styles/ui/Badge";
 import Card, {
   CardContent,
   CardDescription,
   CardHeader,
-} from "../../../components/admin/ui/Card";
-import LoadingSpinner from "../../../components/admin/ui/LoadingSpinner";
+} from "../../../styles/ui/Card";
+import LoadingSpinner from "../../../styles/ui/LoadingSpinner";
+import Button from "../../../styles/ui/Button";
 
 export default function Dashboard() {
   const stats = [
@@ -220,14 +221,14 @@ export default function Dashboard() {
         description="نمای کلی از عملکرد سیستم و آمار کلیدی"
         action={
           <div className="flex items-center gap-2">
-            <button className="flex items-center gap-2 px-3 py-1.5 text-sm bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+            <Button className="flex items-center gap-2 px-3 py-1.5 text-sm bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
               <MdRefresh className="w-4 h-4" />
               بروزرسانی
-            </button>
-            <button className="flex items-center gap-2 px-3 py-1.5 text-sm bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+            </Button>
+            <Button className="flex items-center gap-2 px-3 py-1.5 text-sm bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
               <MdDownload className="w-4 h-4" />
               گزارش
-            </button>
+            </Button>
             <Badge variant="secondary" dot>
               آخرین بروزرسانی: الان
             </Badge>
@@ -294,9 +295,9 @@ export default function Dashboard() {
                   <Badge variant="info" size="sm">
                     +۲۳٪
                   </Badge>
-                  <button className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors">
+                  <Button className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors">
                     <MdMoreVert className="w-5 h-5 text-gray-500" />
-                  </button>
+                  </Button>
                 </div>
               </div>
             </CardHeader>
@@ -398,9 +399,9 @@ export default function Dashboard() {
                 <CardTitle>انواع پیام‌ها</CardTitle>
                 <CardDescription>توزیع انواع پیام‌ها</CardDescription>
               </div>
-              <button className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors">
+              <Button className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors">
                 <MdMoreVert className="w-5 h-5 text-gray-500" />
-              </button>
+              </Button>
             </div>
           </CardHeader>
           <CardContent>
@@ -467,9 +468,9 @@ export default function Dashboard() {
                   پیام‌ها و کاربران فعال در هفته
                 </CardDescription>
               </div>
-              <button className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors">
+              <Button className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors">
                 <MdMoreVert className="w-5 h-5 text-gray-500" />
-              </button>
+              </Button>
             </div>
           </CardHeader>
           <CardContent>
@@ -525,9 +526,9 @@ export default function Dashboard() {
                 <CardTitle>فعالیت ساعتی</CardTitle>
                 <CardDescription>میزان فعالیت در طول روز</CardDescription>
               </div>
-              <button className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors">
+              <Button className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors">
                 <MdMoreVert className="w-5 h-5 text-gray-500" />
-              </button>
+              </Button>
             </div>
           </CardHeader>
           <CardContent>
@@ -581,9 +582,9 @@ export default function Dashboard() {
                 <CardTitle>آخرین بازی‌ها</CardTitle>
                 <CardDescription>بازی‌های اخیر و وضعیت آنها</CardDescription>
               </div>
-              <button className="text-sm text-primary hover:underline cursor-pointer">
+              <Button className="text-sm text-primary hover:underline cursor-pointer">
                 مشاهده همه
-              </button>
+              </Button>
             </div>
           </CardHeader>
           <CardContent>
@@ -639,9 +640,9 @@ export default function Dashboard() {
                   فعالیت‌های اخیر و توضیحات آنها
                 </CardDescription>
               </div>
-              <button className="text-sm text-primary hover:underline cursor-pointer">
+              <Button className="text-sm text-primary hover:underline cursor-pointer">
                 مشاهده همه
-              </button>
+              </Button>
             </div>
           </CardHeader>
           <CardContent>

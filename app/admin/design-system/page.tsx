@@ -3,11 +3,11 @@ import { useState, useEffect } from "react";
 import type React from "react";
 
 import MainLayout from "../../../components/admin/layout/MainLayout";
-import PageHeader from "../../../components/admin/ui/PageHeader";
-import Card from "../../../components/admin/ui/Card";
-import Button from "../../../components/admin/ui/Button";
-import Input from "../../../components/admin/ui/Input";
-import Badge from "../../../components/admin/ui/Badge";
+import PageHeader from "../../../styles/ui/PageHeader";
+import Card from "../../../styles/ui/Card";
+import Button from "../../../styles/ui/Button";
+import Input from "../../../styles/ui/Input";
+import Badge from "../../../styles/ui/Badge";
 import type { ThemeConfig } from "../../../types/adminPanelTypes";
 import {
   MdDownload,

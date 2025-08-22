@@ -13,6 +13,7 @@ import {
   MdChevronLeft,
 } from "react-icons/md";
 import { cn } from "../../../lib/utils";
+import Button from "../../../styles/ui/Button";
 
 export default function Sidebar() {
   const [collapsed, setCollapsed] = useState(false);
@@ -44,7 +45,7 @@ export default function Sidebar() {
               <h5 className="text-lg font-bold">پنل مدیریت</h5>
             </div>
           )}
-          <button
+          <Button
             onClick={() => setCollapsed(!collapsed)}
             className="p-2 hover:bg-sidebar-accent rounded-lg transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-sidebar-ring"
             aria-label={collapsed ? "باز کردن منو" : "بستن منو"}
@@ -54,7 +55,7 @@ export default function Sidebar() {
             ) : (
               <MdChevronLeft className="w-5 h-5" />
             )}
-          </button>
+          </Button>
         </div>
       </div>
 

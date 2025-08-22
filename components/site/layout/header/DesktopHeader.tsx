@@ -3,6 +3,7 @@ import React from "react";
 import { HeaderNav } from "./HeaderNav";
 import SearchFormHeader from "./SearchFormHeader";
 import Link from "next/link";
+import Button from "../../../../styles/ui/Button";
 
 function DesktopHeader() {
   return (
@@ -13,9 +14,9 @@ function DesktopHeader() {
         <div className="flex items-center gap-3">
           <SearchFormHeader />
           <Link href="/auth/register">
-            <button className="button-primary sm rounded-md cursor-pointer">
+            <Button className="rounded-sm" variant="primary" size="sm">
               ثبت نام
-            </button>
+            </Button>
           </Link>
         </div>
       </div>

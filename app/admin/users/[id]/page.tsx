@@ -2,11 +2,11 @@
 import { useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import MainLayout from "./../../../../components/admin/layout/MainLayout";
-import PageHeader from "./../../../../components/admin/ui/PageHeader";
-import Card from "./../../../../components/admin/ui/Card";
-import Button from "./../../../../components/admin/ui/Button";
-import Badge from "./../../../../components/admin/ui/Badge";
-import Input from "./../../../../components/admin/ui/Input";
+import PageHeader from "../../../../styles/ui/PageHeader";
+import Card from "../../../../styles/ui/Card";
+import Button from "../../../../styles/ui/Button";
+import Badge from "../../../../styles/ui/Badge";
+import Input from "../../../../styles/ui/Input";
 import { mockUsers } from "../../../../mocks/mock-data";
 import {
   MdArrowBack,

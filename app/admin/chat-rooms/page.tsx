@@ -2,18 +2,18 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import MainLayout from "../../../components/admin/layout/MainLayout";
-import PageHeader from "../../../components/admin/ui/PageHeader";
+import PageHeader from "../../../styles/ui/PageHeader";
 import Card, {
   CardHeader,
   CardContent,
   CardTitle,
   CardDescription,
-} from "../../../components/admin/ui/Card";
-import Button from "../../../components/admin/ui/Button";
-import Input from "../../../components/admin/ui/Input";
-import Badge from "../../../components/admin/ui/Badge";
-import EmptyState from "../../../components/admin/ui/EmptyState";
-import Modal from "../../../components/admin/ui/Modal";
+} from "../../../styles/ui/Card";
+import Button from "../../../styles/ui/Button";
+import Input from "../../../styles/ui/Input";
+import Badge from "../../../styles/ui/Badge";
+import EmptyState from "../../../styles/ui/EmptyState";
+import Modal from "../../../styles/ui/Modal";
 import { mockChatRooms } from "../../../mocks/mock-data";
 import {
   MdSearch,

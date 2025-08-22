@@ -1,6 +1,7 @@
 import React from "react";
 import Container from "../../../components/common/Container";
 import GetProfileDataUser from "../../../server/user/paneluser/GetProfileDataUser";
+import Button from "../../../styles/ui/Button";
 
 async function page() {
   const user = await GetProfileDataUser(1);
@@ -12,18 +13,38 @@ async function page() {
         <Container>
           <div>
             {" "}
-            <button className="button-primary sm rounded-2xl">Small</button>
-            <button className="button-primary md w-100">Medium</button>
-            <button className="button-primary lg">Large</button>
-            <button className="button-primary xl">Click Me</button>
+            {/* <button className="button-primary sm rounded-2xl">Small</button> */}
+            <Button size="sm" className="rounded-2xl">
+              Small
+            </Button>
+            {/* <button className="button-primary md w-100">Medium</button> */}
+            <Button size="md" className="w-100">
+              Medium
+            </Button>
+            {/* <button className="button-primary lg">Large</button> */}
+            <Button size="lg">Large</Button>
+            {/* <button className="button-primary xl">Click Me</button> */}
+            <Button size="xl">Click Me</Button>
           </div>
         </Container>
         <div>
           {" "}
-          <button className="button-secondary sm">Small</button>
+          {/* <button className="button-secondary sm">Small</button>
           <button className="button-secondary md">Medium</button>
           <button className="button-secondary lg ">Large</button>
-          <button className="button-secondary xl">Click Me</button>
+          <button className="button-secondary xl">Click Me</button> */}
+          <Button variant="secondary" size="sm">
+            Small
+          </Button>
+          <Button variant="secondary" size="md">
+            Medium
+          </Button>
+          <Button variant="secondary" size="lg">
+            Large
+          </Button>
+          <Button variant="secondary" size="xl">
+            Click Me
+          </Button>
         </div>
       </div>
 

@@ -4,6 +4,7 @@ import type React from "react"
 import { useEffect } from "react"
 import { FiX } from "react-icons/fi"
 import { cn } from "../../lib/utils"
+import Button from "./Button"
 
 interface ModalProps {
   isOpen: boolean
@@ -72,13 +73,13 @@ export default function Modal({
         {title && (
           <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
             <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">{title}</h2>
-            <button
+            <Button
               onClick={onClose}
               className="p-1 rounded-lg text-gray-400 hover:text-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
               aria-label="بستن"
             >
               <FiX className="w-5 h-5" />
-            </button>
+            </Button>
           </div>
         )}
 

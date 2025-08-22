@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import OtpTimer from "./resetPassForm/OtpTimer";
+import Button from "../../../styles/ui/Button";
 
 function SubmitButton({
   children,
@@ -17,9 +18,9 @@ function SubmitButton({
     <div className="w-full max-w-[600px] m-3 space-y-7">
       {children}
       <div>
-        <button
+        <Button
           disabled={!checked}
-          className={`w-full max-w-[600px] h-full max-h-[45px] button button-primary md rounded-xl !text-2xl ${
+          className={`w-full max-w-[600px] h-full max-h-[45px] md rounded-xl !text-2xl ${
             !checked && "!cursor-not-allowed"
           }`}
         >
@@ -28,7 +29,7 @@ function SubmitButton({
           {page === "sendPhone" && "دریافت کد"}
           {page === "sendOtp" && "تایید کد otp"}
           {page === "setNewPass" && "تغییر رمز عبور"}
-        </button>
+        </Button>
 
         <div
           className={`flex ${

@@ -1,11 +1,11 @@
 /** Games management page with table and filters */
 import Sidebar from "../../../components/admin/layout/Sidebar";
 import Topbar from "../../../components/admin/layout/Topbar";
-import Card from "../../../components/admin/ui/Card";
-import Button from "../../../components/admin/ui/Button";
-import Input from "../../../components/admin/ui/Input";
-import Badge from "../../../components/admin/ui/Badge";
-import Table from "../../../components/admin/ui/Table";
+import Card from "../../../styles/ui/Card";
+import Button from "../../../styles/ui/Button";
+import Input from "../../../styles/ui/Input";
+import Badge from "../../../styles/ui/Badge";
+import Table from "../../../styles/ui/Table";
 import Link from "next/link";
 
 export default function GamesPage() {

@@ -1,8 +1,9 @@
 import React from "react";
+import Button from "../../../styles/ui/Button";
 
 const classes = {
   OAuthButtons:
-    "button button-secondary !rounded-3xl w-full max-w-[260px] !border-secondary-300 !bg-transparent",
+    "!rounded-3xl w-full max-w-[260px] !border-secondary-300 !bg-transparent",
 };
 
 function OAuthButtons() {
@@ -10,8 +11,12 @@ function OAuthButtons() {
     <div className="w-full flex flex-col space-y-8 items-center mt-4">
       <hr className="w-full max-w-[589px]" />
       <div className="w-full flex items-center justify-center space-x-20">
-        <button className={classes.OAuthButtons}>ثبت نام با Google</button>
-        <button className={classes.OAuthButtons}>ثبت نام با ایمیل</button>
+        <Button variant="secondary" className={classes.OAuthButtons}>
+          ثبت نام با Google
+        </Button>
+        <Button variant="secondary" className={classes.OAuthButtons}>
+          ثبت نام با ایمیل
+        </Button>
       </div>
     </div>
   );
