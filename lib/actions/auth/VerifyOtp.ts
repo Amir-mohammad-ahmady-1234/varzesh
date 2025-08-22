@@ -21,6 +21,7 @@ export async function VerifyOtp(prevState: VerifyOtpState, formData: FormData) {
   try {
     const res = await fetch(`${baseUrl}/api/auth/sentotp`, {
       method: "POST",
+      credentials: "include",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     });

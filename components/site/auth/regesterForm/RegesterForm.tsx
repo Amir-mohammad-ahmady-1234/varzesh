@@ -21,9 +21,6 @@ function RegesterForm({ children }: { children: React.ReactNode }) {
       toast.success("ورود موفق");
       redirect("/");
     }
-    if (state.message.otherErr) {
-      toast.error(state.message.otherErr, { duration: 3000 });
-    }
   }, [state.message]);
 
   return (

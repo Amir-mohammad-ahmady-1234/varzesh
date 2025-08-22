@@ -39,6 +39,7 @@ export async function getOtp(prevState: getOtpState, formData: FormData) {
     const res = await fetch(`${baseUrl}/api/auth/resereq`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
+      credentials: "include",
       body: JSON.stringify(data),
     });
 

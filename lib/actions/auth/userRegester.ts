@@ -1,7 +1,7 @@
 "use server";
 
 import { createUserSchema } from "../../../app/api/auth/register/route";
-const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000/api";
 export interface userRegesterState {
   message: {
     firstname?: string;
@@ -47,10 +47,12 @@ export async function userRegester(
     return {
       message: { repeatPass: "تکرار رمز باید با رمز مطاقبت داشته باشد" },
     };
+  console.log(baseUrl);
 
   try {
-    const res = await fetch(`${baseUrl}/api/auth/register`, {
+    const res = await fetch(`/api/auth/register`, {
       method: "POST",
+      credentials: "include",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(validateData.data),
     });
