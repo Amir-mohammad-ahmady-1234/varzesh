@@ -1,53 +1,70 @@
 "use server";
 
-import { LoginSchema } from "../../../app/api/auth/login/route";
-const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+import { LoginSchema } from "../../validations/auth";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import prisma from "../../db";
+import { cookies } from "next/headers";
 
 export interface userLoginState {
   message: {
     phone?: string;
     password?: string;
+    success?: string;
     otherErr?: string;
   };
 }
 
 export async function userLogin(prevState: userLoginState, formData: FormData) {
-  const data = {
-    phone: formData.get("phone"),
-    password: formData.get("password"),
-  };
-
-  const validateData = LoginSchema.safeParse(data);
-
-  if (!validateData.success) {
-    const fieldErrors: Record<string, string> = {};
-
-    validateData.error.issues.forEach((err) => {
-      const field = err.path[0] as string;
-      fieldErrors[field] = err.message;
-    });
-
-    return {
-      message: { ...fieldErrors },
-    };
-  }
-
   try {
-    const res = await fetch(`${baseUrl}/api/auth/login`, {
-      method: "POST",
-      credentials: "include",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(validateData.data),
+    const data = {
+      phone: formData.get("phone"),
+      password: formData.get("password"),
+    };
+
+    const validateData = LoginSchema.safeParse(data);
+
+    if (!validateData.success) {
+      const fieldErrors: Record<string, string> = {};
+
+      validateData.error.issues.forEach((err) => {
+        const field = err.path[0] as string;
+        fieldErrors[field] = err.message;
+      });
+
+      return {
+        message: { ...fieldErrors },
+      };
+    }
+    const { phone, password } = validateData.data;
+
+    const existUser = await prisma.user.findUnique({ where: { phone } });
+    if (!existUser) {
+      return { message: { otherErr: "اطلاعات ورود نادرست است" } };
+    }
+
+    const match = await bcrypt.compare(password, existUser.password);
+    if (!match) {
+      return { message: { otherErr: "اطلاعات ورود نادرست است" } };
+    }
+
+    const token = jwt.sign(
+      { userId: existUser.id, role: existUser.role },
+      process.env.JWT_SECRET!,
+      { expiresIn: "30d" }
+    );
+
+    const nextcookies = await cookies();
+    nextcookies.set("token", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      path: "/",
+      maxAge: 30 * 24 * 60 * 60,
     });
 
-    const result = await res.json();
-
-    if (!res.ok) return { message: { otherErr: result.message } };
-
-    return { message: result.message };
+    return { message: { success: "ورود موفق" } };
   } catch {
-    return {
-      message: { otherErr: "خطای غیرمنتظره رخ داد" },
-    };
+    return { message: { otherErr: "خطای سرور" } };
   }
 }

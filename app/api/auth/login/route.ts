@@ -1,16 +1,7 @@
 import { NextResponse } from "next/server";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { z } from "zod";
 import prisma from "../../../../lib/db";
-
-export const LoginSchema = z.object({
-  phone: z
-    .string()
-    .regex(/^09\d{9}$/, "شماره تلفن باید معتبر باشد")
-    .length(11, "شماره تلفن باید ۱۱ رقم باشد"),
-  password: z.string().min(6, "رمز عبور باید حداقل ۶ کاراکتر باشد"),
-});
 
 export async function POST(req: Request) {
   try {

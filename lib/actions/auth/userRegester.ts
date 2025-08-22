@@ -1,14 +1,16 @@
 "use server";
 
-import { createUserSchema } from "../../../app/api/auth/register/route";
-const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000/api";
+import prisma from "../../db";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import { cookies } from "next/headers";
+import { createUserSchema } from "../../validations/auth";
 export interface userRegesterState {
   message: {
     firstname?: string;
     email?: string;
     phone?: string;
     password?: string;
-    repeatPass?: string;
     otherErr?: string;
   };
 }
@@ -17,54 +19,68 @@ export async function userRegester(
   prevState: userRegesterState,
   formData: FormData
 ) {
-  const data = {
-    firstname: formData.get("name"),
-    phone: formData.get("phone"),
-    email: formData.get("email"),
-    password: formData.get("password"),
-    repeatPass: formData.get("repeat-password"),
-  };
-
-  const validateData = createUserSchema.safeParse(data);
-
-  if (!validateData.success) {
-    const fieldErrors: Record<string, string> = {};
-
-    validateData.error.issues.forEach((err) => {
-      const field = err.path[0] as string;
-      fieldErrors[field] = err.message;
-    });
-
-    return {
-      message: { ...fieldErrors },
-    };
-  }
-
-  if (
-    (typeof data.repeatPass === "string" && !data.repeatPass.trim()) ||
-    data.repeatPass !== data.password
-  )
-    return {
-      message: { repeatPass: "تکرار رمز باید با رمز مطاقبت داشته باشد" },
-    };
-  console.log(baseUrl);
-
   try {
-    const res = await fetch(`/api/auth/register`, {
-      method: "POST",
-      credentials: "include",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(validateData.data),
+    const data = {
+      firstname: formData.get("name"),
+      phone: formData.get("phone"),
+      email: formData.get("email"),
+      password: formData.get("password"),
+    };
+
+    const validateData = createUserSchema.safeParse(data);
+
+    if (!validateData.success) {
+      const fieldErrors: Record<string, string> = {};
+
+      validateData.error.issues.forEach((err) => {
+        const field = err.path[0] as string;
+        fieldErrors[field] = err.message;
+      });
+
+      return {
+        message: { ...fieldErrors },
+      };
+    }
+    const { firstname, phone, password, email } = validateData.data;
+    const existUser = await prisma.user.findUnique({ where: { phone } });
+    if (existUser)
+      return { message: { otherErr: "این شماره تلفن قبلاً ثبت شده است" } };
+
+    const existingEmail = email
+      ? await prisma.user.findUnique({ where: { email } })
+      : null;
+    if (existingEmail)
+      return { message: { otherErr: "این ایمیل قبلاً ثبت شده است" } };
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const roleToSet: "ADMIN" | "USER" =
+      phone === "09134117901" ? "ADMIN" : "USER";
+
+    const newUser = await prisma.user.create({
+      data: {
+        firstname,
+        phone,
+        password: hashedPassword,
+        role: roleToSet,
+        email,
+      },
+    });
+    const token = jwt.sign(
+      { role: roleToSet, userId: newUser.id },
+      process.env.JWT_SECRET!,
+      { expiresIn: "30d" }
+    );
+    const nextcookies = await cookies();
+    nextcookies.set("token", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      path: "/",
+      maxAge: 30 * 24 * 60 * 60,
     });
 
-    const result = await res.json();
-    console.error("خطا:", result.message);
-    if (!res.ok) return { message: { otherErr: result.message } };
-
-    return { message: result.message };
-  } catch {
-    return {
-      message: { otherErr: "خطای غیرمنتظره رخ داد" },
-    };
+    return { message: "ثبت‌ نام موفق" };
+  } catch (err) {
+    console.error(err);
+    return { message: { otherErr: "خطای سرور" } };
   }
 }

@@ -4,28 +4,31 @@ import React, { startTransition, useActionState, useEffect } from "react";
 import toast from "react-hot-toast";
 import { redirect } from "next/navigation";
 import Input from "../../../common/Input";
-import { userLogin, userLoginState } from "../../../../lib/actions/auth/userLogin";
+import {
+  userLogin,
+  userLoginState,
+} from "../../../../lib/actions/auth/userLogin";
 
-const initialState: userLoginState= {
+const initialState: userLoginState = {
   message: {},
 };
 
-function LoginForm({ children }: { children: React.ReactNode }) {
+function LoginForm({ children }: { children?: React.ReactNode }) {
   const [state, formAction] = useActionState(userLogin, initialState);
+  console.log(state);
 
   useEffect(() => {
-    if (state.message === "ورود موفق") {
-      toast.success("ورود موفق");
+    if (state.message.success) {
+      toast.success(state.message.success);
       redirect("/");
     }
+
     if (state.message.otherErr) {
       toast.error(state.message.otherErr, { duration: 3000 });
     }
   }, [state.message]);
-
   return (
     <form
-      // action={formAction}
       onSubmit={(e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
@@ -34,14 +37,14 @@ function LoginForm({ children }: { children: React.ReactNode }) {
           formAction(formData);
         });
       }}
-      className="flex flex-col items-center space-y-4 w-full max-w-[589px]"
+      className="flex flex-col items-center space-y-4 w-full max-w-[589px] mx-auto p-4"
     >
       <Input
         name="phone"
         type="text"
         placeholder="شماره موبایل"
         title="شماره موبایل"
-        err={state.message.phone}
+        err={state?.message?.phone}
       />
       <Input
         name="password"
@@ -50,6 +53,7 @@ function LoginForm({ children }: { children: React.ReactNode }) {
         title="رمز عبور"
         err={state.message.password}
       />
+
       {children}
     </form>
   );
