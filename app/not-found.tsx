@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import Button from "../styles/ui/Button";
 
 const NotFound = () => {
   return (
@@ -21,9 +22,10 @@ const NotFound = () => {
         </p>
         <div className="flex items-center justify-center gap-4">
           <Link href="/">
-            <button className="button-primary sm rounded">
+            {/* <button className="button-primary sm rounded">
               بازگشت به صفحه اصلی
-            </button>
+            </button> */}
+            <Button variant="primary">بازگشت به صفحه اصلی</Button>
           </Link>
           <Link href="/about">
             <button className="button-secondary sm rounded">

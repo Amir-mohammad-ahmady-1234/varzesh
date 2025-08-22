@@ -1,6 +1,6 @@
 import type { ReactNode } from "react"
 import { MdInbox } from "react-icons/md"
-import { cn } from "../../../lib/utils"
+import { cn } from "../../lib/utils"
 
 interface EmptyStateProps {
   icon?: ReactNode
