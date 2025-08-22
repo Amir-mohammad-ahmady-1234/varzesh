@@ -1,18 +1,21 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { cn } from "../../lib/utils"
+import type React from "react";
+import { cn } from "../../lib/utils";
 
-interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size"> {
-  label?: string
-  error?: string
-  helperText?: string
-  size?: "sm" | "md" | "lg"
-  leftIcon?: React.ReactNode
-  rightIcon?: React.ReactNode
+interface InputProps
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size"> {
+  label?: string;
+  error?: string;
+  helperText?: string;
+  size?: "sm" | "md" | "lg" | "xl";
+  leftIcon?: React.ReactNode;
+  rightIcon?: React.ReactNode;
+  type?: string;
+  variant?: "primary" | "secondary";
 }
 
-export default function Input({
+export default function InputDesign({
   label,
   error,
   helperText,
@@ -20,40 +23,60 @@ export default function Input({
   leftIcon,
   rightIcon,
   className = "",
+  type = "input",
+  variant = "primary",
   ...props
 }: InputProps) {
   const inputSizes = {
-    sm: "h-8 px-3 text-sm",
-    md: "h-9 px-3 text-sm",
-    lg: "h-11 px-4 text-base",
-  }
+    sm: "px-[0.6rem] py-[0.35rem] text-[0.85rem]",
+    md: "px-[0.75rem] py-[0.5rem] text-[1rem]",
+    lg: "px-[1rem] py-[0.75rem] text-[1.15rem]",
+    xl: "px-[1.25rem] py-[1rem] text-[1.3rem]",
+  };
 
   const inputClasses = cn(
-    "w-full rounded-lg border transition-all duration-200",
-    "bg-white dark:bg-gray-900",
-    "text-gray-900 dark:text-gray-100",
-    "placeholder:text-gray-500 dark:placeholder:text-gray-400",
-    "focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent",
-    "disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-gray-50 dark:disabled:bg-gray-800",
-    error ? "border-red-300 focus:ring-red-500 dark:border-red-600" : "border-gray-300 dark:border-gray-600",
+    "w-full px-[0.75rem] py-[0.5rem] text-right rounded-medium border font-IRANYekan transition-all duration-200 ease-in-out",
+    "focus:outline-none focus:shadow-[0_0_0_2px_rgba(0,119,255,0.2)]",
+    error ? "border-error-500 bg-[rgba(255,0,0,0.05)]" : "border-neutral-300",
     leftIcon && "pl-10",
     rightIcon && "pr-10",
     inputSizes[size],
-    className,
-  )
+    className
+  );
+
+  const variants = {
+    primary: "border-primary-100 focus:border-primary-200",
+    secondary: "border-secondary-100 focus:border-secondary-200",
+  };
 
   return (
     <div className="w-full">
-      {label && <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">{label}</label>}
+      {label && (
+        <label className="block text-sm font-IRANYekan text-neutral-600 mb-1">
+          {label}
+        </label>
+      )}
       <div className="relative">
-        {leftIcon && <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">{leftIcon}</div>}
-        <input className={inputClasses} {...props} />
+        {leftIcon && (
+          <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-400">
+            {leftIcon}
+          </div>
+        )}
+        <input
+          type={type}
+          className={cn(inputClasses, variants[variant])}
+          {...props}
+        />
         {rightIcon && (
-          <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400">{rightIcon}</div>
+          <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-neutral-400">
+            {rightIcon}
+          </div>
         )}
       </div>
-      {error && <p className="mt-1 text-sm text-red-600 dark:text-red-400">{error}</p>}
-      {helperText && !error && <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">{helperText}</p>}
+      {error && <p className="text-error-500 text-sm">{error}</p>}
+      {helperText && !error && (
+        <p className="mt-1 text-sm text-neutral-500">{helperText}</p>
+      )}
     </div>
-  )
+  );
 }

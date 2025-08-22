@@ -2,6 +2,7 @@ import React from "react";
 import Container from "../../../components/common/Container";
 import GetProfileDataUser from "../../../server/user/paneluser/GetProfileDataUser";
 import Button from "../../../styles/ui/Button";
+import InputDesign from "../../../styles/ui/Input";
 
 async function page() {
   const user = await GetProfileDataUser(1);
@@ -55,7 +56,7 @@ async function page() {
       <h5>این یک عنوان h5 است</h5>
       <h6>این یک عنوان h6 است</h6>
 
-      <input type="text" placeholder="ad" />
+      <InputDesign type="text" placeholder="ad" />
     </>
   );
 }

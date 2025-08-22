@@ -1,3 +1,5 @@
+import InputDesign from "../../styles/ui/Input";
+
 interface PropsType {
   name: string;
   type: string;
@@ -23,10 +25,7 @@ function Input({
         <label className="md:w-52 text-right" htmlFor={name}>
           {title}*
         </label>
-        <input
-          className={`input input-md input-primary ${
-            err && "!border-error-500"
-          }`}
+        <InputDesign
           id={name}
           name={name}
           type={type}

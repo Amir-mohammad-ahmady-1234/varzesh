@@ -1,3 +1,5 @@
+import InputDesign from "../../../../styles/ui/Input";
+
 function RulesAccept({
   checked,
   setChecked,
@@ -7,7 +9,7 @@ function RulesAccept({
 }) {
   return (
     <div className="flex items-center space-x-2 self-auto w-full max-w-[589px]">
-      <input
+      <InputDesign
         type="checkbox"
         id="rules"
         className="cursor-pointer appearance-none size-7 border-2 border-primary-100 rounded-md transition duration-400 checked:bg-primary-200 checked:border-neutral-800"
