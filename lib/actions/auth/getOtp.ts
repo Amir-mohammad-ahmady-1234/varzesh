@@ -1,6 +1,7 @@
 "use server";
 
-import z from "zod";
+import { getOtpStateSchema } from "../../validations/auth";
+
 const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
 
 export interface getOtpState {
@@ -9,13 +10,6 @@ export interface getOtpState {
     otherErr?: string;
   };
 }
-
-const getOtpStateSchema = z.object({
-  phone: z
-    .string()
-    .regex(/^09\d{9}$/, "شماره تلفن باید معتبر باشد")
-    .length(11, "شماره تلفن باید ۱۱ رقم باشد"),
-});
 
 export async function getOtp(prevState: getOtpState, formData: FormData) {
   const data = { phone: formData.get("phone") };
@@ -46,7 +40,7 @@ export async function getOtp(prevState: getOtpState, formData: FormData) {
     const result = await res.json();
     console.log(result);
 
-    if (!res.ok) {
+    if (!res.ok || !result.otp) {
       return { message: { otherErr: result.message } };
     }
 

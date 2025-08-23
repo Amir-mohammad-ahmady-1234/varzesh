@@ -1,5 +1,6 @@
 const baseUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
-import z from "zod";
+
+import { resetPassSchema } from "../../validations/auth";
 
 export interface resetPassState {
   message: {
@@ -8,15 +9,6 @@ export interface resetPassState {
     otherErr?: string;
   };
 }
-
-const resetPassSchema = z.object({
-  password: z
-    .string()
-    .min(6, "رمز عبور باید حداقل ۶ کاراکتر باشد")
-    .regex(/[A-Z]/, "رمز عبور باید حداقل یک حرف بزرگ داشته باشد")
-    .regex(/[0-9]/, "رمز عبور باید حداقل یک عدد داشته باشد")
-    .regex(/[!@#$%^&*]/, "رمز عبور باید حداقل یک کاراکتر خاص داشته باشد"),
-});
 
 export async function restPass(prevState: resetPassState, formData: FormData) {
   const data = {
