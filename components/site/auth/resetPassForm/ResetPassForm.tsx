@@ -9,7 +9,7 @@ import Step3 from "./SetNewPass";
 import OAuthButtons from "../OAuthButtons";
 import SubmitButton from "../SubmitButton";
 
-function ResetPassForm({ children }: { children: React.ReactNode }) {
+function ResetPassForm() {
   const [phone, setPhone] = useState("");
   const [step, setStep] = useState(1);
   const [otp, setOtp] = useState("");
@@ -22,7 +22,7 @@ function ResetPassForm({ children }: { children: React.ReactNode }) {
         setOtp={setOtp}
         setStep={setStep}
       >
-        {children}
+        <SubmitButton page="sendPhone" />
         <OAuthButtons />
       </Step1>
     );

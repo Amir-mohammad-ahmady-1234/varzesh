@@ -53,8 +53,6 @@
 - **Tailwind CSS 4** - فریم‌ورک CSS utility-first
 - **React Icons** - آیکون‌های Material Design
 - **Recharts** - نمودارهای تعاملی
-- **React Hook Form** - مدیریت فرم‌ها
-- **React Query** - مدیریت state و cache
 
 ### Backend & Database
 

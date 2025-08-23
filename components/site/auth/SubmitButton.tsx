@@ -20,6 +20,7 @@ function SubmitButton({
       <div>
         <Button
           disabled={!checked}
+          type="submit"
           className={`w-full max-w-[600px] h-full max-h-[45px] md rounded-xl !text-2xl ${
             !checked && "!cursor-not-allowed"
           }`}
