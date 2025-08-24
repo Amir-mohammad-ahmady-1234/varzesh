@@ -6,7 +6,14 @@ export async function middleware(req: NextRequest) {
   const cookieStore = await cookies();
   const token = cookieStore.get("token")?.value;
   const url = req.nextUrl.clone();
-  const publicPaths = ["/auth/login", "/auth/register", "/auth/resetPass"];
+  const publicPaths = [
+    "/auth/login",
+    "/auth/register",
+    "/auth/resetPass",
+    "/api/auth/resereq",
+    "/api/auth/sentotp",
+    "/api/auth/resetpas",
+  ];
   if (publicPaths.includes(url.pathname)) {
     return NextResponse.next();
   }

@@ -16,9 +16,6 @@ export async function getOtp(prevState: getOtpState, formData: FormData) {
 
   const validateData = getOtpStateSchema.safeParse(data);
 
-  console.log("Data sent:", data);
-  console.log("Validate result:", validateData);
-
   if (!validateData.success) {
     const fieldErrors: Record<string, string> = {};
 
@@ -42,15 +39,13 @@ export async function getOtp(prevState: getOtpState, formData: FormData) {
 
     const result = await res.json();
 
-    console.log("Fetch status:", res.status);
-    console.log("Result:", result);
-
     if (!res.ok) {
       return { message: { otherErr: result.message } };
     }
 
     return { message: result.otp };
-  } catch {
+  } catch (err) {
+    console.log(err);
     return { message: { otherErr: "خطای غیرمنتظره رخ داد" } };
   }
 }
