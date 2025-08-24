@@ -132,6 +132,20 @@ body {
          tablet:grid-cols-4 tablet:gap-x-4 tablet:px-5
          mobile:max-w-[345px] mobile:px-3;
 }
+
+/* for chrome */
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px var(--color-bg-primary) inset !important; /* پس‌زمینه سفارشی */
+  -webkit-text-fill-color: var(--color-neutral-400) !important; /* رنگ متن */
+  transition: background-color 5000s ease-in-out 0s; /* برای جلوگیری از تغییر سریع */
+}
+
+/* for firefax */
+input:-moz-autofill {
+  box-shadow: 0 0 0px 1000px var(--color-bg-primary) inset !important;
+  -moz-text-fill-color: var(--color-neutral-400) !important;
+}
+
 /* ========================
    ✅ SYSTEM SECTION END
 ======================== */

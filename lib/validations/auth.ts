@@ -2,7 +2,7 @@ import z from "zod";
 
 export const createUserSchema = z.object({
   firstname: z.string().min(2, "نام باید حداقل ۲ حرف باشد"),
-  email: z.string().email({ message: "Invalid email address" }),
+  email: z.string().email({ message: "ایمیل وارد شده معتبر نمیباشد" }),
   phone: z
     .string()
     .regex(/^09\d{9}$/, "شماره تلفن باید معتبر باشد")
