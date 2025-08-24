@@ -10,9 +10,9 @@ export async function middleware(req: NextRequest) {
     "/auth/login",
     "/auth/register",
     "/auth/resetPass",
-    "/api/auth/resereq",
-    "/api/auth/sentotp",
-    "/api/auth/resetpas",
+    "/auth/resereq",
+    "/auth/sentotp",
+    "/auth/resetpas",
   ];
   if (publicPaths.includes(url.pathname)) {
     return NextResponse.next();
