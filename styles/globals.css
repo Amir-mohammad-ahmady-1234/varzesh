@@ -102,6 +102,19 @@
   --color-error-300: #fca5a5;
   --color-error-400: #f87171;
   --color-error-500: #ef4444; /* default ( main color ) */
+  --color-error-600: #db2626;
+  --color-error-700: #b81515;
+
+  /* ================================
+     success / green / Background (ششم)
+  ================================== */
+  --color-success-100: #9de2a2;
+  --color-success-200: #5de290;
+  --color-success-300: #40aa57;
+  --color-success-400: #41bd56;
+  --color-success-500: #309723; /* default ( main color ) */
+  --color-success-600: #1da818;
+  --color-success-700: #168f12;
 
   /* Breakpoints */
   --breakpoint-mobile: 375px;

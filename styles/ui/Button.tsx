@@ -5,7 +5,13 @@ import { cn } from "../../lib/utils";
 
 interface ButtonProps {
   children: React.ReactNode;
-  variant?: "primary" | "secondary" | "ghost" | "destructive" | "outline";
+  variant?:
+    | "primary"
+    | "secondary"
+    | "ghost"
+    | "destructive"
+    | "outline"
+    | "success";
   size?: "sm" | "md" | "lg" | "xl";
   className?: string;
   onClick?: () => void;
@@ -41,11 +47,13 @@ export default function Button({
     secondary:
       "bg-secondary-100 text-neutral-200 border border-transparent transition-all duration-150 ease-in-out hover:bg-transparent hover:text-secondary-100 hover:border-secondary-100 active:translate-y-[2px] active:scale-[0.98] active:shadow-[inset_0_2px_4px_rgba(0,0,0,0.2)] active:bg-secondary-100",
     outline:
-      "bg-transparent text-gray-700 hover:bg-gray-50 active:bg-gray-100 border border-gray-300 dark:text-gray-300 dark:hover:bg-gray-800 dark:border-gray-600",
+      "bg-transparent text-neutral-600 hover:neutral-500 active:neutral-400 border border-gray-300 dark:text-gray-300",
     ghost:
-      "bg-transparent text-gray-700 hover:bg-gray-100 active:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-800",
+      "bg-transparent text-neutral-600 hover:neutral-400 active:neutral-300",
+    success:
+      "bg-success-500 text-neutral-100 hover:bg-success-600 active:bg-success-700 shadow-green-200/50",
     destructive:
-      "bg-red-600 text-white hover:bg-red-700 active:bg-red-800 shadow-red-200/50",
+      "bg-error-500 text-neutral-100 hover:bg-error-600 active:bg-error-700 shadow-red-200/50",
   };
 
   const sizes = {

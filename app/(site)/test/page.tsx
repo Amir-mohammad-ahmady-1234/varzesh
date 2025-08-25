@@ -46,6 +46,13 @@ async function page() {
           <Button variant="secondary" size="xl">
             Click Me
           </Button>
+          <Button variant="destructive">error status</Button>
+          <Button variant="ghost">ghost status</Button>
+          <Button variant="outline">outline status</Button>
+          <Button variant="success">success status</Button>
+          <Button variant="primary" loading>
+            loading status
+          </Button>
         </div>
       </div>
 
