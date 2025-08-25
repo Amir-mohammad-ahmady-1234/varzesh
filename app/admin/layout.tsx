@@ -1,8 +1,9 @@
-import './globals.css'
+import "./globals.css";
 
 import type React from "react";
 import type { Metadata } from "next";
 import { Vazirmatn } from "next/font/google";
+import { GetUserById } from "../../server/user/getuserbyid/GetUserById";
 
 const vazirmatn = Vazirmatn({
   subsets: ["arabic"],
