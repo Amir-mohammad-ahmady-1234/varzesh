@@ -21,6 +21,7 @@ model User {
   ticketsSupport Int?
   isVerify       Boolean @default(false)
   userRate       Int?
+  changephone    String? @unique
   role           Role     @default(USER)
   jwt            String? 
   otpCode        String?  
