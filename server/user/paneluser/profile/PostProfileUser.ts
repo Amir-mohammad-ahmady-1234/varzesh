@@ -12,6 +12,12 @@ export async function PostProfileUser({ id, email, file }: TPostProfileUser) {
     if (!existUser) {
       return { error: "کاربر با این اطلاعات وجود ندارد!", status: 404 };
     }
+    if (email) {
+      const emailExist = await prisma.user.findUnique({ where: { email } });
+      if (emailExist && emailExist.id !== id) {
+        return { error: "این ایمیل قبلاً استفاده شده است!", status: 400 };
+      }
+    }
 
     const dbPath = await uploadFile(file, "uploads");
     await prisma.user.update({
