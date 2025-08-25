@@ -1,10 +1,7 @@
-import prisma from "../../../lib/db";
-import { uploadFile } from "../../../utils/uploadFile";
-type TPostProfileUser = {
-  id: number;
-  email: string;
-  file: File;
-};
+import prisma from "../../../../lib/db";
+import { TPostProfileUser } from "../../../../types/user/profile/type";
+import { uploadFile } from "../../../../utils/uploadFile";
+
 export async function PostProfileUser({ id, email, file }: TPostProfileUser) {
   try {
     if (!id || !email || !file) {
