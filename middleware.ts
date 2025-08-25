@@ -7,18 +7,23 @@ export async function middleware(req: NextRequest) {
   const token = cookieStore.get("token")?.value;
   const url = req.nextUrl.clone();
   const publicPaths = [
-    "/auth/login",
-    "/auth/register",
+    "/api/auth/login",
+    "/api/auth/register",
     "/auth/resetPass",
-    "/auth/resereq",
-    "/auth/sentotp",
-    "/auth/resetpas",
+    "/api/auth/resereq",
+    "/api/auth/sentotp",
+    "/api/auth/resetpas",
   ];
+
   if (publicPaths.includes(url.pathname)) {
     return NextResponse.next();
   }
-  if (!token) {
+  if (!token || url.pathname === "/auth") {
     url.pathname = "/auth/login";
+    return NextResponse.redirect(url);
+  }
+  if (url.pathname === "/admin") {
+    url.pathname = "/admin/dashboard";
     return NextResponse.redirect(url);
   }
 
