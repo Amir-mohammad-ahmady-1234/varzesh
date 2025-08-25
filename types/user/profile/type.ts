@@ -3,6 +3,6 @@ export type TPostProfileUser = {
   email?: string;
   file?: File;
   phone?: string;
-  firstname?: string;
   otp?: string;
+  firstname?: string;
 };
