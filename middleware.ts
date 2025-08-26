@@ -5,6 +5,7 @@ import type { NextRequest } from "next/server";
 export async function middleware(req: NextRequest) {
   const cookieStore = await cookies();
   const token = cookieStore.get("token")?.value;
+
   const url = req.nextUrl.clone();
   const publicPaths = [
     "/auth/login",
@@ -17,13 +18,21 @@ export async function middleware(req: NextRequest) {
     "/api/auth/resetpas",
   ];
 
+  if (token && url.pathname.startsWith("/auth")) {
+    console.log("yes");
+    url.pathname = "/";
+    return NextResponse.redirect(url);
+  }
+
   if (publicPaths.includes(url.pathname)) {
     return NextResponse.next();
   }
-  if (!token || url.pathname === "/auth") {
+
+  if (!token && url.pathname === "/auth") {
     url.pathname = "/auth/login";
     return NextResponse.redirect(url);
   }
+
   if (url.pathname === "/admin") {
     url.pathname = "/admin/dashboard";
     return NextResponse.redirect(url);
