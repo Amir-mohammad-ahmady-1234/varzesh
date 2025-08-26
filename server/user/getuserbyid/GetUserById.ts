@@ -11,7 +11,10 @@ export async function GetUserById() {
     return false;
   }
 
-  const payload = jwt.verify(tokenAccess, secret) as { role?: string };
+  const payload = jwt.verify(tokenAccess, secret) as {
+    userId: number;
+    role?: string;
+  };
   console.log(payload);
 
   return payload;
