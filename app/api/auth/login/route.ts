@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import prisma from "../../../../lib/db";
+import { LoginSchema } from "../../../../lib/validations/auth";
 
 export async function POST(req: Request) {
   try {
