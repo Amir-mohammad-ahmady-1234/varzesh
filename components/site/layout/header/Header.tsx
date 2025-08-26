@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import Sidebar from "../sidebar/Sidebar";
 import MobileHeader from "./MobileHeader";
 import DesktopHeader from "./DesktopHeader";
@@ -12,17 +12,19 @@ export type HeaderItemHeader = {
   dropdown?: DropdownItemHeader[];
 };
 
-export default function Header({ token }: { token: string | null }) {
+export default function Header({ children }: { children: React.ReactNode }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
     <>
       <header className="p-4">
         {/* mobile  */}
-        <MobileHeader setIsSidebarOpen={setIsSidebarOpen} token={token} />
+        <MobileHeader setIsSidebarOpen={setIsSidebarOpen}>
+          {children}
+        </MobileHeader>
 
         {/* desktop */}
-        <DesktopHeader token={token} />
+        <DesktopHeader>{children}</DesktopHeader>
       </header>
 
       <Sidebar

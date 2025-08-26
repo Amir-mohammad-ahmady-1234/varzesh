@@ -14,5 +14,5 @@ export async function GetUserById() {
   const payload = jwt.verify(tokenAccess, secret) as { role?: string };
   console.log(payload);
 
-  return true;
+  return payload;
 }

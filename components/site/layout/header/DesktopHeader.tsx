@@ -2,9 +2,8 @@ import Image from "next/image";
 import React from "react";
 import { HeaderNav } from "./HeaderNav";
 import SearchFormHeader from "./SearchFormHeader";
-import { BtnConditionallyGenerator } from "./Auth-Or-Profile-btn/BtnConditionallyGenerator";
 
-function DesktopHeader({ token }: { token: string | null }) {
+function DesktopHeader({ children }: { children: React.ReactNode }) {
   return (
     <div className="hidden md:flex items-center justify-center w-full">
       <div className="flex items-center gap-5">
@@ -12,7 +11,7 @@ function DesktopHeader({ token }: { token: string | null }) {
         <HeaderNav />
         <div className="flex items-center gap-3">
           <SearchFormHeader />
-          <BtnConditionallyGenerator token={token} />
+          {children}
         </div>
       </div>
     </div>
