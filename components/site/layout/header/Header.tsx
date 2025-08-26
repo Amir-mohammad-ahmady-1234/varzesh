@@ -12,17 +12,17 @@ export type HeaderItemHeader = {
   dropdown?: DropdownItemHeader[];
 };
 
-export default function Header() {
+export default function Header({ token }: { token: string | null }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
     <>
       <header className="p-4">
         {/* mobile  */}
-        <MobileHeader setIsSidebarOpen={setIsSidebarOpen} />
+        <MobileHeader setIsSidebarOpen={setIsSidebarOpen} token={token} />
 
         {/* desktop */}
-        <DesktopHeader />
+        <DesktopHeader token={token} />
       </header>
 
       <Sidebar

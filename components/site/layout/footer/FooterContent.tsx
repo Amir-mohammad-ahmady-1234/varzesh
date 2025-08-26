@@ -25,7 +25,7 @@ function FooterContent() {
         </div>
         <div className="w-3/4 grid grid-cols-2 md:grid-cols-4  items-center">
           {footerLinks.map((section) => (
-            <div key={section.title} className="text-right w-full mt-10 ">
+            <div key={section.id} className="text-right w-full mt-10 ">
               <div className="flex  mb-5">
                 <Image
                   src={"/img/footer/Frame.png"}

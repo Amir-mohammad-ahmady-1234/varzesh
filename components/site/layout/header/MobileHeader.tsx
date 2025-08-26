@@ -1,12 +1,13 @@
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
-import { FiMenu, FiSearch, FiUser } from "react-icons/fi";
+import { FiMenu, FiSearch } from "react-icons/fi";
 import Button from "../../../../styles/ui/Button";
+import { BtnConditionallyGenerator } from "./Auth-Or-Profile-btn/BtnConditionallyGenerator";
 type Props = {
   setIsSidebarOpen: (value: boolean) => void;
+  token: string | null;
 };
-function MobileHeader({ setIsSidebarOpen }: Props) {
+function MobileHeader({ setIsSidebarOpen, token }: Props) {
   return (
     <div className="flex md:hidden items-center justify-center w-full">
       <div className=" flex justify-start items-center gap-2">
@@ -27,11 +28,7 @@ function MobileHeader({ setIsSidebarOpen }: Props) {
           <FiSearch />
         </Button>
 
-        <Link href="/auth/register">
-          <Button size="sm" className="rounded-md cursor-pointer">
-            <FiUser className="text-lg" />
-          </Button>
-        </Link>
+        <BtnConditionallyGenerator token={token} />
       </div>
     </div>
   );

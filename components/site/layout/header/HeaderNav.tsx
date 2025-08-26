@@ -1,7 +1,9 @@
 "use client";
+
 import { useState } from "react";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import DropdownMenuHeader from "./DropdownMenuHeader";
+import Button from "../../../../styles/ui/Button";
 
 export const headerItems = [
   {
@@ -55,10 +57,14 @@ export function HeaderNav() {
           onMouseLeave={() => setOpenDropdown(null)}
         >
           <DropdownMenuHeader item={item} isOpen={openDropdown === item.id} />
-          <button className="px-3 py-2 text-neutral-50 hover:text-primary-500 transition-colors flex items-center gap-2 ">
+          <Button
+            variant="ghost"
+            size="md"
+            className="px-3 py-2 text-neutral-50 hover:text-primary-500 transition-colors flex items-center gap-2 "
+          >
             {item.name}
             <MdOutlineKeyboardArrowDown />
-          </button>
+          </Button>
         </div>
       ))}
     </nav>

@@ -1,5 +1,6 @@
 export const footerLinks = [
   {
+    id: 1,
     title: "سرویس ها",
     links: [
       "گزارش مردمی",
@@ -10,6 +11,7 @@ export const footerLinks = [
     ],
   },
   {
+    id: 2,
     title: "راهنما",
     links: [
       "صفحه اصلی",
@@ -20,10 +22,12 @@ export const footerLinks = [
     ],
   },
   {
+    id: 3,
     title: "سرویس ها",
     links: ["روزنامه", "نتایج زنده", "آنتن", "پیش بینی", "پخش زنده"],
   },
   {
+    id: 4,
     title: "سایر",
     links: [
       "جام ملت های آسیا",

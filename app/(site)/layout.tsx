@@ -1,25 +1,17 @@
-"use client";
-
 import Header from "../../components/site/layout/header/Header";
 import Footer from "../../components/site/layout/footer/Footer";
-import Loading from "../loading";
-import { useState } from "react";
+import CheckUser from "../../lib/check/Check";
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [loader, setLoader] = useState(2);
+  const token = await CheckUser();
 
-  setTimeout(() => {
-    setLoader(3);
-  }, 1000);
-
-  if (loader === 2) return <Loading />;
   return (
     <>
-      <Header />
+      <Header token={token} />
 
       <main className="flex-grow">{children}</main>
 

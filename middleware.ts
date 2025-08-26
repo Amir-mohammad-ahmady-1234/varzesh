@@ -7,6 +7,8 @@ export async function middleware(req: NextRequest) {
   const token = cookieStore.get("token")?.value;
   const url = req.nextUrl.clone();
   const publicPaths = [
+    "/auth/login",
+    "/auth/register",
     "/api/auth/login",
     "/api/auth/register",
     "/auth/resetPass",
