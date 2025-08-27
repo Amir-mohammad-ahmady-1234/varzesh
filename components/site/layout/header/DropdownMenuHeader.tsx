@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
-import { HeaderItemHeader } from "../site/layout/header/Header";
+import { HeaderItemHeader } from "./Header";
 import toast from "react-hot-toast";
 import { unknown } from "zod";
 

@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import DropdownMenuHeader from "./DropdownMenuHeader";
-import Button from "../../styles/ui/Button";
+import Button from "../../../../styles/ui/Button";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 
 interface Props {
@@ -33,7 +33,7 @@ function Dropdown({ DropItems, usage = "header" }: Props) {
           <Button
             variant={usage === "header" ? "ghost" : "primary"}
             size="md"
-            className="px-3 py-2 text-neutral-50 hover:text-primary-500 transition-colors flex items-center gap-2 "
+            className="px-3 py-2 text-neutral-50 hover:text-primary-500 transition-colors flex items-center gap-2"
           >
             {item.name}
             <MdOutlineKeyboardArrowDown />

@@ -1,6 +1,6 @@
 import { GetUserById } from "../../../../../server/user/getuserbyid/GetUserById";
 import GetProfileDataUser from "../../../../../server/user/paneluser/profile/GetProfileDataUser";
-import Dropdown from "../../../../common/Dropdown";
+import Dropdown from "../Dropdown";
 
 export async function ProfileButton() {
   const tokenid = await GetUserById();

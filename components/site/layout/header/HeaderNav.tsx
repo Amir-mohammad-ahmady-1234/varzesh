@@ -1,6 +1,6 @@
 "use client";
 
-import Dropdown from "../../../common/Dropdown";
+import Dropdown from "./Dropdown";
 
 export const headerItems = [
   {
