@@ -1,6 +1,6 @@
 import { GetUserById } from "../../../../../server/user/getuserbyid/GetUserById";
 import GetProfileDataUser from "../../../../../server/user/paneluser/profile/GetProfileDataUser";
-import Button from "../../../../../styles/ui/Button";
+import Dropdown from "../../../../common/Dropdown";
 
 export async function ProfileButton() {
   const tokenid = await GetUserById();
@@ -8,5 +8,16 @@ export async function ProfileButton() {
 
   const { user } = await GetProfileDataUser(tokenid.userId);
 
-  return <Button>{user?.firstname}</Button>;
+  const DropItems = [
+    {
+      id: 1,
+      name: user?.firstname ?? "کاربر",
+      dropdown: [
+        { id: 1, name: "پروفایل کاربری" },
+        { id: 2, name: "خروح" },
+      ],
+    },
+  ];
+
+  return <Dropdown DropItems={DropItems} useage="authBtn" />;
 }
