@@ -28,7 +28,7 @@ export async function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
-  if (!token && url.pathname === "/auth") {
+  if (!token || (url.pathname === "/auth" || url.pathname === "/admin")) {
     url.pathname = "/auth/login";
     return NextResponse.redirect(url);
   }

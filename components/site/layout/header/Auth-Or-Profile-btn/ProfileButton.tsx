@@ -19,5 +19,5 @@ export async function ProfileButton() {
     },
   ];
 
-  return <Dropdown DropItems={DropItems} useage="authBtn" />;
+  return <Dropdown DropItems={DropItems} usage="authBtn" />;
 }

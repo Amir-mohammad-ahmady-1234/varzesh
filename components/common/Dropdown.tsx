@@ -14,10 +14,10 @@ interface Props {
       name: string;
     }[];
   }[];
-  useage?: string;
+  usage?: string;
 }
 
-function Dropdown({ DropItems, useage = "header" }: Props) {
+function Dropdown({ DropItems, usage = "header" }: Props) {
   const [openDropdown, setOpenDropdown] = useState<number | null>(null);
 
   return (
@@ -31,7 +31,7 @@ function Dropdown({ DropItems, useage = "header" }: Props) {
         >
           <DropdownMenuHeader item={item} isOpen={openDropdown === item.id} />
           <Button
-            variant={useage === "header" ? "ghost" : "primary"}
+            variant={usage === "header" ? "ghost" : "primary"}
             size="md"
             className="px-3 py-2 text-neutral-50 hover:text-primary-500 transition-colors flex items-center gap-2 "
           >

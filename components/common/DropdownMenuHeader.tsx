@@ -1,6 +1,12 @@
-import React from "react";
-import { HeaderItemHeader } from "../site/layout/header/Header";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
+
+import { HeaderItemHeader } from "../site/layout/header/Header";
+import toast from "react-hot-toast";
+import { unknown } from "zod";
+
 function DropdownMenuHeader({
   item,
   isOpen,
@@ -8,6 +14,27 @@ function DropdownMenuHeader({
   item: HeaderItemHeader;
   isOpen: boolean;
 }) {
+  const [islogout, setIslogout] = useState(false);
+
+  useEffect(() => {
+    async function handleLogout() {
+      if (!islogout) return;
+      try {
+        const res = await fetch("http://localhost:3000/api/auth/logout", {
+          method: "POST",
+        });
+        const data = await res.json();
+        toast.success("با موفقیت خارج شدید");
+        console.log("Guest Api:", data);
+      } catch (err) {
+        toast.error("خطا در خروج");
+        console.log(err);
+      }
+    }
+
+    handleLogout();
+  }, [islogout]);
+
   if (!isOpen || !item.dropdown) return null;
 
   return (
@@ -15,10 +42,17 @@ function DropdownMenuHeader({
       {item.dropdown.map((subItem) => (
         <Link
           key={subItem.id}
-          href="#"
-          className="block px-4 py-2 hover:bg-secondary-100 transition-colors"
+          href={subItem.name === "خروج" ? "/auth/login" : "panel/settings"}
+          className="block px-4 py-2 hover:bg-primary-100 transition-colors"
+          onClick={
+            subItem.name === "خروح"
+              ? () => {
+                  setIslogout(true);
+                }
+              : unknown
+          }
         >
-          {subItem.name}
+          <span>{subItem.name}</span>
         </Link>
       ))}
     </div>
