@@ -7,7 +7,6 @@ export async function ProfileButton() {
   if (!tokenid) return;
 
   const { user } = await GetProfileDataUser(tokenid.userId);
-
   const DropItems = [
     {
       id: 1,

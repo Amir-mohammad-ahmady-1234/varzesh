@@ -1,7 +1,7 @@
 import { cookies } from "next/headers";
-import jwt from "jsonwebtoken";
+import { jwtVerify } from "jose";
 
-const secret = process.env.JWT_SECRET;
+const secret = new TextEncoder().encode(process.env.JWT_SECRET!);
 
 export async function GetUserById() {
   const cookieStore = await cookies();
@@ -11,11 +11,10 @@ export async function GetUserById() {
     return false;
   }
 
-  const payload = jwt.verify(tokenAccess, secret) as {
-    userId: number;
-    role?: string;
-  };
-  console.log(payload);
-
-  return payload;
+  try {
+    const { payload } = await jwtVerify(tokenAccess, secret);
+    return payload as { userId: number; role?: string };
+  } catch {
+    return null;
+  }
 }
