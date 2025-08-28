@@ -59,7 +59,7 @@ function Tabel<T extends TableData>({
   }
 
   const defaultItemsDropdown = (row: T) => (
-    <div className="absolute right-0 mt-2 w-44 bg-white dark:bg-gray-800 rounded-lg shadow-xl z-20 border border-gray-200 dark:border-gray-700 overflow-hidden">
+    <div className="absolute left-0 mt-2 w-44 bg-white dark:bg-gray-800 rounded-lg shadow-xl z-20 border border-gray-200 dark:border-gray-700 overflow-hidden">
       <button
         onClick={() => handleEdit(row.id)}
         className="flex items-center w-full px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition"
@@ -79,7 +79,7 @@ function Tabel<T extends TableData>({
 
   return (
     <div className="overflow-x-auto m-5 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
-      <table className="min-w-full border-collapse">
+      <table className="min-w-full border-collapse text-sm sm:text-base">
         <thead>
           <tr className="bg-gray-100 dark:bg-gray-800 ">
             {columns.map((col) => (
@@ -118,7 +118,7 @@ function Tabel<T extends TableData>({
               {Isactive && (
                 <td className="px-6 py-3 text-center relative border-b border-gray-200 dark:border-gray-700">
                   {dropdownItems && (
-                    <div className="relative inline-block">
+                    <div className="mr-3  ">
                       <button
                         onClick={() => toggleDropdown(Number(row.id))}
                         className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition text-gray-600 dark:text-gray-300"
