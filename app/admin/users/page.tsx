@@ -9,11 +9,9 @@ import Card, {
   CardTitle,
   CardDescription,
 } from "../../../styles/ui/Card";
-import Button from "../../../styles/ui/Button";
 import Input from "../../../styles/ui/Input";
 import Badge from "../../../styles/ui/Badge";
 import EmptyState from "../../../styles/ui/EmptyState";
-import Modal from "../../../styles/ui/Modal";
 import { mockUsers } from "../../../mocks/mock-data";
 import {
   MdSearch,
@@ -35,6 +33,8 @@ import {
   MdEdit,
   MdVisibility,
 } from "react-icons/md";
+import Button from "../../../components/common/Button";
+import Modal from "../../../components/common/Modal";
 
 export default function UsersPage() {
   const router = useRouter();

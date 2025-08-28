@@ -1,4 +1,4 @@
-import Sidebar from "../../components/userPanel/layout/sidebar/Sidebar";
+import Sidebar from "../../components/pages/userpanel/layout/Sidebar";
 import { GetUserById } from "../../server/user/getuserbyid/GetUserById";
 import GetProfileDataUser from "../../server/user/paneluser/profile/GetProfileDataUser";
 

@@ -42,7 +42,7 @@ import Card, {
   CardHeader,
 } from "../../../styles/ui/Card";
 import LoadingSpinner from "../../../styles/ui/LoadingSpinner";
-import Button from "../../../styles/ui/Button";
+import Button from "../../../components/common/Button";
 
 export default function Dashboard() {
   const stats = [

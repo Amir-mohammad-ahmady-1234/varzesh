@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { IconType } from "react-icons/lib";
-import Button from "../../../../common/Button";
+import Button from "../../../common/Button";
 
 interface Props {
   item: {

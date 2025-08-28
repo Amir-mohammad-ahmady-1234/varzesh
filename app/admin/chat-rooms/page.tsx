@@ -9,11 +9,9 @@ import Card, {
   CardTitle,
   CardDescription,
 } from "../../../styles/ui/Card";
-import Button from "../../../styles/ui/Button";
 import Input from "../../../styles/ui/Input";
 import Badge from "../../../styles/ui/Badge";
 import EmptyState from "../../../styles/ui/EmptyState";
-import Modal from "../../../styles/ui/Modal";
 import { mockChatRooms } from "../../../mocks/mock-data";
 import {
   MdSearch,
@@ -36,6 +34,8 @@ import {
   MdChat,
 } from "react-icons/md";
 import { cn } from "../../../lib/utils";
+import Button from "../../../components/common/Button";
+import Modal from "../../../components/common/Modal";
 
 export default function ChatRoomsPage() {
   const router = useRouter();
