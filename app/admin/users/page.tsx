@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import MainLayout from "../../../components/admin/layout/MainLayout";
+import MainLayout from "../../../components/pages/adminpanel/layout/MainLayout";
 import PageHeader from "../../../styles/ui/PageHeader";
 import Card, {
   CardHeader,

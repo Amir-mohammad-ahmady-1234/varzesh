@@ -1,8 +1,8 @@
 import { FiUser } from "react-icons/fi";
-import Button from "../../../../../styles/ui/Button";
 import { AuthButton } from "./AuthButton";
 import { ProfileButton } from "./ProfileButton";
 import CheckUser from "../../../../../lib/check/Check";
+import Button from "../../../Button";
 
 export async function BtnConditionallyGenerator() {
   const token = await CheckUser();

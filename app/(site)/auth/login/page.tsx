@@ -1,9 +1,9 @@
 import React from "react";
 
-import Circles from "../../../../components/site/auth/Circles";
-import LoginForm from "../../../../components/site/auth/loginForm/LoginForm";
-import SubmitButton from "../../../../components/site/auth/SubmitButton";
-import OAuthButtons from "../../../../components/site/auth/OAuthButtons";
+import Circles from "../../../../components/pages/auth/Circles";
+import LoginForm from "../../../../components/pages/auth/loginForm/LoginForm";
+import SubmitButton from "../../../../components/pages/auth/SubmitButton";
+import OAuthButtons from "../../../../components/pages/auth/OAuthButtons";
 
 function page() {
   return (

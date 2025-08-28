@@ -1,6 +1,6 @@
-import Header from "../../components/site/layout/header/Header";
-import Footer from "../../components/site/layout/footer/Footer";
-import { BtnConditionallyGenerator } from "../../components/site/layout/header/Auth-Or-Profile-btn/BtnConditionallyGenerator";
+import Header from "../../components/common/layout/header/Header";
+import Footer from "../../components/common/layout/footer/Footer";
+import { BtnConditionallyGenerator } from "../../components/common/layout/header/Auth-Or-Profile-btn/BtnConditionallyGenerator";
 
 function fakeDelay(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));

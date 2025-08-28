@@ -2,11 +2,11 @@
 
 import React, { useState } from "react";
 
-import Circles from "../../../../components/site/auth/Circles";
-import RegesterForm from "../../../../components/site/auth/regesterForm/RegesterForm";
-import SubmitButton from "../../../../components/site/auth/SubmitButton";
-import RulesAccept from "../../../../components/site/auth/regesterForm/RulesAccept";
-import OAuthButtons from "../../../../components/site/auth/OAuthButtons";
+import Circles from "../../../../components/pages/auth/Circles";
+import RegesterForm from "../../../../components/pages/auth/regesterForm/RegesterForm";
+import SubmitButton from "../../../../components/pages/auth/SubmitButton";
+import RulesAccept from "../../../../components/pages/auth/regesterForm/RulesAccept";
+import OAuthButtons from "../../../../components/pages/auth/OAuthButtons";
 
 function Page() {
   const [checked, setChecked] = useState(false);

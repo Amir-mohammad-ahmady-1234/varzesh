@@ -2,7 +2,7 @@ import "../styles/globals.css";
 
 import type { Metadata } from "next";
 import { Toaster } from "react-hot-toast";
-import { GuestTracker } from "../components/GuestTracker";
+import { GuestTracker } from "../lib/GuestTracker";
 
 export const metadata: Metadata = {
   title: "Create Next App",

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { FiMenu, FiSearch } from "react-icons/fi";
-import Button from "../../../../styles/ui/Button";
+import Button from "../../Button";
 
 type Props = {
   setIsSidebarOpen: (value: boolean) => void;

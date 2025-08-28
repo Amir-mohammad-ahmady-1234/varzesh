@@ -33,7 +33,7 @@ import {
 
 import CardTitle from "../../../styles/ui/CardTitle";
 import { mockDashboardStats } from "../../../mocks/mock-data";
-import MainLayout from "../../../components/admin/layout/MainLayout";
+import MainLayout from "../../../components/pages/adminpanel/layout/MainLayout";
 import PageHeader from "../../../styles/ui/PageHeader";
 import Badge from "../../../styles/ui/Badge";
 import Card, {

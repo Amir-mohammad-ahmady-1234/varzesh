@@ -1,7 +1,7 @@
 import React from "react";
 
-import Circles from "../../../../components/site/auth/Circles";
-import ResetPassForm from "../../../../components/site/auth/resetPassForm/ResetPassForm";
+import Circles from "../../../../components/pages/auth/Circles";
+import ResetPassForm from "../../../../components/pages/auth/resetPassForm/ResetPassForm";
 
 function page() {
   return (
@@ -12,8 +12,7 @@ function page() {
       {/* main content */}
       <div className="flex flex-col items-center px-4 space-y-6 relative z-10">
         {/* form */}
-        <ResetPassForm>
-        </ResetPassForm>
+        <ResetPassForm></ResetPassForm>
       </div>
     </>
   );

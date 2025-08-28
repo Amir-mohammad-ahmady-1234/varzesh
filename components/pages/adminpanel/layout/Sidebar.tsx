@@ -12,8 +12,8 @@ import {
   MdMenu,
   MdChevronLeft,
 } from "react-icons/md";
-import { cn } from "../../../lib/utils";
-import Button from "../../../styles/ui/Button";
+import { cn } from "../../../../lib/utils";
+import Button from "../../../../styles/ui/Button";
 
 export default function Sidebar() {
   const [collapsed, setCollapsed] = useState(false);

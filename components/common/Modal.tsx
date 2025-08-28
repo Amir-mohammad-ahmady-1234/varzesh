@@ -1,19 +1,19 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { useEffect } from "react"
-import { FiX } from "react-icons/fi"
-import { cn } from "../../lib/utils"
-import Button from "./Button"
+import type React from "react";
+import { useEffect } from "react";
+import { FiX } from "react-icons/fi";
+import { cn } from "../../lib/utils";
+import Button from "./Button";
 
 interface ModalProps {
-  isOpen: boolean
-  onClose: () => void
-  children: React.ReactNode
-  title?: string
-  size?: "sm" | "md" | "lg" | "xl" | "full"
-  className?: string
-  closeOnOverlayClick?: boolean
+  isOpen: boolean;
+  onClose: () => void;
+  children: React.ReactNode;
+  title?: string;
+  size?: "sm" | "md" | "lg" | "xl" | "full";
+  className?: string;
+  closeOnOverlayClick?: boolean;
 }
 
 export default function Modal({
@@ -27,19 +27,19 @@ export default function Modal({
 }: ModalProps) {
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = "hidden"
+      document.body.style.overflow = "hidden";
       const handleEscape = (e: KeyboardEvent) => {
-        if (e.key === "Escape") onClose()
-      }
-      document.addEventListener("keydown", handleEscape)
+        if (e.key === "Escape") onClose();
+      };
+      document.addEventListener("keydown", handleEscape);
       return () => {
-        document.body.style.overflow = "unset"
-        document.removeEventListener("keydown", handleEscape)
-      }
+        document.body.style.overflow = "unset";
+        document.removeEventListener("keydown", handleEscape);
+      };
     }
-  }, [isOpen, onClose])
+  }, [isOpen, onClose]);
 
-  if (!isOpen) return null
+  if (!isOpen) return null;
 
   const sizeClasses = {
     sm: "max-w-md",
@@ -47,7 +47,7 @@ export default function Modal({
     lg: "max-w-2xl",
     xl: "max-w-4xl",
     full: "max-w-[95vw] max-h-[95vh]",
-  }
+  };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
@@ -65,14 +65,16 @@ export default function Modal({
           "transform transition-all duration-200 scale-100",
           "max-h-[90vh] overflow-hidden flex flex-col",
           sizeClasses[size],
-          className,
+          className
         )}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
         {title && (
           <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
-            <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">{title}</h2>
+            <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+              {title}
+            </h2>
             <Button
               onClick={onClose}
               className="p-1 rounded-lg text-gray-400 hover:text-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
@@ -87,5 +89,5 @@ export default function Modal({
         <div className="flex-1 overflow-y-auto p-6">{children}</div>
       </div>
     </div>
-  )
+  );
 }

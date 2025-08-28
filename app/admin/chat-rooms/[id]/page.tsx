@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef, useMemo } from "react";
 import { useParams, useRouter } from "next/navigation";
 
-import MainLayout from "../../../../components/admin/layout/MainLayout";
+import MainLayout from "../../../../components/pages/adminpanel/layout/MainLayout";
 import PageHeader from "../../../../styles/ui/PageHeader";
 import Card from "../../../../styles/ui/Card";
 import Button from "../../../../styles/ui/Button";

@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import type React from "react";
 
-import MainLayout from "../../../components/admin/layout/MainLayout";
+import MainLayout from "../../../components/pages/adminpanel/layout/MainLayout";
 import PageHeader from "../../../styles/ui/PageHeader";
 import Card from "../../../styles/ui/Card";
 import Button from "../../../styles/ui/Button";
