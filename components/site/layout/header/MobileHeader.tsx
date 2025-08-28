@@ -4,11 +4,11 @@ import { FiMenu, FiSearch } from "react-icons/fi";
 import Button from "../../../../styles/ui/Button";
 
 type Props = {
-  children: React.ReactNode;
   setIsSidebarOpen: (value: boolean) => void;
+  children: React.ReactNode;
 };
 
-function MobileHeader({ children, setIsSidebarOpen }: Props) {
+function MobileHeader({ setIsSidebarOpen, children }: Props) {
   return (
     <div className="flex md:hidden items-center justify-center w-full">
       <div className=" flex justify-start items-center gap-2">
@@ -25,11 +25,10 @@ function MobileHeader({ children, setIsSidebarOpen }: Props) {
       </div>
 
       <div className="flex gap-2">
+        <div>{children}</div>
         <Button size="sm" className="rounded-md">
           <FiSearch />
         </Button>
-
-        {children}
       </div>
     </div>
   );

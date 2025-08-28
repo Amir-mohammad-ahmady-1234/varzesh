@@ -1,3 +1,4 @@
+import Sidebar from "../../components/userPanel/layout/sidebar/Sidebar";
 import { GetUserById } from "../../server/user/getuserbyid/GetUserById";
 import GetProfileDataUser from "../../server/user/paneluser/profile/GetProfileDataUser";
 
@@ -19,9 +20,8 @@ export default function userPanelLayout({
 }) {
   return (
     <>
-      <header>header</header>
+      <Sidebar />
       <main>{children}</main>
-      <footer>footer</footer>
     </>
   );
 }
