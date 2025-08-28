@@ -1,13 +1,30 @@
-import { BiMessageSquare } from "react-icons/bi";
-import { FiSettings } from "react-icons/fi";
-import {
-  MdOutlinePermDeviceInformation,
-  MdOutlineRoomService,
-} from "react-icons/md";
-import Button from "../../../../styles/ui/Button";
+"use client";
+
 import Image from "next/image";
+import { usePathname } from "next/navigation";
+import Items from "./Items";
+
+import { FaComment } from "react-icons/fa";
+import { FaUserEdit } from "react-icons/fa";
+import { IoIosChatboxes } from "react-icons/io";
+import { IoSettingsOutline } from "react-icons/io5";
+import { MdOutlineArticle } from "react-icons/md";
+
+const menuItem = [
+  {
+    href: "/panel/user-info",
+    lable: "اطلاعات",
+    icon: FaUserEdit,
+  },
+  { href: "/panel/settings", lable: "تنظیمات", icon: IoSettingsOutline },
+  { href: "/panel/rooms", lable: "روم ها", icon: IoIosChatboxes },
+  { href: "/panel/messages", lable: "پیام ها", icon: FaComment },
+  { href: "/panel/article", lable: "مقالات ذخیره شده", icon: MdOutlineArticle },
+];
 
 export default function Sidebar() {
+  const pathname = usePathname();
+
   return (
     <div className="hidden lg:block w-1/5 h-[100vh] px-8 py-10 border-l">
       <div className="flex flex-col h-full justify-between">
@@ -28,30 +45,9 @@ export default function Sidebar() {
             </div>
           </div>
           <div className="flex flex-col gap-4">
-            <div className="flex items-center">
-              <MdOutlinePermDeviceInformation />
-              <Button variant="ghost" size="md">
-                اطلاعات
-              </Button>
-            </div>
-            <div className="flex items-center">
-              <FiSettings />
-              <Button variant="ghost" size="md">
-                تنظیمات
-              </Button>
-            </div>
-            <div className="flex items-center">
-              <MdOutlineRoomService />
-              <Button variant="ghost" size="md">
-                روم ها
-              </Button>
-            </div>
-            <div className="flex items-center">
-              <BiMessageSquare />
-              <Button variant="ghost" size="md">
-                پیام ها
-              </Button>
-            </div>
+            {menuItem.map((item) => (
+              <Items item={item} pathname={pathname} key={item.href} />
+            ))}
           </div>
         </div>
 
