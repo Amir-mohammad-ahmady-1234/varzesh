@@ -27,8 +27,8 @@ function DropdownMenuHeader({
         const data = await res.json();
         toast.success("با موفقیت خارج شدید");
         console.log("Guest Api:", data);
-
         router.push("/auth/login");
+        router.refresh();
       } catch (err) {
         toast.error("خطا در خروج");
         console.log(err);

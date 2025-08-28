@@ -29,17 +29,7 @@ export async function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
-  if (url.pathname === "/admin") {
-    url.pathname = "/admin/dashboard";
-    return NextResponse.redirect(url);
-  }
-
-  if (url.pathname === "/auth") {
-    url.pathname = "/auth/login";
-    return NextResponse.redirect(url);
-  }
-
-  if (!token) {
+  if (!token || url.pathname === "/auth") {
     url.pathname = "/auth/login";
     return NextResponse.redirect(url);
   }
