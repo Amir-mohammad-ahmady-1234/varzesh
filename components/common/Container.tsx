@@ -8,7 +8,9 @@ function Container({
   className?: string;
 }): React.ReactElement {
   return (
-    <div className={`container ${className || ""}`.trim()}>{children}</div>
+    <div className={`custom-container ${className || ""}`.trim()}>
+      {children}
+    </div>
   );
 }
 
