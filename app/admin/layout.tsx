@@ -4,6 +4,7 @@ import type React from "react";
 import type { Metadata } from "next";
 import { Vazirmatn } from "next/font/google";
 import { GetUserById } from "../../server/user/getuserbyid/GetUserById";
+import { redirect } from "next/navigation";
 
 const vazirmatn = Vazirmatn({
   subsets: ["arabic"],
@@ -16,11 +17,15 @@ export const metadata: Metadata = {
   description: "پنل مدیریت سایت خبری و ورزشی...",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const tokenId = await GetUserById();
+
+  if (tokenId && tokenId.role === "USER") return redirect("/");
+
   return (
     <html
       lang="fa"

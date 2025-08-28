@@ -5,7 +5,7 @@ import Link from "next/link";
 
 import { HeaderItemHeader } from "./Header";
 import toast from "react-hot-toast";
-import { unknown } from "zod";
+import { useRouter } from "next/navigation";
 
 function DropdownMenuHeader({
   item,
@@ -15,6 +15,7 @@ function DropdownMenuHeader({
   isOpen: boolean;
 }) {
   const [islogout, setIslogout] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     async function handleLogout() {
@@ -26,6 +27,8 @@ function DropdownMenuHeader({
         const data = await res.json();
         toast.success("با موفقیت خارج شدید");
         console.log("Guest Api:", data);
+
+        router.push("/auth/login");
       } catch (err) {
         toast.error("خطا در خروج");
         console.log(err);
@@ -33,7 +36,7 @@ function DropdownMenuHeader({
     }
 
     handleLogout();
-  }, [islogout]);
+  }, [islogout, router]);
 
   if (!isOpen || !item.dropdown) return null;
 
@@ -42,14 +45,15 @@ function DropdownMenuHeader({
       {item.dropdown.map((subItem) => (
         <Link
           key={subItem.id}
-          href={subItem.name === "خروج" ? "/auth/login" : "panel/settings"}
+          href={subItem.name === "پروفایل کاربری" ? "/panel/settings" : ""}
           className="block px-4 py-2 hover:bg-primary-100 transition-colors"
           onClick={
             subItem.name === "خروح"
-              ? () => {
+              ? (e) => {
+                  e.preventDefault();
                   setIslogout(true);
                 }
-              : unknown
+              : undefined
           }
         >
           <span>{subItem.name}</span>
