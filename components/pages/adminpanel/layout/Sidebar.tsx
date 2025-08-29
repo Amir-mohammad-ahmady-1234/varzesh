@@ -13,7 +13,7 @@ import {
   MdChevronLeft,
 } from "react-icons/md";
 import { cn } from "../../../../lib/utils";
-import Button from "../../../../styles/ui/Button";
+import Button from "../../../common/Button";
 
 export default function Sidebar() {
   const [collapsed, setCollapsed] = useState(false);

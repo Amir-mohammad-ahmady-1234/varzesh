@@ -4,7 +4,6 @@ import { useParams, useRouter } from "next/navigation";
 import MainLayout from "../../../../components/pages/adminpanel/layout/MainLayout";
 import PageHeader from "../../../../styles/ui/PageHeader";
 import Card from "../../../../styles/ui/Card";
-import Button from "../../../../styles/ui/Button";
 import Badge from "../../../../styles/ui/Badge";
 import Input from "../../../../styles/ui/Input";
 import { mockSupportTickets } from "../../../../mocks/mock-data";
@@ -22,6 +21,7 @@ import {
 } from "react-icons/md";
 import { cn } from "../../../../lib/utils";
 import { SupportTicket } from "../../../../types/adminPanelTypes";
+import Button from "../../../../components/common/Button";
 
 export default function SupportTicketDetailPage() {
   const params = useParams();

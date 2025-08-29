@@ -5,7 +5,6 @@ import type React from "react";
 import MainLayout from "../../../components/pages/adminpanel/layout/MainLayout";
 import PageHeader from "../../../styles/ui/PageHeader";
 import Card from "../../../styles/ui/Card";
-import Button from "../../../styles/ui/Button";
 import Input from "../../../styles/ui/Input";
 import Badge from "../../../styles/ui/Badge";
 import type { ThemeConfig } from "../../../types/adminPanelTypes";
@@ -20,6 +19,7 @@ import {
   MdPreview,
 } from "react-icons/md";
 import { cn } from "../../../lib/utils";
+import Button from "../../../components/common/Button";
 
 const defaultTheme: ThemeConfig = {
   colors: {

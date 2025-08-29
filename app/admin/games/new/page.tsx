@@ -2,11 +2,11 @@
 import Sidebar from "../../../../components/pages/adminpanel/layout/Sidebar";
 import Topbar from "../../../../components/pages/adminpanel/layout/Topbar";
 import Card from "../../../../styles/ui/Card";
-import Button from "../../../../styles/ui/Button";
 import Input from "../../../../styles/ui/Input";
 import Textarea from "../../../../styles/ui/Textarea";
 import FormField from "../../../../styles/ui/FormField";
 import Link from "next/link";
+import Button from "../../../../components/common/Button";
 
 export default function NewGamePage() {
   return (

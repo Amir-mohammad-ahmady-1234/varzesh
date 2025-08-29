@@ -2,11 +2,11 @@
 import Sidebar from "../../../components/pages/adminpanel/layout/Sidebar";
 import Topbar from "../../../components/pages/adminpanel/layout/Topbar";
 import Card from "../../../styles/ui/Card";
-import Button from "../../../styles/ui/Button";
 import Input from "../../../styles/ui/Input";
 import Badge from "../../../styles/ui/Badge";
 import Table from "../../../styles/ui/Table";
 import Link from "next/link";
+import Button from "../../../components/common/Button";
 
 export default function GamesPage() {
   // Mock data

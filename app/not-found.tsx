@@ -8,7 +8,7 @@ const NotFound = () => {
     <div className="h-[80vh] flex flex-col items-center justify-center space-y-6">
       <div className="flex flex-col gap-10">
         <Image
-          src="/img/not-found/404.svg"
+          src="/assets/img/not-found/404.svg"
           width={300}
           height={255}
           alt="404 error image"

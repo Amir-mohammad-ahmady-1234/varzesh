@@ -6,7 +6,6 @@ import { useParams, useRouter } from "next/navigation";
 import MainLayout from "../../../../components/pages/adminpanel/layout/MainLayout";
 import PageHeader from "../../../../styles/ui/PageHeader";
 import Card from "../../../../styles/ui/Card";
-import Button from "../../../../styles/ui/Button";
 import Badge from "../../../../styles/ui/Badge";
 import Input from "../../../../styles/ui/Input";
 import LoadingSpinner from "../../../../styles/ui/LoadingSpinner";
@@ -23,6 +22,7 @@ import {
   MdCircle,
 } from "react-icons/md";
 import { cn } from "../../../../lib/utils";
+import Button from "../../../../components/common/Button";
 
 interface Message {
   id: string;
