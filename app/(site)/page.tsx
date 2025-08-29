@@ -1,17 +1,23 @@
 import React from "react";
 import Container from "../../components/common/Container";
-import HomeImageSlider from "../../components/pages/home/HomeImageSlider";
-import HomeLiveresults from "../../components/pages/home/HomeLiveresults";
 import HomeDeepSearch from "../../components/pages/home/head/HomeDeepSearch";
-import HomeNews from "../../components/pages/home/news/HomeNews";
 import LiveViideo from "../../components/common/LiveViideo";
+import HomeImageSlider from "../../components/pages/home/head/HomeImageSlider";
+import HomeLiveresults from "../../components/pages/home/head/HomeLiveresults";
 import HomeExercises from "../../components/pages/home/category/HomeExercises";
+import HomeNews from "../../components/pages/home/news/HomeNews";
 
-function page() {
+function HomePage() {
   return (
-    <Container>
-      <HomeLiveresults />
-      <HomeImageSlider />
+    <Container className="flex flex-col">
+      <section className="flex gap-5">
+        <div className="w-2/3">
+          <HomeImageSlider />
+        </div>
+        <div className="w-1/3 ">
+          <HomeLiveresults />
+        </div>
+      </section>
       <HomeDeepSearch />
       <HomeExercises />
       <LiveViideo />
@@ -20,4 +26,4 @@ function page() {
   );
 }
 
-export default page;
+export default HomePage;
