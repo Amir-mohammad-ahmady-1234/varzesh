@@ -6,7 +6,7 @@ export default function UserProfile() {
     <div className="flex items-center space-x-6">
       <div>
         <Image
-          src={"/img/footer/union.png"}
+          src={"/assets/img/footer/union.png"}
           alt="user profile"
           width={40}
           height={40}

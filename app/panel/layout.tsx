@@ -1,27 +1,26 @@
+"use client";
+
+import { useState } from "react";
 import Sidebar from "../../components/pages/userpanel/layout/Sidebar";
-import { GetUserById } from "../../server/user/getuserbyid/GetUserById";
-import GetProfileDataUser from "../../server/user/paneluser/profile/GetProfileDataUser";
+import MobileHeader from "../../components/pages/userpanel/layout/MobileHeader";
 
-export async function generateMetadata() {
-  const tokenid = await GetUserById();
-  if (!tokenid) return;
-  const { user } = await GetProfileDataUser(tokenid?.userId);
-
-  return {
-    title: `پنل کاربری ${user?.firstname}`,
-    description: `پنل کاربری کاربر با اسم ${user?.firstname}`,
-  };
-}
-
-export default function userPanelLayout({
+export default function UserPanelLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
   return (
     <>
-      <Sidebar />
-      <main>{children}</main>
+      <MobileHeader setIsSidebarOpen={setIsSidebarOpen} />
+
+      <div className="flex">
+        <Sidebar isSidebarOpen={isSidebarOpen} />
+        <main className={`flex-1 p-4 ${isSidebarOpen ? "blur" : ""}`}>
+          {children}
+        </main>
+      </div>
     </>
   );
 }

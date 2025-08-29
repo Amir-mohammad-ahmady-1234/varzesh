@@ -13,6 +13,7 @@ interface InputProps
   rightIcon?: React.ReactNode;
   type?: string;
   variant?: "primary" | "secondary";
+  name?: string;
 }
 
 export default function InputDesign({
@@ -25,6 +26,7 @@ export default function InputDesign({
   className = "",
   type = "input",
   variant = "primary",
+  name,
   ...props
 }: InputProps) {
   const inputSizes = {
@@ -52,7 +54,10 @@ export default function InputDesign({
   return (
     <div className="w-full">
       {label && (
-        <label className="block text-sm font-IRANYekan text-neutral-600 mb-1">
+        <label
+          className="block text-sm font-IRANYekan text-neutral-600 mb-1"
+          htmlFor={name}
+        >
           {label}
         </label>
       )}
@@ -63,6 +68,7 @@ export default function InputDesign({
           </div>
         )}
         <input
+          id={name}
           type={type}
           className={cn(inputClasses, variants[variant])}
           {...props}

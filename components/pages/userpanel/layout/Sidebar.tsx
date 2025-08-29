@@ -1,7 +1,6 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { useState } from "react";
 
 import Items from "./Items";
 
@@ -10,7 +9,6 @@ import { FaUserEdit } from "react-icons/fa";
 import { IoIosChatboxes } from "react-icons/io";
 import { IoSettingsOutline } from "react-icons/io5";
 import { MdOutlineArticle } from "react-icons/md";
-import MobileHeader from "./MobileHeader";
 import UserProfile from "./UserProfile";
 
 const menuItem = [
@@ -25,20 +23,17 @@ const menuItem = [
   { href: "/panel/article", lable: "مقالات ذخیره شده", icon: MdOutlineArticle },
 ];
 
-export default function Sidebar() {
+export default function Sidebar({ isSidebarOpen }: { isSidebarOpen: boolean }) {
   const pathname = usePathname();
-
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
     <>
-      <MobileHeader setIsSidebarOpen={setIsSidebarOpen} />
       <div
         className={`${
-          !isSidebarOpen && "hidden"
-        } lg:block w-2/4 sm:w-1/3 lg:w-1/4 h-[100vh] px-8 py-10 border-l`}
+          isSidebarOpen ? "block fixed top-10 right-0 z-50" : "hidden"
+        }  bg-bg-primary lg:block w-2/4 sm:w-1/3 lg:w-1/4 h-fit px-8 py-10 border-l`}
       >
-        <div className="flex flex-col h-full justify-between">
+        <div className="flex flex-col z-1 h-[35rem] justify-between">
           <div className="space-y-8">
             <UserProfile />
             <div className="flex flex-col gap-4">
@@ -50,7 +45,7 @@ export default function Sidebar() {
 
           <div className="p-4 border-t border-sidebar-border">
             <div className="text-xs text-sidebar-foreground/60 text-center">
-              نسخه ۱.۰.۰
+              نسخه {process.env.NEXT_PUBLIC_APP_VERSION ?? "1.0.0"}
             </div>
           </div>
         </div>

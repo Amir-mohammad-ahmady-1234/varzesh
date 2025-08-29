@@ -7,7 +7,7 @@ export default function MobileHeader({
   setIsSidebarOpen: Dispatch<SetStateAction<boolean>>;
 }) {
   return (
-    <header className="lg:hidden flex items-center justify-between bg-primary-200 px-6 py-2">
+    <header className="w-full sticky z-100 lg:hidden flex items-center justify-between bg-primary-200 px-6 py-2">
       <PiList
         className="text-xl cursor-pointer"
         onClick={() => setIsSidebarOpen((prev) => !prev)}
