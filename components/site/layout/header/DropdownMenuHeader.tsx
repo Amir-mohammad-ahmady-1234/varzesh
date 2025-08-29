@@ -45,7 +45,7 @@ function DropdownMenuHeader({
       {item.dropdown.map((subItem) => (
         <Link
           key={subItem.id}
-          href={subItem.name === "پروفایل کاربری" ? "/panel/settings" : ""}
+          href={subItem.name === "پروفایل کاربری" ? "/panel/user-info" : ""}
           className="block px-4 py-2 hover:bg-primary-100 transition-colors"
           onClick={
             subItem.name === "خروح"
