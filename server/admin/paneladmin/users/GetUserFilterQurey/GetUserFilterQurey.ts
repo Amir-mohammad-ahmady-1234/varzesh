@@ -13,24 +13,26 @@ export async function GetUserFilterQuery({
   search,
 }: IUserFilter) {
   try {
-    const where: Prisma.UserWhereInput = {};
-
-    if (status) where.status = status;
-    if (role) where.role = role;
+    const where = {} as Prisma.UserWhereInput;
+    if (status) {
+      where.status = status;
+    }
+    if (role) {
+      where.role = role;
+    }
     if (search) {
-      const searchLower = search.toLowerCase();
+      const serchietms = search.trim();
       where.OR = [
-        { firstname: { contains: searchLower } },
-        { email: { contains: searchLower } },
-        { phone: { contains: searchLower } },
+        { firstname: { contains: serchietms } },
+        { email: { contains: serchietms } },
+        { phone: { contains: serchietms } },
       ];
     }
     const users = await prisma.user.findMany({
       where,
       orderBy: { createdAt: "desc" },
     });
-
-    return { data: users, status: 200 };
+    return { status: 200, users };
   } catch (err) {
     console.error(err);
     return { error: "مشکلی در سرور رخ داده است", status: 500 };
