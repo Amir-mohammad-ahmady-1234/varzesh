@@ -1,10 +1,40 @@
 import React from "react";
-import { GetUserById } from "../../../server/user/getuserbyid/GetUserById";
+import { GetUserFilterQuery } from "../../../server/admin/paneladmin/users/GetUserFilterQurey/GetUserFilterQurey";
 
 export default async function Page() {
-  const tokenid = await GetUserById();
-  console.log(tokenid);
-  if (!tokenid) return null;
+  let result = await GetUserFilterQuery({});
+  console.log("=== بدون فیلتر ===");
+  console.log(result);
+
+  // تست با فیلتر status
+  result = await GetUserFilterQuery({ status: "Waiting" });
+  console.log("=== فیلتر status=Approved ===");
+  console.log(result);
+
+  // تست با فیلتر role
+  result = await GetUserFilterQuery({ role: "ADMIN" });
+  console.log("=== فیلتر role=ADMIN ===");
+  console.log(result);
+
+  // تست با فیلتر search
+  result = await GetUserFilterQuery({ search: "mahdi" });
+  console.log("=== فیلتر search=John ===");
+  console.log(result);
+  result = await GetUserFilterQuery({ search: "09059796518" });
+  console.log("=== فیلتر search=John ===");
+  console.log(result);
+  result = await GetUserFilterQuery({ search: "amirMDev@gmail.com" });
+  console.log("=== فیلتر search=John ===");
+  console.log(result);
+
+  // تست ترکیبی
+  result = await GetUserFilterQuery({
+    status: "Waiting",
+    role: "ADMIN",
+    search: "mahdi",
+  });
+  console.log("=== فیلتر ترکیبی ===");
+  console.log(result);
 
   return (
     <>
