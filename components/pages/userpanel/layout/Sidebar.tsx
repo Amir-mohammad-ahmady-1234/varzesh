@@ -1,31 +1,32 @@
-"use client";
-
-import { usePathname } from "next/navigation";
-
-import Items from "./Items";
-
 import { FaComment } from "react-icons/fa";
 import { FaUserEdit } from "react-icons/fa";
 import { IoIosChatboxes } from "react-icons/io";
 import { IoSettingsOutline } from "react-icons/io5";
 import { MdOutlineArticle } from "react-icons/md";
-import UserProfile from "./UserProfile";
+import SidebarClient from "./SidebarClient";
 
 const menuItem = [
   {
     href: "/panel/user-info",
-    lable: "اطلاعات",
-    icon: FaUserEdit,
+    label: "اطلاعات",
+    icon: <FaUserEdit />,
   },
-  { href: "/panel/settings", lable: "تنظیمات", icon: IoSettingsOutline },
-  { href: "/panel/rooms", lable: "روم ها", icon: IoIosChatboxes },
-  { href: "/panel/messages", lable: "پیام ها", icon: FaComment },
-  { href: "/panel/article", lable: "مقالات ذخیره شده", icon: MdOutlineArticle },
+  { href: "/panel/settings", label: "تنظیمات", icon: <IoSettingsOutline /> },
+  { href: "/panel/rooms", label: "روم ها", icon: <IoIosChatboxes /> },
+  { href: "/panel/messages", label: "پیام ها", icon: <FaComment /> },
+  {
+    href: "/panel/article",
+    label: "مقالات ذخیره شده",
+    icon: <MdOutlineArticle />,
+  },
 ];
 
-export default function Sidebar({ isSidebarOpen }: { isSidebarOpen: boolean }) {
-  const pathname = usePathname();
+interface Props {
+  isSidebarOpen: boolean;
+  children: React.ReactNode;
+}
 
+export default function Sidebar({ isSidebarOpen, children }: Props) {
   return (
     <>
       <div
@@ -35,12 +36,8 @@ export default function Sidebar({ isSidebarOpen }: { isSidebarOpen: boolean }) {
       >
         <div className="flex flex-col z-1 h-[35rem] justify-between">
           <div className="space-y-8">
-            <UserProfile />
-            <div className="flex flex-col gap-4">
-              {menuItem.map((item) => (
-                <Items item={item} pathname={pathname} key={item.href} />
-              ))}
-            </div>
+            {children}
+            <SidebarClient menuItem={menuItem} />
           </div>
 
           <div className="p-4 border-t border-sidebar-border">

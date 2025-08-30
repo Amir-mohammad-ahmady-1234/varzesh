@@ -1,26 +1,15 @@
-"use client";
+import SidebarWrapper from "../../components/pages/userpanel/layout/SidebarWrapper";
+import { GetUserById } from "../../server/user/getuserbyid/GetUserById";
+import GetProfileDataUser from "../../server/user/paneluser/profile/GetProfileDataUser";
 
-import { useState } from "react";
-import Sidebar from "../../components/pages/userpanel/layout/Sidebar";
-import MobileHeader from "../../components/pages/userpanel/layout/MobileHeader";
-
-export default function UserPanelLayout({
+export default async function UserPanelLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const userID = await GetUserById();
+  if (!userID) return;
+  const userInfo = await GetProfileDataUser(userID.userId);
 
-  return (
-    <>
-      <MobileHeader setIsSidebarOpen={setIsSidebarOpen} />
-
-      <div className="flex">
-        <Sidebar isSidebarOpen={isSidebarOpen} />
-        <main className={`flex-1 p-4 ${isSidebarOpen ? "blur" : ""}`}>
-          {children}
-        </main>
-      </div>
-    </>
-  );
+  return <SidebarWrapper userInfo={userInfo}>{children}</SidebarWrapper>;
 }

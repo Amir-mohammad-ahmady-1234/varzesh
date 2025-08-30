@@ -1,7 +1,12 @@
 import Image from "next/image";
 import React from "react";
+import { TPostProfileUser } from "../../../../types/user/profile/type";
 
-export default function UserProfile() {
+export default function UserProfile({
+  userInfo,
+}: {
+  userInfo: TPostProfileUser;
+}) {
   return (
     <div className="flex items-center space-x-6">
       <div>
@@ -14,8 +19,8 @@ export default function UserProfile() {
         />
       </div>
       <div>
-        <p>Amir</p>
-        <p>09059796518</p>
+        <p>{userInfo.user?.firstname}</p>
+        <p>{userInfo.user?.phone}</p>
       </div>
     </div>
   );
