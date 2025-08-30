@@ -1,27 +1,32 @@
 import Image from "next/image";
 import React from "react";
-import { TPostProfileUser } from "../../../../types/user/profile/type";
+import { CgProfile } from "react-icons/cg";
+import { userInfo } from "../../../../types/user/profile/userInfo";
 
-export default function UserProfile({
-  userInfo,
-}: {
-  userInfo: TPostProfileUser;
-}) {
+interface Props {
+  userInfo: userInfo;
+  children: React.ReactNode;
+}
+
+export default function UserProfile({ userInfo, children }: Props) {
+  if (!userInfo.user) return;
+
+  const { profileImage } = userInfo.user;
+
   return (
-    <div className="flex items-center space-x-6">
-      <div>
+    <div className="flex flex-col lg:flex-row justify-center items-center space-x-6">
+      {profileImage ? (
         <Image
-          src={"/assets/img/footer/union.png"}
+          src={profileImage}
           alt="user profile"
           width={40}
           height={40}
           className="rounded-full"
         />
-      </div>
-      <div>
-        <p>{userInfo.user?.firstname}</p>
-        <p>{userInfo.user?.phone}</p>
-      </div>
+      ) : (
+        <CgProfile className="size-[40px]" />
+      )}
+      {children}
     </div>
   );
 }

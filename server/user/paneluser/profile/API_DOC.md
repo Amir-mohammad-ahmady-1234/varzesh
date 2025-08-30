@@ -67,7 +67,7 @@ Output (Success):
 {
 "message": "کد ارسال شد",
 "otpcode": "123456",
-"status": 200
+"status": 20044444444
 }
 //////////////////////// 5. CheckOtpPhone({ id, otp })
 

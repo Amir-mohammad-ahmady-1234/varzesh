@@ -15,7 +15,7 @@ export default function UserInfoPage() {
 
       <form className="flex flex-col items-center gap-14" action="">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <Input name="change-name" placeholder="تغییر نام" title="تغییر نام" />
+          <Input name="change-name" placeholder="نام جدید" title="تغییر نام" />
           <Input
             name="change-phone"
             placeholder="شماره موبایل جدید"
@@ -23,7 +23,7 @@ export default function UserInfoPage() {
           />
           <Input
             name="change-email"
-            placeholder="تغییر ایمیل"
+            placeholder="ایمیل جدید"
             title="تغییر ایمیل"
           />
           <Input
