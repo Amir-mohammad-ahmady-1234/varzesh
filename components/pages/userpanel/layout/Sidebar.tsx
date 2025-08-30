@@ -41,7 +41,7 @@ export default function Sidebar({ isSidebarOpen, children }: Props) {
           </div>
 
           <div className="p-4 border-t border-sidebar-border">
-            <div className="text-xs text-sidebar-foreground/60 text-center">
+            <div className="text-xs text-sidebar-foreground/60 text-center ">
               نسخه {process.env.NEXT_PUBLIC_APP_VERSION ?? "1.0.0"}
             </div>
           </div>

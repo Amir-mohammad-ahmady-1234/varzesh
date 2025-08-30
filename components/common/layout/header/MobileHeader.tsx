@@ -21,7 +21,12 @@ function MobileHeader({ setIsSidebarOpen, children }: Props) {
         </Button>
       </div>
       <div className="flex mx-auto">
-        <Image src="/img/logo/logo.png" alt="logo" width={100} height={100} />
+        <Image
+          src="/assets/img/logo/logo.png"
+          alt="logo"
+          width={100}
+          height={100}
+        />
       </div>
 
       <div className="flex gap-2">

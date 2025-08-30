@@ -428,7 +428,6 @@ export default function UserDetailPage() {
             </div>
           </Card>
 
-          {/* Account Info */}
           <Card>
             <h3 className="font-semibold text-foreground mb-4">اطلاعات حساب</h3>
             <div className="space-y-3">
