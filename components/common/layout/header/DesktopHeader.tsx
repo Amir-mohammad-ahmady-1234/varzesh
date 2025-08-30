@@ -7,7 +7,12 @@ function DesktopHeader({ children }: { children: React.ReactNode }) {
   return (
     <div className="hidden md:flex items-center justify-center w-full">
       <div className="flex items-center gap-5">
-        <Image src="/img/logo/logo.png" alt="logo" width={100} height={100} />
+        <Image
+          src="/assets/img/logo/logo.png"
+          alt="logo"
+          width={100}
+          height={100}
+        />
         <HeaderNav />
         <div className="flex items-center gap-3">
           <SearchFormHeader />

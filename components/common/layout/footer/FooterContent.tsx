@@ -11,7 +11,7 @@ function FooterContent() {
         <div className="md:w-1/4 w-full text-right flex flex-col p-5">
           <div className="flex  mb-5">
             <Image
-              src={"/img/logo/logo.png"}
+              src={"/assets/img/logo/logo.png"}
               alt="logo"
               width={100}
               height={100}

@@ -3,15 +3,15 @@ import React from "react";
 
 function FooterBadgeBar() {
   const images = [
-    "/img/footer/Union.png",
-    "/img/footer/Union(1).png",
-    "/img/footer/Vector(1).png",
-    "/img/footer/Vector(2).png",
-    "/img/footer/Vector(3).png",
+    "/assets/img/footer/Union.png",
+    "/assets/img/footer/Union(1).png",
+    "/assets/img/footer/Vector(1).png",
+    "/assets/img/footer/Vector(2).png",
+    "/assets/img/footer/Vector(3).png",
   ];
 
   return (
-    <div className="bg-primary-100 flex items-center justify-center gap-6 md:gap-[200px] p-4">
+    <div className="bg-primary-100 flex items-center justify-center gap-6 md:gap-[200px] p-4 ">
       {images.map((src, i) => (
         <div key={i} className="w-10 h-10 md:w-16 md:h-16 relative">
           <Image
