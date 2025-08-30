@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../../../styles/ui/Button";
+import Button from "../../common/Button";
 
 const classes = {
   OAuthButtons:

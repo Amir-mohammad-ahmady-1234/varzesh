@@ -1,17 +1,29 @@
-import React, { SetStateAction } from "react";
+import React, { SetStateAction, startTransition, useActionState } from "react";
 import Modal from "../../../common/Modal";
 import Input from "../../../common/Input";
 import Button from "../../../common/Button";
+import {
+  putProfileInfo,
+  putProfileInfoState,
+} from "../../../../lib/actions/change-user-info/putProfileInfo";
+import { useFormStatus } from "react-dom";
 
 interface Props {
   isModalOpen: boolean;
   setIsModalOpen: React.Dispatch<SetStateAction<boolean>>;
 }
 
+const initialState: putProfileInfoState = {
+  message: {},
+};
+
 export default function ChangeInfoModal({
   isModalOpen,
   setIsModalOpen,
 }: Props) {
+  const [state, formAction] = useActionState(putProfileInfo, initialState);
+  const { pending } = useFormStatus();
+
   return (
     <Modal
       isOpen={isModalOpen}
@@ -19,22 +31,42 @@ export default function ChangeInfoModal({
       title="تغییر اطلاعات "
       size="lg"
     >
-      <form className="flex flex-col items-center gap-14" action="">
+      <form
+        className="flex flex-col items-center gap-14"
+        onSubmit={(e) => {
+          e.preventDefault();
+          const formData = new FormData(e.currentTarget);
+
+          startTransition(() => {
+            formAction(formData);
+          });
+        }}
+      >
         <div className="flex flex-col gap-6">
           <Input
             name="change-profile"
             placeholder="تغییر تصویر پروفایل"
             title="تغییر پروفایل"
             type="file"
+            err={
+              state.message && "profile" in state.message
+                ? state.message.profile
+                : undefined
+            }
           />
           <Input
             name="change-email"
             placeholder="ایمیل جدید"
             title="اپدیت ایمیل"
+            err={
+              state.message && "email" in state.message
+                ? state.message.email
+                : undefined
+            }
           />
         </div>
 
-        <Button type="submit" className="w-40 self-end">
+        <Button type="submit" className="w-40 self-end" loading={pending}>
           ثبت تغییرات
         </Button>
       </form>
