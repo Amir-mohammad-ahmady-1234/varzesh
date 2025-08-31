@@ -8,9 +8,12 @@ export async function ApprovedSupport(id: number) {
     if (!existsuppurtid) {
       return { error: "چنین تیکتی وجود ندارد", status: 404 };
     }
-    await prisma.ticket.update({
+    const update = await prisma.ticket.update({
       where: { id },
       data: { status: "Approved" },
     });
-  } catch {}
+    return { success: true, ticket: update };
+  } catch {
+    return { error: "مشکلی در سرور رخ داده است", status: 500 };
+  }
 }
