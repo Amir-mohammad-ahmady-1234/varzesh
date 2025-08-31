@@ -29,6 +29,7 @@ model User {
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
   tickets Ticket[]
+  Message Message[]
 }
 
 model Ticket {
@@ -49,6 +50,7 @@ model Message {
   ticket    Ticket   @relation(fields: [ticketId], references: [id])
   content   String
   userId    Int
+  user      User   @relation(fields: [userId] , references: [id])
   createdAt DateTime @default(now())
 }
 model Guest {

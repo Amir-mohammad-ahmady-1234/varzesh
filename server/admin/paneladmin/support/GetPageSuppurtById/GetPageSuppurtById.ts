@@ -6,7 +6,10 @@ export async function GetPageSuppurtById(id: number) {
       where: { id },
       include: {
         user: true,
-        messages: true,
+        messages: {
+          include: { user: true },
+          orderBy: { createdAt: "asc" },
+        },
       },
     });
     if (!existsuppurtid) {
