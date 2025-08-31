@@ -28,9 +28,31 @@ model User {
   otpExpiresAt   DateTime?
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
+  tickets Ticket[]
+  Message Message[]
 }
 
-
+model Ticket {
+  id        Int       @id @default(autoincrement())
+  title     String
+  description String?
+  userId    Int
+  messages  Message[]
+  user      User      @relation(fields: [userId], references: [id])
+  status    Status    @default(Waiting)
+  priority  Priority  @default(NORMAL)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+model Message {
+  id        Int      @id @default(autoincrement())
+  ticketId  Int
+  ticket    Ticket   @relation(fields: [ticketId], references: [id])
+  content   String
+  userId    Int
+  user      User   @relation(fields: [userId] , references: [id])
+  createdAt DateTime @default(now())
+}
 model Guest {
   id        Int      @id @default(autoincrement())
   guestId   String   @unique
@@ -44,4 +66,8 @@ enum Status {
   Blocked
   Waiting
   Approved
+}
+enum Priority {
+  NORMAL
+  URGENT
 }

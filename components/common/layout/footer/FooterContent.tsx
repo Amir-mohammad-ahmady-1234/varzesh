@@ -28,7 +28,7 @@ function FooterContent() {
             <div key={section.id} className="text-right w-full mt-10 ">
               <div className="flex  mb-5">
                 <Image
-                  src={"/img/footer/Frame.png"}
+                  src={"/assets/img/footer/Frame.png"}
                   alt="footer iconss"
                   width={10}
                   height={10}

@@ -10,31 +10,31 @@ function FooterCopyright() {
       </p>
       <div className="flex items-center justify-center gap-3 p-7">
         <Image
-          src={"/img/footer/Union.png"}
+          src={"/assets/img/footer/Union.png"}
           alt="footericons"
           width={30}
           height={30}
         />
         <Image
-          src={"/img/footer/Union(1).png"}
+          src={"/assets/img/footer/Union(1).png"}
           alt="footericons"
           width={30}
           height={30}
         />
         <Image
-          src={"/img/footer/Vector(1).png"}
+          src={"/assets/img/footer/Vector(1).png"}
           alt="footericons"
           width={30}
           height={30}
         />
         <Image
-          src={"/img/footer/Vector(2).png"}
+          src={"/assets/img/footer/Vector(2).png"}
           alt="footericons"
           width={30}
           height={30}
         />
         <Image
-          src={"/img/footer/Vector(3).png"}
+          src={"/assets/img/footer/Vector(3).png"}
           alt="footericons"
           width={30}
           height={30}

@@ -1,5 +1,6 @@
 import React from "react";
 import { GetUserFilterQuery } from "../../../server/admin/paneladmin/users/GetUserFilterQurey/GetUserFilterQurey";
+import { GetSupportFilterQuery } from "../../../server/admin/paneladmin/support/GetSupportFilterQurey/GetSupportFilterQurey";
 
 export default async function Page() {
   let result = await GetUserFilterQuery({});
@@ -35,7 +36,30 @@ export default async function Page() {
   });
   console.log("=== فیلتر ترکیبی ===");
   console.log(result);
+  /////////////////////////////////
+  const allTickets = await GetSupportFilterQuery({});
+  console.log("All Tickets:", allTickets);
 
+  // 2️⃣ جستجو بر اساس کلمه‌ای در title یا description
+  const searchTickets = await GetSupportFilterQuery({ serch: "خطا" });
+  console.log("Search Tickets:", searchTickets);
+
+  // 3️⃣ فیلتر بر اساس status
+  const statusTickets = await GetSupportFilterQuery({ status: "Waiting" });
+  console.log("Status Tickets:", statusTickets);
+
+  // 4️⃣ فیلتر بر اساس priority
+  const priorityTickets = await GetSupportFilterQuery({ priority: "URGENT" });
+  console.log("Priority Tickets:", priorityTickets);
+
+  // 5️⃣ ترکیبی از search + status + priority + sort
+  const combinedTickets = await GetSupportFilterQuery({
+    serch: "سرور",
+    status: "Blocked",
+    priority: "NORMAL",
+    sort: "asc",
+  });
+  console.log("Combined Tickets:", combinedTickets);
   return (
     <>
       <div className="flex flex-col"></div>
