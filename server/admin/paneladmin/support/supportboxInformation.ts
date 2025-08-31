@@ -27,3 +27,56 @@ export default async function supportboxInformation() {
     return { error: "مشکلی در سرور رخ داده است", status: 500 };
   }
 }
+
+export async function getTotalSupportCount() {
+  try {
+    const totalSupport = await prisma.ticket.count();
+    return { status: 200, totalSupport };
+  } catch {
+    return { error: "مشکلی در سرور رخ داده است", status: 500 };
+  }
+}
+
+export async function getApprovedSupportCount() {
+  try {
+    const approvedSupport = await prisma.ticket.count({
+      where: { status: "Approved" },
+    });
+    return { status: 200, approvedSupport };
+  } catch {
+    return { error: "مشکلی در سرور رخ داده است", status: 500 };
+  }
+}
+
+export async function getBlockedSupportCount() {
+  try {
+    const blockedSupport = await prisma.ticket.count({
+      where: { status: "Blocked" },
+    });
+    return { status: 200, blockedSupport };
+  } catch {
+    return { error: "مشکلی در سرور رخ داده است", status: 500 };
+  }
+}
+
+export async function getWaitingSupportCount() {
+  try {
+    const waitingSupport = await prisma.ticket.count({
+      where: { status: "Waiting" },
+    });
+    return { status: 200, waitingSupport };
+  } catch {
+    return { error: "مشکلی در سرور رخ داده است", status: 500 };
+  }
+}
+
+export async function getUrgentSupportCount() {
+  try {
+    const urgentSupport = await prisma.ticket.count({
+      where: { priority: "URGENT" },
+    });
+    return { status: 200, urgentSupport };
+  } catch {
+    return { error: "مشکلی در سرور رخ داده است", status: 500 };
+  }
+}
