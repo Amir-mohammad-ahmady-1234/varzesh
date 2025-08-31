@@ -1,6 +1,6 @@
 import React from "react";
 import { CardContent } from "../../../../../../../styles/ui/Card";
-import { recentGames } from "../../../../../../../mocks/dashboardMoocks";
+import { recentGames } from "../../../../../../../mocks/admin/dashboardMoocks";
 import Badge from "../../../../../../../styles/ui/Badge";
 
 export default function InfoContent() {

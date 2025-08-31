@@ -1,10 +1,10 @@
 import InputDesign from "../../styles/ui/Input";
 
 interface PropsType {
-  name: string;
+  name?: string;
   type?: string;
   placeholder: string;
-  title: string;
+  title?: string;
   err?: string;
   value?: string;
   changeFn?: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -27,7 +27,7 @@ function Input({
     <>
       <div className="flex flex-col md:flex-row md:items-center md:space-x-2 space-y-2 md:space-y-0 w-full max-w-[589px]">
         <label className="md:w-52 text-right" htmlFor={name}>
-          {title}* :
+          {title && title + "* :"}
         </label>
 
         <InputDesign

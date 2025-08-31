@@ -1,5 +1,5 @@
 import { MdChat, MdPeople, MdSportsFootball, MdSupport } from "react-icons/md";
-import { mockDashboardStats } from "./mock-data";
+import { mockDashboardStats } from "../mock-data";
 
 export const stats = [
   {

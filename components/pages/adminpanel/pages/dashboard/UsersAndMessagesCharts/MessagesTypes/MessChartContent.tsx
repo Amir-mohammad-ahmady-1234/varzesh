@@ -1,8 +1,15 @@
 import React, { Suspense } from "react";
 import { CardContent } from "../../../../../../../styles/ui/Card";
 import LoadingSpinner from "../../../../../../../styles/ui/LoadingSpinner";
-import { Cell, Legend, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
-import { messageTypesData } from "../../../../../../../mocks/dashboardMoocks";
+import {
+  Cell,
+  Legend,
+  Pie,
+  PieChart,
+  ResponsiveContainer,
+  Tooltip,
+} from "recharts";
+import { messageTypesData } from "../../../../../../../mocks/admin/dashboardMoocks";
 import { CustomTooltip } from "../../CustomTooltip";
 
 export default function MessChartContent() {

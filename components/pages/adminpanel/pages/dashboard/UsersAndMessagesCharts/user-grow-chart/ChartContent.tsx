@@ -11,7 +11,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { userGrowthData } from "../../../../../../../mocks/dashboardMoocks";
+import { userGrowthData } from "../../../../../../../mocks/admin/dashboardMoocks";
 import { CustomTooltip } from "../../CustomTooltip";
 import { CardContent } from "../../../../../../../styles/ui/Card";
 

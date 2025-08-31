@@ -2,11 +2,14 @@
 import Sidebar from "../../../../components/pages/adminpanel/layout/Sidebar";
 import Topbar from "../../../../components/pages/adminpanel/layout/Topbar";
 import Card from "../../../../styles/ui/Card";
-import Input from "../../../../styles/ui/Input";
 import Textarea from "../../../../styles/ui/Textarea";
 import FormField from "../../../../styles/ui/FormField";
-import Link from "next/link";
-import Button from "../../../../components/common/Button";
+import PageTitle from "../../../../components/pages/adminpanel/pages/games/newGame/PageTitle";
+import TeamsNameFiled from "../../../../components/pages/adminpanel/pages/games/newGame/add-new-game-form/TeamsNameFiled";
+import TeamsCategory from "../../../../components/pages/adminpanel/pages/games/newGame/add-new-game-form/TeamsCategory";
+import GameStatusAndDate from "../../../../components/pages/adminpanel/pages/games/newGame/add-new-game-form/GameStatusAndDate";
+import GameOptions from "../../../../components/pages/adminpanel/pages/games/newGame/add-new-game-form/GameOptions";
+import SubmitingBtns from "../../../../components/pages/adminpanel/pages/games/newGame/add-new-game-form/SubmitingBtns";
 
 export default function NewGamePage() {
   return (
@@ -16,59 +19,15 @@ export default function NewGamePage() {
         <Topbar />
         <main className="flex-1 overflow-y-auto p-6">
           <div className="max-w-4xl mx-auto">
-            <div className="flex items-center gap-4 mb-8">
-              <Link href="/games">
-                <Button variant="ghost">← بازگشت</Button>
-              </Link>
-              <h1 className="text-3xl font-bold text-(--text-primary)">
-                بازی جدید
-              </h1>
-            </div>
+            <PageTitle />
 
             <Card>
               <form className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <FormField label="تیم اول" required>
-                    <Input placeholder="نام تیم اول" />
-                  </FormField>
+                <TeamsNameFiled />
 
-                  <FormField label="تیم دوم" required>
-                    <Input placeholder="نام تیم دوم" />
-                  </FormField>
-                </div>
+                <TeamsCategory />
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <FormField label="لیگ" required>
-                    <select className="w-full px-3 py-2 border border-(--border) rounded-(--radius) bg-(--bg-primary) text-(--text-primary)">
-                      <option value="">انتخاب لیگ</option>
-                      <option value="premier">لیگ برتر</option>
-                      <option value="azadegan">آزادگان</option>
-                      <option value="cup">جام حذفی</option>
-                    </select>
-                  </FormField>
-
-                  <FormField label="مرحله">
-                    <Input placeholder="مثال: هفته 15" />
-                  </FormField>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <FormField label="تاریخ" required>
-                    <Input type="date" />
-                  </FormField>
-
-                  <FormField label="ساعت" required>
-                    <Input type="time" />
-                  </FormField>
-
-                  <FormField label="وضعیت">
-                    <select className="w-full px-3 py-2 border border-(--border) rounded-(--radius) bg-(--bg-primary) text-(--text-primary)">
-                      <option value="scheduled">برنامه‌ریزی شده</option>
-                      <option value="live">زنده</option>
-                      <option value="finished">تمام شده</option>
-                    </select>
-                  </FormField>
-                </div>
+                <GameStatusAndDate />
 
                 <FormField label="توضیحات">
                   <Textarea
@@ -77,39 +36,9 @@ export default function NewGamePage() {
                   />
                 </FormField>
 
-                <div className="flex items-center gap-4">
-                  <label className="flex items-center gap-2">
-                    <input
-                      type="checkbox"
-                      className="rounded border-(--border)"
-                    />
-                    <span className="text-sm text-(--text-primary)">
-                      فعال‌سازی چت
-                    </span>
-                  </label>
+                <GameOptions />
 
-                  <label className="flex items-center gap-2">
-                    <input
-                      type="checkbox"
-                      className="rounded border-(--border)"
-                    />
-                    <span className="text-sm text-(--text-primary)">
-                      انتشار فوری
-                    </span>
-                  </label>
-                </div>
-
-                <div className="flex items-center gap-4 pt-6 border-t border-(--border)">
-                  <Button type="submit">ایجاد بازی</Button>
-                  <Button variant="secondary" type="button">
-                    پیش‌نمایش
-                  </Button>
-                  <Link href="/games">
-                    <Button variant="ghost" type="button">
-                      انصراف
-                    </Button>
-                  </Link>
-                </div>
+                <SubmitingBtns />
               </form>
             </Card>
           </div>

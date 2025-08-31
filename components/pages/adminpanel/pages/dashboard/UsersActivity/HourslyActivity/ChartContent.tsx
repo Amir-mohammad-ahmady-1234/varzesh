@@ -10,7 +10,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { hourlyActivityData } from "../../../../../../../mocks/dashboardMoocks";
+import { hourlyActivityData } from "../../../../../../../mocks/admin/dashboardMoocks";
 import { CustomTooltip } from "../../CustomTooltip";
 import { CardContent } from "../../../../../../../styles/ui/Card";
 

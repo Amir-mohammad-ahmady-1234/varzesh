@@ -11,7 +11,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { dailyActivityData } from "../../../../../../../mocks/dashboardMoocks";
+import { dailyActivityData } from "../../../../../../../mocks/admin/dashboardMoocks";
 import { CustomTooltip } from "../../CustomTooltip";
 import { CardContent } from "../../../../../../../styles/ui/Card";
 
