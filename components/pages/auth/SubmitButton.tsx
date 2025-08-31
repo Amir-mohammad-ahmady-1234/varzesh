@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import OtpTimer from "./resetPassForm/OtpTimer";
-import Button from "../../../styles/ui/Button";
+import Button from "../../common/Button";
 
 function SubmitButton({
   children,
