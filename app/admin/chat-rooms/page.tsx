@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import MainLayout from "../../../components/pages/adminpanel/layout/MainLayout";
 import PageHeader from "../../../styles/ui/PageHeader";
@@ -28,7 +28,6 @@ import {
   MdDelete,
   MdEdit,
   MdFilterList,
-  MdSort,
   MdLiveTv,
   MdSportsFootball,
   MdChat,
@@ -40,69 +39,20 @@ import Modal from "../../../components/common/Modal";
 export default function ChatRoomsPage() {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
-  const [statusFilter, setStatusFilter] = useState<
-    "all" | "active" | "inactive"
-  >("all");
-  const [typeFilter, setTypeFilter] = useState<
-    "all" | "game" | "general" | "private"
-  >("all");
-  const [sortBy, setSortBy] = useState<
-    "name" | "participants" | "messages" | "lastActivity"
-  >("lastActivity");
-  const [sortOrder, setSortOrder] = useState<"asc" | "desc">("desc");
+
   const [currentPage, setCurrentPage] = useState(1);
   const [showRoomModal, setShowRoomModal] = useState(false);
-  const [viewMode, setViewMode] = useState<"list" | "grid">("list");
   const [isLiveMode, setIsLiveMode] = useState(false);
   const itemsPerPage = 12;
 
-  useEffect(() => {
-    if (isLiveMode) {
-      const interval = setInterval(() => {
-        // Simulate real-time updates
-        console.log("[v0] Simulating real-time chat room updates");
-      }, 3000);
-      return () => clearInterval(interval);
-    }
-  }, [isLiveMode]);
+  const filteredRooms = mockChatRooms.filter((room) => {
+    const matchesSearch =
+      room.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      room.description?.toLowerCase().includes(searchQuery.toLowerCase());
 
-  const filteredRooms = mockChatRooms
-    .filter((room) => {
-      const matchesSearch =
-        room.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        room.description?.toLowerCase().includes(searchQuery.toLowerCase());
-      const matchesStatus =
-        statusFilter === "all" || room.status === statusFilter;
-      const matchesType = typeFilter === "all" || room.type === typeFilter;
-      return matchesSearch && matchesStatus && matchesType;
-    })
-    .sort((a, b) => {
-      let aValue: string | number;
-      let bValue: string | number;
+    return matchesSearch;
+  });
 
-      if (sortBy === "lastActivity") {
-        aValue = new Date(a.lastActivity || a.createdAt).getTime();
-        bValue = new Date(b.lastActivity || b.createdAt).getTime();
-      } else if (sortBy === "participants") {
-        aValue = a.participantCount;
-        bValue = b.participantCount;
-      } else if (sortBy === "messages") {
-        aValue = a.messageCount;
-        bValue = b.messageCount;
-      } else {
-        // sortBy === "name"
-        aValue = a.name.toLowerCase();
-        bValue = b.name.toLowerCase();
-      }
-
-      if (sortOrder === "asc") {
-        return aValue < bValue ? -1 : aValue > bValue ? 1 : 0;
-      } else {
-        return aValue > bValue ? -1 : aValue < bValue ? 1 : 0;
-      }
-    });
-
-  // Pagination
   const totalPages = Math.ceil(filteredRooms.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const paginatedRooms = filteredRooms.slice(
@@ -112,15 +62,6 @@ export default function ChatRoomsPage() {
 
   const handleRoomClick = (roomId: string) => {
     router.push(`/admin/chat-rooms/${roomId}`);
-  };
-
-  const handleSort = (column: typeof sortBy) => {
-    if (sortBy === column) {
-      setSortOrder(sortOrder === "asc" ? "desc" : "asc");
-    } else {
-      setSortBy(column);
-      setSortOrder("desc");
-    }
   };
 
   const getStatusText = (status: string) => {
@@ -272,24 +213,6 @@ export default function ChatRoomsPage() {
                 جستجو و فیلتر چت روم‌ها بر اساس معیارهای مختلف
               </CardDescription>
             </div>
-            <div className="flex items-center gap-2">
-              <Button
-                variant={viewMode === "list" ? "primary" : "outline"}
-                size="sm"
-                onClick={() => setViewMode("list")}
-                className="cursor-pointer"
-              >
-                لیست
-              </Button>
-              <Button
-                variant={viewMode === "grid" ? "primary" : "outline"}
-                size="sm"
-                onClick={() => setViewMode("grid")}
-                className="cursor-pointer"
-              >
-                کارت
-              </Button>
-            </div>
           </div>
         </CardHeader>
         <CardContent>
@@ -307,11 +230,6 @@ export default function ChatRoomsPage() {
               </div>
               <Button
                 variant="outline"
-                onClick={() => {
-                  setSearchQuery("");
-                  setStatusFilter("all");
-                  setTypeFilter("all");
-                }}
                 className="cursor-pointer whitespace-nowrap"
               >
                 پاک کردن فیلترها
@@ -323,91 +241,18 @@ export default function ChatRoomsPage() {
                 <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                   وضعیت:
                 </span>
-                {["all", "active", "inactive"].map((status) => (
-                  <Button
-                    key={status}
-                    variant={statusFilter === status ? "primary" : "outline"}
-                    size="sm"
-                    onClick={() =>
-                      setStatusFilter(status as "all" | "active" | "inactive")
-                    }
-                    className="cursor-pointer"
-                  >
-                    {status === "all" ? "همه" : getStatusText(status)}
-                  </Button>
-                ))}
               </div>
 
               <div className="flex flex-wrap items-center gap-2">
                 <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                   نوع:
                 </span>
-                {["all", "game", "general", "private"].map((type) => (
-                  <Button
-                    key={type}
-                    variant={typeFilter === type ? "primary" : "outline"}
-                    size="sm"
-                    onClick={() =>
-                      setTypeFilter(
-                        type as "all" | "game" | "general" | "private"
-                      )
-                    }
-                    className="cursor-pointer"
-                  >
-                    {type === "all" ? "همه" : getTypeText(type)}
-                  </Button>
-                ))}
               </div>
 
               <div className="flex flex-wrap items-center gap-2">
                 <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                   مرتب‌سازی:
                 </span>
-                <Button
-                  variant={sortBy === "name" ? "primary" : "outline"}
-                  size="sm"
-                  onClick={() => handleSort("name")}
-                  className="cursor-pointer"
-                >
-                  نام
-                  {sortBy === "name" && (
-                    <MdSort
-                      className={`w-4 h-4 mr-1 ${
-                        sortOrder === "desc" ? "rotate-180" : ""
-                      }`}
-                    />
-                  )}
-                </Button>
-                <Button
-                  variant={sortBy === "participants" ? "primary" : "outline"}
-                  size="sm"
-                  onClick={() => handleSort("participants")}
-                  className="cursor-pointer"
-                >
-                  شرکت‌کنندگان
-                  {sortBy === "participants" && (
-                    <MdSort
-                      className={`w-4 h-4 mr-1 ${
-                        sortOrder === "desc" ? "rotate-180" : ""
-                      }`}
-                    />
-                  )}
-                </Button>
-                <Button
-                  variant={sortBy === "lastActivity" ? "primary" : "outline"}
-                  size="sm"
-                  onClick={() => handleSort("lastActivity")}
-                  className="cursor-pointer"
-                >
-                  آخرین فعالیت
-                  {sortBy === "lastActivity" && (
-                    <MdSort
-                      className={`w-4 h-4 mr-1 ${
-                        sortOrder === "desc" ? "rotate-180" : ""
-                      }`}
-                    />
-                  )}
-                </Button>
               </div>
             </div>
           </div>
@@ -418,20 +263,9 @@ export default function ChatRoomsPage() {
         <EmptyState
           title="چت روم یافت نشد"
           description="با فیلترهای انتخاب شده چت روم یافت نشد. فیلترها را تغییر دهید یا چت روم جدید ایجاد کنید."
-          action={
-            <Button
-              onClick={() => {
-                setSearchQuery("");
-                setStatusFilter("all");
-                setTypeFilter("all");
-              }}
-              className="cursor-pointer"
-            >
-              پاک کردن فیلترها
-            </Button>
-          }
+          action={<Button className="cursor-pointer">پاک کردن فیلترها</Button>}
         />
-      ) : viewMode === "list" ? (
+      ) : (
         <div className="space-y-4">
           {paginatedRooms.map((room) => {
             const TypeIcon = getTypeIcon(room.type || "general");
@@ -557,97 +391,6 @@ export default function ChatRoomsPage() {
                       >
                         <MdMoreVert className="w-4 h-4" />
                       </Button>
-                    </div>
-                  </div>
-                </Card>
-              </div>
-            );
-          })}
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {paginatedRooms.map((room) => {
-            const TypeIcon = getTypeIcon(room.type || "general");
-            return (
-              <div
-                key={room.id}
-                className="cursor-pointer hover:shadow-lg transition-all duration-200"
-                onClick={() => handleRoomClick(room.id)}
-              >
-                <Card>
-                  <div className="relative">
-                    <div className="text-center">
-                      <div className="relative mx-auto mb-4">
-                        <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg mx-auto">
-                          <TypeIcon className="w-8 h-8 text-white" />
-                        </div>
-                        <div
-                          className={cn(
-                            "absolute -top-1 -right-1 w-5 h-5 rounded-full border-2 border-white",
-                            room.status === "active"
-                              ? "bg-green-500"
-                              : "bg-gray-400"
-                          )}
-                        >
-                          {isLiveMode && room.status === "active" && (
-                            <div className="absolute inset-0 rounded-full bg-green-500 animate-ping"></div>
-                          )}
-                        </div>
-                      </div>
-
-                      <h3 className="font-semibold text-lg text-gray-900 dark:text-gray-100 mb-2">
-                        {room.name}
-                      </h3>
-
-                      <div className="flex items-center justify-center gap-2 mb-3">
-                        <Badge
-                          variant={
-                            room.status === "active" ? "success" : "secondary"
-                          }
-                          size="sm"
-                        >
-                          {getStatusText(room.status)}
-                        </Badge>
-                        <Badge variant="secondary" size="sm">
-                          {getTypeText(room.type || "general")}
-                        </Badge>
-                      </div>
-
-                      {room.description && (
-                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">
-                          {room.description}
-                        </p>
-                      )}
-
-                      <div className="space-y-2 text-sm text-gray-500 dark:text-gray-400">
-                        <div className="flex items-center justify-center gap-1">
-                          <MdPeople className="w-4 h-4" />
-                          <span>
-                            {room.participantCount.toLocaleString("fa-IR")}{" "}
-                            شرکت‌کننده
-                          </span>
-                        </div>
-                        <div className="flex items-center justify-center gap-1">
-                          <MdMessage className="w-4 h-4" />
-                          <span>
-                            {room.messageCount.toLocaleString("fa-IR")} پیام
-                          </span>
-                        </div>
-                        {room.lastActivity && (
-                          <div className="flex items-center justify-center gap-1">
-                            <MdAccessTime className="w-4 h-4" />
-                            <span className="text-xs">
-                              {new Date(room.lastActivity).toLocaleDateString(
-                                "fa-IR",
-                                {
-                                  month: "short",
-                                  day: "numeric",
-                                }
-                              )}
-                            </span>
-                          </div>
-                        )}
-                      </div>
                     </div>
                   </div>
                 </Card>
