@@ -1,4 +1,3 @@
-/** Create new game page with form */
 import Sidebar from "../../../../components/pages/adminpanel/layout/Sidebar";
 import Topbar from "../../../../components/pages/adminpanel/layout/Topbar";
 import Card from "../../../../styles/ui/Card";
@@ -8,7 +7,6 @@ import PageTitle from "../../../../components/pages/adminpanel/pages/games/newGa
 import TeamsNameFiled from "../../../../components/pages/adminpanel/pages/games/newGame/add-new-game-form/TeamsNameFiled";
 import TeamsCategory from "../../../../components/pages/adminpanel/pages/games/newGame/add-new-game-form/TeamsCategory";
 import GameStatusAndDate from "../../../../components/pages/adminpanel/pages/games/newGame/add-new-game-form/GameStatusAndDate";
-import GameOptions from "../../../../components/pages/adminpanel/pages/games/newGame/add-new-game-form/GameOptions";
 import SubmitingBtns from "../../../../components/pages/adminpanel/pages/games/newGame/add-new-game-form/SubmitingBtns";
 
 export default function NewGamePage() {
@@ -35,8 +33,6 @@ export default function NewGamePage() {
                     rows={4}
                   />
                 </FormField>
-
-                <GameOptions />
 
                 <SubmitingBtns />
               </form>
