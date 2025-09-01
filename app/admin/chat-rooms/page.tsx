@@ -3,14 +3,15 @@ import MainLayout from "../../../components/pages/adminpanel/layout/MainLayout";
 import EmptyState from "../../../styles/ui/EmptyState";
 import Button from "../../../components/common/Button";
 import PageTitle from "../../../components/pages/adminpanel/pages/chat-rooms/PageTitle";
-import UsersActivities from "../../../components/pages/adminpanel/pages/chat-rooms/UsersActivities";
 import FilterAndSearch from "../../../components/pages/adminpanel/pages/chat-rooms/FilterAndSearch/FilterAndSearchContainer";
 import SubmitingInputs from "../../../components/pages/adminpanel/pages/chat-rooms/FilterAndSearch/SubmitingInputs";
 import CartContainer from "../../../components/pages/adminpanel/pages/chat-rooms/Game-room/CartContainer";
 import PageCount from "../../../components/pages/adminpanel/pages/chat-rooms/Pagination/PageCount";
 import PaginationBtns from "../../../components/pages/adminpanel/pages/chat-rooms/Pagination/PaginationBtns";
 import SettingModal from "../../../components/pages/adminpanel/pages/chat-rooms/Game-room/SettingModal";
-import { useChatRoom } from "../../../hooks/useChatRoom";
+import { useChatRoom } from "../../../hooks/admin/useChatRoom";
+import { usersCardInfo } from "../../../mocks/admin/chatRoom/chat-roomsMoocks";
+import UsersActivities from "../../../components/common/admin/UsersActivities";
 
 export default function ChatRoomsPage() {
   const {
@@ -37,7 +38,7 @@ export default function ChatRoomsPage() {
         setIsLiveMode={setIsLiveMode}
       />
 
-      <UsersActivities stats={stats} />
+      <UsersActivities stats={stats} usersCardInfo={usersCardInfo} />
 
       <FilterAndSearch>
         <SubmitingInputs

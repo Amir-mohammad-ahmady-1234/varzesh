@@ -2,18 +2,18 @@ import React, { SetStateAction } from "react";
 import Button from "../../../../../common/Button";
 import { MdMoreVert, MdSettings, MdVisibility } from "react-icons/md";
 import { ChatRoom } from "../../../../../../types/adminPanelTypes";
+import { redirect } from "next/navigation";
 
 interface Props {
-  handleRoomClick: (roomId: string) => never;
   room: ChatRoom;
   setShowRoomModal: React.Dispatch<SetStateAction<boolean>>;
 }
 
-export default function CartOptions({
-  handleRoomClick,
-  room,
-  setShowRoomModal,
-}: Props) {
+export default function CartOptions({ room, setShowRoomModal }: Props) {
+  const handleRoomClick = (roomId: string) => {
+    redirect(`/admin/chat-rooms/${roomId}`);
+  };
+
   return (
     <div className="flex items-center gap-2">
       <Button

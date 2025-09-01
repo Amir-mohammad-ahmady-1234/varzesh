@@ -1,7 +1,6 @@
 import React from "react";
 import { MdChat } from "react-icons/md";
-import Card from "../../../../../styles/ui/Card";
-import { usersCardInfo } from "../../../../../mocks/admin/chat-roomsMoocks";
+import Card from "../../../styles/ui/Card";
 
 interface Props {
   stats: {
@@ -10,9 +9,15 @@ interface Props {
     totalParticipants: number;
     totalMessages: number;
   };
+  usersCardInfo: {
+    id: number;
+    title: string;
+    value: string;
+    color: string;
+  }[];
 }
 
-export default function UsersActivities({ stats }: Props) {
+export default function UsersActivities({ stats, usersCardInfo }: Props) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
       {usersCardInfo.map((cardInfo) => (
