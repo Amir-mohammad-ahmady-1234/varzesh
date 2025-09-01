@@ -1,44 +1,30 @@
-import Image from "next/image";
 import React from "react";
+import CardVideo from "../../../components/pages/home/video/CardVideo";
+import HeadeImageCard from "../../../components/pages/home/video/Card/HeadeImageCard";
+import BannerVideo from "../../../components/pages/home/video/BannerVideo";
+import CardSiwper from "../../../components/pages/home/video/Card/CardSiwper";
 
 function page() {
   return (
-    <section>
-      <div>
-        <Image
-          src={"/assets/img/concat/banner.png"}
-          alt="بنر سایت "
-          width={1500}
-          height={1500}
-          className="w-full"
-        />
+    <section className="mb-10">
+      <BannerVideo />
+      <div className="flex items-center justify-center">
+        <CardVideo title="پخش زنده">
+          <HeadeImageCard />
+        </CardVideo>
       </div>
-      <div className="max-w-7xl mx-auto flex flex-col ">
-        <h4 className="text-bold">پخش زنده</h4>
-        <div className="flex justify-center items-center mx-auto gap-5">
-          <div className="w-2/3 ">
-            <Image
-              src={"/assets/img/concat/side3.png"}
-              alt="side1"
-              width={900}
-              height={900}
-            />
-          </div>
-          <div className="w-1/3 space-y-5">
-            <Image
-              src={"/assets/img/concat/side1.png"}
-              alt="side1"
-              width={300}
-              height={300}
-            />
-            <Image
-              src={"/assets/img/concat/side2.png"}
-              alt="side1"
-              width={300}
-              height={300}
-            />
-          </div>
+      <div className="space-y-5">
+        <CardVideo title="جدیدترین">
+          <CardSiwper />
+        </CardVideo>
+        <div className="bg-primary-500/10 p-2 ">
+          <CardVideo title="خلاصه بازی ها">
+            <CardSiwper />
+          </CardVideo>
         </div>
+        <CardVideo title="پربازدیدترین">
+          <CardSiwper />
+        </CardVideo>
       </div>
     </section>
   );
