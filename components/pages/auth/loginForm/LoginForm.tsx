@@ -15,7 +15,6 @@ const initialState: userLoginState = {
 
 function LoginForm({ children }: { children?: React.ReactNode }) {
   const [state, formAction] = useActionState(userLogin, initialState);
-  console.log(state);
 
   useEffect(() => {
     if (state.message.success) {
@@ -51,7 +50,7 @@ function LoginForm({ children }: { children?: React.ReactNode }) {
         type="password"
         placeholder="رمز عبور"
         title="رمز عبور"
-        err={state.message.password}
+        err={state.message?.password}
       />
 
       {children}

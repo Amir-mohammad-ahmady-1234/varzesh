@@ -14,6 +14,7 @@ interface InputProps
   type?: string;
   variant?: "primary" | "secondary";
   name?: string;
+  value?: string;
 }
 
 export default function InputDesign({
@@ -27,6 +28,7 @@ export default function InputDesign({
   type = "input",
   variant = "primary",
   name,
+  value,
   ...props
 }: InputProps) {
   const inputSizes = {
@@ -69,8 +71,10 @@ export default function InputDesign({
         )}
         <input
           id={name}
+          name={name}
           type={type}
           className={cn(inputClasses, variants[variant])}
+          value={value}
           {...props}
         />
         {rightIcon && (
