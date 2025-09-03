@@ -1,25 +1,36 @@
 import React from "react";
-import { MdChat } from "react-icons/md";
 import Card from "../../../styles/ui/Card";
+import { IconType } from "react-icons/lib";
 
 interface Props {
-  stats: {
-    total: number;
-    active: number;
-    totalParticipants: number;
-    totalMessages: number;
-  };
+  stats:
+    | {
+        total: number;
+        active: number;
+        totalParticipants: number;
+        totalMessages: number;
+      }
+    | {
+        total: number;
+        open: number;
+        inProgress: number;
+        resolved: number;
+        urgent: number;
+      };
   usersCardInfo: {
     id: number;
     title: string;
     value: string;
     color: string;
+    icon: IconType;
   }[];
 }
 
 export default function UsersActivities({ stats, usersCardInfo }: Props) {
+  const CardLength = usersCardInfo.length;
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+    <div className={`grid grid-cols-1 md:grid-cols-${CardLength} gap-4 mb-6`}>
       {usersCardInfo.map((cardInfo) => (
         <Card
           key={cardInfo.id}
@@ -35,13 +46,13 @@ export default function UsersActivities({ stats, usersCardInfo }: Props) {
               <p
                 className={`text-2xl font-bold text-${cardInfo.color}-900 dark:text-${cardInfo.color}-100`}
               >
-                {stats[cardInfo.value as keyof typeof stats].toLocaleString(
+                {stats[cardInfo.value as keyof typeof stats]?.toLocaleString(
                   "fa-IR"
                 )}
               </p>
             </div>
             <div className={`p-3 bg-${cardInfo.color}-600 rounded-lg`}>
-              <MdChat className="w-6 h-6 text-white" />
+              <cardInfo.icon className="w-6 h-6 text-white" />
             </div>
           </div>
         </Card>

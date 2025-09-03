@@ -6,11 +6,11 @@ import PageTitle from "../../../components/pages/adminpanel/pages/chat-rooms/Pag
 import FilterAndSearch from "../../../components/pages/adminpanel/pages/chat-rooms/FilterAndSearch/FilterAndSearchContainer";
 import SubmitingInputs from "../../../components/pages/adminpanel/pages/chat-rooms/FilterAndSearch/SubmitingInputs";
 import CartContainer from "../../../components/pages/adminpanel/pages/chat-rooms/Game-room/CartContainer";
-import PageCount from "../../../components/pages/adminpanel/pages/chat-rooms/Pagination/PageCount";
-import PaginationBtns from "../../../components/pages/adminpanel/pages/chat-rooms/Pagination/PaginationBtns";
+import PageCount from "../../../components/common/admin/Pagination/PageCount";
+import PaginationBtns from "../../../components/common/admin/Pagination/PaginationBtns";
 import SettingModal from "../../../components/pages/adminpanel/pages/chat-rooms/Game-room/SettingModal";
 import { useChatRoom } from "../../../hooks/admin/useChatRoom";
-import { usersCardInfo } from "../../../mocks/admin/chatRoom/chat-roomsMoocks";
+import { usersCardInfo } from "../../../mocks/admin/chat-roomsMoocks";
 import UsersActivities from "../../../components/common/admin/UsersActivities";
 
 export default function ChatRoomsPage() {
@@ -66,8 +66,9 @@ export default function ChatRoomsPage() {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-8">
           <PageCount
             currentPage={currentPage}
-            filteredRooms={filteredRooms}
+            count={filteredRooms.length}
             itemsPerPage={itemsPerPage}
+            pageName="چت روم"
           />
 
           <div className="flex items-center gap-2">
