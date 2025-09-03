@@ -53,6 +53,18 @@ model Message {
   user      User   @relation(fields: [userId] , references: [id])
   createdAt DateTime @default(now())
 }
+
+model Game {
+  id  Int @id @default(autoincrement())
+  firstthem String
+  secondthem String
+  League League @default(Acup)
+  step String
+  data DateTime
+  time DateTime
+  status GameStatus @default(live)
+  description String
+}
 model Guest {
   id        Int      @id @default(autoincrement())
   guestId   String   @unique
@@ -66,6 +78,16 @@ enum Status {
   Blocked
   Waiting
   Approved
+}
+enum GameStatus {
+  live
+  down
+  Scheduled
+}
+enum League {
+  Dcup
+  Tcup
+  Acup
 }
 enum Priority {
   NORMAL
