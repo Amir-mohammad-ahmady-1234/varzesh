@@ -1,4 +1,9 @@
-import React, { SetStateAction, startTransition, useActionState } from "react";
+import React, {
+  SetStateAction,
+  startTransition,
+  useActionState,
+  useEffect,
+} from "react";
 import Modal from "../../../common/Modal";
 import Input from "../../../common/Input";
 import Button from "../../../common/Button";
@@ -6,7 +11,7 @@ import {
   putProfileInfo,
   putProfileInfoState,
 } from "../../../../lib/actions/change-user-info/putProfileInfo";
-import { useFormStatus } from "react-dom";
+import toast from "react-hot-toast";
 
 interface Props {
   isModalOpen: boolean;
@@ -22,7 +27,16 @@ export default function ChangeInfoModal({
   setIsModalOpen,
 }: Props) {
   const [state, formAction] = useActionState(putProfileInfo, initialState);
-  const { pending } = useFormStatus();
+
+  useEffect(
+    function () {
+      if (state.message && "path" in state.message) {
+        toast.success("تغییرات با موفقیت اعمال شد");
+        setIsModalOpen(false);
+      }
+    },
+    [state.message, setIsModalOpen]
+  );
 
   return (
     <Modal
@@ -66,7 +80,7 @@ export default function ChangeInfoModal({
           />
         </div>
 
-        <Button type="submit" className="w-40 self-end" loading={pending}>
+        <Button type="submit" className="w-40 self-end">
           ثبت تغییرات
         </Button>
       </form>

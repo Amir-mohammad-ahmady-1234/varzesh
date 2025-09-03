@@ -19,9 +19,9 @@ export default function UserProfile({ userInfo, children }: Props) {
         <Image
           src={profileImage}
           alt="user profile"
-          width={40}
-          height={40}
-          className="rounded-full"
+          width={80}
+          height={0}
+          className="rounded-xl"
         />
       ) : (
         <CgProfile className="size-[40px]" />
