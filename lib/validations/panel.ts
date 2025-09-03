@@ -12,3 +12,8 @@ export const changeInfoSchema = z.object({
     ),
   email: z.string().email({ message: "ایمیل وارد شده معتبر نمیباشد" }),
 });
+
+export const updateInfoSchema = z.object({
+  name: z.string().min(3, "حداقل 3 کاراکتر اجباری میباشد"),
+  email: z.string().email({ message: "ایمیل وارد شده معتبر نمیباشد" }),
+});
