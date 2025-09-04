@@ -1,7 +1,11 @@
 import prisma from "../../../../lib/db";
-import { TPostProfileUser } from "../../../../types/user/profile/type";
 
-export default async function CheckOtpPhone({ id, otp }: TPostProfileUser) {
+interface Props {
+  id: number;
+  otp: string;
+}
+
+export default async function CheckOtpPhone({ id, otp }: Props) {
   try {
     if (!id || !otp) {
       return { error: "اطلاعات ارسالی ناقص است", status: 400 };

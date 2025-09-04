@@ -60,7 +60,7 @@ export default function EditNameAndEmail() {
         />
       </div>
 
-      <Button type="submit" className="w-40 self-end">
+      <Button type="submit" className="w-40 self-end m-4">
         ثبت تغییرات
       </Button>
     </form>
