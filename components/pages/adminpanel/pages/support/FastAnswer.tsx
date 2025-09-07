@@ -1,22 +1,19 @@
-import React, { SetStateAction } from "react";
+import React from "react";
 import Modal from "../../../../common/Modal";
 import Button from "../../../../common/Button";
+import { useSupportStates } from "../../../../../hooks/admin/useSupportStates";
+import { useSupportHandlers } from "../../../../../hooks/admin/useSupportHandlers";
 
-interface Props {
-  showQuickReply: boolean;
-  quickReplyText: string;
-  setQuickReplyText: React.Dispatch<SetStateAction<string>>;
-  setShowQuickReply: React.Dispatch<SetStateAction<boolean>>;
-  submitQuickReply: () => void;
-}
+export default function FastAnswer() {
+  const {
+    showQuickReply,
+    setShowQuickReply,
+    quickReplyText,
+    setQuickReplyText,
+  } = useSupportStates();
 
-export default function FastAnswer({
-  showQuickReply,
-  quickReplyText,
-  setQuickReplyText,
-  setShowQuickReply,
-  submitQuickReply,
-}: Props) {
+  const { submitQuickReply } = useSupportHandlers();
+
   return (
     <Modal
       isOpen={showQuickReply}

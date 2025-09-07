@@ -1,3 +1,4 @@
+import { IconType } from "react-icons/lib";
 import {
   MdAssignment,
   MdChat,
@@ -32,7 +33,15 @@ export const usersCardInfo = [
   },
 ];
 
-export const userTicketInfo = [
+interface TicketType {
+  id: number;
+  title: string;
+  value: string;
+  color: "green" | "purple" | "orange" | "blue" | "red" | "yellow";
+  icon: IconType;
+}
+
+export const userTicketInfo: TicketType[] = [
   {
     id: 1,
     title: "کل تیکت‌ها",
