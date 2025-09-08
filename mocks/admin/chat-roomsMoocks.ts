@@ -8,7 +8,15 @@ import {
   MdSupport,
 } from "react-icons/md";
 
-export const usersCardInfo = [
+export interface TicketType {
+  id: number;
+  title: string;
+  value: string;
+  color: "green" | "purple" | "orange" | "blue" | "red" | "yellow";
+  icon: IconType;
+}
+
+export const usersCardInfo: TicketType[] = [
   { id: 1, title: "کل چت روم ها", value: "total", color: "blue", icon: MdChat },
   {
     id: 2,
@@ -32,14 +40,6 @@ export const usersCardInfo = [
     icon: MdChat,
   },
 ];
-
-interface TicketType {
-  id: number;
-  title: string;
-  value: string;
-  color: "green" | "purple" | "orange" | "blue" | "red" | "yellow";
-  icon: IconType;
-}
 
 export const userTicketInfo: TicketType[] = [
   {
