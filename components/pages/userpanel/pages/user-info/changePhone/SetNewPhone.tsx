@@ -35,6 +35,7 @@ export default function SetNewPhone() {
         });
         router.push("/panel/user-info");
         localStorage.removeItem("otp");
+        localStorage.removeItem("duration");
       } catch (err) {
         toast.error("کد وارد شده صحیح نمیباشد");
         console.error(err);

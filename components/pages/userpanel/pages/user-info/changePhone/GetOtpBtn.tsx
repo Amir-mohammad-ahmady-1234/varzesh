@@ -11,6 +11,7 @@ export default function GetOtpBtn() {
 
   useEffect(() => {
     localStorage.removeItem("otp");
+    localStorage.removeItem("duration");
   }, []);
 
   function handleSubmit() {
@@ -26,6 +27,7 @@ export default function GetOtpBtn() {
           duration: 3000,
         });
         localStorage.setItem("otp", res?.message?.otpcode ?? "");
+        localStorage.setItem("duration", "120");
         router.push("/panel/user-info/change-phone/check-otp");
       } catch (err) {
         toast.error("خطا در دریافت کد otp");
