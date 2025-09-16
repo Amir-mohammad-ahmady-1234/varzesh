@@ -1,8 +1,8 @@
 import React from "react";
 import Modal from "../../../../common/Modal";
 import Button from "../../../../common/Button";
-import { useSupportStates } from "../../../../../hooks/admin/useSupportStates";
-import { useSupportHandlers } from "../../../../../hooks/admin/useSupportHandlers";
+import { useSupportStates } from "../../../../../hooks/admin/support/useSupportStates";
+import { useSupportHandlers } from "../../../../../hooks/admin/support/useSupportHandlers";
 
 export default function FastAnswer() {
   const {

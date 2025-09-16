@@ -2,9 +2,9 @@ import React from "react";
 import Search from "../../../../common/admin/FilterCard/Search";
 import SortByStatus from "../../../../common/admin/FilterCard/SortByStatus";
 import SortByPriority from "../../../../common/admin/FilterCard/SortByPriority";
-import { useSupportStates } from "../../../../../hooks/admin/useSupportStates";
 import Sort from "../../../../common/admin/FilterCard/Sort";
-import { useSupportHandlers } from "../../../../../hooks/admin/useSupportHandlers";
+import { useSupportStates } from "../../../../../hooks/admin/support/useSupportStates";
+import { useSupportHandlers } from "../../../../../hooks/admin/support/useSupportHandlers";
 
 export default function CardMainContent() {
   const {

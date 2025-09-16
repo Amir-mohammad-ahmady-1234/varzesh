@@ -3,8 +3,8 @@ import TicketOptions from "./TicketCard/TicketOptions";
 import Card from "../../../../../styles/ui/Card";
 import TicketContent from "./TicketCard/TicketContent";
 import TicketTitle from "./TicketCard/TicketTitle";
-import { useSupportHandlers } from "../../../../../hooks/admin/useSupportHandlers";
-import { useSupportStates } from "../../../../../hooks/admin/useSupportStates";
+import { useSupportHandlers } from "../../../../../hooks/admin/support/useSupportHandlers";
+import { useSupportStates } from "../../../../../hooks/admin/support/useSupportStates";
 
 export default function UsersTickets() {
   const {

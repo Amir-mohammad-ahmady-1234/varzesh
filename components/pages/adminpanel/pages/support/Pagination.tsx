@@ -1,7 +1,7 @@
 import React from "react";
 import PageCount from "../../../../common/admin/Pagination/PageCount";
 import PaginationBtns from "../../../../common/admin/Pagination/PaginationBtns";
-import { useSupportStates } from "../../../../../hooks/admin/useSupportStates";
+import { useSupportStates } from "../../../../../hooks/admin/support/useSupportStates";
 
 export default function Pagination() {
   const {

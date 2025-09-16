@@ -9,11 +9,11 @@ import { userTicketInfo } from "../../../mocks/admin/chat-roomsMoocks";
 import CartContainer from "../../../components/common/admin/FilterCard/CartContainer";
 import CartHeader from "../../../components/common/admin/FilterCard/CartHeader";
 import FastAnswer from "../../../components/pages/adminpanel/pages/support/FastAnswer";
-import { useSupportStates } from "../../../hooks/admin/useSupportStates";
-import { useSupportHandlers } from "../../../hooks/admin/useSupportHandlers";
 import CardMainContent from "../../../components/pages/adminpanel/pages/support/CardMainContent";
 import UsersTickets from "../../../components/pages/adminpanel/pages/support/UsersTickets";
 import Pagination from "../../../components/pages/adminpanel/pages/support/Pagination";
+import { useSupportStates } from "../../../hooks/admin/support/useSupportStates";
+import { useSupportHandlers } from "../../../hooks/admin/support/useSupportHandlers";
 
 export default function SupportPage() {
   const {

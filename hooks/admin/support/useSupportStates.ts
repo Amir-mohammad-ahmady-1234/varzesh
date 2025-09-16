@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { mockSupportTickets } from "../../mocks/mock-data";
+import { mockSupportTickets } from "../../../mocks/mock-data";
 
 export function useSupportStates() {
   const [searchQuery, setSearchQuery] = useState("");

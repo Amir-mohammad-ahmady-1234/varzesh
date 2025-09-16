@@ -9,9 +9,9 @@ import CartContainer from "../../../components/pages/adminpanel/pages/chat-rooms
 import PageCount from "../../../components/common/admin/Pagination/PageCount";
 import PaginationBtns from "../../../components/common/admin/Pagination/PaginationBtns";
 import SettingModal from "../../../components/pages/adminpanel/pages/chat-rooms/Game-room/SettingModal";
-import { useChatRoom } from "../../../hooks/admin/useChatRoom";
 import { usersCardInfo } from "../../../mocks/admin/chat-roomsMoocks";
 import UsersActivities from "../../../components/common/admin/UsersActivities";
+import { useChatRoom } from "../../../hooks/admin/chat-room/useChatRoom";
 
 export default function ChatRoomsPage() {
   const {
