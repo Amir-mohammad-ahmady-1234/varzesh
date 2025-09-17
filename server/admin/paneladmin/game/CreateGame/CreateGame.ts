@@ -6,11 +6,43 @@ type TCreateGame = z.infer<typeof Game>;
 
 export async function CreateGame(input: TCreateGame) {
   try {
-    const parsed = Game.parse(input);
-    const game = await prisma.game.create({
-      data: parsed,
+    const validateData = Game.safeParse(input);
+
+    if (!validateData.success) {
+      const fieldErrors: Record<string, string> = {};
+
+      validateData.error.issues.forEach((err) => {
+        const field = err.path[0] as string;
+        fieldErrors[field] = err.message;
+      });
+
+      return {
+        message: { ...fieldErrors },
+      };
+    }
+    const {
+      secondthem,
+      firstthem,
+      data,
+      step,
+      League,
+      time,
+      description,
+      status,
+    } = validateData.data;
+    await prisma.game.create({
+      data: {
+        secondthem,
+        firstthem,
+        data,
+        step,
+        League,
+        time,
+        description,
+        status,
+      },
     });
-    return { game, staus: 200 };
+    return { staus: 200 };
   } catch {
     return { error: "مشکلی در سرور رخ داده است", status: 500 };
   }
