@@ -11,11 +11,11 @@ interface Props {
         totalMessages: number;
       }
     | {
-        total: number;
-        open: number;
-        inProgress: number;
-        resolved: number;
-        urgent: number;
+        totalsupport?: number;
+        activesupport?: number;
+        waitingsupport?: number;
+        approvedsupport?: number;
+        Immediatesupport?: number;
       };
   usersCardInfo: {
     id: number;
@@ -63,9 +63,9 @@ export default function UsersActivities({ stats, usersCardInfo }: Props) {
               <p
                 className={`text-2xl font-bold text-${cardInfo.color}-900 dark:text-${cardInfo.color}-100`}
               >
-                {stats[cardInfo.value as keyof typeof stats]?.toLocaleString(
-                  "fa-IR"
-                )}
+                {Number(
+                  stats[cardInfo.value as keyof typeof stats] ?? 0
+                ).toLocaleString("fa-IR")}
               </p>
             </div>
             <div className={`p-3 bg-${cardInfo.color}-600 rounded-lg`}>

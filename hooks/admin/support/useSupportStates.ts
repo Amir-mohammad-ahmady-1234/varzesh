@@ -1,5 +1,8 @@
+'use client'
+
 import { useState } from "react";
 import { mockSupportTickets } from "../../../mocks/mock-data";
+
 
 export function useSupportStates() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -104,7 +107,7 @@ export function useSupportStates() {
     totalPages,
     startIndex,
     paginatedTickets,
-    stats,
     itemsPerPage,
+    stats,
   };
 }
