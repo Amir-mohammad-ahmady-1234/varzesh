@@ -2,11 +2,11 @@ import SidebarWrapper from "../../components/pages/userpanel/layout/SidebarWrapp
 import { GetUserById } from "../../server/user/getuserbyid/GetUserById";
 import GetProfileDataUser from "../../server/user/paneluser/profile/GetProfileDataUser";
 
-export default async function UserPanelLayout({
-  children,
-}: {
+interface Props {
   children: React.ReactNode;
-}) {
+}
+
+export default async function UserPanelLayout({ children }: Props) {
   const userID = await GetUserById();
   if (!userID) return;
   const userInfo = await GetProfileDataUser(userID.userId);

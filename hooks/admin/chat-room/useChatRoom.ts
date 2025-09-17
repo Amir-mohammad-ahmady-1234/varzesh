@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { mockChatRooms } from "../../mocks/mock-data";
+import { mockChatRooms } from "../../../mocks/mock-data";
 
 export function useChatRoom() {
   const [searchQuery, setSearchQuery] = useState("");

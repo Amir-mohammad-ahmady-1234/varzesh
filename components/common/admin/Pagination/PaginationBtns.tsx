@@ -1,5 +1,5 @@
 import React, { SetStateAction } from "react";
-import Button from "../../../../../common/Button";
+import Button from "../../Button";
 
 interface Props {
   setCurrentPage: React.Dispatch<SetStateAction<number>>;

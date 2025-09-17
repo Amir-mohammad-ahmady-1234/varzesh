@@ -52,7 +52,7 @@ function Step1({ children, phone, setPhone, setOtp, setStep }: Props) {
         placeholder="شماره موبایل"
         title="شماره موبایل"
         err={typeof state.message === "object" ? state.message.phone ?? "" : ""}
-        value={phone}
+        value={phone ?? ""}
         changeFn={(e) => setPhone(e.target.value)}
       />
 

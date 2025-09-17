@@ -1,8 +1,7 @@
 import { authenticator } from "otplib";
 import prisma from "../../../../lib/db";
-import { TPostProfileUser } from "../../../../types/user/profile/type";
 
-export default async function PutphoneUser({ id }: TPostProfileUser) {
+export default async function PutphoneUser(id: number) {
   try {
     if (!id) {
       return { error: "اطلاعات ارسالی ناقص است", status: 400 };

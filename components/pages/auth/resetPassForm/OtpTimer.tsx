@@ -5,10 +5,14 @@ import React, { useEffect, useState } from "react";
 type OtpTimerProps = {
   duration?: number;
   setStep?: React.Dispatch<React.SetStateAction<number>>;
+  handler?: () => void;
 };
 
-function OtpTimer({ duration = 300, setStep }: OtpTimerProps) {
-  const [timeLeft, setTimeLeft] = useState(duration);
+function OtpTimer({ duration = 300, setStep, handler }: OtpTimerProps) {
+  const locDuration = localStorage.getItem("duration");
+  const [timeLeft, setTimeLeft] = useState(
+    locDuration ? +locDuration : duration
+  );
 
   useEffect(() => {
     if (timeLeft <= 0) {
@@ -16,14 +20,21 @@ function OtpTimer({ duration = 300, setStep }: OtpTimerProps) {
     }
 
     const interval = setInterval(() => {
+      if (locDuration)
+        localStorage.setItem("duration", (+locDuration - 1).toString());
+
       setTimeLeft((prev) => prev - 1);
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [timeLeft]);
+  }, [timeLeft, locDuration]);
 
   const minutes = Math.floor(timeLeft / 60);
   const seconds = timeLeft % 60;
+
+  if (timeLeft <= 0) {
+    handler?.();
+  }
 
   return (
     <div className="flex items-center justify-center gap-2 text-lg font-bold text-neutral-100">
@@ -39,7 +50,12 @@ function OtpTimer({ duration = 300, setStep }: OtpTimerProps) {
         </>
       )}
       {timeLeft <= 0 && (
-        <span className="text-sm" onClick={() => setStep?.(1)}>
+        <span
+          className="text-sm"
+          onClick={() => {
+            setStep?.(1);
+          }}
+        >
           دریافت مجدد
         </span>
       )}

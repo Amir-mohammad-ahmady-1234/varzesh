@@ -27,7 +27,6 @@ export async function putProfileInfo(
       const field = err.path[0] as string;
       fieldErrors[field] = err.message;
     });
-
     return {
       message: { ...fieldErrors },
     };
@@ -41,12 +40,12 @@ export async function putProfileInfo(
       return { message: { otherErr: "کاربر یافت نشد" } };
 
     const { status, message, error, path } = await PostProfileUser({
-      id: 3,
+      id: userID.userId,
       email,
       file: profile,
     });
 
-    if (status !== 200 || error) return { message: { otherErr: error } };
+    if (status !== 200 || error) return { message: { email: error } };
 
     return { message: { success: message, path } };
   } catch {

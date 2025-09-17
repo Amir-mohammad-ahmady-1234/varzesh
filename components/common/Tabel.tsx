@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { BiEdit, BiTrash } from "react-icons/bi";
 import { FiMoreVertical } from "react-icons/fi";
 import { MdClose } from "react-icons/md";
-import Modal from "../../styles/ui/Modal";
+import Modal from "./Modal";
 
 export type TableData = {
   id: string | number;

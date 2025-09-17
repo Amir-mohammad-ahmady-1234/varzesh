@@ -29,10 +29,10 @@ export async function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
-  // if (!token || url.pathname === "/auth") {
-  //   url.pathname = "/auth/login";
-  //   return NextResponse.redirect(url);
-  // }
+  if (!token || url.pathname === "/auth") {
+    url.pathname = "/auth/login";
+    return NextResponse.redirect(url);
+  }
 
   return NextResponse.next();
 }

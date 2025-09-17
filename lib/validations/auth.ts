@@ -25,7 +25,7 @@ export const LoginSchema = z.object({
 
 export const getOtpStateSchema = z.object({
   phone: z
-    .string()
+    .string({ message: "از اعداد برای شماره تلفن استفاده کنید" })
     .regex(/^09\d{9}$/, "شماره تلفن باید معتبر باشد")
     .length(11, "شماره تلفن باید ۱۱ رقم باشد"),
 });

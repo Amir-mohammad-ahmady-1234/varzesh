@@ -12,7 +12,7 @@ interface Props {
 }
 
 export default function Items({ item, pathname }: Props) {
-  const isActive = pathname === item.href;
+  const isActive = pathname.startsWith(item.href);
 
   return (
     <div className="flex items-center" key={item.href}>

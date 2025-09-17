@@ -47,7 +47,7 @@ function Step2({ children, otp, setOtp, setStep }: Props) {
         type="otp"
         placeholder="کد otp"
         title="کد otp"
-        value={otp}
+        value={otp ?? ""}
         changeFn={(e) => setOtp(e.target.value)}
         err={state.message.otp}
       />

@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { mockChatRooms } from "../../mocks/mock-data";
-import { Message } from "../../app/admin/chat-rooms/[id]/page";
-import { mockMessages } from "../../mocks/admin/chatRoom/roomPageMoocks";
 import { useParams } from "next/navigation";
+import { mockChatRooms } from "../../../mocks/mock-data";
+import { Message } from "../../../app/admin/chat-rooms/[id]/page";
+import { mockMessages } from "../../../mocks/admin/chatRoom/roomPageMoocks";
 
 export function useRoomPage() {
   const params = useParams();

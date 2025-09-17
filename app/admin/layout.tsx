@@ -22,9 +22,9 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // const tokenId = await GetUserById();
+  const tokenId = await GetUserById();
 
-  // if (tokenId && tokenId.role === "USER") return redirect("/");
+  if (tokenId && tokenId.role === "USER") return redirect("/");
 
   return (
     <html

@@ -13,7 +13,7 @@ import MessageOptions from "../../../../components/pages/adminpanel/pages/chat-r
 import MessageInput from "../../../../components/pages/adminpanel/pages/chat-rooms/RoomPage/MessageInput";
 import ControlCard from "../../../../components/common/admin/ControlsCard/ControlCard";
 import InfoCard from "../../../../components/common/admin/ControlsCard/InfoCard";
-import { useRoomPage } from "../../../../hooks/admin/useRoomPage";
+import { useRoomPage } from "../../../../hooks/admin/chat-room/useRoomPage";
 
 export interface Message {
   id: string;

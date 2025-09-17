@@ -1,5 +1,7 @@
 import { redirect } from "next/navigation";
 
-export default function PanelPage() {
+export default function page() {
   redirect("/panel/user-info");
+
+  return null;
 }
