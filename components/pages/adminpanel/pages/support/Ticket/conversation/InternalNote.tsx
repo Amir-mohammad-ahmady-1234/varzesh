@@ -6,37 +6,33 @@ import { useTicketStates } from "../../../../../../../hooks/admin/support/useTic
 import { useTicketHandlers } from "../../../../../../../hooks/admin/support/useTicketHandlers";
 
 export default function InternalNote() {
-  const { showInternalNote, internalNote, setInternalNote } = useTicketStates();
+  const { internalNote, setInternalNote } = useTicketStates();
 
   const { handleAddInternalNote } = useTicketHandlers();
 
   return (
-    <>
-      {showInternalNote && (
-        <div className="p-4 border-t border-gray-200 dark:border-gray-700 bg-yellow-50 dark:bg-yellow-950/20">
-          <div className="flex gap-2">
-            <Input
-              type="text"
-              placeholder="یادداشت داخلی (فقط برای تیم پشتیبانی قابل مشاهده است)..."
-              value={internalNote}
-              onChange={(e) => setInternalNote(e.target.value)}
-              className="flex-1"
-              onKeyDown={(e) => {
-                if (e.key === "Enter" && internalNote.trim()) {
-                  handleAddInternalNote();
-                }
-              }}
-            />
-            <Button
-              onClick={handleAddInternalNote}
-              disabled={!internalNote.trim()}
-              className="cursor-pointer"
-            >
-              <MdNote className="w-4 h-4" />
-            </Button>
-          </div>
-        </div>
-      )}
-    </>
+    <div className="p-4 border-t border-gray-200 dark:border-gray-700 bg-yellow-50 dark:bg-yellow-950/20">
+      <div className="flex gap-2">
+        <Input
+          type="text"
+          placeholder="یادداشت داخلی (فقط برای تیم پشتیبانی قابل مشاهده است)..."
+          value={internalNote}
+          onChange={(e) => setInternalNote(e.target.value)}
+          className="flex-1"
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && internalNote.trim()) {
+              handleAddInternalNote();
+            }
+          }}
+        />
+        <Button
+          onClick={handleAddInternalNote}
+          disabled={!internalNote.trim()}
+          className="cursor-pointer"
+        >
+          <MdNote className="w-4 h-4" />
+        </Button>
+      </div>
+    </div>
   );
 }

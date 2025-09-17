@@ -7,8 +7,11 @@ import ReplyInput from "./conversation/ReplyInput";
 import TicketInfo from "./ticket_info_and_actions/TicketInfo";
 import QuickActions from "./ticket_info_and_actions/QuickActions ";
 import UserInfo from "./ticket_info_and_actions/UserInfo";
+import { useTicketStates } from "../../../../../../hooks/admin/support/useTicketStates";
 
 export default function TicketContent() {
+  const { showInternalNote } = useTicketStates();
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
       {/* Conversation */}
@@ -18,7 +21,7 @@ export default function TicketContent() {
 
           <Messages />
 
-          <InternalNote />
+          {showInternalNote && <InternalNote />}
 
           <ReplyInput />
         </Card>
