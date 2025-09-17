@@ -1,5 +1,15 @@
 import { MdChat, MdPeople, MdSportsFootball, MdSupport } from "react-icons/md";
-import { mockDashboardStats } from "../mock-data";
+import { DashboardStats } from "../../types/adminPanelTypes";
+export const mockDashboardStats: DashboardStats = {
+  totalUsers: 15420,
+  activeUsers: 3240,
+  totalGames: 156,
+  liveGames: 3,
+  totalMessages: 89650,
+  todayMessages: 2340,
+  openTickets: 23,
+  resolvedTickets: 187,
+};
 
 export const stats = [
   {
