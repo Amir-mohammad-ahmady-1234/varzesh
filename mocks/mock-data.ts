@@ -3,7 +3,6 @@ import type {
   ChatRoom,
   Game,
   Notification,
-  DashboardStats,
   SupportTicket,
 } from "../types/adminPanelTypes";
 
@@ -223,17 +222,6 @@ export const mockNotifications: Notification[] = [
     createdAt: "2024-01-20T10:00:00Z",
   },
 ];
-
-export const mockDashboardStats: DashboardStats = {
-  totalUsers: 15420,
-  activeUsers: 3240,
-  totalGames: 156,
-  liveGames: 3,
-  totalMessages: 89650,
-  todayMessages: 2340,
-  openTickets: 23,
-  resolvedTickets: 187,
-};
 
 export const mockSupportTickets: SupportTicket[] = [
   {

@@ -3,7 +3,9 @@ import { stats } from "../../../../../mocks/admin/dashboardMoocks";
 import Card from "../../../../../styles/ui/Card";
 import { MdTrendingDown, MdTrendingUp } from "react-icons/md";
 
-export default function UsersStatistics() {
+export default async function UsersStatistics() {
+  // const res = await BoxInfoDashboardA();
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
       {stats.map((stat, index) => {
