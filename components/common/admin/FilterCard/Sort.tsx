@@ -3,9 +3,11 @@ import Button from "../../Button";
 import { MdSort } from "react-icons/md";
 
 interface Props {
-  sortBy: "createdAt" | "priority" | "status" | "subject";
-  handleSort: (column: "createdAt" | "priority" | "status" | "subject") => void;
-  sortOrder: "desc" | "asc";
+  sortBy?: "createdAt" | "priority" | "status" | "subject";
+  handleSort?: (
+    column: "createdAt" | "priority" | "status" | "subject"
+  ) => void;
+  sortOrder?: "desc" | "asc";
 }
 
 export default function Sort({ sortBy, handleSort, sortOrder }: Props) {
@@ -17,7 +19,7 @@ export default function Sort({ sortBy, handleSort, sortOrder }: Props) {
       <Button
         variant={sortBy === "createdAt" ? "primary" : "outline"}
         size="sm"
-        onClick={() => handleSort("createdAt")}
+        onClick={() => handleSort?.("createdAt")}
         className="cursor-pointer"
       >
         تاریخ
@@ -32,7 +34,7 @@ export default function Sort({ sortBy, handleSort, sortOrder }: Props) {
       <Button
         variant={sortBy === "priority" ? "primary" : "outline"}
         size="sm"
-        onClick={() => handleSort("priority")}
+        onClick={() => handleSort?.("priority")}
         className="cursor-pointer"
       >
         اولویت
@@ -47,7 +49,7 @@ export default function Sort({ sortBy, handleSort, sortOrder }: Props) {
       <Button
         variant={sortBy === "status" ? "primary" : "outline"}
         size="sm"
-        onClick={() => handleSort("status")}
+        onClick={() => handleSort?.("status")}
         className="cursor-pointer"
       >
         وضعیت

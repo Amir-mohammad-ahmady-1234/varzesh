@@ -2,11 +2,11 @@ import React, { SetStateAction } from "react";
 import Button from "../../Button";
 
 interface Props {
-  statusFilter: "all" | "open" | "in-progress" | "resolved" | "closed";
-  setStatusFilter: React.Dispatch<
+  statusFilter?: "all" | "open" | "in-progress" | "resolved" | "closed";
+  setStatusFilter?: React.Dispatch<
     SetStateAction<"all" | "open" | "in-progress" | "resolved" | "closed">
   >;
-  getStatusText: (status: string) => string;
+  getStatusText?: (status: string) => string;
 }
 
 export default function SortByStatus({
@@ -25,13 +25,13 @@ export default function SortByStatus({
           variant={statusFilter === status ? "primary" : "outline"}
           size="sm"
           onClick={() =>
-            setStatusFilter(
+            setStatusFilter?.(
               status as "all" | "open" | "in-progress" | "resolved" | "closed"
             )
           }
           className="cursor-pointer"
         >
-          {status === "all" ? "همه" : getStatusText(status)}
+          {status === "all" ? "همه" : getStatusText?.(status)}
         </Button>
       ))}
     </div>
