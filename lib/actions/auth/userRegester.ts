@@ -12,6 +12,7 @@ export interface userRegesterState {
     phone?: string;
     password?: string;
     otherErr?: string;
+    success?: string;
   };
 }
 
@@ -78,7 +79,7 @@ export async function userRegester(
       maxAge: 30 * 24 * 60 * 60,
     });
 
-    return { message: "ثبت‌ نام موفق" };
+    return { message: { success: "ورود موفق" } };
   } catch (err) {
     console.error(err);
     return { message: { otherErr: "خطای سرور" } };

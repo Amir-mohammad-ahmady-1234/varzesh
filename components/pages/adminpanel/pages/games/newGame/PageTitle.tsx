@@ -8,7 +8,6 @@ export default function PageTitle() {
       <Link href="/admin/games">
         <Button variant="ghost">← بازگشت</Button>
       </Link>
-      <h1 className="text-3xl font-bold text-(--text-primary)">بازی جدید</h1>
     </div>
   );
 }

@@ -7,6 +7,7 @@ import {
   userRegester,
   userRegesterState,
 } from "../../../../lib/actions/auth/userRegester";
+import Input from "../../../common/Input";
 
 const initialState: userRegesterState = {
   message: {},
@@ -20,7 +21,7 @@ function RegesterForm({ children }: { children: React.ReactNode }) {
   console.log(state);
 
   useEffect(() => {
-    if (state.message === "ثبت‌ نام موفق") {
+    if (state.message.success === "ثبت‌ نام موفق") {
       toast.success("ثبت‌ نام موفق");
       redirect("/");
     }
@@ -42,69 +43,34 @@ function RegesterForm({ children }: { children: React.ReactNode }) {
       }}
       className="flex flex-col items-center space-y-4 w-full max-w-[589px]"
     >
-      <div className="flex flex-col w-full max-w-[589px]">
-        <label htmlFor="name" className="text-right">
-          نام و نام خانوادگی* :
-        </label>
-        <input
-          id="name"
-          name="name"
-          type="text"
-          placeholder="نام و نام خانوادگی"
-          className="border p-2 rounded"
-        />
-        {state.message.firstname && (
-          <p className="text-error-500 text-sm">{state.message.firstname}</p>
-        )}
-      </div>
-
-      <div className="flex flex-col w-full max-w-[589px]">
-        <label htmlFor="phone" className="text-right">
-          شماره موبایل* :
-        </label>
-        <input
-          id="phone"
-          name="phone"
-          type="text"
-          placeholder="شماره موبایل"
-          className="border p-2 rounded"
-        />
-        {state.message.phone && (
-          <p className="text-error-500 text-sm">{state.message.phone}</p>
-        )}
-      </div>
-
-      <div className="flex flex-col w-full max-w-[589px]">
-        <label htmlFor="email" className="text-right">
-          ایمیل آدرس* :
-        </label>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          placeholder="ایمیل خود را وارد کنید"
-          className="border p-2 rounded"
-        />
-        {state.message.email && (
-          <p className="text-error-500 text-sm">{state.message.email}</p>
-        )}
-      </div>
-
-      <div className="flex flex-col w-full max-w-[589px]">
-        <label htmlFor="password" className="text-right">
-          رمز عبور* :
-        </label>
-        <input
-          id="password"
-          name="password"
-          type="password"
-          placeholder="رمز عبور"
-          className="border p-2 rounded"
-        />
-        {state.message.password && (
-          <p className="text-error-500 text-sm">{state.message.password}</p>
-        )}
-      </div>
+      <Input
+        name="name"
+        type="text"
+        placeholder="نام و نام خانوادگی"
+        title="نام و نام خانوادگی"
+        err={state.message.firstname}
+      />
+      <Input
+        name="phone"
+        type="text"
+        placeholder="شماره تلفن"
+        title="شماره تلفن"
+        err={state.message.phone}
+      />
+      <Input
+        name="email"
+        type="text"
+        placeholder="ایمل خود را وارد کنید"
+        title="ایمیل آدرس"
+        err={state.message.email}
+      />
+      <Input
+        name="password"
+        type="password"
+        placeholder="رمز عبور"
+        title="رمز عبور"
+        err={state.message?.password}
+      />
 
       {children}
     </form>

@@ -3,8 +3,8 @@ import "./globals.css";
 import type React from "react";
 import type { Metadata } from "next";
 import { Vazirmatn } from "next/font/google";
-import { GetUserById } from "../../server/user/getuserbyid/GetUserById";
-import { redirect } from "next/navigation";
+// import { GetUserById } from "../../server/user/getuserbyid/GetUserById";
+// import { redirect } from "next/navigation";
 
 const vazirmatn = Vazirmatn({
   subsets: ["arabic"],
@@ -22,9 +22,9 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const tokenId = await GetUserById();
+  // const tokenId = await GetUserById();
 
-  if (tokenId && tokenId.role === "USER") return redirect("/");
+  // if (tokenId && tokenId.role === "USER") return redirect("/");
 
   return (
     <html

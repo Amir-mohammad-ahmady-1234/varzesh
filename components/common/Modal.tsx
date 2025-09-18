@@ -72,9 +72,9 @@ export default function Modal({
         {/* Header */}
         {title && (
           <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
-            <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+            <h4 className="text-md font-semibold text-gray-900 dark:text-gray-100">
               {title}
-            </h2>
+            </h4>
             <Button
               onClick={onClose}
               className="p-1 rounded-lg text-gray-400 hover:text-gray-600 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"

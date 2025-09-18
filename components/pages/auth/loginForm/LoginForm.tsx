@@ -14,7 +14,10 @@ const initialState: userLoginState = {
 };
 
 function LoginForm({ children }: { children?: React.ReactNode }) {
-  const [state, formAction] = useActionState(userLogin, initialState);
+  const [state, formAction] = useActionState<userLoginState, FormData>(
+    userLogin,
+    initialState
+  );
 
   useEffect(() => {
     if (state.message.success) {
