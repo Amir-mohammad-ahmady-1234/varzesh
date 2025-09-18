@@ -3,14 +3,18 @@ import prisma from "../../../../../lib/db";
 type TGetSupportFilterQuery = {
   serch?: string;
   status?: "Blocked" | "Waiting" | "Approved";
-  priority?: "NORMAL" | "URGENT";
+  priority?: "NORMAL" | "URGENT" | "LOW" | "HIGH";
   sort?: "asc" | "desc";
+  page?: number;
+  limit?: number;
 };
 export async function GetSupportFilterQuery({
   serch,
   status,
   priority,
   sort,
+  page = 1,
+  limit = 10,
 }: TGetSupportFilterQuery) {
   try {
     const where = {} as Prisma.TicketWhereInput;
@@ -27,11 +31,25 @@ export async function GetSupportFilterQuery({
     if (priority) {
       where.priority = priority;
     }
-    const supports = await prisma.ticket.findMany({
-      where,
-      orderBy: { createdAt: sort || "desc" },
-    });
-    return supports;
+    const skip = (page - 1) * limit;
+    const [supports, total] = await Promise.all([
+      prisma.ticket.findMany({
+        skip,
+        take: limit,
+        where,
+        orderBy: { createdAt: sort || "desc" },
+      }),
+      prisma.ticket.count({ where }),
+    ]);
+    return {
+      data: supports,
+      pagination: {
+        total,
+        page,
+        limit,
+        totalPages: Math.ceil(total / limit),
+      },
+    };
   } catch {
     return { error: "مشکلی در سرور رخ داده است", status: 500 };
   }
