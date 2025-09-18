@@ -1,37 +1,23 @@
+"use client";
 import React from "react";
 import Badge from "../../../../../../styles/ui/Badge";
 import { MdPriorityHigh } from "react-icons/md";
 import { cn } from "../../../../../../lib/utils";
-import { SupportTicket } from "../../../../../../types/adminPanelTypes";
+import { TicketType } from "../../../../../../types/adminPanelTypes";
+import { useSupportHandlers } from "../../../../../../hooks/admin/support/useSupportHandlers";
 
 interface Props {
-  getStatusColor: (
-    status: string
-  ) => "secondary" | "success" | "warning" | "error";
-  getStatusText: (status: string) => string;
-  getPriorityColor: (
-    priority: string
-  ) =>
-    | "text-red-600"
-    | "text-orange-600"
-    | "text-yellow-600"
-    | "text-green-600"
-    | "text-gray-500";
-  getPriorityText: (priority: string) => string;
-  ticket: SupportTicket;
+  ticket: TicketType;
 }
 
-export default function TicketTitle({
-  getStatusColor,
-  getStatusText,
-  getPriorityColor,
-  getPriorityText,
-  ticket,
-}: Props) {
+export default function TicketTitle({ ticket }: Props) {
+  const { getStatusColor, getStatusText, getPriorityColor, getPriorityText } =
+    useSupportHandlers();
+
   return (
     <div className="flex items-center gap-2 mb-2 flex-wrap">
       <h3 className="font-semibold text-lg text-gray-900 dark:text-gray-100">
-        {ticket.subject}
+        {ticket.title}
       </h3>
       <Badge variant={getStatusColor(ticket.status)} size="sm">
         {getStatusText(ticket.status)}

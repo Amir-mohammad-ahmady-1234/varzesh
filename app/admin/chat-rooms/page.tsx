@@ -3,8 +3,6 @@ import MainLayout from "../../../components/pages/adminpanel/layout/MainLayout";
 import EmptyState from "../../../styles/ui/EmptyState";
 import Button from "../../../components/common/Button";
 import PageTitle from "../../../components/pages/adminpanel/pages/chat-rooms/PageTitle";
-import FilterAndSearch from "../../../components/pages/adminpanel/pages/chat-rooms/FilterAndSearch/FilterAndSearchContainer";
-import SubmitingInputs from "../../../components/pages/adminpanel/pages/chat-rooms/FilterAndSearch/SubmitingInputs";
 import CartContainer from "../../../components/pages/adminpanel/pages/chat-rooms/Game-room/CartContainer";
 import PageCount from "../../../components/common/admin/Pagination/PageCount";
 import PaginationBtns from "../../../components/common/admin/Pagination/PaginationBtns";
@@ -12,6 +10,11 @@ import SettingModal from "../../../components/pages/adminpanel/pages/chat-rooms/
 import { usersCardInfo } from "../../../mocks/admin/chat-roomsMoocks";
 import UsersActivities from "../../../components/common/admin/UsersActivities";
 import { useChatRoom } from "../../../hooks/admin/chat-room/useChatRoom";
+
+import { CardContent } from "../../../styles/ui/Card";
+import CartHeader from "../../../components/common/admin/FilterCard/CartHeader";
+import CardMainContent from "../../../components/pages/adminpanel/pages/support/CardMainContent";
+import FilterCartContainer from "../../../components/common/admin/FilterCard/CartContainer";
 
 export default function ChatRoomsPage() {
   const {
@@ -40,12 +43,16 @@ export default function ChatRoomsPage() {
 
       <UsersActivities stats={stats} usersCardInfo={usersCardInfo} />
 
-      <FilterAndSearch>
-        <SubmitingInputs
-          searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
-        />
-      </FilterAndSearch>
+      <FilterCartContainer>
+        <CartHeader title="جستجو و فیلتر چت روم‌ها بر اساس معیارهای مختلف" />
+        <CardContent>
+          <CardMainContent
+            placeHolder="جستجو بر اساس نام چت روم، توضیحات یا نوع..."
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+          />
+        </CardContent>
+      </FilterCartContainer>
 
       {paginatedRooms.length === 0 ? (
         <EmptyState

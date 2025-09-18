@@ -1,19 +1,22 @@
 import MainLayout from "../../../components/pages/adminpanel/layout/MainLayout";
-import { CardContent } from "../../../styles/ui/Card";
 import PageTitle from "../../../components/pages/adminpanel/pages/support/PageTitle";
 import UsersActivities from "../../../components/common/admin/UsersActivities";
 import { userTicketInfo } from "../../../mocks/admin/chat-roomsMoocks";
-import CartContainer from "../../../components/common/admin/FilterCard/CartContainer";
-import CartHeader from "../../../components/common/admin/FilterCard/CartHeader";
 import FastAnswer from "../../../components/pages/adminpanel/pages/support/FastAnswer";
-import CardMainContent from "../../../components/pages/adminpanel/pages/support/CardMainContent";
 import EmptyAndPagination from "../../../components/pages/adminpanel/pages/support/EmptyAndPagination";
-import { getStats } from "../../../lib/getStats";
+import FilterAndSearch from "../../../components/pages/adminpanel/pages/support/FilterAndSearch";
+import { GetSupportFilterQuery } from "../../../server/admin/paneladmin/support/GetSupportFilterQurey/GetSupportFilterQurey";
+import supportboxInformation from "../../../server/admin/paneladmin/support/supportboxInformation";
+import UsersTickets from "../../../components/pages/adminpanel/pages/support/UsersTickets";
 
-export default async function SupportPage() {
-  const stats = await getStats();
+interface Props {
+  searchParams: { search?: string };
+}
 
-  console.log(stats);
+export default async function SupportPage({ searchParams }: Props) {
+  const stats = await supportboxInformation();
+  const search = (await searchParams).search;
+  const tickets = await GetSupportFilterQuery({ serch: search?.trim() });
 
   if (stats.error) return <p>{stats.error}</p>;
 
@@ -23,14 +26,11 @@ export default async function SupportPage() {
 
       <UsersActivities stats={stats} usersCardInfo={userTicketInfo} />
 
-      <CartContainer>
-        <CartHeader title="جستجو و فیلتر تیکت‌های پشتیبانی بر اساس معیارهای مختلف" />
-        <CardContent>
-          <CardMainContent />
-        </CardContent>
-      </CartContainer>
+      <FilterAndSearch />
 
-      <EmptyAndPagination />
+      <EmptyAndPagination>
+        <UsersTickets tickets={tickets} />
+      </EmptyAndPagination>
 
       <FastAnswer />
     </MainLayout>
