@@ -10,9 +10,9 @@ export default async function supportboxInformation() {
       Immediatesupport,
     ] = await Promise.all([
       prisma.ticket.count(),
-      prisma.ticket.count({ where: { status: "Approved" } }),
-      prisma.ticket.count({ where: { status: "Blocked" } }),
+      prisma.ticket.count({ where: { status: "Open" } }),
       prisma.ticket.count({ where: { status: "Waiting" } }),
+      prisma.ticket.count({ where: { status: "Approved" } }),
       prisma.ticket.count({ where: { priority: "URGENT" } }),
     ]);
     return {
@@ -51,7 +51,7 @@ export async function getApprovedSupportCount() {
 export async function getBlockedSupportCount() {
   try {
     const blockedSupport = await prisma.ticket.count({
-      where: { status: "Blocked" },
+      where: { status: "Open" },
     });
     return { status: 200, blockedSupport };
   } catch {

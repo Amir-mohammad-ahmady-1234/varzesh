@@ -13,6 +13,8 @@ import { getStats } from "../../../lib/getStats";
 export default async function SupportPage() {
   const stats = await getStats();
 
+  console.log(stats);
+
   if (stats.error) return <p>{stats.error}</p>;
 
   return (
