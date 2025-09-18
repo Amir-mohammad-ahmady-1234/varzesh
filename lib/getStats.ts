@@ -2,12 +2,12 @@ import supportboxInformation from "../server/admin/paneladmin/support/supportbox
 
 export async function getStats() {
   const {
-    Immediatesupport,
-    activesupport,
-    approvedsupport,
-    error,
     totalsupport,
+    activesupport,
     waitingsupport,
+    approvedsupport,
+    Immediatesupport,
+    error,
   } = await supportboxInformation();
 
   if (error) return { error: error };
