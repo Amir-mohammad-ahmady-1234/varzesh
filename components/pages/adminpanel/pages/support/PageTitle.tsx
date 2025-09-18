@@ -1,24 +1,17 @@
+'use client'
 import React from "react";
 import PageHeader from "../../../../../styles/ui/PageHeader";
 import Button from "../../../../common/Button";
 import { MdDownload, MdRefresh } from "react-icons/md";
+import { useSupportHandlers } from "../../../../../hooks/admin/support/useSupportHandlers";
 
-interface Props {
-  stats: {
-    total: number;
-    open: number;
-    inProgress: number;
-    resolved: number;
-    urgent: number;
-  };
-  exportToCSV: () => void;
-}
+export default function PageTitle({ totalsupport }: { totalsupport: number }) {
+  const { exportToCSV } = useSupportHandlers();
 
-export default function PageTitle({stats,exportToCSV}:Props) {
   return (
     <PageHeader
       title="مدیریت پشتیبانی"
-      description={`مدیریت ${stats.total.toLocaleString(
+      description={`مدیریت ${totalsupport?.toLocaleString(
         "fa-IR"
       )} تیکت پشتیبانی و درخواست‌های کاربران`}
       action={

@@ -1,3 +1,4 @@
+'use client'
 import React from "react";
 import Search from "../../../../common/admin/FilterCard/Search";
 import SortByStatus from "../../../../common/admin/FilterCard/SortByStatus";

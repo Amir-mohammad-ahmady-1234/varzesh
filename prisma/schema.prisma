@@ -75,9 +75,10 @@ enum Role {
   ADMIN
 }
 enum Status {
-  Blocked
+  Open
   Waiting
   Approved
+  URGENT
 }
 enum GameStatus {
   live
