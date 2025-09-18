@@ -1,4 +1,4 @@
-import { Prisma } from "@prisma/client";
+import { Prisma, Status } from "@prisma/client";
 import prisma from "../../../../../lib/db";
 type TGetSupportFilterQuery = {
   serch?: string;
@@ -26,7 +26,7 @@ export async function GetSupportFilterQuery({
       ];
     }
     if (status) {
-      where.status = status;
+      where.status = status as Status;
     }
     if (priority) {
       where.priority = priority;
