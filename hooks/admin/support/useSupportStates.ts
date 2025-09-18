@@ -1,8 +1,7 @@
-'use client'
+"use client";
 
 import { useState } from "react";
 import { mockSupportTickets } from "../../../mocks/mock-data";
-
 
 export function useSupportStates() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -75,15 +74,6 @@ export function useSupportStates() {
     startIndex + itemsPerPage
   );
 
-  const stats = {
-    total: mockSupportTickets.length,
-    open: mockSupportTickets.filter((t) => t.status === "open").length,
-    inProgress: mockSupportTickets.filter((t) => t.status === "in-progress")
-      .length,
-    resolved: mockSupportTickets.filter((t) => t.status === "resolved").length,
-    urgent: mockSupportTickets.filter((t) => t.priority === "urgent").length,
-  };
-
   return {
     searchQuery,
     setSearchQuery,
@@ -108,6 +98,5 @@ export function useSupportStates() {
     startIndex,
     paginatedTickets,
     itemsPerPage,
-    stats,
   };
 }

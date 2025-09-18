@@ -93,4 +93,6 @@ enum League {
 enum Priority {
   NORMAL
   URGENT
+  LOW
+  HIGH  
 }
