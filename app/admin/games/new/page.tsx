@@ -3,7 +3,7 @@ import Topbar from "../../../../components/pages/adminpanel/layout/Topbar";
 import FormTabelAddGame from "../../../../components/pages/adminpanel/pages/games/create/FormTabelAddGame";
 import { CreateGame } from "../../../../server/admin/paneladmin/game/CreateGame/CreateGame";
 
-export default function NewGamePage() {
+export default function page() {
   async function handleCreateGame(payload: any) {
     "use server";
     return await CreateGame(payload);
