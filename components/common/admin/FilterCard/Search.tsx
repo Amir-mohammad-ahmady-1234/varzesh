@@ -8,10 +8,10 @@ interface Props {
   searchQuery?: string;
   setSearchQuery?: React.Dispatch<SetStateAction<string>>;
   setStatusFilter?: React.Dispatch<
-    SetStateAction<"all" | "open" | "in-progress" | "resolved" | "closed">
+    SetStateAction<"all" | "Open" | "Waiting" | "Approved" | "URGENT">
   >;
   setPriorityFilter?: React.Dispatch<
-    SetStateAction<"all" | "low" | "medium" | "high" | "urgent">
+    SetStateAction<"all" | "URGENT" | "HIGH" | "NORMAL" | "LOW">
   >;
   placehlderText?: string;
 }

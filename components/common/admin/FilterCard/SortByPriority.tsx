@@ -2,9 +2,9 @@ import React, { SetStateAction } from "react";
 import Button from "../../Button";
 
 interface Props {
-  priorityFilter?: "all" | "urgent" | "high" | "medium" | "low";
+  priorityFilter?: "all" | "URGENT" | "HIGH" | "NORMAL" | "LOW";
   setPriorityFilter?: React.Dispatch<
-    SetStateAction<"all" | "urgent" | "high" | "medium" | "low">
+    SetStateAction<"all" | "URGENT" | "HIGH" | "NORMAL" | "LOW">
   >;
   getPriorityText?: (priority: string) => string;
 }
@@ -19,14 +19,14 @@ export default function SortByPriority({
       <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
         اولویت:
       </span>
-      {["all", "urgent", "high", "medium", "low"].map((priority) => (
+      {["all", "URGENT", "HIGH", "NORMAL", "LOW"].map((priority) => (
         <Button
           key={priority}
           variant={priorityFilter === priority ? "primary" : "outline"}
           size="sm"
           onClick={() =>
             setPriorityFilter?.(
-              priority as "all" | "urgent" | "high" | "medium" | "low"
+              priority as "all" | "URGENT" | "HIGH" | "NORMAL" | "LOW"
             )
           }
           className="cursor-pointer"

@@ -65,7 +65,7 @@ export function useTicketHandlers() {
   };
 
   const handleStatusChange = (
-    newStatus: "open" | "in-progress" | "resolved" | "closed"
+    newStatus: "Open" | "Waiting" | "Approved" | "URGENT"
   ) => {
     if (!ticket) return;
 
@@ -134,13 +134,13 @@ export function useTicketHandlers() {
 
   const getPriorityColor = (priority: string) => {
     switch (priority) {
-      case "urgent":
+      case "URGENT":
         return "text-red-600";
-      case "high":
+      case "HIGH":
         return "text-orange-600";
-      case "medium":
+      case "NORMAL":
         return "text-yellow-600";
-      case "low":
+      case "LOW":
         return "text-green-600";
       default:
         return "text-muted-foreground";
@@ -149,13 +149,13 @@ export function useTicketHandlers() {
 
   const getPriorityText = (priority: string) => {
     switch (priority) {
-      case "urgent":
+      case "URGENT":
         return "فوری";
-      case "high":
+      case "HIGH":
         return "بالا";
-      case "medium":
+      case "NORMAL":
         return "متوسط";
-      case "low":
+      case "LOW":
         return "پایین";
       default:
         return priority;

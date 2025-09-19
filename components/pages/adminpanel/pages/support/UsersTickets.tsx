@@ -27,9 +27,9 @@ export default async function UsersTickets({ tickets }: Props) {
             borderRightColor:
               ticket.priority === "URGENT"
                 ? "#dc2626"
-                : ticket.priority === "NORMAL"
+                : ticket.priority === "HIGH"
                 ? "#ea580c"
-                : ticket.priority === "medium"
+                : ticket.priority === "LOW"
                 ? "#ca8a04"
                 : "#16a34a",
           }}

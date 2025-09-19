@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { useSupportStates } from "../../../../../hooks/admin/support/useSupportStates";
 import CartContainer from "../../../../common/admin/FilterCard/CartContainer";
 import CartHeader from "../../../../common/admin/FilterCard/CartHeader";
@@ -8,7 +8,7 @@ import { CardContent } from "../../../../../styles/ui/Card";
 import CardMainContent from "./CardMainContent";
 import { useSupportHandlers } from "../../../../../hooks/admin/support/useSupportHandlers";
 
-export default function FilterAndSearch() {
+export default function FilterAndSearch({ search }: { search: string }) {
   const {
     searchQuery,
     statusFilter,
@@ -19,6 +19,10 @@ export default function FilterAndSearch() {
     setStatusFilter,
     setPriorityFilter,
   } = useSupportStates();
+
+  useEffect(() => {
+    setSearchQuery(search === "default" ? "" : search);
+  });
 
   const { handleSort, getStatusText, getPriorityText } = useSupportHandlers();
 

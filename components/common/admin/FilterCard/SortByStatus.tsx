@@ -2,9 +2,9 @@ import React, { SetStateAction } from "react";
 import Button from "../../Button";
 
 interface Props {
-  statusFilter?: "all" | "open" | "in-progress" | "resolved" | "closed";
+  statusFilter?: "all" | "Open" | "Waiting" | "Approved" | "URGENT";
   setStatusFilter?: React.Dispatch<
-    SetStateAction<"all" | "open" | "in-progress" | "resolved" | "closed">
+    SetStateAction<"all" | "Open" | "Waiting" | "Approved" | "URGENT">
   >;
   getStatusText?: (status: string) => string;
 }
@@ -26,7 +26,7 @@ export default function SortByStatus({
           size="sm"
           onClick={() =>
             setStatusFilter?.(
-              status as "all" | "open" | "in-progress" | "resolved" | "closed"
+              status as "all" | "Open" | "Waiting" | "Approved" | "URGENT"
             )
           }
           className="cursor-pointer"

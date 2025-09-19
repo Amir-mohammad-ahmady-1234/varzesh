@@ -9,20 +9,22 @@ import Sort from "../../../../common/admin/FilterCard/Sort";
 interface Props {
   placeHolder?: string;
   searchQuery?: string;
-  statusFilter?: "all" | "open" | "in-progress" | "resolved" | "closed";
-  priorityFilter?: "all" | "low" | "medium" | "high" | "urgent";
+  statusFilter?: "all" | "Open" | "Waiting" | "Approved" | "URGENT";
+  priorityFilter?: "all" | "URGENT" | "HIGH" | "NORMAL" | "LOW";
   sortBy?: "createdAt" | "priority" | "status" | "subject";
   sortOrder?: "asc" | "desc";
   setSearchQuery?: React.Dispatch<React.SetStateAction<string>>;
   setStatusFilter?: React.Dispatch<
-    React.SetStateAction<"all" | "open" | "in-progress" | "resolved" | "closed">
+    React.SetStateAction<"all" | "Open" | "Waiting" | "Approved" | "URGENT">
   >;
   setPriorityFilter?: React.Dispatch<
-    React.SetStateAction<"all" | "low" | "medium" | "high" | "urgent">
+    React.SetStateAction<"all" | "URGENT" | "HIGH" | "NORMAL" | "LOW">
   >;
   getStatusText?: (status: string) => string;
   getPriorityText?: (priority: string) => string;
-  handleSort?: (column: "createdAt" | "priority" | "status" | "subject") => void;
+  handleSort?: (
+    column: "createdAt" | "priority" | "status" | "subject"
+  ) => void;
 }
 
 export default function CardMainContent({

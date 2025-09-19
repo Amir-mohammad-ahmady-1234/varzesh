@@ -6,10 +6,10 @@ import { mockSupportTickets } from "../../../mocks/mock-data";
 export function useSupportStates() {
   const [searchQuery, setSearchQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState<
-    "all" | "open" | "in-progress" | "resolved" | "closed"
+    "all" | "Open" | "Waiting" | "Approved" | "URGENT"
   >("all");
   const [priorityFilter, setPriorityFilter] = useState<
-    "all" | "low" | "medium" | "high" | "urgent"
+    "all" | "URGENT" | "HIGH" | "NORMAL" | "LOW"
   >("all");
   const [sortBy, setSortBy] = useState<
     "createdAt" | "priority" | "status" | "subject"
@@ -41,7 +41,7 @@ export function useSupportStates() {
         aValue = new Date(a.createdAt).getTime();
         bValue = new Date(b.createdAt).getTime();
       } else if (sortBy === "priority") {
-        const priorityOrder = { urgent: 4, high: 3, medium: 2, low: 1 };
+        const priorityOrder = { URGENT: 4, HIGH: 3, NORMAL: 2, LOW: 1 };
         aValue = priorityOrder[a.priority as keyof typeof priorityOrder] || 0;
         bValue = priorityOrder[b.priority as keyof typeof priorityOrder] || 0;
       } else if (sortBy === "status") {

@@ -236,8 +236,8 @@ export const mockSupportTickets: SupportTicket[] = [
     subject: "مشکل در ورود به سیستم",
     content:
       "سلام، من نمی‌توانم وارد حساب کاربری‌ام شوم. پیام خطا می‌گوید رمز عبور اشتباه است اما مطمئنم که درست وارد می‌کنم.",
-    status: "open",
-    priority: "high",
+    status: "Open",
+    priority: "HIGH",
     createdAt: "2024-01-20T10:30:00Z",
     updatedAt: "2024-01-20T10:30:00Z",
     messages: [
@@ -264,8 +264,8 @@ export const mockSupportTickets: SupportTicket[] = [
     },
     subject: "درخواست حذف حساب کاربری",
     content: "می‌خواهم حساب کاربری‌ام را حذف کنم. لطفاً راهنمایی کنید.",
-    status: "in-progress",
-    priority: "medium",
+    status: "Waiting",
+    priority: "NORMAL",
     assignedTo: "ادمین سیستم",
     createdAt: "2024-01-19T14:20:00Z",
     updatedAt: "2024-01-19T15:30:00Z",
@@ -302,8 +302,8 @@ export const mockSupportTickets: SupportTicket[] = [
     subject: "گزارش باگ در صفحه چت",
     content:
       "وقتی پیام می‌فرستم، گاهی اوقات دوبار ارسال می‌شود. این مشکل چند روز پیش شروع شده.",
-    status: "resolved",
-    priority: "low",
+    status: "Approved",
+    priority: "LOW",
     createdAt: "2024-01-18T09:15:00Z",
     updatedAt: "2024-01-18T16:45:00Z",
     messages: [
@@ -330,8 +330,8 @@ export const mockSupportTickets: SupportTicket[] = [
     subject: "پیشنهاد بهبود رابط کاربری",
     content:
       "سلام، فکر می‌کنم اگر دکمه‌های اصلی بزرگ‌تر باشند، استفاده از سایت راحت‌تر می‌شود.",
-    status: "closed",
-    priority: "low",
+    status: "Approved",
+    priority: "LOW",
     createdAt: "2024-01-17T13:20:00Z",
     updatedAt: "2024-01-17T17:30:00Z",
     messages: [
@@ -359,8 +359,8 @@ export const mockSupportTickets: SupportTicket[] = [
     subject: "مشکل در بارگذاری تصویر",
     content:
       "نمی‌توانم عکس پروفایل‌ام را تغییر دهم. پیام خطا می‌گوید فرمت فایل پشتیبانی نمی‌شود.",
-    status: "in-progress",
-    priority: "urgent",
+    status: "Approved",
+    priority: "URGENT",
     createdAt: "2024-01-20T16:45:00Z",
     updatedAt: "2024-01-20T16:45:00Z",
     messages: [],

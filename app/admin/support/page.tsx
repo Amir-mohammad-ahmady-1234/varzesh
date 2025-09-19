@@ -8,6 +8,8 @@ import FilterAndSearch from "../../../components/pages/adminpanel/pages/support/
 import { GetSupportFilterQuery } from "../../../server/admin/paneladmin/support/GetSupportFilterQurey/GetSupportFilterQurey";
 import supportboxInformation from "../../../server/admin/paneladmin/support/supportboxInformation";
 import UsersTickets from "../../../components/pages/adminpanel/pages/support/UsersTickets";
+import EmptyState from "../../../styles/ui/EmptyState";
+import { redirect } from "next/navigation";
 
 interface Props {
   searchParams: { search?: string };
@@ -16,9 +18,16 @@ interface Props {
 export default async function SupportPage({ searchParams }: Props) {
   const stats = await supportboxInformation();
   const search = (await searchParams).search;
-  const tickets = await GetSupportFilterQuery({ serch: search?.trim() });
+
+  if (!search) redirect("/admin/support?search=default");
+  const tickets = await GetSupportFilterQuery({
+    serch: search === "default" ? "" : search,
+  });
 
   if (stats.error) return <p>{stats.error}</p>;
+  if (tickets.error) return <p>{tickets.error}</p>;
+  if (!tickets.data)
+    return <EmptyState title="خطا در دریافت تیکت های پشتیبانی" />;
 
   return (
     <MainLayout>
@@ -26,10 +35,10 @@ export default async function SupportPage({ searchParams }: Props) {
 
       <UsersActivities stats={stats} usersCardInfo={userTicketInfo} />
 
-      <FilterAndSearch />
+      <FilterAndSearch search={search} />
 
-      <EmptyAndPagination>
-        <UsersTickets tickets={tickets} />
+      <EmptyAndPagination tickets={tickets.data}>
+        <UsersTickets tickets={tickets.data} />
       </EmptyAndPagination>
 
       <FastAnswer />
