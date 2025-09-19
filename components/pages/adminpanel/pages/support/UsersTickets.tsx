@@ -3,32 +3,31 @@ import TicketOptions from "./TicketCard/TicketOptions";
 import Card from "../../../../../styles/ui/Card";
 import TicketContent from "./TicketCard/TicketContent";
 import TicketTitle from "./TicketCard/TicketTitle";
-import { useSupportHandlers } from "../../../../../hooks/admin/support/useSupportHandlers";
-import { useSupportStates } from "../../../../../hooks/admin/support/useSupportStates";
+import { TicketType } from "../../../../../types/adminPanelTypes";
 
-export default function UsersTickets() {
-  const {
-    handleTicketClick,
-    handleQuickReply,
-    getStatusColor,
-    getStatusText,
-    getPriorityColor,
-    getPriorityText,
-  } = useSupportHandlers();
+interface Props {
+  tickets:
+    | TicketType[]
+    | {
+        error: string;
+        status: number;
+      };
+}
 
-  const { paginatedTickets } = useSupportStates();
+export default async function UsersTickets({ tickets }: Props) {
+  if (!Array.isArray(tickets)) return <p>{tickets.error}</p>;
 
   return (
     <div className="space-y-4">
-      {paginatedTickets.map((ticket) => (
+      {tickets.map((ticket) => (
         <div
           key={ticket.id}
           className="hover:shadow-lg transition-all duration-200 border-r-4 rounded-xl"
           style={{
             borderRightColor:
-              ticket.priority === "urgent"
+              ticket.priority === "URGENT"
                 ? "#dc2626"
-                : ticket.priority === "high"
+                : ticket.priority === "NORMAL"
                 ? "#ea580c"
                 : ticket.priority === "medium"
                 ? "#ca8a04"
@@ -38,20 +37,10 @@ export default function UsersTickets() {
           <Card>
             <div className="flex items-start justify-between">
               <TicketContent ticket={ticket}>
-                <TicketTitle
-                  getPriorityColor={getPriorityColor}
-                  getPriorityText={getPriorityText}
-                  getStatusColor={getStatusColor}
-                  getStatusText={getStatusText}
-                  ticket={ticket}
-                />
+                <TicketTitle ticket={ticket} />
               </TicketContent>
 
-              <TicketOptions
-                handleQuickReply={handleQuickReply}
-                handleTicketClick={handleTicketClick}
-                ticket={ticket}
-              />
+              <TicketOptions ticket={ticket} />
             </div>
           </Card>
         </div>

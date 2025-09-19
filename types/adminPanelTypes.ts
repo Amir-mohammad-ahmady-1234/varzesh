@@ -1,3 +1,5 @@
+import { $Enums } from "@prisma/client";
+
 export interface User {
   id: string;
   name: string;
@@ -46,6 +48,17 @@ export interface SupportTicket {
   createdAt: string;
   updatedAt: string;
   messages: SupportMessage[];
+}
+
+export interface TicketType {
+  createdAt: Date;
+  priority: $Enums.Priority;
+  status: $Enums.Status;
+  id: number;
+  title: string;
+  updatedAt: Date;
+  description: string | null;
+  userId: number;
 }
 
 export interface SupportMessage {

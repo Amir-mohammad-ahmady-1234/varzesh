@@ -4,11 +4,19 @@ import UsersActivities from "../../../components/common/admin/UsersActivities";
 import { userTicketInfo } from "../../../mocks/admin/chat-roomsMoocks";
 import FastAnswer from "../../../components/pages/adminpanel/pages/support/FastAnswer";
 import EmptyAndPagination from "../../../components/pages/adminpanel/pages/support/EmptyAndPagination";
-import { getStats } from "../../../lib/getStats";
 import FilterAndSearch from "../../../components/pages/adminpanel/pages/support/FilterAndSearch";
+import { GetSupportFilterQuery } from "../../../server/admin/paneladmin/support/GetSupportFilterQurey/GetSupportFilterQurey";
+import supportboxInformation from "../../../server/admin/paneladmin/support/supportboxInformation";
+import UsersTickets from "../../../components/pages/adminpanel/pages/support/UsersTickets";
 
-export default async function SupportPage() {
-  const stats = await getStats();
+interface Props {
+  searchParams: { search?: string };
+}
+
+export default async function SupportPage({ searchParams }: Props) {
+  const stats = await supportboxInformation();
+  const search = (await searchParams).search;
+  const tickets = await GetSupportFilterQuery({ serch: search?.trim() });
 
   if (stats.error) return <p>{stats.error}</p>;
 
@@ -20,7 +28,9 @@ export default async function SupportPage() {
 
       <FilterAndSearch />
 
-      <EmptyAndPagination />
+      <EmptyAndPagination>
+        <UsersTickets tickets={tickets} />
+      </EmptyAndPagination>
 
       <FastAnswer />
     </MainLayout>

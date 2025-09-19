@@ -1,3 +1,4 @@
+"use client";
 import { useSupportStates } from "./useSupportStates";
 import { redirect } from "next/navigation";
 
@@ -38,14 +39,14 @@ export function useSupportHandlers() {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case "open":
+      case "Open":
         return "error";
-      case "in-progress":
+      case "Waiting":
         return "warning";
-      case "resolved":
+      case "Approved":
         return "success";
-      case "closed":
-        return "secondary";
+      case "URGENT":
+        return "primary";
       default:
         return "secondary";
     }
@@ -53,14 +54,14 @@ export function useSupportHandlers() {
 
   const getStatusText = (status: string) => {
     switch (status) {
-      case "open":
+      case "Open":
         return "باز";
-      case "in-progress":
+      case "Waiting":
         return "در حال بررسی";
-      case "resolved":
+      case "Approved":
         return "حل شده";
-      case "closed":
-        return "بسته";
+      case "URGENT":
+        return "فوری";
       default:
         return status;
     }
