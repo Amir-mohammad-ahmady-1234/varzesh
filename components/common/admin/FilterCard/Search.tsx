@@ -30,6 +30,14 @@ export default function Search({
     router.push(`/admin/support?search=${e.target.value}`);
   }
 
+  function handleResetFilters() {
+    setSearchQuery?.("");
+    setStatusFilter?.("all");
+    setPriorityFilter?.("all");
+
+    router.push("/admin/support");
+  }
+
   return (
     <div className="flex flex-col lg:flex-row gap-4">
       <div className="flex-1 relative">
@@ -44,11 +52,7 @@ export default function Search({
       </div>
       <Button
         variant="outline"
-        onClick={() => {
-          setSearchQuery?.("");
-          setStatusFilter?.("all");
-          setPriorityFilter?.("all");
-        }}
+        onClick={handleResetFilters}
         className="cursor-pointer whitespace-nowrap"
       >
         پاک کردن فیلترها

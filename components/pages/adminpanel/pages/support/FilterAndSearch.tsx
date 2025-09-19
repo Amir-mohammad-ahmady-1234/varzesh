@@ -22,7 +22,7 @@ export default function FilterAndSearch({ search }: { search: string }) {
 
   useEffect(() => {
     setSearchQuery(search === "default" ? "" : search);
-  });
+  }, [setSearchQuery, search]);
 
   const { handleSort, getStatusText, getPriorityText } = useSupportHandlers();
 
