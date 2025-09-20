@@ -367,7 +367,6 @@ export default function UsersPage() {
         </Card>
       </div>
 
-      {/* Enhanced Filters and Search */}
       <Card className="mb-6">
         <CardHeader>
           <div className="flex items-center justify-between">

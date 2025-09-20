@@ -15,7 +15,7 @@ const columns = [
   { key: "actions", label: "عملیات" },
 ];
 
-export default function GamesTable() {
+export default function GamesTable({ Game }: any) {
   return (
     <Table columns={columns}>
       {games.map((game) => (
@@ -50,11 +50,10 @@ export default function GamesTable() {
           <td className="px-4 py-3 text-(--text-secondary)">{game.messages}</td>
           <td className="px-4 py-3">
             <div className="flex items-center gap-2">
-              {/* <Link href={`/admin/games/${game.id}`}> */}
               <Button variant="ghost" size="sm">
                 مشاهده
               </Button>
-              {/* </Link> */}
+
               <Button variant="ghost" size="sm">
                 ویرایش
               </Button>

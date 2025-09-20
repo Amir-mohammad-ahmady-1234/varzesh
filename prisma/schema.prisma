@@ -80,6 +80,7 @@ enum Status {
   Approved
   URGENT
 }
+
 enum GameStatus {
   live
   down
