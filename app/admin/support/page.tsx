@@ -16,22 +16,26 @@ interface Props {
     status?: string;
     priority?: string;
     sort?: "asc" | "desc";
-    page?: string;
+    page?: number;
+    limit?: number;
   };
 }
 
 export default async function SupportPage({ searchParams }: Props) {
   const stats = await supportboxInformation();
-  const { search, status, priority, sort, page } = searchParams;
+  const { search, status, priority, sort, page, limit } = searchParams;
 
   const tickets = await GetSupportFilterQuery({
     serch: search ?? "",
     status: status as "Blocked" | "Waiting" | "Approved" | "Open",
     priority: priority as "NORMAL" | "URGENT" | "LOW" | "HIGH",
     sort: sort as "asc" | "desc",
-    page: page ? parseInt(page) : 1,
+    page: page ? page : 1,
+    limit: limit ? limit : 10,
   });
   console.log(tickets);
+  console.log(page);
+  console.log(limit);
 
   if (stats.error) return <p>{stats.error}</p>;
   if (tickets.error) return <p>{tickets.error}</p>;
