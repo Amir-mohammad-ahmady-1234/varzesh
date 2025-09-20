@@ -13,7 +13,6 @@ import { useChatRoom } from "../../../hooks/admin/chat-room/useChatRoom";
 
 import { CardContent } from "../../../styles/ui/Card";
 import CartHeader from "../../../components/common/admin/FilterCard/CartHeader";
-import CardMainContent from "../../../components/pages/adminpanel/pages/support/CardMainContent";
 import FilterCartContainer from "../../../components/common/admin/FilterCard/CartContainer";
 
 export default function ChatRoomsPage() {

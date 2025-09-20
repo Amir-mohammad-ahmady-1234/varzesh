@@ -6,7 +6,7 @@ import CartHeader from "../../../../common/admin/FilterCard/CartHeader";
 import { CardContent } from "../../../../../styles/ui/Card";
 import Search from "../../../../common/admin/FilterCard/Search";
 import Button from "../../../../common/Button";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useSearchParams } from "next/navigation";
 type Item = {
   name: string;
@@ -31,6 +31,8 @@ export default function FilterAndSearch({
 }: Props) {
   const router = useRouter();
   const params = useSearchParams();
+  const pagename = usePathname().split("/")[2];
+
   const handleFilterChange = (key: string, value: string) => {
     const newParams = new URLSearchParams(params.toString());
     const currentValue = newParams.get(key);
@@ -39,14 +41,14 @@ export default function FilterAndSearch({
     } else {
       newParams.set(key, value);
     }
-    router.push(`/admin/support?${newParams.toString()}`);
+    router.push(`/admin/${pagename}?${newParams.toString()}`);
   };
 
   return (
     <CartContainer>
       <CartHeader title={description} />
       <CardContent>
-        <Search placehlderText="جست و جو تیکت ساپورت مد نظر" />
+        <Search placehlderText="جست و جو تیکت ساپورت مد نظر" pagename={pagename} />
         <div className="flex flex-wrap mt-5">
           {isfilter
             ? itemsbtn.map((category, i) => (

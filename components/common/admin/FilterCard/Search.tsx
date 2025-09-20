@@ -8,9 +8,10 @@ import { useRouter, useSearchParams } from "next/navigation";
 
 interface Props {
   placehlderText?: string;
+  pagename: string;
 }
 
-export default function Search({ placehlderText }: Props) {
+export default function Search({ placehlderText, pagename }: Props) {
   const router = useRouter();
   const params = useSearchParams();
   const [searchQuery, setSearchQuery] = useState(params.get("search") || "");
@@ -22,7 +23,7 @@ export default function Search({ placehlderText }: Props) {
     } else {
       newParams.delete(key);
     }
-    router.push(`/admin/support?${newParams.toString()}`);
+    router.push(`/admin/${pagename}?${newParams.toString()}`);
   };
 
   function handleSubmit(e: React.FormEvent) {
@@ -31,7 +32,7 @@ export default function Search({ placehlderText }: Props) {
   }
 
   function handleResetFilters() {
-    router.push("/admin/support");
+    router.push(`/admin/${pagename}`);
     setSearchQuery("");
   }
 

@@ -4,6 +4,7 @@ import PageTitle from "../../../components/pages/adminpanel/pages/games/PageTitl
 import GamesPagination from "../../../components/pages/adminpanel/pages/games/GamesPagination";
 import FilterAndSearch from "../../../components/pages/adminpanel/pages/support/FilterAndSearch";
 import { FindGame } from "../../../server/admin/paneladmin/game/FindGame/FindGame";
+import { supportFilters } from "../../../mocks/admin/filters/support-filters";
 
 interface Props {
   searchParams: {
@@ -37,33 +38,7 @@ export default async function GamesPage({ searchParams }: Props) {
             <FilterAndSearch
               description="جستجو و فیلتر بازی بر اساس معیارهای مختلف"
               isfilter={true}
-              itemsbtn={[
-                {
-                  title: "مرتب‌ سازی",
-                  items: [
-                    { name: "نزولی", key: "sort", value: "desc" },
-                    { name: "صعودی", key: "sort", value: "asc" },
-                  ],
-                },
-                {
-                  title: "وضعیت",
-                  items: [
-                    { name: "بلاک شده", key: "status", value: "Blocked" },
-                    { name: "درحال تایید", key: "status", value: "Waiting" },
-                    { name: "تایید شده", key: "status", value: "Approved" },
-                    { name: "باز", key: "status", value: "Open" },
-                  ],
-                },
-                {
-                  title: "اولویت",
-                  items: [
-                    { name: "پاین", key: "priority", value: "LOW" },
-                    { name: "عادی", key: "priority", value: "NORMAL" },
-                    { name: "بالا", key: "priority", value: "HIGH" },
-                    { name: "فوری !", key: "priority", value: "URGENT" },
-                  ],
-                },
-              ]}
+              itemsbtn={supportFilters}
             />
 
             <GamesPagination />
