@@ -8,7 +8,7 @@ import { GetSupportFilterQuery } from "../../../server/admin/paneladmin/support/
 import supportboxInformation from "../../../server/admin/paneladmin/support/supportboxInformation";
 import UsersTickets from "../../../components/pages/adminpanel/pages/support/UsersTickets";
 import EmptyState from "../../../styles/ui/EmptyState";
-import FilterAndSearchcopy from "../../../components/pages/adminpanel/pages/support/FilterAndSearchcopy";
+import FilterAndSearch from "../../../components/pages/adminpanel/pages/support/FilterAndSearch";
 
 interface Props {
   searchParams: {
@@ -43,8 +43,7 @@ export default async function SupportPage({ searchParams }: Props) {
       <PageTitle totalsupport={stats.totalsupport ?? 0} />
 
       <UsersActivities stats={stats} usersCardInfo={userTicketInfo} />
-
-      <FilterAndSearchcopy
+      <FilterAndSearch
         isfilter={true}
         itemsbtn={[
           {

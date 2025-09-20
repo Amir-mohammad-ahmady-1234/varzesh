@@ -1,7 +1,7 @@
 import React from "react";
 import InputDesign from "../../../../../styles/ui/Input";
 
-export default function FilterAndSearch() {
+export default function FilterAndSearchGame() {
   return (
     <div className="flex items-center gap-4 mb-6">
       <InputDesign

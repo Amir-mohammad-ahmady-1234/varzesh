@@ -2,7 +2,7 @@ import Sidebar from "../../../components/pages/adminpanel/layout/Sidebar";
 import Topbar from "../../../components/pages/adminpanel/layout/Topbar";
 import Card from "../../../styles/ui/Card";
 import PageTitle from "../../../components/pages/adminpanel/pages/games/PageTitle";
-import FilterAndSearch from "../../../components/pages/adminpanel/pages/games/FilterAndSearch";
+import FilterAndSearchGame from "../../../components/pages/adminpanel/pages/games/FilterAndSearchGame";
 import GamesTable from "../../../components/pages/adminpanel/pages/games/GamesTable";
 import GamesPagination from "../../../components/pages/adminpanel/pages/games/GamesPagination";
 
@@ -18,7 +18,7 @@ export default function GamesPage() {
 
             <Card>
               {/* Filters */}
-              <FilterAndSearch />
+              <FilterAndSearchGame />
 
               {/* Games Table */}
               <GamesTable />

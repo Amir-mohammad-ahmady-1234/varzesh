@@ -1,8 +1,8 @@
-import { Prisma, Status } from "@prisma/client";
+import { Priority, Prisma, Status } from "@prisma/client";
 import prisma from "../../../../../lib/db";
 type TGetSupportFilterQuery = {
   serch?: string;
-  status?: "Blocked" | "Waiting" | "Approved";
+  status?: "Blocked" | "Waiting" | "Approved" | "Open";
   priority?: "NORMAL" | "URGENT" | "LOW" | "HIGH";
   sort?: "asc" | "desc";
   page?: number;
@@ -29,7 +29,7 @@ export async function GetSupportFilterQuery({
       where.status = status as Status;
     }
     if (priority) {
-      where.priority = priority;
+      where.priority = priority as Priority;
     }
     const skip = (page - 1) * limit;
     const [supports, total] = await Promise.all([
