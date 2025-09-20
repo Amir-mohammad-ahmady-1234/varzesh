@@ -1,62 +1,60 @@
-import React, { SetStateAction } from "react";
+"use client";
+
+import React, { useState } from "react";
 import { MdSearch } from "react-icons/md";
 import Button from "../../Button";
 import InputDesign from "../../../../styles/ui/Input";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 interface Props {
-  searchQuery?: string;
-  setSearchQuery?: React.Dispatch<SetStateAction<string>>;
-  setStatusFilter?: React.Dispatch<
-    SetStateAction<"all" | "Open" | "Waiting" | "Approved" | "URGENT">
-  >;
-  setPriorityFilter?: React.Dispatch<
-    SetStateAction<"all" | "URGENT" | "HIGH" | "NORMAL" | "LOW">
-  >;
   placehlderText?: string;
 }
 
-export default function Search({
-  searchQuery,
-  setSearchQuery,
-  setStatusFilter,
-  setPriorityFilter,
-  placehlderText,
-}: Props) {
+export default function Search({ placehlderText }: Props) {
   const router = useRouter();
+  const params = useSearchParams();
+  const [searchQuery, setSearchQuery] = useState(params.get("search") || "");
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    setSearchQuery?.(e.target.value);
-    router.push(`/admin/support?search=${e.target.value}`);
+  const handleFilterChange = (key: string, value: string) => {
+    const newParams = new URLSearchParams(params.toString());
+    if (value) {
+      newParams.set(key, value);
+    } else {
+      newParams.delete(key);
+    }
+    router.push(`/admin/support?${newParams.toString()}`);
+  };
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    handleFilterChange("search", searchQuery);
   }
 
   function handleResetFilters() {
-    setSearchQuery?.("");
-    setStatusFilter?.("all");
-    setPriorityFilter?.("all");
-
     router.push("/admin/support");
+    setSearchQuery("");
   }
 
   return (
-    <div className="flex flex-col lg:flex-row gap-4">
+    <form onSubmit={handleSubmit} className="flex flex-col lg:flex-row gap-4">
       <div className="flex-1 relative">
         <InputDesign
           type="text"
           placeholder={placehlderText}
           value={searchQuery}
-          onChange={handleChange}
+          onChange={(e) => setSearchQuery(e.target.value)}
           className="h-11"
           rightIcon={<MdSearch className="w-5 h-5" />}
         />
       </div>
       <Button
         variant="outline"
+        type="button"
         onClick={handleResetFilters}
         className="cursor-pointer whitespace-nowrap"
       >
         پاک کردن فیلترها
       </Button>
-    </div>
+    </form>
   );
 }
