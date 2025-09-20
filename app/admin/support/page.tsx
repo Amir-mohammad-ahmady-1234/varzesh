@@ -4,25 +4,34 @@ import UsersActivities from "../../../components/common/admin/UsersActivities";
 import { userTicketInfo } from "../../../mocks/admin/chat-roomsMoocks";
 import FastAnswer from "../../../components/pages/adminpanel/pages/support/FastAnswer";
 import EmptyAndPagination from "../../../components/pages/adminpanel/pages/support/EmptyAndPagination";
-import FilterAndSearch from "../../../components/pages/adminpanel/pages/support/FilterAndSearch";
 import { GetSupportFilterQuery } from "../../../server/admin/paneladmin/support/GetSupportFilterQurey/GetSupportFilterQurey";
 import supportboxInformation from "../../../server/admin/paneladmin/support/supportboxInformation";
 import UsersTickets from "../../../components/pages/adminpanel/pages/support/UsersTickets";
 import EmptyState from "../../../styles/ui/EmptyState";
-import { redirect } from "next/navigation";
+import FilterAndSearchcopy from "../../../components/pages/adminpanel/pages/support/FilterAndSearchcopy";
 
 interface Props {
-  searchParams: { search?: string };
+  searchParams: {
+    search?: string;
+    status?: string;
+    priority?: string;
+    sort?: "asc" | "desc";
+    page?: string;
+  };
 }
 
 export default async function SupportPage({ searchParams }: Props) {
   const stats = await supportboxInformation();
-  const search = (await searchParams).search;
+  const { search, status, priority, sort, page } = searchParams;
 
-  if (!search) redirect("/admin/support?search=default");
   const tickets = await GetSupportFilterQuery({
-    serch: search === "default" ? "" : search,
+    serch: search ?? "",
+    status: status as "Blocked" | "Waiting" | "Approved" | "Open",
+    priority: priority as "NORMAL" | "URGENT" | "LOW" | "HIGH",
+    sort: sort as "asc" | "desc",
+    page: page ? parseInt(page) : 1,
   });
+  console.log(tickets);
 
   if (stats.error) return <p>{stats.error}</p>;
   if (tickets.error) return <p>{tickets.error}</p>;
@@ -35,7 +44,36 @@ export default async function SupportPage({ searchParams }: Props) {
 
       <UsersActivities stats={stats} usersCardInfo={userTicketInfo} />
 
-      <FilterAndSearch search={search} />
+      <FilterAndSearchcopy
+        isfilter={true}
+        itemsbtn={[
+          {
+            title: "مرتب‌ سازی",
+            items: [
+              { name: "نزولی", key: "sort", value: "desc" },
+              { name: "صعودی", key: "sort", value: "asc" },
+            ],
+          },
+          {
+            title: "وضعیت",
+            items: [
+              { name: "بلاک شده", key: "status", value: "Blocked" },
+              { name: "درحال تایید", key: "status", value: "Waiting" },
+              { name: "تایید شده", key: "status", value: "Approved" },
+              { name: "باز", key: "status", value: "Open" },
+            ],
+          },
+          {
+            title: "اولویت",
+            items: [
+              { name: "پاین", key: "priority", value: "LOW" },
+              { name: "عادی", key: "priority", value: "NORMAL" },
+              { name: "بالا", key: "priority", value: "HIGH" },
+              { name: "فوری !", key: "priority", value: "URGENT" },
+            ],
+          },
+        ]}
+      />
 
       <EmptyAndPagination tickets={tickets.data}>
         <UsersTickets tickets={tickets.data} />
