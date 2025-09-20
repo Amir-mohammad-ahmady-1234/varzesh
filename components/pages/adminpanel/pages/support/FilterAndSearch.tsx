@@ -22,8 +22,13 @@ type ItemBtn = {
 type Props = {
   itemsbtn: ItemBtn[];
   isfilter: boolean;
+  description: string;
 };
-export default function FilterAndSearch({ isfilter, itemsbtn }: Props) {
+export default function FilterAndSearch({
+  isfilter,
+  itemsbtn,
+  description,
+}: Props) {
   const router = useRouter();
   const params = useSearchParams();
   const handleFilterChange = (key: string, value: string) => {
@@ -39,7 +44,7 @@ export default function FilterAndSearch({ isfilter, itemsbtn }: Props) {
 
   return (
     <CartContainer>
-      <CartHeader title="جستجو و فیلتر تیکت‌های پشتیبانی بر اساس معیارهای مختلف" />
+      <CartHeader title={description} />
       <CardContent>
         <Search placehlderText="جست و جو تیکت ساپورت مد نظر" />
         <div className="flex flex-wrap mt-5">

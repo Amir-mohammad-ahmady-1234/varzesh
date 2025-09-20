@@ -48,6 +48,7 @@ export default async function SupportPage({ searchParams }: Props) {
 
       <UsersActivities stats={stats} usersCardInfo={userTicketInfo} />
       <FilterAndSearch
+        description="جستجو و فیلتر تیکت‌های پشتیبانی بر اساس معیارهای مختلف"
         isfilter={true}
         itemsbtn={[
           {

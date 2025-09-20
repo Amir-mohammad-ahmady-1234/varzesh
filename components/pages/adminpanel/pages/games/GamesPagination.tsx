@@ -4,7 +4,7 @@ import Button from "../../../../common/Button";
 export default function GamesPagination() {
   return (
     <div className="flex items-center justify-between mt-6">
-      <p className="text-sm text-(--text-secondary)">نمایش 1 تا 3 از 3 بازی</p>
+      <p className="text-sm text-secondary-100">نمایش 1 تا 3 از 3 بازی</p>
       <div className="flex items-center gap-2">
         <Button variant="ghost" size="sm" disabled>
           قبلی
