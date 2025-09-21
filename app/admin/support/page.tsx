@@ -6,9 +6,9 @@ import FastAnswer from "../../../components/pages/adminpanel/pages/support/FastA
 import EmptyAndPagination from "../../../components/pages/adminpanel/pages/support/EmptyAndPagination";
 import { GetSupportFilterQuery } from "../../../server/admin/paneladmin/support/GetSupportFilterQurey/GetSupportFilterQurey";
 import supportboxInformation from "../../../server/admin/paneladmin/support/supportboxInformation";
-import UsersTickets from "../../../components/pages/adminpanel/pages/support/UsersTickets";
 import EmptyState from "../../../styles/ui/EmptyState";
-import FilterAndSearch from "../../../components/pages/adminpanel/pages/support/FilterAndSearch";
+import FilterAndSearch from "../../../components/common/admin/FilterCard/FilterAndSearch";
+import Cart from "../../../components/common/admin/rowsList/Cart";
 
 interface Props {
   searchParams: {
@@ -80,7 +80,25 @@ export default async function SupportPage({ searchParams }: Props) {
       />
 
       <EmptyAndPagination tickets={tickets.data}>
-        <UsersTickets tickets={tickets.data} />
+        {tickets.data.map((data) => (
+          <Cart
+            key={data.id}
+            id={data.id}
+            title={data.title}
+            description={data.description as string}
+            date={data.updatedAt}
+            options={[
+              {
+                title: "status",
+                items: { key: "status", value: data.status },
+              },
+              {
+                title: "priority",
+                items: { key: "priority", value: data.priority },
+              },
+            ]}
+          />
+        ))}
       </EmptyAndPagination>
 
       <FastAnswer />

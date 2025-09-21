@@ -1,11 +1,11 @@
 "use client";
 
 import React from "react";
-import CartContainer from "../../../../common/admin/FilterCard/CartContainer";
-import CartHeader from "../../../../common/admin/FilterCard/CartHeader";
-import { CardContent } from "../../../../../styles/ui/Card";
-import Search from "../../../../common/admin/FilterCard/Search";
-import Button from "../../../../common/Button";
+import CartContainer from "./CartContainer";
+import CartHeader from "./CartHeader";
+import { CardContent } from "../../../../styles/ui/Card";
+import Search from "./Search";
+import Button from "../../Button";
 import { usePathname, useRouter } from "next/navigation";
 import { useSearchParams } from "next/navigation";
 type Item = {
@@ -48,7 +48,10 @@ export default function FilterAndSearch({
     <CartContainer>
       <CartHeader title={description} />
       <CardContent>
-        <Search placehlderText="جست و جو تیکت ساپورت مد نظر" pagename={pagename} />
+        <Search
+          placehlderText="جست و جو تیکت ساپورت مد نظر"
+          pagename={pagename}
+        />
         <div className="flex flex-wrap mt-5">
           {isfilter
             ? itemsbtn.map((category, i) => (

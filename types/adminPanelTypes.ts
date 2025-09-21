@@ -72,12 +72,16 @@ export interface SupportMessage {
 }
 
 export interface Game {
-  id: string;
-  homeTeam: string;
-  awayTeam: string;
-  league: string;
-  status: "scheduled" | "live" | "finished" | "cancelled";
-  startTime: string;
+  id?: string;
+  firstthem?: string;
+  seccondthem?: string;
+  League?: string;
+  status?: "scheduled" | "live" | "finished";
+  time?: Date;
+  data?: Date;
+  description?: string;
+  step?: string;
+  startTime?: string;
   endTime?: string;
   score?: {
     home: number;

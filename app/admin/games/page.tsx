@@ -2,9 +2,10 @@ import Sidebar from "../../../components/pages/adminpanel/layout/Sidebar";
 import Topbar from "../../../components/pages/adminpanel/layout/Topbar";
 import PageTitle from "../../../components/pages/adminpanel/pages/games/PageTitle";
 import GamesPagination from "../../../components/pages/adminpanel/pages/games/GamesPagination";
-import FilterAndSearch from "../../../components/pages/adminpanel/pages/support/FilterAndSearch";
+import FilterAndSearch from "../../../components/common/admin/FilterCard/FilterAndSearch";
 import { FindGame } from "../../../server/admin/paneladmin/game/FindGame/FindGame";
 import { supportFilters } from "../../../mocks/admin/filters/support-filters";
+import Cart from "../../../components/common/admin/rowsList/Cart";
 
 interface Props {
   searchParams: {
@@ -25,7 +26,9 @@ export default async function GamesPage({ searchParams }: Props) {
     page: page ? page : 1,
     limit: limit ? limit : 10,
   });
-  console.log(Game);
+
+  if (Game.error || !Game.data) return <p>{Game.error}</p>;
+
   return (
     <div className="flex h-screen bg-(--bg-secondary)">
       <Sidebar />
@@ -40,6 +43,39 @@ export default async function GamesPage({ searchParams }: Props) {
               isfilter={true}
               itemsbtn={supportFilters}
             />
+            <div className="space-y-4">
+              {Game.data.map((data) => (
+                <Cart
+                  key={data.id}
+                  id={data.id}
+                  title={data.firstthem + " VS " + data.secondthem}
+                  description={data.description}
+                  date={data.time}
+                  options={[
+                    {
+                      title: "status",
+                      items: { key: "status", value: data.status },
+                    },
+                  ]}
+                  moreDetails={[
+                    {
+                      title: "league",
+                      items: {
+                        key: "league",
+                        value: data.League,
+                      },
+                    },
+                    {
+                      title: "step",
+                      items: {
+                        key: "step",
+                        value: data.step,
+                      },
+                    },
+                  ]}
+                />
+              ))}
+            </div>
 
             <GamesPagination />
           </div>
