@@ -10,6 +10,7 @@ import EmptyState from "../../../styles/ui/EmptyState";
 import FilterAndSearch from "../../../components/common/admin/FilterCard/FilterAndSearch";
 import Cart from "../../../components/common/admin/rowsList/Cart";
 import { filterArray } from "../../../mocks/admin/filters/filterArray";
+import { Priority, Status } from "@prisma/client";
 
 interface Props {
   searchParams: {
@@ -28,11 +29,11 @@ export default async function SupportPage({ searchParams }: Props) {
 
   const tickets = await GetSupportFilterQuery({
     serch: search ?? "",
-    status: status as "Blocked" | "Waiting" | "Approved" | "Open",
-    priority: priority as "NORMAL" | "URGENT" | "LOW" | "HIGH",
+    status: status as Status,
+    priority: priority as Priority,
     sort: sort as "asc" | "desc",
-    page: page ? page : 1,
-    limit: limit ? limit : 10,
+    page: page ? Number(page) : 1,
+    limit: limit ? Number(limit) : 5,
   });
   console.log(tickets);
   console.log(page);
