@@ -69,7 +69,7 @@ export const userGrowthData = [
 ];
 
 export const dailyActivityData = [
-  { day: "شنبه", messages: 2400, users: 400, engagement: 85 },
+  { day: "شنبه", messages: 2400, users: 400, engagement: 205 },
   { day: "یکشنبه", messages: 1398, users: 300, engagement: 72 },
   { day: "دوشنبه", messages: 9800, users: 200, engagement: 95 },
   { day: "سه‌شنبه", messages: 3908, users: 278, engagement: 88 },
