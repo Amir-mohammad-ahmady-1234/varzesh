@@ -12,7 +12,7 @@ interface Props {
 }
 
 export default function CartTitle({ title, options }: Props) {
-  const { getStatusColor, getPriorityColor, getPriorityText } =
+  const { getStatusColor, getStatusText, getPriorityColor, getPriorityText } =
     useSupportHandlers();
 
   return (
@@ -22,18 +22,28 @@ export default function CartTitle({ title, options }: Props) {
       </h3>
       {options.map((option, index) => (
         <React.Fragment key={index}>
-          <Badge variant={getStatusColor(option.items.key)} size="sm">
-            {option.items.value}
-          </Badge>
+          {option.title === "status" && (
+            <Badge variant={getStatusColor(option?.items.value)} size="sm">
+              {option.title === "status"
+                ? getStatusText(option?.items.value)
+                : ""}
+            </Badge>
+          )}
           <div
             className={cn(
               "flex items-center gap-1",
-              getPriorityColor(option.items.value)
+              getPriorityColor(
+                option.title === "priority" ? option?.items.value : ""
+              )
             )}
           >
-            <MdPriorityHigh className="w-4 h-4" />
+            {option.title === "priority" && (
+              <MdPriorityHigh className="w-4 h-4" />
+            )}
             <span className="text-sm font-medium">
-              {getPriorityText(option.title === "" ? option.items.value : "")}
+              {getPriorityText(
+                option.title === "priority" ? option.items.value : ""
+              )}
             </span>
           </div>
         </React.Fragment>

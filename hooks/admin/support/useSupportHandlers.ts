@@ -40,10 +40,13 @@ export function useSupportHandlers() {
   const getStatusColor = (status: string) => {
     switch (status) {
       case "Open":
+      case "live":
         return "error";
       case "Waiting":
+      case "Scheduled":
         return "warning";
       case "Approved":
+      case "down":
         return "success";
       case "Blocked":
         return "primary";
