@@ -9,6 +9,7 @@ import supportboxInformation from "../../../server/admin/paneladmin/support/supp
 import EmptyState from "../../../styles/ui/EmptyState";
 import FilterAndSearch from "../../../components/common/admin/FilterCard/FilterAndSearch";
 import Cart from "../../../components/common/admin/rowsList/Cart";
+import { filterArray } from "../../../mocks/admin/filters/filterArray";
 
 interface Props {
   searchParams: {
@@ -23,7 +24,7 @@ interface Props {
 
 export default async function SupportPage({ searchParams }: Props) {
   const stats = await supportboxInformation();
-  const { search, status, priority, sort, page, limit } = searchParams;
+  const { search, status, priority, sort, page, limit } = await searchParams;
 
   const tickets = await GetSupportFilterQuery({
     serch: search ?? "",
@@ -50,33 +51,7 @@ export default async function SupportPage({ searchParams }: Props) {
       <FilterAndSearch
         description="جستجو و فیلتر تیکت‌های پشتیبانی بر اساس معیارهای مختلف"
         isfilter={true}
-        itemsbtn={[
-          {
-            title: "مرتب‌ سازی",
-            items: [
-              { name: "نزولی", key: "sort", value: "desc" },
-              { name: "صعودی", key: "sort", value: "asc" },
-            ],
-          },
-          {
-            title: "وضعیت",
-            items: [
-              { name: "بلاک شده", key: "status", value: "Blocked" },
-              { name: "درحال تایید", key: "status", value: "Waiting" },
-              { name: "تایید شده", key: "status", value: "Approved" },
-              { name: "باز", key: "status", value: "Open" },
-            ],
-          },
-          {
-            title: "اولویت",
-            items: [
-              { name: "پاین", key: "priority", value: "LOW" },
-              { name: "عادی", key: "priority", value: "NORMAL" },
-              { name: "بالا", key: "priority", value: "HIGH" },
-              { name: "فوری !", key: "priority", value: "URGENT" },
-            ],
-          },
-        ]}
+        itemsbtn={filterArray}
       />
 
       <EmptyAndPagination tickets={tickets.data}>

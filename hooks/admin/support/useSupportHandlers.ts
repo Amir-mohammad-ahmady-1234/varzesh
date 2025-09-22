@@ -45,7 +45,7 @@ export function useSupportHandlers() {
         return "warning";
       case "Approved":
         return "success";
-      case "URGENT":
+      case "Blocked":
         return "primary";
       default:
         return "secondary";
@@ -60,7 +60,7 @@ export function useSupportHandlers() {
         return "در حال بررسی";
       case "Approved":
         return "حل شده";
-      case "URGENT":
+      case "Blocked":
         return "فوری";
       default:
         return status;

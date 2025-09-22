@@ -4,7 +4,7 @@ import PageTitle from "../../../components/pages/adminpanel/pages/games/PageTitl
 import GamesPagination from "../../../components/pages/adminpanel/pages/games/GamesPagination";
 import FilterAndSearch from "../../../components/common/admin/FilterCard/FilterAndSearch";
 import { FindGame } from "../../../server/admin/paneladmin/game/FindGame/FindGame";
-import { supportFilters } from "../../../mocks/admin/filters/support-filters";
+import { filterArray } from "../../../mocks/admin/filters/filterArray";
 import Cart from "../../../components/common/admin/rowsList/Cart";
 
 interface Props {
@@ -41,7 +41,7 @@ export default async function GamesPage({ searchParams }: Props) {
             <FilterAndSearch
               description="جستجو و فیلتر بازی بر اساس معیارهای مختلف"
               isfilter={true}
-              itemsbtn={supportFilters}
+              itemsbtn={filterArray}
             />
             <div className="space-y-4">
               {Game.data.map((data) => (

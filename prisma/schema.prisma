@@ -78,7 +78,7 @@ enum Status {
   Open
   Waiting
   Approved
-  URGENT
+  Blocked
 }
 
 enum GameStatus {

@@ -26,6 +26,7 @@ export async function GetSupportFilterQuery({
       ];
     }
     if (status) {
+      console.log(status);
       where.status = status as Status;
     }
     if (priority) {

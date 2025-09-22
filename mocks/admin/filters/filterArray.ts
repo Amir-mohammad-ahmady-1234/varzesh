@@ -1,4 +1,4 @@
-export const supportFilters = [
+export const filterArray = [
   {
     title: "مرتب‌ سازی",
     items: [

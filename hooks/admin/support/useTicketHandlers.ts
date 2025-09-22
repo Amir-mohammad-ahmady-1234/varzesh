@@ -65,7 +65,7 @@ export function useTicketHandlers() {
   };
 
   const handleStatusChange = (
-    newStatus: "Open" | "Waiting" | "Approved" | "URGENT"
+    newStatus: "Open" | "Waiting" | "Approved" | "Blocked"
   ) => {
     if (!ticket) return;
 

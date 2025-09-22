@@ -13,7 +13,7 @@ export default async function supportboxInformation() {
       prisma.ticket.count({ where: { status: "Open" } }),
       prisma.ticket.count({ where: { status: "Waiting" } }),
       prisma.ticket.count({ where: { status: "Approved" } }),
-      prisma.ticket.count({ where: { status: "URGENT" } }),
+      prisma.ticket.count({ where: { status: "Blocked" } }),
     ]);
     return {
       status: 200,

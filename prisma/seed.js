@@ -3,13 +3,16 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 async function seed() {
+  // await prisma.message.deleteMany();
+  // await prisma.ticket.deleteMany();
+
   // await prisma.ticket.createMany({
   //   data: [
   //     {
   //       title: "مشکل ورود به سیستم",
   //       description: "کاربر نمی‌تواند وارد حساب کاربری شود",
   //       userId: 10,
-  //       status: "URGENT",
+  //       status: "Blocked",
   //       priority: "NORMAL",
   //       createdAt: new Date("2025-09-01T08:15:00Z"),
   //       updatedAt: new Date("2025-09-01T08:15:00Z"),
@@ -36,7 +39,7 @@ async function seed() {
   //       title: "ایمیل تایید ارسال نمی‌شود",
   //       description: "کاربر ایمیل تایید حساب را دریافت نکرده است",
   //       userId: 13,
-  //       status: "URGENT",
+  //       status: "Blocked",
   //       priority: "NORMAL",
   //       createdAt: new Date("2025-09-05T07:45:00Z"),
   //       updatedAt: new Date("2025-09-06T09:10:00Z"),
@@ -101,61 +104,61 @@ async function seed() {
   await prisma.message.createMany({
     data: [
       {
-        ticketId: 51,
+        ticketId: 91,
         content: "سلام، من نمی‌تونم وارد سیستم بشم.",
-        userId: 8,
-        createdAt: new Date("2025-09-01T08:16:00Z"),
+        userId: 9,
+        createdAt: new Date("2025-09-01T09:16:00Z"),
       },
       {
-        ticketId: 52,
+        ticketId: 92,
         content: "سلام، لطفاً مرورگر خودتون رو ریست کنید و دوباره تست کنید.",
         userId: 16,
         createdAt: new Date("2025-09-01T09:00:00Z"),
       },
       {
-        ticketId: 53,
+        ticketId: 93,
         content: "پرداخت کردم ولی رسید برام نیومد.",
         userId: 3,
         createdAt: new Date("2025-09-02T09:35:00Z"),
       },
       {
-        ticketId: 54,
+        ticketId: 94,
         content: "سلام، تراکنش شما ثبت نشده. لطفاً شماره تراکنش رو ارسال کنید.",
         userId: 16,
         createdAt: new Date("2025-09-02T09:40:00Z"),
       },
       {
-        ticketId: 55,
+        ticketId: 95,
         content: "گزارش مالی ماه قبل با اعداد اشتباه نشون داده میشه.",
         userId: 15,
         createdAt: new Date("2025-09-04T12:05:00Z"),
       },
       {
-        ticketId: 56,
+        ticketId: 96,
         content: "من ایمیل تایید دریافت نکردم.",
         userId: 11,
-        createdAt: new Date("2025-09-05T08:00:00Z"),
+        createdAt: new Date("2025-09-05T09:00:00Z"),
       },
       {
-        ticketId: 57,
+        ticketId: 97,
         content: "داشبورد خیلی کند بالا میاد.",
         userId: 10,
         createdAt: new Date("2025-09-06T14:25:00Z"),
       },
       {
-        ticketId: 58,
+        ticketId: 98,
         content: "هنگام آپلود PDF خطا میگیرم.",
         userId: 9,
         createdAt: new Date("2025-09-07T11:10:00Z"),
       },
       {
-        ticketId: 59,
+        ticketId: 99,
         content: "نوتیفیکیشن‌های سیستم برام نمیاد.",
         userId: 12,
         createdAt: new Date("2025-09-08T16:05:00Z"),
       },
       {
-        ticketId: 60,
+        ticketId: 100,
         content: "وقتی وارد پروفایل میشم خطای 500 میده.",
         userId: 3,
         createdAt: new Date("2025-09-09T09:52:00Z"),

@@ -6,7 +6,7 @@ import { mockSupportTickets } from "../../../mocks/mock-data";
 export function useSupportStates() {
   const [searchQuery, setSearchQuery] = useState("");
   const [statusFilter, setStatusFilter] = useState<
-    "all" | "Open" | "Waiting" | "Approved" | "URGENT"
+    "all" | "Open" | "Waiting" | "Approved" | "Blocked"
   >("all");
   const [priorityFilter, setPriorityFilter] = useState<
     "all" | "URGENT" | "HIGH" | "NORMAL" | "LOW"

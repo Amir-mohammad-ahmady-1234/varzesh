@@ -42,7 +42,7 @@ export interface SupportTicket {
   user: Pick<User, "id" | "name" | "email" | "avatar">;
   subject: string;
   content: string;
-  status: "Open" | "Waiting" | "Approved" | "URGENT";
+  status: "Open" | "Waiting" | "Approved" | "Blocked";
   priority: "URGENT" | "HIGH" | "NORMAL" | "LOW";
   assignedTo?: string;
   createdAt: string;
