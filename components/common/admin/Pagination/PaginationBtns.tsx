@@ -1,5 +1,7 @@
+"use client";
 import React, { SetStateAction } from "react";
 import Button from "../../Button";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 interface Props {
   setCurrentPage: React.Dispatch<SetStateAction<number>>;
@@ -7,18 +9,29 @@ interface Props {
   totalPages: number;
 }
 
-export default function PaginationBtns({
-  setCurrentPage,
-  currentPage,
-  totalPages,
-}: Props) {
+export default function PaginationBtns({ currentPage, totalPages }: Props) {
+  const router = useRouter();
+  const params = useSearchParams();
+  const pagename = usePathname().split("/")[2];
+
+  function handleChangePage(key: string, value: string) {
+    const newParams = new URLSearchParams(params.toString());
+    const currentValue = newParams.get(key);
+    if (currentValue === value) {
+      newParams.delete(key);
+    } else {
+      newParams.set(key, value);
+    }
+    router.push(`/admin/${pagename}?${newParams.toString()}`);
+  }
+
   return (
     <>
       <Button
         variant="outline"
         size="sm"
-        onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
-        disabled={currentPage === 1}
+        onClick={() => handleChangePage("page", (+currentPage - 1).toString())}
+        disabled={+currentPage === 1}
         className="cursor-pointer"
       >
         قبلی
@@ -34,13 +47,15 @@ export default function PaginationBtns({
             if (currentPage > totalPages - 2) {
               page = totalPages - 4 + i;
             }
+
+            console.log("page", page);
           }
           return (
             <Button
               key={page}
-              variant={page === currentPage ? "primary" : "outline"}
+              variant={page === +currentPage ? "primary" : "outline"}
               size="sm"
-              onClick={() => setCurrentPage(page)}
+              onClick={() => handleChangePage("page", page.toString())}
               className="cursor-pointer w-10"
             >
               {page.toLocaleString("fa-IR")}
@@ -52,8 +67,8 @@ export default function PaginationBtns({
       <Button
         variant="outline"
         size="sm"
-        onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
-        disabled={currentPage === totalPages}
+        onClick={() => handleChangePage("page", (+currentPage + 1).toString())}
+        disabled={+currentPage === totalPages}
         className="cursor-pointer"
       >
         بعدی
