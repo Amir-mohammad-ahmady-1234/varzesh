@@ -35,3 +35,41 @@ export const cards = [
     time: "1 ساعت پیش",
   },
 ];
+
+export const onlineVideos = [
+  {
+    id: 1,
+    image: "/assets/img/videopage/0svsj0bl.png",
+    title: "رئال - بارسا",
+    views: 120,
+    time: "اکنون",
+  },
+  {
+    id: 2,
+    image: "/assets/img/videopage/0svsj0bl.png",
+    title: "چلسی - ارسنال",
+    views: 80,
+    time: "اکنون",
+  },
+  {
+    id: 3,
+    image: "/assets/img/videopage/0svsj0bl.png",
+    title: "پرسپولیس - سپاهان",
+    views: 200,
+    time: "اکنون",
+  },
+  {
+    id: 4,
+    image: "/assets/img/videopage/0svsj0bl.png",
+    title: "استقلال - خیبر خرم آباد",
+    views: 55,
+    time: "اکنون",
+  },
+  {
+    id: 5,
+    image: "/assets/img/videopage/0svsj0bl.png",
+    title: "منچستر سیتی - بایرن مونیخ",
+    views: 95,
+    time: "اکنون",
+  },
+];

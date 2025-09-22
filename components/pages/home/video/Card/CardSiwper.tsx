@@ -5,9 +5,18 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import SiceSliderImage from "./SiceSliderImage";
-import { cards } from "../../../../../mocks/card";
 
-function CardSwiper() {
+interface Props {
+  cards: {
+    id: number;
+    image: string;
+    title: string;
+    views: number;
+    time: string;
+  }[];
+}
+
+function CardSwiper({ cards }: Props) {
   return (
     <Swiper
       spaceBetween={20}
