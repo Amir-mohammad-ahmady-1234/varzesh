@@ -1,11 +1,12 @@
 import Sidebar from "../../../components/pages/adminpanel/layout/Sidebar";
 import Topbar from "../../../components/pages/adminpanel/layout/Topbar";
 import PageTitle from "../../../components/pages/adminpanel/pages/games/PageTitle";
-import GamesPagination from "../../../components/pages/adminpanel/pages/games/GamesPagination";
 import FilterAndSearch from "../../../components/common/admin/FilterCard/FilterAndSearch";
 import { FindGame } from "../../../server/admin/paneladmin/game/FindGame/FindGame";
 import { filterArray } from "../../../mocks/admin/filters/filterArray";
 import Cart from "../../../components/common/admin/rowsList/Cart";
+import Pagination from "../../../components/pages/adminpanel/pages/support/Pagination";
+import EmptyAndPagination from "../../../components/pages/adminpanel/pages/support/EmptyAndPagination";
 
 interface Props {
   searchParams: {
@@ -43,7 +44,7 @@ export default async function GamesPage({ searchParams }: Props) {
               isfilter={true}
               itemsbtn={filterArray}
             />
-            <div className="space-y-4">
+            <EmptyAndPagination datas={Game.data} pagination={Game.pagination}>
               {Game.data.map((data) => (
                 <Cart
                   key={data.id}
@@ -75,9 +76,11 @@ export default async function GamesPage({ searchParams }: Props) {
                   ]}
                 />
               ))}
-            </div>
+            </EmptyAndPagination>
 
-            <GamesPagination />
+            {Game.pagination.totalPages > 1 && (
+              <Pagination pagination={Game.pagination} />
+            )}
           </div>
         </section>
       </div>

@@ -4,20 +4,31 @@ import { useSupportStates } from "../../../../../hooks/admin/support/useSupportS
 import EmptyState from "../../../../../styles/ui/EmptyState";
 import Button from "../../../../common/Button";
 import Pagination from "./Pagination";
-import { TicketType } from "../../../../../types/adminPanelTypes";
 
 interface Props {
   children: React.ReactNode;
-  tickets: TicketType[];
+  datas: any;
+  pagination?: {
+    total: number;
+    page: number;
+    limit: number;
+    totalPages: number;
+  };
 }
 
-export default function EmptyAndPagination({ children, tickets }: Props) {
-  const { setSearchQuery, setStatusFilter, setPriorityFilter, totalPages } =
+export default function EmptyAndPagination({
+  children,
+  datas,
+  pagination,
+}: Props) {
+  const { setSearchQuery, setStatusFilter, setPriorityFilter } =
     useSupportStates();
+  if (!pagination) return <p>خطا در دریافت اطلاعات</p>;
+  const { totalPages } = pagination;
 
   return (
     <>
-      {tickets.length === 0 ? (
+      {datas.length === 0 ? (
         <EmptyState
           title="تیکت پشتیبانی یافت نشد"
           description="با فیلترهای انتخاب شده تیکت پشتیبانی یافت نشد. فیلترها را تغییر دهید."
@@ -38,7 +49,7 @@ export default function EmptyAndPagination({ children, tickets }: Props) {
         children
       )}
 
-      {totalPages > 0 && <Pagination />}
+      {totalPages > 1 && <Pagination pagination={pagination} />}
     </>
   );
 }

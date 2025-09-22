@@ -54,7 +54,7 @@ export default async function SupportPage({ searchParams }: Props) {
         itemsbtn={filterArray}
       />
 
-      <EmptyAndPagination tickets={tickets.data}>
+      <EmptyAndPagination datas ={tickets.data} pagination={tickets.pagination}>
         {tickets.data.map((data) => (
           <Cart
             key={data.id}
