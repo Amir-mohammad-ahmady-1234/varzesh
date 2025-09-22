@@ -9,7 +9,7 @@ import HomeNews from "../../components/pages/home/news/HomeNews";
 
 function HomePage() {
   return (
-    <Container className="flex flex-col ">
+    <Container className="flex flex-col space-y-8">
       <section className="flex gap-5">
         <div className="w-2/3">
           <HomeImageSlider />

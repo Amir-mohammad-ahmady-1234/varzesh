@@ -14,7 +14,7 @@ export async function GetSupportFilterQuery({
   priority,
   sort,
   page = 1,
-  limit = 10,
+  limit = 5,
 }: TGetSupportFilterQuery) {
   try {
     const where = {} as Prisma.TicketWhereInput;
@@ -32,7 +32,7 @@ export async function GetSupportFilterQuery({
     if (priority) {
       where.priority = priority as Priority;
     }
-    const skip = (page - 1) * limit;
+    const skip = (Number(page) - 1) * limit;
     const [supports, total] = await Promise.all([
       prisma.ticket.findMany({
         skip,
