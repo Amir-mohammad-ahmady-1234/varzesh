@@ -20,8 +20,8 @@ export default function CartTitle({ title, options }: Props) {
       <h3 className="font-semibold text-lg text-gray-900 dark:text-gray-100">
         {title}
       </h3>
-      {options.map((option) => (
-        <>
+      {options.map((option, index) => (
+        <React.Fragment key={index}>
           <Badge variant={getStatusColor(option.items.key)} size="sm">
             {option.items.value}
           </Badge>
@@ -36,7 +36,7 @@ export default function CartTitle({ title, options }: Props) {
               {getPriorityText(option.title === "" ? option.items.value : "")}
             </span>
           </div>
-        </>
+        </React.Fragment>
       ))}
     </div>
   );
