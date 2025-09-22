@@ -26,7 +26,9 @@ function SiceSliderImage({ card }: SiceSliderImageProps) {
       </div>
 
       <div className="p-3">
-        <h3 className="text-lg font-semibold mb-1">{card.title}</h3>
+        <h4 className="text-lg font-semibold mb-1 line-clamp-1">
+          {card.title}
+        </h4>
         <div className="flex items-center justify-between text-sm text-gray-600">
           <span>{card.views} بازدید</span>
           <span>{card.time}</span>
