@@ -1,5 +1,6 @@
 import { MdChat, MdPeople, MdSportsFootball, MdSupport } from "react-icons/md";
 import { DashboardStats } from "../../types/adminPanelTypes";
+import { BoxInfoDashboardA } from "../../server/admin/paneladmin/dashboard/BoxInformation/BoxInformation";
 export const mockDashboardStats: DashboardStats = {
   totalUsers: 15420,
   activeUsers: 3240,
@@ -11,52 +12,59 @@ export const mockDashboardStats: DashboardStats = {
   resolvedTickets: 187,
 };
 
-export const stats = [
-  {
-    title: "کل کاربران",
-    value: mockDashboardStats.totalUsers.toLocaleString("fa-IR"),
-    change: "+12%",
-    trend: "up" as const,
-    icon: MdPeople,
-    color: "text-blue-600",
-    bgColor:
-      "bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950 dark:to-blue-900",
-    description: "رشد ۱۲٪ نسبت به ماه گذشته",
-  },
-  {
-    title: "کاربران فعال",
-    value: mockDashboardStats.activeUsers.toLocaleString("fa-IR"),
-    change: "+5%",
-    trend: "up" as const,
-    icon: MdSportsFootball,
-    color: "text-green-600",
-    bgColor:
-      "bg-gradient-to-br from-green-50 to-green-100 dark:from-green-950 dark:to-green-900",
-    description: "کاربران فعال در ۲۴ ساعت گذشته",
-  },
-  {
-    title: "پیام‌های امروز",
-    value: mockDashboardStats.todayMessages.toLocaleString("fa-IR"),
-    change: "+23%",
-    trend: "up" as const,
-    icon: MdChat,
-    color: "text-purple-600",
-    bgColor:
-      "bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-950 dark:to-purple-900",
-    description: "افزایش ۲۳٪ فعالیت چت",
-  },
-  {
-    title: "تیکت‌های باز",
-    value: mockDashboardStats.openTickets.toLocaleString("fa-IR"),
-    change: "-8%",
-    trend: "down" as const,
-    icon: MdSupport,
-    color: "text-orange-600",
-    bgColor:
-      "bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-950 dark:to-orange-900",
-    description: "کاهش ۸٪ تیکت‌های باز",
-  },
-];
+export async function SiteStatistics() {
+  const { ActiveUsers, Messages, OpenTickets, Users } =
+    await BoxInfoDashboardA();
+
+  const stats = [
+    {
+      title: "کل کاربران",
+      value: Users,
+      change: "+12%",
+      trend: "up" as const,
+      icon: MdPeople,
+      color: "text-blue-600",
+      bgColor:
+        "bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950 dark:to-blue-900",
+      description: "رشد ۱۲٪ نسبت به ماه گذشته",
+    },
+    {
+      title: "کاربران فعال",
+      value: ActiveUsers,
+      change: "+5%",
+      trend: "up" as const,
+      icon: MdSportsFootball,
+      color: "text-green-600",
+      bgColor:
+        "bg-gradient-to-br from-green-50 to-green-100 dark:from-green-950 dark:to-green-900",
+      description: "کاربران فعال در ۲۴ ساعت گذشته",
+    },
+    {
+      title: "پیام‌های امروز",
+      value: Messages,
+      change: "+23%",
+      trend: "up" as const,
+      icon: MdChat,
+      color: "text-purple-600",
+      bgColor:
+        "bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-950 dark:to-purple-900",
+      description: "افزایش ۲۳٪ فعالیت چت",
+    },
+    {
+      title: "تیکت‌های باز",
+      value: OpenTickets,
+      change: "-8%",
+      trend: "down" as const,
+      icon: MdSupport,
+      color: "text-orange-600",
+      bgColor:
+        "bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-950 dark:to-orange-900",
+      description: "کاهش ۸٪ تیکت‌های باز",
+    },
+  ];
+
+  return stats;
+}
 
 export const userGrowthData = [
   { month: "فروردین", users: 1200, newUsers: 200, activeUsers: 800 },
