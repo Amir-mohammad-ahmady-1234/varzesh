@@ -1,3 +1,5 @@
+"use client";
+
 import React, { Suspense } from "react";
 
 import LoadingSpinner from "../../../../../../../styles/ui/LoadingSpinner";

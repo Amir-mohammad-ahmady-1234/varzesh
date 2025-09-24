@@ -1,3 +1,5 @@
+"use client";
+
 import React, { Suspense } from "react";
 import { CardContent } from "../../../../../../../styles/ui/Card";
 import LoadingSpinner from "../../../../../../../styles/ui/LoadingSpinner";

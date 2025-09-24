@@ -1,5 +1,3 @@
-"use client";
-
 import MainLayout from "../../../components/pages/adminpanel/layout/MainLayout";
 import UsersStatistics from "../../../components/pages/adminpanel/pages/dashboard/UsersStatisticsCharts";
 import UsersAndMessagesChart from "../../../components/pages/adminpanel/pages/dashboard/UsersAndMessagesCharts/ChartsContainer";
@@ -13,8 +11,14 @@ import GamesInfotHeader from "../../../components/pages/adminpanel/pages/dashboa
 import GamesInfoContent from "../../../components/pages/adminpanel/pages/dashboard/LatestUsersAndGamesActivity/gamesActivity/GamesInfoContent";
 import DashPageHeader from "../../../components/pages/adminpanel/pages/dashboard/DashPageHeader";
 import ChartContent from "../../../components/pages/adminpanel/pages/dashboard/UsersActivity/HourslyActivity/ChartContent";
+import { HourlyActivity } from "../../../server/admin/paneladmin/dashboard/Activity/HourlyActivity/HourlyActivity";
+import { WeeklyActivity } from "../../../server/admin/paneladmin/dashboard/Activity/weeklyactivity/WeeklyActivity";
 
-export default function Dashboard() {
+export default async function Dashboard() {
+  const { data } = await HourlyActivity();
+  const { activeUsers, engagement, totalUsers } = await WeeklyActivity();
+  console.log(activeUsers, engagement, totalUsers);
+
   return (
     <MainLayout>
       <DashPageHeader />
@@ -28,7 +32,7 @@ export default function Dashboard() {
         </WeaklyChartHeader>
 
         <ChartHeader>
-          <ChartContent />
+          <ChartContent data={data} />
         </ChartHeader>
       </div>
 

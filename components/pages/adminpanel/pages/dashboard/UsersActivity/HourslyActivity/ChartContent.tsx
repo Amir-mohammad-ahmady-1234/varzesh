@@ -1,3 +1,5 @@
+"use client";
+
 import React, { Suspense } from "react";
 
 import LoadingSpinner from "../../../../../../../styles/ui/LoadingSpinner";
@@ -10,18 +12,24 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { hourlyActivityData } from "../../../../../../../mocks/admin/dashboardMoocks";
 import { CustomTooltip } from "../../CustomTooltip";
 import { CardContent } from "../../../../../../../styles/ui/Card";
 
-export default function ChartContent() {
+interface Props {
+  data: {
+    hour: string;
+    activity: number;
+  }[];
+}
+
+export default function ChartContent({ data }: Props) {
   return (
     <CardContent>
       <div className="h-64">
         <Suspense fallback={<LoadingSpinner className="mx-auto" />}>
           <ResponsiveContainer width="100%" height="100%">
             <LineChart
-              data={hourlyActivityData}
+              data={data}
               margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
             >
               <CartesianGrid strokeDasharray="3 3" className="opacity-30" />
