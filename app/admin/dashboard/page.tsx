@@ -15,10 +15,9 @@ import { HourlyActivity } from "../../../server/admin/paneladmin/dashboard/Activ
 import { WeeklyActivity } from "../../../server/admin/paneladmin/dashboard/Activity/weeklyactivity/WeeklyActivity";
 
 export default async function Dashboard() {
-  const { data } = await HourlyActivity();
-  const { activeUsers, engagement, totalUsers } = await WeeklyActivity();
-  console.log(activeUsers, engagement, totalUsers);
-
+  const { data: hourlyData } = await HourlyActivity();
+  const { data: weeklyData } = await WeeklyActivity();
+console.log(weeklyData);
   return (
     <MainLayout>
       <DashPageHeader />
@@ -28,11 +27,11 @@ export default async function Dashboard() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
         <WeaklyChartHeader>
-          <WeaklyChartContent />
+          <WeaklyChartContent data={weeklyData} />
         </WeaklyChartHeader>
 
         <ChartHeader>
-          <ChartContent data={data} />
+          <ChartContent data={hourlyData} />
         </ChartHeader>
       </div>
 

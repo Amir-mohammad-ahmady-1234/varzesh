@@ -13,18 +13,21 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { dailyActivityData } from "../../../../../../../mocks/admin/dashboardMoocks";
 import { CustomTooltip } from "../../CustomTooltip";
 import { CardContent } from "../../../../../../../styles/ui/Card";
 
-export default function WeaklyChartContent() {
+interface Props {
+  data: { day: string; messages: number; users: number; engagement: number }[];
+}
+
+export default function WeaklyChartContent({ data }: Props) {
   return (
     <CardContent>
       <div className="h-64">
         <Suspense fallback={<LoadingSpinner className="mx-auto" />}>
           <ResponsiveContainer width="100%" height="100%">
             <BarChart
-              data={dailyActivityData}
+              data={data}
               margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
             >
               <CartesianGrid strokeDasharray="3 3" className="opacity-30" />
