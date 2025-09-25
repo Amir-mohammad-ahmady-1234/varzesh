@@ -25,3 +25,24 @@ export const filterArray = [
     ],
   },
 ];
+
+export const filterUsersArr = [
+  {
+    title: "نقش",
+    items: [
+      { name: "همه", key: "role", value: "all" },
+      { name: "ادمین", key: "role", value: "admin" },
+      { name: "مدیر", key: "role", value: "owner" },
+      { name: "کاربر", key: "role", value: "user" },
+    ],
+  },
+  {
+    title: "وضعیت",
+    items: [
+      { name: "همه", key: "status", value: "all" },
+      { name: "فعال", key: "status", value: "active" },
+      { name: "غیر فعال", key: "status", value: "not-active" },
+      { name: "مسدود", key: "status", value: "ban" },
+    ],
+  },
+];

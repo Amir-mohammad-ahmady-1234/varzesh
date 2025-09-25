@@ -16,6 +16,12 @@ interface Props {
         waitingsupport?: number;
         approvedsupport?: number;
         Immediatesupport?: number;
+      }
+    | {
+        totalUsers?: number;
+        activeUser?: number;
+        blockUsers?: number;
+        admins?: number;
       };
   usersCardInfo: {
     id: number;
