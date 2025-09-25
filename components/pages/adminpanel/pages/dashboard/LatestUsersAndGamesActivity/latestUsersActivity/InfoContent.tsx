@@ -1,40 +1,58 @@
 import React from "react";
 import { CardContent } from "../../../../../../../styles/ui/Card";
-import { recentGames } from "../../../../../../../mocks/admin/dashboardMoocks";
 import Badge from "../../../../../../../styles/ui/Badge";
+import { $Enums } from "@prisma/client";
 
-export default function InfoContent() {
+interface Props {
+  games: {
+    data: Date;
+    time: Date;
+    id: number;
+    status: $Enums.GameStatus;
+    description: string;
+    firstthem: string;
+    secondthem: string;
+    League: $Enums.League;
+    step: string;
+  }[];
+}
+
+export default function InfoContent({ games }: Props) {
   return (
     <CardContent>
       <div className="space-y-3">
-        {recentGames.map((game) => (
+        {games.map((game) => (
           <div
             key={game.id}
             className="flex items-center justify-between p-4 bg-accent/50 rounded-lg hover:bg-accent transition-colors cursor-pointer"
           >
             <div className="flex-1">
-              <p className="font-medium text-foreground">{game.teams}</p>
-              <p className="text-sm text-muted-foreground">{game.league}</p>
+              <span className="font-medium text-foreground">
+                {`${game.firstthem} VS ${game.secondthem}`}
+              </span>
+              <p className="text-sm text-muted-foreground">{game.League}</p>
             </div>
             <div className="flex items-center gap-3">
               <div className="text-left">
                 <p className="text-sm font-medium text-foreground">
-                  {game.messages.toLocaleString("fa-IR")} پیام
+                  {game.step}
                 </p>
-                <p className="text-xs text-muted-foreground">{game.time}</p>
+                <p className="text-xs text-muted-foreground">
+                  {game.description.toString()}
+                </p>
               </div>
               <Badge
                 variant={
                   game.status === "live"
                     ? "info"
-                    : game.status === "finished"
+                    : game.status === "Scheduled"
                     ? "secondary"
                     : "success"
                 }
               >
                 {game.status === "live"
                   ? "زنده"
-                  : game.status === "finished"
+                  : game.status === "Scheduled"
                   ? "تمام شده"
                   : "برنامه‌ریزی شده"}
               </Badge>

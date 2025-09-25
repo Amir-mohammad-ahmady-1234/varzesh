@@ -13,11 +13,13 @@ import DashPageHeader from "../../../components/pages/adminpanel/pages/dashboard
 import ChartContent from "../../../components/pages/adminpanel/pages/dashboard/UsersActivity/HourslyActivity/ChartContent";
 import { HourlyActivity } from "../../../server/admin/paneladmin/dashboard/Activity/HourlyActivity/HourlyActivity";
 import { WeeklyActivity } from "../../../server/admin/paneladmin/dashboard/Activity/weeklyactivity/WeeklyActivity";
+import { Lastgames } from "../../../server/admin/paneladmin/dashboard/Activity/Lastgames/Lastgames";
 
 export default async function Dashboard() {
   const { data: hourlyData } = await HourlyActivity();
   const { data: weeklyData } = await WeeklyActivity();
-console.log(weeklyData);
+  const games = await Lastgames();
+
   return (
     <MainLayout>
       <DashPageHeader />
@@ -37,7 +39,7 @@ console.log(weeklyData);
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <InfoHeader>
-          <InfoContent />
+          <InfoContent games={games} />
         </InfoHeader>
 
         <GamesInfotHeader>
