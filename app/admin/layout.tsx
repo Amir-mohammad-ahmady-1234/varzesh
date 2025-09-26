@@ -2,7 +2,7 @@ import "../../styles/globals.css";
 
 import type React from "react";
 import type { Metadata } from "next";
-import { Vazirmatn } from "next/font/google";
+import { Vazirmatn } from "next/font/google"; 
 // import { GetUserById } from "../../server/user/getuserbyid/GetUserById";
 // import { redirect } from "next/navigation";
 
