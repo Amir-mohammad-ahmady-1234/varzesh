@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import SidebarWrapper from "../../components/pages/userpanel/layout/SidebarWrapper";
 import { GetUserById } from "../../server/user/getuserbyid/GetUserById";
 import GetProfileDataUser from "../../server/user/paneluser/profile/GetProfileDataUser";
@@ -11,5 +12,9 @@ export default async function UserPanelLayout({ children }: Props) {
   if (!userID) return;
   const userInfo = await GetProfileDataUser(userID.userId);
 
-  return <SidebarWrapper userInfo={userInfo}>{children}</SidebarWrapper>;
+  return (
+    <Suspense>
+      <SidebarWrapper userInfo={userInfo}>{children}</SidebarWrapper>;
+    </Suspense>
+  );
 }

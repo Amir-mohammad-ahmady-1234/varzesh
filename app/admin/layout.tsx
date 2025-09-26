@@ -2,7 +2,8 @@ import "../../styles/globals.css";
 
 import type React from "react";
 import type { Metadata } from "next";
-import { Vazirmatn } from "next/font/google"; 
+import { Vazirmatn } from "next/font/google";
+import { Suspense } from "react";
 // import { GetUserById } from "../../server/user/getuserbyid/GetUserById";
 // import { redirect } from "next/navigation";
 
@@ -34,7 +35,7 @@ export default async function RootLayout({
       className={vazirmatn.variable}
     >
       <body className="bg-background text-foreground font-sans antialiased">
-        {children}
+        <Suspense>{children}</Suspense>
       </body>
     </html>
   );

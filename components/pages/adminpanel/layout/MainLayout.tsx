@@ -1,6 +1,6 @@
 "use client";
 
-import type { ReactNode } from "react";
+import { Suspense, type ReactNode } from "react";
 import Sidebar from "./Sidebar";
 import Topbar from "./Topbar";
 
@@ -12,11 +12,17 @@ interface MainLayoutProps {
 export default function MainLayout({ children, className }: MainLayoutProps) {
   return (
     <div className="flex h-screen bg-background overflow-hidden">
-      <Sidebar />
+      <Suspense>
+        <Sidebar />
+      </Suspense>
       <div className="flex-1 flex flex-col overflow-hidden">
-        <Topbar />
+        <Suspense>
+          <Topbar />
+        </Suspense>
         <main className="flex-1 overflow-y-auto p-6">
-          <div className="max-w-7xl mx-auto">{children}</div>
+          <Suspense>
+            <div className="max-w-7xl mx-auto">{children}</div>
+          </Suspense>
         </main>
       </div>
     </div>
