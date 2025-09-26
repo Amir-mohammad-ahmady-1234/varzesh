@@ -79,7 +79,13 @@ export default function Sidebar() {
                 >
                   <Icon className="w-5 h-5 flex-shrink-0" />
                   {!collapsed && (
-                    <span className="font-medium truncate">{item.label}</span>
+                    <span
+                      className={`font-medium truncate hover:text-primary-300 hover:scale-110 ${
+                        isActive ? "text-primary-300" : ""
+                      }`}
+                    >
+                      {item.label}
+                    </span>
                   )}
                   {collapsed && <span className="sr-only">{item.label}</span>}
                 </Link>

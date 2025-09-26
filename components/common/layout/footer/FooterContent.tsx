@@ -9,7 +9,7 @@ function FooterContent() {
     <div>
       <div className="flex items-center flex-col md:flex-row">
         <div className="md:w-1/4 w-full text-right flex flex-col p-5">
-          <div className="flex  mb-5">
+          <div className="flex mb-5">
             <Image
               src={"/assets/img/logo/logo.png"}
               alt="logo"
@@ -26,7 +26,7 @@ function FooterContent() {
         <div className="w-3/4 grid grid-cols-2 md:grid-cols-4  items-center">
           {footerLinks.map((section) => (
             <div key={section.id} className="text-right w-full mt-10 ">
-              <div className="flex  mb-5">
+              <div className="flex mb-5">
                 <Image
                   src={"/assets/img/footer/Frame.png"}
                   alt="footer iconss"
@@ -39,7 +39,9 @@ function FooterContent() {
                 {section.links.map((link) => (
                   <div key={link} className="flex  space-y-4.5 ">
                     <MdOutlineKeyboardArrowLeft />
-                    <li>{link}</li>
+                    <li className="hover:text-primary-100 cursor-pointer">
+                      {link}
+                    </li>
                   </div>
                 ))}
               </ul>
@@ -47,17 +49,17 @@ function FooterContent() {
           ))}
         </div>
       </div>
-      <div className="flex items-center  gap-4 p-4">
-        <div className="bg-primary-100 p-3 md:p-4 rounded-full">
+      <div className="flex items-center gap-4 p-4">
+        <div className="bg-primary-100 p-3 md:p-4 rounded-full cursor-pointer hover:rotate-360 hover:bg-tertiary-300 duration-1000">
           <ImInstagram />
         </div>
-        <div className="bg-primary-100 p-3 md:p-4 rounded-full">
+        <div className="bg-primary-100 p-3 md:p-4 rounded-full cursor-pointer hover:rotate-360 hover:bg-tertiary-300 duration-1000">
           <ImFacebook />
         </div>
-        <div className="bg-primary-100 p-3 md:p-4 rounded-full">
+        <div className="bg-primary-100 p-3 md:p-4 rounded-full cursor-pointer hover:rotate-360 hover:bg-tertiary-300 duration-1000">
           <ImTelegram />
         </div>
-        <div className="bg-primary-100 p-3 md:p-4 rounded-full">
+        <div className="bg-primary-100 p-3 md:p-4 rounded-full cursor-pointer hover:rotate-360 hover:bg-tertiary-300 duration-1000">
           <ImTwitter />
         </div>
       </div>

@@ -9,7 +9,7 @@ function SummaryGamePlay() {
   const [categori, setCategori] = useState<number | null>(1);
 
   return (
-    <section className="w-full bg-primary-600 p-4 md:p-6 rounded-xl shadow-md">
+    <section className="w-full bg-gradient-to-r from-[#582FF5] to-[#00329A] p-4 md:p-6 rounded-xl shadow-md">
       <header className="flex items-center justify-between mb-6">
         <h6 className="flex items-center gap-2 text-white font-semibold text-base md:text-lg">
           <span>خلاصه بازی‌های هفته</span>

@@ -40,7 +40,7 @@ export default function Cart({
 }: Props) {
   return (
     <div
-      className="hover:shadow-lg transition-all duration-200 border-r-4 rounded-xl"
+      className="hover:shadow-lg transition-all duration-200 border-r-4 rounded-xl mb-4"
       style={{
         borderRightColor: getCartColor(options) as unknown as string,
       }}

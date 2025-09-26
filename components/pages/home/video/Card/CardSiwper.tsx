@@ -12,7 +12,9 @@ interface Props {
     image: string;
     title: string;
     views: number;
+    label: string;
     time: string;
+    desc: string;
   }[];
 }
 

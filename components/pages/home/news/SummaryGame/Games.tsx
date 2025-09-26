@@ -12,7 +12,7 @@ export default function Games({ categori }: { categori: number | null }) {
         .map((game) => (
           <article
             key={game.id}
-            className="border gap-4 rounded-lg text-neutral-100 shadow hover:shadow-lg transition overflow-hidden flex flex-col w-full"
+            className="border rounded-lg text-neutral-100 shadow hover:shadow-lg transition overflow-hidden flex flex-col w-full"
           >
             <div className="relative w-full h-40">
               <Image
@@ -23,7 +23,7 @@ export default function Games({ categori }: { categori: number | null }) {
               />
             </div>
 
-            <div className="flex flex-col justify-between flex-1 p-3">
+            <div className="flex flex-col justify-between flex-1 p-3 gap-4">
               <div className="flex items-center justify-between mb-2 text-xs md:text-sm">
                 <span className="px-2 py-0.5 border border-gray-300 rounded font-medium">
                   {game.league}
