@@ -1,7 +1,6 @@
 "use client";
 import React, { Suspense } from "react";
 
-import LoadingSpinner from "../../../../../../../styles/ui/LoadingSpinner";
 import {
   Area,
   AreaChart,
@@ -14,7 +13,8 @@ import {
 } from "recharts";
 import { userGrowthData } from "../../../../../../../mocks/admin/dashboardMoocks";
 import { CustomTooltip } from "../../CustomTooltip";
-import { CardContent } from "../../../../../../../styles/ui/Card";
+import { CardContent } from "../../../../../../common/ui/Card";
+import LoadingSpinner from "../../../../../../common/ui/LoadingSpinner";
 
 export default function ChartContent() {
   return (

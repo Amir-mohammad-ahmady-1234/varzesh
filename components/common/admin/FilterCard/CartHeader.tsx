@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "../../../../styles/ui/Card";
+import { CardDescription, CardHeader, CardTitle } from "../../ui/Card";
 import { MdFilterList } from "react-icons/md";
 import Button from "../../Button";
 

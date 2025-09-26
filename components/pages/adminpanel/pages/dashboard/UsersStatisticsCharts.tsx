@@ -1,7 +1,7 @@
 import React from "react";
-import Card from "../../../../../styles/ui/Card";
 import { MdTrendingDown, MdTrendingUp } from "react-icons/md";
 import { SiteStatistics } from "../../../../../mocks/admin/dashboardMoocks";
+import Card from "../../../../common/ui/Card";
 
 export default async function UsersStatistics() {
   const stats = await SiteStatistics();

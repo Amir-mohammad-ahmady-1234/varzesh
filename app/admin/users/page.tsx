@@ -1,7 +1,5 @@
 "use client";
 import MainLayout from "../../../components/pages/adminpanel/layout/MainLayout";
-import Card from "../../../styles/ui/Card";
-import EmptyState from "../../../styles/ui/EmptyState";
 import Button from "../../../components/common/Button";
 import { useUsersStates } from "../../../hooks/admin/users/useUsersStates";
 import PageTitle from "../../../components/pages/adminpanel/pages/users/PageHeader";
@@ -18,6 +16,8 @@ import {
   PiUserCircleBold,
 } from "react-icons/pi";
 import { IoChevronUpCircleOutline } from "react-icons/io5";
+import EmptyState from "../../../components/common/ui/EmptyState";
+import Card from "../../../components/common/ui/Card";
 
 export default function UsersPage() {
   const {

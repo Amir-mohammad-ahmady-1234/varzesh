@@ -2,7 +2,6 @@
 
 import React, { Suspense } from "react";
 
-import LoadingSpinner from "../../../../../../../styles/ui/LoadingSpinner";
 import {
   Bar,
   BarChart,
@@ -14,7 +13,8 @@ import {
   YAxis,
 } from "recharts";
 import { CustomTooltip } from "../../CustomTooltip";
-import { CardContent } from "../../../../../../../styles/ui/Card";
+import { CardContent } from "../../../../../../common/ui/Card";
+import LoadingSpinner from "../../../../../../common/ui/LoadingSpinner";
 
 interface Props {
   data: { day: string; messages: number; users: number; engagement: number }[];

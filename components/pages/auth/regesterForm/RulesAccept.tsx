@@ -1,4 +1,4 @@
-import InputDesign from "../../../../styles/ui/Input";
+import InputDesign from "../../../common/ui/Input";
 
 function RulesAccept({
   checked,

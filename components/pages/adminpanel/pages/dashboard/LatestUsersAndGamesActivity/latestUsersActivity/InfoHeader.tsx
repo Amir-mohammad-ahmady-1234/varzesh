@@ -1,10 +1,11 @@
 import React from "react";
+
+import Button from "../../../../../../common/Button";
 import Card, {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "../../../../../../../styles/ui/Card";
-import Button from "../../../../../../common/Button";
+} from "../../../../../../common/ui/Card";
 
 export default function InfoHeader({
   children,

@@ -1,7 +1,7 @@
 import React from "react";
-import { CardDescription, CardHeader, CardTitle } from "../../../../../../../styles/ui/Card";
 import Button from "../../../../../../common/Button";
 import { MdMoreVert } from "react-icons/md";
+import { CardDescription, CardHeader, CardTitle } from "../../../../../../common/ui/Card";
 
 export default function MessChartHeader({children}:{children:React.ReactNode}) {
   return (

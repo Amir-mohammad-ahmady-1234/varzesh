@@ -1,14 +1,14 @@
 "use client";
 import React, { useState } from "react";
 import PageTitle from "../PageTitle";
-import Card from "../../../../../../styles/ui/Card";
 import TeamsNameFiled from "../newGame/add-new-game-form/TeamsNameFiled";
 import TeamsCategory from "../newGame/add-new-game-form/TeamsCategory";
 import GameStatusAndDate from "../newGame/add-new-game-form/GameStatusAndDate";
-import FormField from "../../../../../../styles/ui/FormField";
-import Textarea from "../../../../../../styles/ui/Textarea";
 import SubmitingBtns from "../newGame/add-new-game-form/SubmitingBtns";
 import toast from "react-hot-toast";
+import Card from "../../../../../common/ui/Card";
+import FormField from "../../../../../common/ui/FormField";
+import Textarea from "../../../../../common/ui/Textarea";
 type StatusType = "Scheduled" | "live" | "down";
 type LeagueType = "Acup" | "Tcup" | "Dcup";
 export interface TFormDataGame {

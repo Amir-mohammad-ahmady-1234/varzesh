@@ -1,8 +1,8 @@
 import React from "react";
-import Card from "../../../../../../../styles/ui/Card";
 import { MdEmail, MdPerson } from "react-icons/md";
 import Button from "../../../../../../common/Button";
 import { useTicketStates } from "../../../../../../../hooks/admin/support/useTicketStates";
+import Card from "../../../../../../common/ui/Card";
 
 export default function UserInfo() {
   const { ticket } = useTicketStates();

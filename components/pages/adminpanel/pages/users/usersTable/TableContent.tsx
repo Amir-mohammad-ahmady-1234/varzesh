@@ -9,7 +9,6 @@ import {
   MdMoreVert,
   MdVisibility,
 } from "react-icons/md";
-import Badge from "../../../../../../styles/ui/Badge";
 import {
   formatDate,
   getRoleColor,
@@ -20,6 +19,7 @@ import {
 import Button from "../../../../../common/Button";
 import { useUsersStates } from "../../../../../../hooks/admin/users/useUsersStates";
 import { User } from "../../../../../../types/adminPanelTypes";
+import Badge from "../../../../../common/ui/Badge";
 
 export default function TableContent({ user }: { user: User }) {
   const { toggleUserSelection, selectedUsers, handleUserClick } =

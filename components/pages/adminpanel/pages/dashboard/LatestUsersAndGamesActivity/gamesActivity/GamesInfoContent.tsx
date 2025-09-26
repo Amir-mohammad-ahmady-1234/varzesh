@@ -1,6 +1,6 @@
 import React from "react";
-import { CardContent } from "../../../../../../../styles/ui/Card";
 import { recentActivities } from "../../../../../../../mocks/admin/dashboardMoocks";
+import { CardContent } from "../../../../../../common/ui/Card";
 
 export default function GamesInfoContent() {
   return (

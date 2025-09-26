@@ -2,10 +2,6 @@
 import { useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import MainLayout from "../../../../components/pages/adminpanel/layout/MainLayout";
-import PageHeader from "../../../../styles/ui/PageHeader";
-import Card from "../../../../styles/ui/Card";
-import Badge from "../../../../styles/ui/Badge";
-import Input from "../../../../styles/ui/Input";
 import { mockUsers } from "../../../../mocks/mock-data";
 import {
   MdArrowBack,
@@ -20,6 +16,10 @@ import {
   MdHistory,
 } from "react-icons/md";
 import Button from "../../../../components/common/Button";
+import PageHeader from "../../../../components/common/ui/PageHeader";
+import Badge from "../../../../components/common/ui/Badge";
+import Card from "../../../../components/common/ui/Card";
+import Input from "../../../../components/common/Input";
 
 export default function UserDetailPage() {
   const params = useParams();

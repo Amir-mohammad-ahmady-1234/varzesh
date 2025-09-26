@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
 import { useSupportStates } from "../../../../../hooks/admin/support/useSupportStates";
-import EmptyState from "../../../../../styles/ui/EmptyState";
 import Button from "../../../../common/Button";
 import Pagination from "./Pagination";
+import EmptyState from "../../../../common/ui/EmptyState";
 
 interface Props {
   children: React.ReactNode;

@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "../../../../styles/ui/Card";
+import Card from "../../ui/Card";
 
 export default function CartContainer({
   children,

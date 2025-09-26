@@ -1,10 +1,10 @@
 import React from "react";
-import PageHeader from "../../../../../../styles/ui/PageHeader";
-import Badge from "../../../../../../styles/ui/Badge";
 import Button from "../../../../../common/Button";
 import { MdArrowBack } from "react-icons/md";
 import { useTicketStates } from "../../../../../../hooks/admin/support/useTicketStates";
 import { useTicketHandlers } from "../../../../../../hooks/admin/support/useTicketHandlers";
+import PageHeader from "../../../../../common/ui/PageHeader";
+import Badge from "../../../../../common/ui/Badge";
 
 export default function TicketHeader() {
   const { ticket, router } = useTicketStates();

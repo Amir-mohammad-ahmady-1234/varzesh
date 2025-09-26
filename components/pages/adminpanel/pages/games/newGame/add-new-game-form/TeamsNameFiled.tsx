@@ -1,6 +1,6 @@
 import React from "react";
-import FormField from "../../../../../../../styles/ui/FormField";
-import InputDesign from "../../../../../../../styles/ui/Input";
+import InputDesign from "../../../../../../common/ui/Input";
+import FormField from "../../../../../../common/ui/FormField";
 
 type TTeamsNameFiled = {
   firstthem: string;

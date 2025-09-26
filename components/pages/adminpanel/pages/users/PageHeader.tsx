@@ -1,8 +1,8 @@
 import React from "react";
-import PageHeader from "../../../../../styles/ui/PageHeader";
 import Button from "../../../../common/Button";
 import { MdAdd, MdDownload, MdRefresh } from "react-icons/md";
 import { useUsersStates } from "../../../../../hooks/admin/users/useUsersStates";
+import PageHeader from "../../../../common/ui/PageHeader";
 
 export default function PageTitle() {
   const { filteredUsers, exportSelectedUsers } = useUsersStates();

@@ -1,5 +1,4 @@
 import React from "react";
-import Card from "../../../../../../styles/ui/Card";
 import ConversationHeader from "./conversation/ConversationHeader";
 import Messages from "./conversation/messages/Messages";
 import InternalNote from "./conversation/InternalNote";
@@ -8,6 +7,7 @@ import TicketInfo from "./ticket_info_and_actions/TicketInfo";
 import QuickActions from "./ticket_info_and_actions/QuickActions ";
 import UserInfo from "./ticket_info_and_actions/UserInfo";
 import { useTicketStates } from "../../../../../../hooks/admin/support/useTicketStates";
+import Card from "../../../../../common/ui/Card";
 
 export default function TicketContent() {
   const { showInternalNote } = useTicketStates();

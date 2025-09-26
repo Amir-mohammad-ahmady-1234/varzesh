@@ -1,10 +1,10 @@
 import React from "react";
-import Card from "../../../../styles/ui/Card";
 
 import ChartContent from "./CartContent";
 import CartTitle from "./CartTitle";
 import CartOptions from "./CartOptions";
 import { getCartColor } from "../../../../utils/getCartColor";
+import Card from "../../ui/Card";
 
 type Item = {
   value: string;

@@ -1,4 +1,4 @@
-import InputDesign from "../../styles/ui/Input";
+import InputDesign from "./ui/Input";
 
 interface PropsType {
   name?: string;

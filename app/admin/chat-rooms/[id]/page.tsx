@@ -1,8 +1,6 @@
 'use client'
 
 import MainLayout from "../../../../components/pages/adminpanel/layout/MainLayout";
-import Card from "../../../../styles/ui/Card";
-import LoadingSpinner from "../../../../styles/ui/LoadingSpinner";
 import NotRoomFounded from "../../../../components/pages/adminpanel/pages/chat-rooms/RoomPage/NotRoomFounded";
 import PageTitle from "../../../../components/pages/adminpanel/pages/chat-rooms/RoomPage/PageTitle";
 import ChatHeader from "../../../../components/pages/adminpanel/pages/chat-rooms/RoomPage/ChatHeader/ChatHeader";
@@ -14,6 +12,8 @@ import MessageInput from "../../../../components/pages/adminpanel/pages/chat-roo
 import ControlCard from "../../../../components/common/admin/ControlsCard/ControlCard";
 import InfoCard from "../../../../components/common/admin/ControlsCard/InfoCard";
 import { useRoomPage } from "../../../../hooks/admin/chat-room/useRoomPage";
+import LoadingSpinner from "../../../../components/common/ui/LoadingSpinner";
+import Card from "../../../../components/common/ui/Card";
 
 export interface Message {
   id: string;

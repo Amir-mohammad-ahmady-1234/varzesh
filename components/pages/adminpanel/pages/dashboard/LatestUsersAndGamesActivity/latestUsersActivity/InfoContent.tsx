@@ -1,7 +1,7 @@
 import React from "react";
-import { CardContent } from "../../../../../../../styles/ui/Card";
-import Badge from "../../../../../../../styles/ui/Badge";
 import { $Enums } from "@prisma/client";
+import { CardContent } from "../../../../../../common/ui/Card";
+import Badge from "../../../../../../common/ui/Badge";
 
 interface Props {
   games: {

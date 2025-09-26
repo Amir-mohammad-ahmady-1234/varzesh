@@ -1,11 +1,11 @@
 import React from "react";
-import PageHeader from "../../../../../../styles/ui/PageHeader";
-import Badge from "../../../../../../styles/ui/Badge";
 import { MdArrowBack, MdCircle } from "react-icons/md";
 import Button from "../../../../../common/Button";
 import { cn } from "../../../../../../lib/utils";
 import { redirect } from "next/navigation";
 import { ChatRoom } from "../../../../../../types/adminPanelTypes";
+import PageHeader from "../../../../../common/ui/PageHeader";
+import Badge from "../../../../../common/ui/Badge";
 
 export default function PageTitle({ room }: { room: ChatRoom }) {
   return (

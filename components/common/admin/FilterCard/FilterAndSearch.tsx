@@ -3,11 +3,11 @@
 import React from "react";
 import CartContainer from "./CartContainer";
 import CartHeader from "./CartHeader";
-import { CardContent } from "../../../../styles/ui/Card";
 import Search from "./Search";
 import Button from "../../Button";
 import { usePathname, useRouter } from "next/navigation";
 import { useSearchParams } from "next/navigation";
+import { CardContent } from "../../ui/Card";
 type Item = {
   name: string;
   value: string;

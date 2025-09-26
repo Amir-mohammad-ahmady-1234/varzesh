@@ -1,10 +1,10 @@
 "use client";
 import React from "react";
 import { useSupportHandlers } from "../../../../hooks/admin/support/useSupportHandlers";
-import Badge from "../../../../styles/ui/Badge";
 import { cn } from "../../../../lib/utils";
 import { MdPriorityHigh } from "react-icons/md";
 import { Option } from "./Cart";
+import Badge from "../../ui/Badge";
 
 interface Props {
   title: string;

@@ -1,10 +1,10 @@
 import React from "react";
-import Card from "../../../../../../../styles/ui/Card";
-import Badge from "../../../../../../../styles/ui/Badge";
 import { cn } from "../../../../../../../lib/utils";
 import { MdPriorityHigh } from "react-icons/md";
 import { useTicketStates } from "../../../../../../../hooks/admin/support/useTicketStates";
 import { useTicketHandlers } from "../../../../../../../hooks/admin/support/useTicketHandlers";
+import Card from "../../../../../../common/ui/Card";
+import Badge from "../../../../../../common/ui/Badge";
 
 export default function TicketInfo() {
   const { ticket } = useTicketStates();

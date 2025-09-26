@@ -1,7 +1,7 @@
 import React from "react";
-import Badge from "../../../../../../../../styles/ui/Badge";
 import { useTicketHandlers } from "../../../../../../../../hooks/admin/support/useTicketHandlers";
 import { useTicketStates } from "../../../../../../../../hooks/admin/support/useTicketStates";
+import Badge from "../../../../../../../common/ui/Badge";
 
 export default function InitialTicketMessage() {
   const { ticket } = useTicketStates();

@@ -1,6 +1,6 @@
 import React from "react";
-import FormField from "../../../../../../../styles/ui/FormField";
-import InputDesign from "../../../../../../../styles/ui/Input";
+import FormField from "../../../../../../common/ui/FormField";
+import InputDesign from "../../../../../../common/ui/Input";
 
 type TTeamsCategory = {
   handleChange: (

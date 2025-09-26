@@ -1,7 +1,7 @@
 import React from "react";
-import Badge from "../../../../../../../styles/ui/Badge";
 import { cn } from "../../../../../../../lib/utils";
 import { Message } from "../../../../../../../app/admin/chat-rooms/[id]/page";
+import Badge from "../../../../../../common/ui/Badge";
 
 export default function MessageContent({ message }: { message: Message }) {
   const formatTime = (timestamp: string) => {

@@ -3,8 +3,8 @@
 import React, { useState } from "react";
 import { MdSearch } from "react-icons/md";
 import Button from "../../Button";
-import InputDesign from "../../../../styles/ui/Input";
 import { useRouter, useSearchParams } from "next/navigation";
+import InputDesign from "../../ui/Input";
 
 interface Props {
   placehlderText?: string;

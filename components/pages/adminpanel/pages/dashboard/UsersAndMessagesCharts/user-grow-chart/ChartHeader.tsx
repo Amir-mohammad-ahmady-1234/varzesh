@@ -1,12 +1,13 @@
 import React from "react";
+
+import Button from "../../../../../../common/Button";
+import { MdMoreVert } from "react-icons/md";
 import Card, {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "../../../../../../../styles/ui/Card";
-import Badge from "../../../../../../../styles/ui/Badge";
-import Button from "../../../../../../common/Button";
-import { MdMoreVert } from "react-icons/md";
+} from "../../../../../../common/ui/Card";
+import Badge from "../../../../../../common/ui/Badge";
 
 export default function ChartHeader({
   children,

@@ -1,5 +1,4 @@
 import React from "react";
-import Card from "../../../../../styles/ui/Card";
 import {
   MdBlock,
   MdCheckBox,
@@ -9,6 +8,7 @@ import {
 } from "react-icons/md";
 import Button from "../../../../common/Button";
 import { useUsersStates } from "../../../../../hooks/admin/users/useUsersStates";
+import Card from "../../../../common/ui/Card";
 
 export default function SelectedCard() {
   const { selectedUsers, handleBulkAction } = useUsersStates();

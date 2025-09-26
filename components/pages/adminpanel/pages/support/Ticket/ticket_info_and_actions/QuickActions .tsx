@@ -1,9 +1,9 @@
 import React from "react";
-import Card from "../../../../../../../styles/ui/Card";
 import Button from "../../../../../../common/Button";
 import { MdAssignment, MdCheck, MdClose } from "react-icons/md";
 import { useTicketStates } from "../../../../../../../hooks/admin/support/useTicketStates";
 import { useTicketHandlers } from "../../../../../../../hooks/admin/support/useTicketHandlers";
+import Card from "../../../../../../common/ui/Card";
 
 export default function QuickActions() {
   const { ticket } = useTicketStates();
@@ -18,8 +18,8 @@ export default function QuickActions() {
         <Button
           variant="outline"
           className="w-full justify-start cursor-pointer bg-transparent"
-          onClick={() => handleStatusChange("in-progress")}
-          disabled={ticket?.status === "in-progress"}
+          onClick={() => handleStatusChange("Waiting")}
+          disabled={ticket?.status === "Waiting"}
         >
           <MdAssignment className="w-4 h-4 ml-2" />
           شروع بررسی
@@ -27,9 +27,9 @@ export default function QuickActions() {
         <Button
           variant="outline"
           className="w-full justify-start cursor-pointer bg-transparent"
-          onClick={() => handleStatusChange("resolved")}
+          onClick={() => handleStatusChange("Approved")}
           disabled={
-            ticket?.status === "resolved" || ticket?.status === "closed"
+            ticket?.status === "Approved" || ticket?.status === "Blocked"
           }
         >
           <MdCheck className="w-4 h-4 ml-2" />
@@ -38,8 +38,8 @@ export default function QuickActions() {
         <Button
           variant="destructive"
           className="w-full justify-start cursor-pointer"
-          onClick={() => handleStatusChange("closed")}
-          disabled={ticket?.status === "closed"}
+          onClick={() => handleStatusChange("Blocked")}
+          disabled={ticket?.status === "Blocked"}
         >
           <MdClose className="w-4 h-4 ml-2" />
           بستن تیکت

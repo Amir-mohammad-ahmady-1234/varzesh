@@ -6,11 +6,11 @@ import FastAnswer from "../../../components/pages/adminpanel/pages/support/FastA
 import EmptyAndPagination from "../../../components/pages/adminpanel/pages/support/EmptyAndPagination";
 import { GetSupportFilterQuery } from "../../../server/admin/paneladmin/support/GetSupportFilterQurey/GetSupportFilterQurey";
 import supportboxInformation from "../../../server/admin/paneladmin/support/supportboxInformation";
-import EmptyState from "../../../styles/ui/EmptyState";
 import FilterAndSearch from "../../../components/common/admin/FilterCard/FilterAndSearch";
 import Cart from "../../../components/common/admin/rowsList/Cart";
 import { filterArray } from "../../../mocks/admin/filters/filterArray";
 import { Priority, Status } from "@prisma/client";
+import EmptyState from "../../../components/common/ui/EmptyState";
 
 interface Props {
   searchParams: {

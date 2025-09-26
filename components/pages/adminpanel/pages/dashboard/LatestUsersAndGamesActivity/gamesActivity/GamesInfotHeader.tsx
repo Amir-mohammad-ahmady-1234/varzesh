@@ -3,7 +3,7 @@ import Card, {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "../../../../../../../styles/ui/Card";
+} from "../../../../../../common/ui/Card";
 import Button from "../../../../../../common/Button";
 
 export default function GamesInfotHeader({

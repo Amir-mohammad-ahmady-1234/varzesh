@@ -1,10 +1,10 @@
 import React, { SetStateAction } from "react";
-import Card from "../../../../../../styles/ui/Card";
 import { ChatRoom } from "../../../../../../types/adminPanelTypes";
 import CartOptions from "./CartOptions";
 import RoomIcon from "./ChatCart/RoomIcon";
 import RoomTitle from "./ChatCart/RoomTitle";
 import RoomInfo from "./ChatCart/RoomInfo";
+import Card from "../../../../../common/ui/Card";
 
 interface Props {
   paginatedRooms: ChatRoom[];

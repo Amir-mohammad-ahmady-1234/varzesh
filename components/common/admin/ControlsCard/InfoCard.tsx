@@ -1,7 +1,7 @@
 import React from "react";
-import Card from "../../../../styles/ui/Card";
 import { ChatRoom } from "../../../../types/adminPanelTypes";
 import { Message } from "../../../../app/admin/chat-rooms/[id]/page";
+import Card from "../../ui/Card";
 
 interface Props {
   room: ChatRoom;

@@ -1,7 +1,7 @@
 import React, { SetStateAction } from "react";
 import Button from "../../../../common/Button";
 import { MdAdd, MdLiveTv, MdRefresh } from "react-icons/md";
-import PageHeader from "../../../../../styles/ui/PageHeader";
+import PageHeader from "../../../../common/ui/PageHeader";
 
 interface Props {
   stats: {

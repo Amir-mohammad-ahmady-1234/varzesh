@@ -1,6 +1,6 @@
 import React from "react";
-import Card from "../../../styles/ui/Card";
 import { IconType } from "react-icons/lib";
+import Card from "../ui/Card";
 
 interface Props {
   stats:

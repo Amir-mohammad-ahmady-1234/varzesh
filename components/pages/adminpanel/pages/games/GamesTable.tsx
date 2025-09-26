@@ -1,8 +1,8 @@
 import React from "react";
 import Button from "../../../../common/Button";
-import Table from "../../../../../styles/ui/Table";
 import { games } from "../../../../../mocks/admin/games-Moocks";
-import Badge from "../../../../../styles/ui/Badge";
+import Table from "../../../../common/ui/Table";
+import Badge from "../../../../common/ui/Badge";
 
 const columns = [
   { key: "id", label: "شناسه" },

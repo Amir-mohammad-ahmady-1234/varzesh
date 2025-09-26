@@ -21,7 +21,7 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   const menuItems = [
-    { href: "/admin", label: "داشبورد", icon: MdDashboard },
+    { href: "/admin/dashboard", label: "داشبورد", icon: MdDashboard },
     { href: "/admin/games", label: "مدیریت بازی‌ها", icon: MdSportsFootball },
     { href: "/admin/chat-rooms", label: "چت روم‌ها", icon: MdChat },
     { href: "/admin/support", label: "پشتیبانی", icon: MdSupport },

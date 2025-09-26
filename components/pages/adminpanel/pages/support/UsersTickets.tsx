@@ -1,9 +1,9 @@
 import React from "react";
 import TicketOptions from "./TicketCard/TicketOptions";
-import Card from "../../../../../styles/ui/Card";
 import TicketContent from "./TicketCard/TicketContent";
 import TicketTitle from "./TicketCard/TicketTitle";
 import { TicketType } from "../../../../../types/adminPanelTypes";
+import Card from "../../../../common/ui/Card";
 
 interface Props {
   tickets:

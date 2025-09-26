@@ -12,8 +12,8 @@ import {
   MdLanguage,
 } from "react-icons/md";
 import { cn } from "../../../../lib/utils";
-import Input from "../../../../styles/ui/Input";
 import Button from "../../../common/Button";
+import Input from "../../../common/Input";
 
 export default function Topbar() {
   const { theme, setTheme } = useTheme();

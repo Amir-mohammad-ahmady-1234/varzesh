@@ -1,6 +1,6 @@
 import React from "react";
-import Badge from "../../../../../../../styles/ui/Badge";
 import { ChatRoom } from "../../../../../../../types/adminPanelTypes";
+import Badge from "../../../../../../common/ui/Badge";
 
 interface Props {
   room: ChatRoom;

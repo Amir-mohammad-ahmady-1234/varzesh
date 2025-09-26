@@ -1,7 +1,7 @@
 import React, { SetStateAction } from "react";
 import Button from "../../../../../common/Button";
 import { MdSend } from "react-icons/md";
-import InputDesign from "../../../../../../styles/ui/Input";
+import InputDesign from "../../../../../common/ui/Input";
 
 interface Props {
   newMessage: string;

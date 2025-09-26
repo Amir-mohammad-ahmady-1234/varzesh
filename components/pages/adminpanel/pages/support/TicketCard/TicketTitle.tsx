@@ -1,10 +1,10 @@
 "use client";
 import React from "react";
-import Badge from "../../../../../../styles/ui/Badge";
 import { MdPriorityHigh } from "react-icons/md";
 import { cn } from "../../../../../../lib/utils";
 import { TicketType } from "../../../../../../types/adminPanelTypes";
 import { useSupportHandlers } from "../../../../../../hooks/admin/support/useSupportHandlers";
+import Badge from "../../../../../common/ui/Badge";
 
 interface Props {
   ticket: TicketType;

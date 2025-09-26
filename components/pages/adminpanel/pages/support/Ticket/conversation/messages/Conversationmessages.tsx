@@ -1,8 +1,8 @@
 import React from "react";
 import { cn } from "../../../../../../../../lib/utils";
-import Badge from "../../../../../../../../styles/ui/Badge";
 import { useTicketStates } from "../../../../../../../../hooks/admin/support/useTicketStates";
 import { useTicketHandlers } from "../../../../../../../../hooks/admin/support/useTicketHandlers";
+import Badge from "../../../../../../../common/ui/Badge";
 
 export default function Conversationmessages() {
   const { ticket } = useTicketStates();

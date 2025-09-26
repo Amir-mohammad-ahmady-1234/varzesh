@@ -1,8 +1,6 @@
 "use client";
 
 import React, { Suspense } from "react";
-import { CardContent } from "../../../../../../../styles/ui/Card";
-import LoadingSpinner from "../../../../../../../styles/ui/LoadingSpinner";
 import {
   Cell,
   Legend,
@@ -13,6 +11,8 @@ import {
 } from "recharts";
 import { messageTypesData } from "../../../../../../../mocks/admin/dashboardMoocks";
 import { CustomTooltip } from "../../CustomTooltip";
+import { CardContent } from "../../../../../../common/ui/Card";
+import LoadingSpinner from "../../../../../../common/ui/LoadingSpinner";
 
 export default function MessChartContent() {
   return (

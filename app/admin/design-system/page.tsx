@@ -3,10 +3,6 @@ import { useState, useEffect } from "react";
 import type React from "react";
 
 import MainLayout from "../../../components/pages/adminpanel/layout/MainLayout";
-import PageHeader from "../../../styles/ui/PageHeader";
-import Card from "../../../styles/ui/Card";
-import Input from "../../../styles/ui/Input";
-import Badge from "../../../styles/ui/Badge";
 import type { ThemeConfig } from "../../../types/adminPanelTypes";
 import {
   MdDownload,
@@ -21,6 +17,10 @@ import {
 import { cn } from "../../../lib/utils";
 import Button from "../../../components/common/Button";
 import { defaultTheme } from "../../../mocks/admin/design-system/defaultTheme";
+import Input from "../../../components/common/Input";
+import PageHeader from "../../../components/common/ui/PageHeader";
+import Card from "../../../components/common/ui/Card";
+import Badge from "../../../components/common/ui/Badge";
 
 export default function DesignSystemPage() {
   const [currentTheme, setCurrentTheme] = useState<ThemeConfig>(defaultTheme);

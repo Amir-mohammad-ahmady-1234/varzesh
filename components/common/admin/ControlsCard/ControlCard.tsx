@@ -1,7 +1,7 @@
 import React from "react";
-import Card from "../../../../styles/ui/Card";
 import Button from "../../Button";
 import { MdBlock, MdDelete, MdPeople } from "react-icons/md";
+import Card from "../../ui/Card";
 
 export default function ControlCard() {
   return (
