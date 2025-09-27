@@ -1,6 +1,7 @@
 import prisma from "../../../../lib/db";
 
-type BlogCreateProps = {
+export type BlogProps = {
+  id?: number;
   title: string;
   profile: string;
   img: string;
@@ -9,7 +10,7 @@ type BlogCreateProps = {
   description: string;
 };
 
-export async function BlogCreate(props: BlogCreateProps) {
+export async function BlogCreate(props: BlogProps) {
   const blog = await prisma.blog.create({
     data: props,
   });
