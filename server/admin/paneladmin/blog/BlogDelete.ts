@@ -1,15 +1,12 @@
 import prisma from "../../../../lib/db";
-import { Prisma } from "@prisma/client";
 
-type BlogUpdateProps = {
+type BlogDeleteProps = {
   id: number;
-  data: Prisma.BlogUpdateInput;
 };
 
-export async function BlogUpdate(props: BlogUpdateProps) {
-  const blog = await prisma.blog.update({
+export async function BlogDelete(props: BlogDeleteProps) {
+  const blog = await prisma.blog.delete({
     where: { id: props.id },
-    data: props.data,
   });
   return blog;
 }
