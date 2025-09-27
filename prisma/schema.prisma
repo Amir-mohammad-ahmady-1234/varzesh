@@ -65,6 +65,17 @@ model Game {
   status GameStatus @default(live)
   description String
 }
+
+model Blog {
+  id        Int      @id @default(autoincrement())
+  title String @unique
+  profile String
+  img String @unique
+  category String  @unique
+  summary String
+  description String
+}
+
 model Guest {
   id        Int      @id @default(autoincrement())
   guestId   String   @unique
