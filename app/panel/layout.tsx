@@ -3,6 +3,11 @@ import SidebarWrapper from "../../components/pages/userpanel/layout/SidebarWrapp
 import { GetUserById } from "../../server/user/getuserbyid/GetUserById";
 import GetProfileDataUser from "../../server/user/paneluser/profile/GetProfileDataUser";
 
+export const metadata = {
+  title: "پنل کاربری",
+  description: "پنل کاربری برای مدیریت حساب و ... توسط کاربر",
+};
+
 interface Props {
   children: React.ReactNode;
 }

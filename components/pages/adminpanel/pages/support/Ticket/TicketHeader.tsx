@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Button from "../../../../../common/Button";
 import { MdArrowBack } from "react-icons/md";
@@ -5,10 +6,15 @@ import { useTicketStates } from "../../../../../../hooks/admin/support/useTicket
 import { useTicketHandlers } from "../../../../../../hooks/admin/support/useTicketHandlers";
 import PageHeader from "../../../../../common/ui/PageHeader";
 import Badge from "../../../../../common/ui/Badge";
+import NotTicketFounded from "./NotTicketFounded";
 
 export default function TicketHeader() {
   const { ticket, router } = useTicketStates();
   const { getStatusColor, getStatusText } = useTicketHandlers();
+
+  if (!ticket) {
+    return <NotTicketFounded />;
+  }
 
   return (
     <PageHeader

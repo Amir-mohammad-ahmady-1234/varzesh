@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 import { mockUsers } from "../../../mocks/mock-data";
 import { getRoleText, getStatusText } from "./usersHandlers";
@@ -172,14 +173,7 @@ export function useUsersStates() {
     link.click();
   };
 
-  const stats = {
-    totalUsers: 82,
-    activeUser: 22,
-    blockUsers: 34,
-    admins: 32,
-  };
   return {
-    stats,
     searchQuery,
     setSearchQuery,
     roleFilter,

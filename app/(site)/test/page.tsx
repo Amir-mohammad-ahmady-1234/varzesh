@@ -2,6 +2,11 @@ import React from "react";
 import { GetUserFilterQuery } from "../../../server/admin/paneladmin/users/GetUserFilterQurey/GetUserFilterQurey";
 import { GetSupportFilterQuery } from "../../../server/admin/paneladmin/support/GetSupportFilterQurey/GetSupportFilterQurey";
 
+export const metadata = {
+  title: "تست",
+  description: "این صفحه برای تست برنامه نویسان سایت تهیه شده است",
+};
+
 export default async function Page() {
   let result = await GetUserFilterQuery({});
   console.log("=== بدون فیلتر ===");

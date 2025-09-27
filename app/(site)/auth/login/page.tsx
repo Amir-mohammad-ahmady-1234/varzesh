@@ -5,6 +5,11 @@ import LoginForm from "../../../../components/pages/auth/loginForm/LoginForm";
 import SubmitButton from "../../../../components/pages/auth/SubmitButton";
 import OAuthButtons from "../../../../components/pages/auth/OAuthButtons";
 
+export const metadata = {
+  title: "ثبت نام",
+  description: "ثبت نام در سایت ورزش",
+};
+
 function page() {
   return (
     <>

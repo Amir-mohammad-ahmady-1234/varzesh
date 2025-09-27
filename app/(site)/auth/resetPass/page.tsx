@@ -3,6 +3,11 @@ import React from "react";
 import Circles from "../../../../components/pages/auth/Circles";
 import ResetPassForm from "../../../../components/pages/auth/resetPassForm/ResetPassForm";
 
+export const metadata = {
+  title: "تغیر رمز عبور",
+  description: "تغییر رمز عبور",
+};
+
 function page() {
   return (
     <>

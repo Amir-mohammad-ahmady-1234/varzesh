@@ -5,6 +5,11 @@ import BannerVideo from "../../../components/pages/home/video/BannerVideo";
 import CardSiwper from "../../../components/pages/home/video/Card/CardSiwper";
 import { cards } from "../../../mocks/card";
 
+export const metadata = {
+  title: "ویدیو ها",
+  description: "ویدیو های پربازدید و دیدنی",
+};
+
 function page() {
   return (
     <section className="mb-10">

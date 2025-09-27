@@ -1,96 +1,52 @@
-"use client";
 import MainLayout from "../../../components/pages/adminpanel/layout/MainLayout";
-import Button from "../../../components/common/Button";
 import PageTitle from "../../../components/pages/adminpanel/pages/chat-rooms/PageTitle";
-import CartContainer from "../../../components/pages/adminpanel/pages/chat-rooms/Game-room/CartContainer";
-import PageCount from "../../../components/common/admin/Pagination/PageCount";
-import PaginationBtns from "../../../components/common/admin/Pagination/PaginationBtns";
 import SettingModal from "../../../components/pages/adminpanel/pages/chat-rooms/Game-room/SettingModal";
 import { usersCardInfo } from "../../../mocks/admin/chat-roomsMoocks";
 import UsersActivities from "../../../components/common/admin/UsersActivities";
-import { useChatRoom } from "../../../hooks/admin/chat-room/useChatRoom";
 
 import CartHeader from "../../../components/common/admin/FilterCard/CartHeader";
 import FilterCartContainer from "../../../components/common/admin/FilterCard/CartContainer";
 import { CardContent } from "../../../components/common/ui/Card";
-import EmptyState from "../../../components/common/ui/EmptyState";
+import RoomsAndPagination from "../../../components/pages/adminpanel/pages/chat-rooms/Game-room/RoomsAndPagination";
+import { mockChatRooms } from "../../../mocks/mock-data";
+
+export const metadata = {
+  title: "چت روم",
+  description: "مدیریت روم های سایت",
+};
 
 export default function ChatRoomsPage() {
-  const {
-    currentPage,
-    filteredRooms,
-    isLiveMode,
-    paginatedRooms,
-    searchQuery,
-    setCurrentPage,
-    setIsLiveMode,
-    setSearchQuery,
-    setShowRoomModal,
-    showRoomModal,
-    stats,
-    totalPages,
-    itemsPerPage,
-  } = useChatRoom();
+  const stats = {
+    total: mockChatRooms.length,
+    active: mockChatRooms.filter((r) => r.status === "active").length,
+    totalParticipants: mockChatRooms.reduce(
+      (sum, r) => sum + r.participantCount,
+      0
+    ),
+    totalMessages: mockChatRooms.reduce((sum, r) => sum + r.messageCount, 0),
+  };
 
   return (
     <MainLayout>
-      <PageTitle
-        stats={stats}
-        isLiveMode={isLiveMode}
-        setIsLiveMode={setIsLiveMode}
-      />
+      <PageTitle />
 
       <UsersActivities stats={stats} usersCardInfo={usersCardInfo} />
 
       <FilterCartContainer>
         <CartHeader title="جستجو و فیلتر چت روم‌ها بر اساس معیارهای مختلف" />
         <CardContent>
-          <CardMainContent
+          {""}
+          {/* <CardMainContent
             placeHolder="جستجو بر اساس نام چت روم، توضیحات یا نوع..."
             searchQuery={searchQuery}
             setSearchQuery={setSearchQuery}
-          />
+          /> */}
         </CardContent>
       </FilterCartContainer>
 
-      {paginatedRooms.length === 0 ? (
-        <EmptyState
-          title="چت روم یافت نشد"
-          description="با فیلترهای انتخاب شده چت روم یافت نشد. فیلترها را تغییر دهید یا چت روم جدید ایجاد کنید."
-          action={<Button className="cursor-pointer">پاک کردن فیلترها</Button>}
-        />
-      ) : (
-        <CartContainer
-          isLiveMode={isLiveMode}
-          paginatedRooms={paginatedRooms}
-          setShowRoomModal={setShowRoomModal}
-        />
-      )}
+      <RoomsAndPagination />
 
-      {/* Enhanced Pagination */}
-      {totalPages > 1 && (
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-8">
-          <PageCount
-            currentPage={currentPage}
-            count={filteredRooms.length}
-            itemsPerPage={itemsPerPage}
-            pageName="چت روم"
-          />
-
-          <div className="flex items-center gap-2">
-            <PaginationBtns
-              currentPage={currentPage}
-              setCurrentPage={setCurrentPage}
-              totalPages={totalPages}
-            />
-          </div>
-        </div>
-      )}
-
-      <SettingModal
-        setShowRoomModal={setShowRoomModal}
-        showRoomModal={showRoomModal}
-      />
+      <SettingModal />
     </MainLayout>
   );
 }

@@ -26,13 +26,11 @@ export default async function RootLayout({
         <Header>
           <BtnConditionallyGenerator />
         </Header>
-      </Suspense>
 
-      <Suspense>
-        <main className="flex-grow ">{children}</main>
-      </Suspense>
+        <Suspense>
+          <main className="flex-grow ">{children}</main>
+        </Suspense>
 
-      <Suspense>
         <Footer />
       </Suspense>
     </>

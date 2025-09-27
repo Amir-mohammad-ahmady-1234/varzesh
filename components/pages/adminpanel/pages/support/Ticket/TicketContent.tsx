@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import ConversationHeader from "./conversation/ConversationHeader";
 import Messages from "./conversation/messages/Messages";
@@ -10,7 +12,11 @@ import { useTicketStates } from "../../../../../../hooks/admin/support/useTicket
 import Card from "../../../../../common/ui/Card";
 
 export default function TicketContent() {
-  const { showInternalNote } = useTicketStates();
+  const { showInternalNote, ticket } = useTicketStates();
+
+  if (!ticket) {
+    return null;
+  }
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">

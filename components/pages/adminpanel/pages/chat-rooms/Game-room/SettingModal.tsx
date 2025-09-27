@@ -1,17 +1,14 @@
-import React, { SetStateAction } from "react";
+'use client'
+
+import React from "react";
 import Modal from "../../../../../common/Modal";
 import Button from "../../../../../common/Button";
 import { MdBlock, MdDelete, MdEdit, MdSettings } from "react-icons/md";
+import { useChatRoom } from "../../../../../../hooks/admin/chat-room/useChatRoom";
 
-interface Props {
-  showRoomModal: boolean;
-  setShowRoomModal: React.Dispatch<SetStateAction<boolean>>;
-}
+export default function SettingModal() {
+  const { setShowRoomModal, showRoomModal } = useChatRoom();
 
-export default function SettingModal({
-  showRoomModal,
-  setShowRoomModal,
-}: Props) {
   return (
     <Modal
       isOpen={showRoomModal}

@@ -15,6 +15,11 @@ import { HourlyActivity } from "../../../server/admin/paneladmin/dashboard/Activ
 import { WeeklyActivity } from "../../../server/admin/paneladmin/dashboard/Activity/weeklyactivity/WeeklyActivity";
 import { Lastgames } from "../../../server/admin/paneladmin/dashboard/Activity/Lastgames/Lastgames";
 
+export const metadata = {
+  title: "داشبورد",
+  description: "نمایش اطلاعات سایت",
+};
+
 export default async function Dashboard() {
   const { data: hourlyData } = await HourlyActivity();
   const { data: weeklyData } = await WeeklyActivity();

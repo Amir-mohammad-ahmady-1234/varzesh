@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Button from "../../../../common/Button";
 import { MdAdd, MdDownload, MdRefresh } from "react-icons/md";

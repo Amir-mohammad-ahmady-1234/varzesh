@@ -1,20 +1,14 @@
-import React, { SetStateAction } from "react";
+'use client'
+
+import React from "react";
 import Button from "../../../../common/Button";
 import { MdAdd, MdLiveTv, MdRefresh } from "react-icons/md";
 import PageHeader from "../../../../common/ui/PageHeader";
+import { useChatRoom } from "../../../../../hooks/admin/chat-room/useChatRoom";
 
-interface Props {
-  stats: {
-    total: number;
-    active: number;
-    totalParticipants: number;
-    totalMessages: number;
-  };
-  isLiveMode: boolean;
-  setIsLiveMode: React.Dispatch<SetStateAction<boolean>>;
-}
+export default function PageTitle() {
+  const { isLiveMode, setIsLiveMode, stats } = useChatRoom();
 
-export default function PageTitle({ stats, isLiveMode, setIsLiveMode }: Props) {
   return (
     <PageHeader
       title="مدیریت چت روم‌ها"

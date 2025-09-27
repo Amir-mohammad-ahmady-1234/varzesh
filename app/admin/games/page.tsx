@@ -8,6 +8,11 @@ import Cart from "../../../components/common/admin/rowsList/Cart";
 import Pagination from "../../../components/pages/adminpanel/pages/support/Pagination";
 import EmptyAndPagination from "../../../components/pages/adminpanel/pages/support/EmptyAndPagination";
 
+export const metadata = {
+  title: "بازی ها",
+  description: "مدیریت بازی های سایت",
+};
+
 interface Props {
   searchParams: {
     search?: string;

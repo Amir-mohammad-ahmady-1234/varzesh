@@ -3,6 +3,11 @@ import Topbar from "../../../../components/pages/adminpanel/layout/Topbar";
 import FormTabelAddGame from "../../../../components/pages/adminpanel/pages/games/create/FormTabelAddGame";
 import { CreateGame } from "../../../../server/admin/paneladmin/game/CreateGame/CreateGame";
 
+export const metadata = {
+  title: "بازی جدید",
+  description: "ایجاد بازی جدید",
+};
+
 export default function page() {
   async function handleCreateGame(payload: any) {
     "use server";

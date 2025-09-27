@@ -1,12 +1,8 @@
-"use client";
 import MainLayout from "../../../components/pages/adminpanel/layout/MainLayout";
-import Button from "../../../components/common/Button";
-import { useUsersStates } from "../../../hooks/admin/users/useUsersStates";
 import PageTitle from "../../../components/pages/adminpanel/pages/users/PageHeader";
 import FilterAndSearch from "../../../components/common/admin/FilterCard/FilterAndSearch";
 import { filterUsersArr } from "../../../mocks/admin/filters/filterArray";
 import SelectedCard from "../../../components/pages/adminpanel/pages/users/SelectedCard";
-import UsersTableList from "../../../components/pages/adminpanel/pages/users/usersTable/UsersTableList";
 import PaginationBtns from "../../../components/pages/adminpanel/pages/users/pagination/PaginationBtns";
 import UserModal from "../../../components/pages/adminpanel/pages/users/UserModal";
 import UsersActivities from "../../../components/common/admin/UsersActivities";
@@ -16,20 +12,21 @@ import {
   PiUserCircleBold,
 } from "react-icons/pi";
 import { IoChevronUpCircleOutline } from "react-icons/io5";
-import EmptyState from "../../../components/common/ui/EmptyState";
-import Card from "../../../components/common/ui/Card";
+import ConditionallyRender from "../../../components/pages/adminpanel/pages/users/ConditionallyRender";
+
+export const metadata = {
+  title: "لیست کاربران سایت",
+  description:
+    "لیست کاربران سایت با قابلیت حذف اپدیت اضافه و خواندن دیتای انها و موارد دیگر ...",
+};
 
 export default function UsersPage() {
-  const {
-    setSearchQuery,
-    setRoleFilter,
-    setStatusFilter,
-    selectedUsers,
-    viewMode,
-    totalPages,
-    paginatedUsers,
-    stats,
-  } = useUsersStates();
+  const stats = {
+    totalUsers: 82,
+    activeUser: 22,
+    blockUsers: 34,
+    admins: 32,
+  };
 
   return (
     <MainLayout>
@@ -75,34 +72,11 @@ export default function UsersPage() {
         itemsbtn={filterUsersArr}
       />
 
-      {selectedUsers.size > 0 && <SelectedCard />}
+      <SelectedCard />
 
-      {paginatedUsers.length === 0 ? (
-        <EmptyState
-          title="کاربری یافت نشد"
-          description="با فیلترهای انتخاب شده کاربری یافت نشد. فیلترها را تغییر دهید یا کاربر جدید اضافه کنید."
-          action={
-            <Button
-              onClick={() => {
-                setSearchQuery("");
-                setRoleFilter("all");
-                setStatusFilter("all");
-              }}
-              className="cursor-pointer"
-            >
-              پاک کردن فیلترها
-            </Button>
-          }
-        />
-      ) : viewMode === "table" ? (
-        <Card>
-          <div className="overflow-x-auto">
-            <UsersTableList />
-          </div>
-        </Card>
-      ) : undefined}
+      <ConditionallyRender />
 
-      {totalPages > 1 && <PaginationBtns />}
+      <PaginationBtns />
 
       <UserModal />
     </MainLayout>

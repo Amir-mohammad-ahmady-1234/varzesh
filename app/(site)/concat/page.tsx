@@ -1,6 +1,11 @@
 import React from "react";
 import Button from "../../../components/common/Button";
 
+export const metadata = {
+  title: "تماس با ما",
+  description: "تماس با ما",
+};
+
 function ContactPage() {
   return (
     <div className="flex items-center justify-center " dir="rtl">

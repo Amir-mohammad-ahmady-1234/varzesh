@@ -12,6 +12,11 @@ import { filterArray } from "../../../mocks/admin/filters/filterArray";
 import { Priority, Status } from "@prisma/client";
 import EmptyState from "../../../components/common/ui/EmptyState";
 
+export const metadata = {
+  title: "پشتیبانی پنل ادمین",
+  description: "رسیدگی به تیکت های پشتیبانی کاربران",
+};
+
 interface Props {
   searchParams: {
     search?: string;

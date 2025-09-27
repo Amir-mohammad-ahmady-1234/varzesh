@@ -5,9 +5,9 @@ interface Card {
   image: string;
   title: string;
   views: number;
-  label: string;
+  label?: string;
   time: string;
-  desc: string;
+  desc?: string;
 }
 
 interface SiceSliderImageProps {

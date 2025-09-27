@@ -65,6 +65,12 @@ const sections = [
     ],
   },
 ];
+
+export const metadata = {
+  title: "درباره ما",
+  description: "سایت ورزش یک سایت ورزشی برای اطلاع رسانی اخبار ورزشی جهان",
+};
+
 function page() {
   return (
     <section>

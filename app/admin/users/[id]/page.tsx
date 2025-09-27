@@ -238,7 +238,7 @@ export default function UserDetailPage() {
                           setEditForm({ ...editForm, email: e.target.value })
                         }
                         placeholder="ایمیل کاربر"
-                      />
+                       />
                     </div>
                     <div>
                       <label className="text-sm font-medium text-foreground mb-1 block">
