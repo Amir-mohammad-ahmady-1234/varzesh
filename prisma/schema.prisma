@@ -75,6 +75,16 @@ model Blog {
   summary String
   description String
 }
+model Podcast {
+  id        Int      @id @default(autoincrement())
+  title String @unique
+  img String @unique
+   category  PodcastCategory
+  summary String
+  description String
+  audioUrl    String   
+  createdAt   DateTime @default(now())
+}
 
 model Guest {
   id        Int      @id @default(autoincrement())
@@ -85,6 +95,12 @@ enum Role {
   USER
   ADMIN
 }
+enum PodcastCategory {
+  FOOTBALL
+  BOXING
+  BASKETBALL
+}
+
 enum Status {
   Open
   Waiting
