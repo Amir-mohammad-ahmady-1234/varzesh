@@ -8,6 +8,7 @@ import { CgViewCols } from "react-icons/cg";
 import { PiDeviceTabletSpeakerDuotone } from "react-icons/pi";
 import FilterAndSearch from "../../../components/common/admin/FilterCard/FilterAndSearch";
 import { filterBlogArray } from "../../../mocks/admin/filters/filterArray";
+import Cart from "../../../components/common/admin/rowsList/Cart";
 
 export const metadata = {
   title: "بلاگ",
@@ -67,6 +68,24 @@ export default function Blogpage() {
         description="جستجو و فیلتر بلاگ ها با معیار های مختلف"
         itemsbtn={filterBlogArray}
         isfilter={true}
+      />
+
+      <Cart
+        key={1}
+        id={1}
+        title={"سام علیکم"}
+        description={"بهترین سایت دنیا . برنامه نویس : مهدی. فرانت کار : ممد"}
+        date={new Date()}
+        options={[
+          {
+            title: "status",
+            items: { key: "status", value: "Blocked" },
+          },
+          {
+            title: "priority",
+            items: { key: "priority", value: "LOW" },
+          },
+        ]}
       />
     </MainLayout>
   );
