@@ -3,26 +3,25 @@ import { IconType } from "react-icons/lib";
 import Card from "../ui/Card";
 
 interface Props {
-  stats:
-    | {
-        total: number;
-        active: number;
-        totalParticipants: number;
-        totalMessages: number;
-      }
-    | {
-        totalsupport?: number;
-        activesupport?: number;
-        waitingsupport?: number;
-        approvedsupport?: number;
-        Immediatesupport?: number;
-      }
-    | {
-        totalUsers?: number;
-        activeUser?: number;
-        blockUsers?: number;
-        admins?: number;
-      };
+  stats: {
+    total?: number;
+    active?: number;
+    totalParticipants?: number;
+    totalMessages?: number;
+    totalsupport?: number;
+    activesupport?: number;
+    waitingsupport?: number;
+    approvedsupport?: number;
+    Immediatesupport?: number;
+    totalUsers?: number;
+    activeUser?: number;
+    blockUsers?: number;
+    admins?: number;
+    totalBlogs?: number;
+    savedBlogs?: number;
+    totalViewedBlogs?: number;
+    deletedBlogs?: number;
+  };
   usersCardInfo: {
     id: number;
     title: string;

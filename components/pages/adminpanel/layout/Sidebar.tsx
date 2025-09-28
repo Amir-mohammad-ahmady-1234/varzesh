@@ -14,7 +14,7 @@ import {
 } from "react-icons/md";
 import { cn } from "../../../../lib/utils";
 import Button from "../../../common/Button";
-import { FaBlog } from "react-icons/fa";
+import { FaBlog, FaPodcast } from "react-icons/fa";
 
 export default function Sidebar() {
   const [collapsed, setCollapsed] = useState(false);
@@ -28,6 +28,7 @@ export default function Sidebar() {
     { href: "/admin/design-system", label: "سیستم طراحی", icon: MdPalette },
     { href: "/admin/users", label: "کاربران", icon: MdPeople },
     { href: "/admin/blog", label: "بلاگ", icon: FaBlog },
+    { href: "/admin/podcast", label: "پادکست", icon: FaPodcast },
   ];
 
   return (
