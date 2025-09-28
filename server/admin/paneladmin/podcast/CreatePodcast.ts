@@ -13,19 +13,23 @@ export type PodcastProps = {
 };
 
 export async function PodcastCreate(props: PodcastProps) {
-  const imgPath = await uploadFile(props.img, "uploads");
-  const audioPath = await uploadFile(props.audio, "audio");
+  try {
+    const imgPath = await uploadFile(props.img, "uploads");
+    const audioPath = await uploadFile(props.audio, "audio");
 
-  const podcast = await prisma.podcast.create({
-    data: {
-      title: props.title,
-      img: imgPath,
-      category: props.category,
-      summary: props.summary,
-      description: props.description,
-      audioUrl: audioPath,
-    },
-  });
+    const podcast = await prisma.podcast.create({
+      data: {
+        title: props.title,
+        img: imgPath,
+        category: props.category,
+        summary: props.summary,
+        description: props.description,
+        audioUrl: audioPath,
+      },
+    });
 
-  return podcast;
+    return podcast;
+  } catch {
+    return { error: "مشکلی در سرور رخ داده است", status: 500 };
+  }
 }
