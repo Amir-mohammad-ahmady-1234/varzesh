@@ -65,6 +65,36 @@ model Game {
   status GameStatus @default(live)
   description String
 }
+
+model Blog {
+  id        Int      @id @default(autoincrement())
+  title String @unique
+  profile String
+  img String @unique
+  category String  @unique
+  summary String
+  description String
+}
+model Podcast {
+  id        Int      @id @default(autoincrement())
+  title String @unique
+  img String @unique
+  category  PodcastCategory
+  summary String
+  description String
+  audioUrl    String   
+  createdAt   DateTime @default(now())
+}
+model News {
+  id        Int      @id @default(autoincrement())
+  title String @unique
+  img String @unique
+  status NewStatus
+  summary String
+  description String
+  createdAt   DateTime @default(now())
+}
+
 model Guest {
   id        Int      @id @default(autoincrement())
   guestId   String   @unique
@@ -74,11 +104,23 @@ enum Role {
   USER
   ADMIN
 }
+enum PodcastCategory {
+  FOOTBALL
+  BOXING
+  BASKETBALL
+}
+
 enum Status {
   Open
   Waiting
   Approved
   Blocked
+}
+
+enum NewStatus {
+ Simple 
+ Medium 
+ Special
 }
 
 enum GameStatus {
