@@ -41,12 +41,15 @@ export function useSupportHandlers() {
     switch (status) {
       case "Open":
       case "live":
+      case "OverHundredThousand":
         return "error";
       case "Waiting":
       case "Scheduled":
+      case "OverHundred":
         return "warning";
       case "Approved":
       case "down":
+      case "OverThousand":
         return "success";
       case "Blocked":
         return "primary";
@@ -59,10 +62,22 @@ export function useSupportHandlers() {
     switch (status) {
       case "Open":
         return "باز";
+      case "OverHundred":
+        return "بالای صد بازدید";
+      case "live":
+        return "پخش زنده";
       case "Waiting":
         return "در حال بررسی";
+      case "Scheduled":
+        return "دسته بندی شده";
+      case "OverThousand":
+        return "بالای هزار بازدید";
+      case "down":
+        return "پخش شده";
       case "Approved":
         return "حل شده";
+      case "OverHundredThousand":
+        return "بالای ده هزار بازدید";
       case "Blocked":
         return "فوری";
       default:

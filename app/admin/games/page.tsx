@@ -3,7 +3,7 @@ import Topbar from "../../../components/pages/adminpanel/layout/Topbar";
 import PageTitle from "../../../components/pages/adminpanel/pages/games/PageTitle";
 import FilterAndSearch from "../../../components/common/admin/FilterCard/FilterAndSearch";
 import { FindGame } from "../../../server/admin/paneladmin/game/FindGame/FindGame";
-import { filterArray } from "../../../mocks/admin/filters/filterArray";
+import { filterGameArray } from "../../../mocks/admin/filters/filterArray";
 import Cart from "../../../components/common/admin/rowsList/Cart";
 import Pagination from "../../../components/pages/adminpanel/pages/support/Pagination";
 import EmptyAndPagination from "../../../components/pages/adminpanel/pages/support/EmptyAndPagination";
@@ -22,8 +22,11 @@ interface Props {
     limit?: number;
   };
 }
+
 export default async function GamesPage({ searchParams }: Props) {
-  const { search, status, League, page, limit } = searchParams;
+  const { search, status, League, page, limit } = await searchParams;
+
+  console.log(search);
 
   const Game = await FindGame({
     serch: search ?? "",
@@ -47,7 +50,7 @@ export default async function GamesPage({ searchParams }: Props) {
             <FilterAndSearch
               description="جستجو و فیلتر بازی بر اساس معیارهای مختلف"
               isfilter={true}
-              itemsbtn={filterArray}
+              itemsbtn={filterGameArray}
             />
             <EmptyAndPagination datas={Game.data} pagination={Game.pagination}>
               {Game.data.map((data) => (

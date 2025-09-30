@@ -6,12 +6,15 @@ export function getCartColor(options: Option[]) {
   switch (priority) {
     case "Blocked":
     case "live":
+    case "OverHundred":
       return "#dc2626";
     case "Open":
     case "down":
+    case "OverThousand":
       return "#ea580c";
     case "Waiting":
     case "Scheduled":
+    case "OverHundredThousand":
       return "#ca8a04";
     default:
       return "#16a34a";

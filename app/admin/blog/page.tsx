@@ -63,7 +63,7 @@ export default function Blogpage() {
           },
         ]}
       />
-
+ 
       <FilterAndSearch
         description="جستجو و فیلتر بلاگ ها با معیار های مختلف"
         itemsbtn={filterBlogArray}
@@ -79,11 +79,11 @@ export default function Blogpage() {
         options={[
           {
             title: "status",
-            items: { key: "status", value: "Blocked" },
+            items: { key: "status", value: "OverHundredThousand" },
           },
           {
             title: "priority",
-            items: { key: "priority", value: "LOW" },
+            items: { key: "priority", value: "HIGH" },
           },
         ]}
       />

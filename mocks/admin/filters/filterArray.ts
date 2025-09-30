@@ -26,6 +26,32 @@ export const filterArray = [
   },
 ];
 
+export const filterGameArray = [
+  {
+    title: "مرتب‌ سازی",
+    items: [
+      { name: "نزولی", key: "sort", value: "desc" },
+      { name: "صعودی", key: "sort", value: "asc" },
+    ],
+  },
+  {
+    title: "وضعیت",
+    items: [
+      { name: "دسته بندی شده", key: "status", value: "Scheduled" },
+      { name: "پخش شده", key: "status", value: "down" },
+      { name: "برخط", key: "status", value: "live" },
+    ],
+  },
+  {
+    title: "لیگ",
+    items: [
+      { name: "دسته یک", key: "League", value: "Acup" },
+      { name: "دسته دو", key: "League", value: "Tcup" },
+      { name: "دسته سه", key: "League", value: "Dcup" },
+    ],
+  },
+];
+
 export const filterUsersArr = [
   {
     title: "نقش",
