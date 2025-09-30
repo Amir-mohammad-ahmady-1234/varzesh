@@ -14,7 +14,7 @@ interface PropsType {
 
 function Input({
   name,
-  type = "input",
+  type = "text",
   placeholder,
   title,
   err,

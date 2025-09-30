@@ -1,8 +1,10 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { MdDownload, MdRefresh } from "react-icons/md";
 import PageHeader from "../ui/PageHeader";
 import Button from "../Button";
+import { BiLogoDigitalocean } from "react-icons/bi";
+import NewBlogModal from "../../pages/adminpanel/pages/blog/NewBlogModal";
 
 //   const exportToCSV = () => {
 //     const csvContent = [
@@ -43,6 +45,8 @@ interface Props {
 }
 
 export default function PageTitle({ title, desc }: Props) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <PageHeader
       title={title}
@@ -61,6 +65,15 @@ export default function PageTitle({ title, desc }: Props) {
             <MdRefresh className="w-4 h-4 ml-2" />
             بروزرسانی
           </Button>
+          <Button
+            onClick={() => setIsModalOpen((prev) => !prev)}
+            variant="outline"
+            className="cursor-pointer bg-transparent"
+          >
+            <BiLogoDigitalocean className="w-4 h-4 ml-2" />
+            بلاگ جدید
+          </Button>
+          <NewBlogModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
         </div>
       }
     />
