@@ -1,8 +1,11 @@
-import React, { startTransition, useActionState } from "react";
+"use client";
+
+import React, { startTransition, useEffect, useState } from "react";
 import Modal from "../../../../common/Modal";
 import Input from "../../../../common/Input";
 import Textarea from "../../../../common/ui/Textarea";
 import { CreateBlog } from "../../../../../lib/actions/blog/CreateBlog";
+import type { BlogFormState } from "../../../../../lib/actions/blog/CreateBlog";
 import Button from "../../../../common/Button";
 
 interface Props {
@@ -10,39 +13,20 @@ interface Props {
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-interface Blog {
-  id: number;
-  title: string;
-  description: string;
-  profile: string;
-  img: string;
-  category: string;
-  summary: string;
-}
-
-export interface BlogFormState {
-  message: {
-    title?: string;
-    category?: string;
-    profile?: string;
-    img?: string;
-    summary?: string;
-    description?: string;
-    otherErr?: string;
-    success?: string;
-    blog?: Blog;
-  };
-}
+// types come from server action module
 
 const initialState: BlogFormState = {
   message: {},
 };
 
 export default function NewBlogModal({ isModalOpen, setIsModalOpen }: Props) {
-  const [state, formAction] = useActionState<BlogFormState>(
-    CreateBlog,
-    initialState
-  );
+  const [state, setState] = useState<BlogFormState>(initialState);
+
+  useEffect(() => {
+    if (state.message.success) {
+      setIsModalOpen(false);
+    }
+  }, [state.message.success, setIsModalOpen]);
 
   return (
     <Modal
@@ -52,12 +36,14 @@ export default function NewBlogModal({ isModalOpen, setIsModalOpen }: Props) {
       title="بلاگ جدید"
     >
       <form
+        encType="multipart/form-data"
         onSubmit={(e) => {
           e.preventDefault();
           const formData = new FormData(e.currentTarget);
 
-          startTransition(() => {
-            formAction(formData);
+          startTransition(async () => {
+            const result = await CreateBlog(state, formData);
+            setState(result);
           });
         }}
         className="flex flex-col gap-10"
@@ -113,6 +99,9 @@ export default function NewBlogModal({ isModalOpen, setIsModalOpen }: Props) {
         <p className="text-error-500 text-sm">
           {state.message.otherErr && state.message.otherErr}
         </p>
+        {state.message.success && (
+          <p className="text-success-600 text-sm">{state.message.success}</p>
+        )}
 
         <Button type="submit">ایجاد بلاگ</Button>
       </form>

@@ -69,14 +69,24 @@ export default function InputDesign({
             {leftIcon}
           </div>
         )}
-        <input
-          id={name}
-          name={name}
-          type={type}
-          className={cn(inputClasses, variants[variant])}
-          value={value}
-          {...props}
-        />
+        {value === undefined || type === "file" ? (
+          <input
+            id={name}
+            name={name}
+            type={type}
+            className={cn(inputClasses, variants[variant])}
+            {...props}
+          />
+        ) : (
+          <input
+            id={name}
+            name={name}
+            type={type}
+            className={cn(inputClasses, variants[variant])}
+            value={value}
+            {...props}
+          />
+        )}
         {rightIcon && (
           <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-neutral-400">
             {rightIcon}

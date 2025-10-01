@@ -1,10 +1,22 @@
 "use server";
 
-import { BlogFormState } from "../../../components/pages/adminpanel/pages/blog/NewBlogModal";
+export interface BlogFormState {
+  message: {
+    title?: string;
+    category?: string;
+    profile?: string;
+    img?: string;
+    summary?: string;
+    description?: string;
+    otherErr?: string;
+    success?: string;
+    blog?: any;
+  };
+}
 import { BlogCreate } from "../../../server/admin/paneladmin/blog/BlogCreate";
 import { blogSchema } from "../../validations/blog";
 
-export async function CreateBlog(prevState:BlogFormState, formData: FormData) {
+export async function CreateBlog(prevState: BlogFormState, formData: FormData) {
   const data = {
     title: formData.get("title"),
     category: formData.get("category"),
