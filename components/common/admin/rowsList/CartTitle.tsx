@@ -16,7 +16,7 @@ export default function CartTitle({ title, options }: Props) {
     useSupportHandlers();
 
   return (
-    <div className="flex items-center gap-2 mb-2 flex-wrap">
+    <div className="flex items-center gap-2 mb-2 flex-wrap min-w-0 w-full">
       <h3 className="font-semibold text-lg text-gray-900 dark:text-gray-100">
         {title}
       </h3>

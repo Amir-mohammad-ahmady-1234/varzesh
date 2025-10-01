@@ -16,7 +16,7 @@ export default function CartDetails({ date, details }: Props) {
       </div>
       <div className="flex items-center gap-1">
         <MdAccessTime className="w-4 h-4" />
-        <span>
+        <span suppressHydrationWarning>
           {new Date(date).toLocaleDateString("fa-IR", {
             year: "numeric",
             month: "short",

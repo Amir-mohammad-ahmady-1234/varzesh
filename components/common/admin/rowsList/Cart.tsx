@@ -28,6 +28,8 @@ interface Props {
   options: Option[];
   moreDetails?: MoreDetails[];
   id: number;
+  onDelete?: (formData: FormData) => Promise<any>;
+  onUpdate?: (formData: FormData) => Promise<any>;
 }
 
 export default function Cart({
@@ -37,6 +39,8 @@ export default function Cart({
   options,
   moreDetails,
   id,
+  onDelete,
+  onUpdate,
 }: Props) {
   return (
     <div
@@ -45,13 +49,13 @@ export default function Cart({
         borderRightColor: getCartColor(options) as unknown as string,
       }}
     >
-      <Card>
-        <div className="flex items-start justify-between">
+      <Card className="w-full">
+        <div className="flex items-start justify-between w-full">
           <ChartContent desc={description} date={date} details={moreDetails}>
             <CartTitle title={title} options={options} />
           </ChartContent>
 
-          <CartOptions id={id} />
+          <CartOptions id={id} onDelete={onDelete} onUpdate={onUpdate} />
         </div>
       </Card>
     </div>

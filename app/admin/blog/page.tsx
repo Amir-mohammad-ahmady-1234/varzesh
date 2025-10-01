@@ -9,18 +9,22 @@ import { PiDeviceTabletSpeakerDuotone } from "react-icons/pi";
 import FilterAndSearch from "../../../components/common/admin/FilterCard/FilterAndSearch";
 import { filterBlogArray } from "../../../mocks/admin/filters/filterArray";
 import Cart from "../../../components/common/admin/rowsList/Cart";
+import { GetBlogs } from "../../../lib/actions/blog/GetBlogs";
+import { DeleteBlogAction } from "../../../lib/actions/blog/DeleteBlog";
+import { UpdateBlogAction } from "../../../lib/actions/blog/UpdateBlog";
 
 export const metadata = {
   title: "بلاگ",
   description: "مدیریت بلاگ های سایت",
 };
 
-export default function Blogpage() {
+export default async function Blogpage() {
+  const blogs = await GetBlogs();
   const stats = {
-    totalBlogs: 1,
-    savedBlogs: 2,
-    totalViewedBlogs: 3,
-    deletedBlogs: 4,
+    totalBlogs: blogs.length,
+    savedBlogs: 0,
+    totalViewedBlogs: 0,
+    deletedBlogs: 0,
   };
 
   return (
@@ -70,23 +74,30 @@ export default function Blogpage() {
         isfilter={true}
       />
 
-      <Cart
-        key={1}
-        id={1}
-        title={"سام علیکم"}
-        description={"بهترین سایت دنیا . برنامه نویس : مهدی. فرانت کار : ممد"}
-        date={new Date()}
-        options={[
-          {
-            title: "status",
-            items: { key: "status", value: "OverHundredThousand" },
-          },
-          {
-            title: "priority",
-            items: { key: "priority", value: "HIGH" },
-          },
-        ]}
-      />
+      <div className="grid gap-4">
+        {blogs.map((b: any) => (
+          <div key={b.id} className="w-full">
+            <Cart
+              id={b.id}
+              title={b.title}
+              description={b.summary}
+              date={new Date(b.createdAt ?? Date.now())}
+              options={[
+                {
+                  title: "status",
+                  items: { key: "status", value: "OverHundredThousand" },
+                },
+                {
+                  title: "priority",
+                  items: { key: "priority", value: "HIGH" },
+                },
+              ]}
+              onDelete={DeleteBlogAction as any}
+              onUpdate={UpdateBlogAction as any}
+            />
+          </div>
+        ))}
+      </div>
     </MainLayout>
   );
 }

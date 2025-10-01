@@ -28,15 +28,8 @@ export default async function RootLayout({
   // if (tokenId && tokenId.role === "USER") return redirect("/");
 
   return (
-    <html
-      lang="fa"
-      dir="rtl"
-      suppressHydrationWarning
-      className={vazirmatn.variable}
-    >
-      <body className="bg-background text-foreground font-sans antialiased">
-        <Suspense>{children}</Suspense>
-      </body>
-    </html>
+    <div className={vazirmatn.variable} dir="rtl" suppressHydrationWarning>
+      <Suspense>{children}</Suspense>
+    </div>
   );
 }
