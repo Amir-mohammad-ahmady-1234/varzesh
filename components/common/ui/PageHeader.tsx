@@ -17,7 +17,9 @@ export default function PageHeader({
   return (
     <div className={cn("flex items-center justify-between mb-8", className)}>
       <div>
-        <h6 className="text-3xl font-bold text-foreground">{title}</h6>
+        <h6 className="text-3xl font-bold text-foreground">
+          مدیریت {title} ها
+        </h6>
         {description && (
           <p className="text-muted-foreground mt-2">{description}</p>
         )}

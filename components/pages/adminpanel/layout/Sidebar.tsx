@@ -15,6 +15,7 @@ import {
 import { cn } from "../../../../lib/utils";
 import Button from "../../../common/Button";
 import { FaBlog, FaPodcast } from "react-icons/fa";
+import { ImNewspaper } from "react-icons/im";
 
 export default function Sidebar() {
   const [collapsed, setCollapsed] = useState(false);
@@ -29,12 +30,13 @@ export default function Sidebar() {
     { href: "/admin/users", label: "کاربران", icon: MdPeople },
     { href: "/admin/blog", label: "بلاگ", icon: FaBlog },
     { href: "/admin/podcast", label: "پادکست", icon: FaPodcast },
+    { href: "/admin/news", label: "اخبار", icon: ImNewspaper },
   ];
 
   return (
     <div
       className={cn(
-        "bg-sidebar text-sidebar-foreground transition-all duration-300 flex flex-col border-l border-sidebar-border",
+        "bg-sidebar text-sidebar-foreground overflow-auto transition-all duration-300 flex flex-col border-l border-sidebar-border",
         collapsed ? "w-16" : "w-64"
       )}
     >

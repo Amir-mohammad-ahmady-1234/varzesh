@@ -21,6 +21,10 @@ interface Props {
     savedBlogs?: number;
     totalViewedBlogs?: number;
     deletedBlogs?: number;
+    totalNews?: number;
+    savedNews?: number;
+    totalViewedNews?: number;
+    deletedNews?: number;
   };
   usersCardInfo: {
     id: number;

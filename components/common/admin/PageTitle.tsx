@@ -5,6 +5,7 @@ import PageHeader from "../ui/PageHeader";
 import Button from "../Button";
 import { BiLogoDigitalocean } from "react-icons/bi";
 import NewBlogModal from "../../pages/adminpanel/pages/blog/NewBlogModal";
+import NewNewsModal from "../../pages/adminpanel/pages/news/NewNewsModal";
 
 //   const exportToCSV = () => {
 //     const csvContent = [
@@ -71,9 +72,19 @@ export default function PageTitle({ title, desc }: Props) {
             className="cursor-pointer bg-transparent"
           >
             <BiLogoDigitalocean className="w-4 h-4 ml-2" />
-            بلاگ جدید
+            {title} جدید
           </Button>
-          <NewBlogModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+          {title === "بلاگ" ? (
+            <NewBlogModal
+              isModalOpen={isModalOpen}
+              setIsModalOpen={setIsModalOpen}
+            />
+          ) : (
+            <NewNewsModal
+              isModalOpen={isModalOpen}
+              setIsModalOpen={setIsModalOpen}
+            />
+          )}
         </div>
       }
     />

@@ -28,7 +28,7 @@ export default async function PodcastPage() {
   return (
     <MainLayout>
       <PageTitlePodcast
-        title="مدیریت پادکست ها"
+        title="پادکست"
         desc={`مدیریت ${stats.total} پادکست کاربران و تغییر آنها`}
       />
 

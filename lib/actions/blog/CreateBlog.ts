@@ -3,14 +3,13 @@
 export interface BlogFormState {
   message: {
     title?: string;
-    category?: string;
-    profile?: string;
+    status?: string;
     img?: string;
     summary?: string;
     description?: string;
     otherErr?: string;
     success?: string;
-    blog?: any;
+    news?: any;
   };
 }
 import { BlogCreate } from "../../../server/admin/paneladmin/blog/BlogCreate";
