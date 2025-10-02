@@ -1,5 +1,6 @@
 import prisma from "../../../../lib/db";
 import { uploadFile } from "../../../../utils/uploadFile";
+import { uploadAudioFile } from "../../../../utils/uploadAudioFile";
 
 export type PodcastCategory = "FOOTBALL" | "BOXING" | "BASKETBALL";
 
@@ -15,7 +16,7 @@ export type PodcastProps = {
 export async function PodcastCreate(props: PodcastProps) {
   try {
     const imgPath = await uploadFile(props.img, "uploads");
-    const audioPath = await uploadFile(props.audio, "audio");
+    const audioPath = await uploadAudioFile(props.audio, "audio");
 
     const podcast = await prisma.podcast.create({
       data: {
@@ -29,7 +30,8 @@ export async function PodcastCreate(props: PodcastProps) {
     });
 
     return podcast;
-  } catch {
+  } catch (err) {
+    console.log(err);
     return { error: "مشکلی در سرور رخ داده است", status: 500 };
   }
 }

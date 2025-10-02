@@ -31,7 +31,7 @@ export default async function Blogpage() {
     <MainLayout>
       <PageTitle
         title="مدیریت بلاگ ها"
-        desc="مدیریت X بلاگ کاربران و تغییر انها"
+        desc={`مدیریت ${stats.totalBlogs} بلاگ کاربران و تغییر انها`}
       />
 
       <UsersActivities
