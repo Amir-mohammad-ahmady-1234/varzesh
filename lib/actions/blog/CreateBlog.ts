@@ -7,6 +7,9 @@ export interface BlogFormState {
     img?: string;
     summary?: string;
     description?: string;
+    author?: string;
+    category?: string;
+    profile?: string;
     otherErr?: string;
     success?: string;
     news?: any;
@@ -23,6 +26,7 @@ export async function CreateBlog(prevState: BlogFormState, formData: FormData) {
     img: formData.get("image"),
     description: formData.get("content"),
     summary: formData.get("summary"),
+    author: formData.get("author"),
   };
 
   const validationData = blogSchema.safeParse(data);

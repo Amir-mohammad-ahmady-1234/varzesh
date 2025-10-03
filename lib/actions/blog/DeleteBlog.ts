@@ -27,6 +27,6 @@ export async function DeleteBlog(
 }
 
 // Adapter for form action usage without prevState
-export async function DeleteBlogAction(id: number) {
-  return DeleteNewsById(id);
+export async function DeleteBlogAction(formData: FormData) {
+  return DeleteBlog({}, formData);
 }

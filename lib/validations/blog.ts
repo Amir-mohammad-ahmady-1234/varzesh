@@ -23,4 +23,5 @@ export const blogSchema = z.object({
     ),
   description: z.string().min(20, "حداقل 20 کاراکتر اجباری میباشد"),
   summary: z.string().min(5, "حداقل 5 کاراکتر اجباری میباشد"),
+  author: z.string().min(3, "حداقل 3 کاراکتر اجباری میباشد"),
 });

@@ -20,6 +20,7 @@ export default function Topbar() {
   const [isRTL, setIsRTL] = useState(true);
   const [showNotifications, setShowNotifications] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
 
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
@@ -41,10 +42,10 @@ export default function Topbar() {
   const unreadCount = notifications.filter((n) => n.unread).length;
 
   return (
-    <header className="bg-card border-b border-border px-6 py-4 sticky top-0 z-40">
-      <div className="flex items-center justify-between">
-        <div className="flex-1 max-w-md relative">
-          <MdSearch className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+    <header className="bg-card/80 backdrop-blur border-b border-border px-4 md:px-6 py-3 sticky top-0 z-40">
+      <div className="flex items-center justify-between gap-4">
+        <div className="hidden md:flex flex-1 max-w-md relative">
+          <MdSearch className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground w-4 h-4" />
           <Input
             type="text"
             placeholder="جستجو در پنل مدیریت..."
@@ -53,16 +54,25 @@ export default function Topbar() {
           />
         </div>
 
-        <div className="flex items-center gap-2">
-          {/* Theme Toggle */}
+        <div className="md:hidden">
           <Button
             variant="ghost"
             size="sm"
+            onClick={() => setShowSearch(!showSearch)}
+          >
+            <MdSearch className="w-5 h-5" />
+          </Button>
+        </div>
+
+        <div className="flex items-center gap-1 sm:gap-2">
+          <Button
+            variant="ghost"
+            size="icon"
             onClick={toggleTheme}
-            className="p-2 cursor-pointer"
             aria-label={
               theme === "dark" ? "تغییر به حالت روشن" : "تغییر به حالت تاریک"
             }
+            className="rounded-full"
           >
             {theme === "dark" ? (
               <MdLightMode className="w-5 h-5" />
@@ -71,13 +81,12 @@ export default function Topbar() {
             )}
           </Button>
 
-          {/* RTL/LTR Toggle */}
           <Button
             variant="ghost"
-            size="sm"
+            size="icon"
             onClick={toggleDirection}
-            className="p-2 cursor-pointer"
             aria-label={isRTL ? "تغییر به انگلیسی" : "تغییر به فارسی"}
+            className="rounded-full"
           >
             <MdLanguage className="w-5 h-5" />
           </Button>
@@ -85,59 +94,43 @@ export default function Topbar() {
           <div className="relative">
             <Button
               variant="ghost"
-              size="sm"
-              className="p-2 relative cursor-pointer"
+              size="icon"
+              className="relative rounded-full"
               onClick={() => setShowNotifications(!showNotifications)}
-              aria-label={`اعلان‌ها ${
-                unreadCount > 0 ? `(${unreadCount} خوانده نشده)` : ""
-              }`}
             >
               <MdNotifications className="w-5 h-5" />
               {unreadCount > 0 && (
-                <span className="absolute -top-1 -left-1 w-5 h-5 bg-destructive text-destructive-foreground rounded-full text-xs flex items-center justify-center font-medium">
+                <span className="absolute -top-1 -left-1 w-4 h-4 bg-destructive text-destructive-foreground rounded-full text-xs flex items-center justify-center">
                   {unreadCount}
                 </span>
               )}
             </Button>
 
             {showNotifications && (
-              <div className="absolute left-0 mt-2 w-80 bg-popover border border-border rounded-lg shadow-lg z-50 animate-fade-in">
+              <div className="absolute left-0 mt-2 w-72 sm:w-80 bg-popover border border-border rounded-lg shadow-lg z-50">
                 <div className="p-4 border-b border-border">
                   <h3 className="font-semibold text-popover-foreground">
                     اعلان‌ها
                   </h3>
                 </div>
                 <div className="max-h-64 overflow-y-auto">
-                  {notifications.map((notification) => (
+                  {notifications.map((n) => (
                     <div
-                      key={notification.id}
+                      key={n.id}
                       className={cn(
-                        "p-4 border-b border-border last:border-b-0 hover:bg-accent cursor-pointer",
-                        notification.unread && "bg-accent/50"
+                        "p-4 border-b border-border last:border-b-0 hover:bg-accent cursor-pointer transition-colors",
+                        n.unread && "bg-accent/50"
                       )}
                     >
-                      <div className="flex items-start justify-between">
-                        <div className="flex-1">
-                          <p className="text-sm font-medium text-popover-foreground">
-                            {notification.title}
-                          </p>
-                          <p className="text-xs text-muted-foreground mt-1">
-                            {notification.time}
-                          </p>
-                        </div>
-                        {notification.unread && (
-                          <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
-                        )}
-                      </div>
+                      <p className="text-sm font-medium">{n.title}</p>
+                      <p className="text-xs text-muted-foreground mt-1">
+                        {n.time}
+                      </p>
                     </div>
                   ))}
                 </div>
                 <div className="p-2 border-t border-border">
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="w-full cursor-pointer"
-                  >
+                  <Button variant="secondary" size="sm" className="w-full">
                     مشاهده همه اعلان‌ها
                   </Button>
                 </div>
@@ -148,30 +141,29 @@ export default function Topbar() {
           <div className="relative">
             <button
               onClick={() => setShowUserMenu(!showUserMenu)}
-              className="flex items-center gap-2 p-2 hover:bg-accent rounded-lg transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-ring"
-              aria-label="منوی کاربری"
+              className="flex items-center gap-2 p-2 hover:bg-accent rounded-full transition-colors"
             >
-              <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-primary-foreground text-sm font-medium">
+              <div className="w-8 h-8 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center text-white font-semibold">
                 ا
               </div>
-              <span className="text-sm text-foreground font-medium">
+              <span className="hidden sm:inline text-sm font-medium">
                 ادمین سیستم
               </span>
             </button>
 
             {showUserMenu && (
-              <div className="absolute left-0 mt-2 w-48 bg-popover border border-border rounded-lg shadow-lg z-50 animate-fade-in">
+              <div className="absolute left-0 mt-2 w-48 bg-popover border border-border rounded-lg shadow-lg z-50">
                 <div className="p-2">
-                  <button className="flex items-center gap-2 w-full p-2 hover:bg-accent rounded-lg transition-colors cursor-pointer">
+                  <button className="flex items-center gap-2 w-full p-2 hover:bg-accent rounded-lg">
                     <MdAccountCircle className="w-4 h-4" />
                     <span className="text-sm">پروفایل</span>
                   </button>
-                  <button className="flex items-center gap-2 w-full p-2 hover:bg-accent rounded-lg transition-colors cursor-pointer">
+                  <button className="flex items-center gap-2 w-full p-2 hover:bg-accent rounded-lg">
                     <MdSettings className="w-4 h-4" />
                     <span className="text-sm">تنظیمات</span>
                   </button>
                   <hr className="my-2 border-border" />
-                  <button className="flex items-center gap-2 w-full p-2 hover:bg-accent rounded-lg transition-colors cursor-pointer text-destructive">
+                  <button className="flex items-center gap-2 w-full p-2 hover:bg-accent rounded-lg text-destructive">
                     <MdLogout className="w-4 h-4" />
                     <span className="text-sm">خروج</span>
                   </button>
@@ -181,6 +173,17 @@ export default function Topbar() {
           </div>
         </div>
       </div>
+
+      {showSearch && (
+        <div className="mt-3 md:hidden transition-all">
+          <Input
+            type="text"
+            placeholder="جستجو..."
+            className="w-full"
+            autoFocus
+          />
+        </div>
+      )}
     </header>
   );
 }

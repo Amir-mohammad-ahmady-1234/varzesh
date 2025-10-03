@@ -78,7 +78,13 @@ export default function NewBlogModal({ isModalOpen, setIsModalOpen }: Props) {
             err={state.message.img}
           />
         </div>
-        <div className="w-1/2">
+        <div className="flex gap-8">
+          <Input
+            placeholder="نام نویسنده"
+            name="author"
+            title="نام نویسنده"
+            err={state.message.author}
+          />
           <Input
             placeholder="خلاصه مقاله"
             name="summary"
