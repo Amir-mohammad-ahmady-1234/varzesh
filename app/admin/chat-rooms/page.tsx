@@ -4,11 +4,10 @@ import SettingModal from "../../../components/pages/adminpanel/pages/chat-rooms/
 import { usersCardInfo } from "../../../mocks/admin/chat-roomsMoocks";
 import UsersActivities from "../../../components/common/admin/UsersActivities";
 
-import CartHeader from "../../../components/common/admin/FilterCard/CartHeader";
-import FilterCartContainer from "../../../components/common/admin/FilterCard/CartContainer";
-import { CardContent } from "../../../components/common/ui/Card";
 import RoomsAndPagination from "../../../components/pages/adminpanel/pages/chat-rooms/Game-room/RoomsAndPagination";
 import { mockChatRooms } from "../../../mocks/mock-data";
+import FilterAndSearch from "../../../components/common/admin/FilterCard/FilterAndSearch";
+import { filterChatRoomArray } from "../../../mocks/admin/filters/filterArray";
 
 export const metadata = {
   title: "چت روم",
@@ -32,17 +31,11 @@ export default function ChatRoomsPage() {
 
       <UsersActivities stats={stats} usersCardInfo={usersCardInfo} />
 
-      <FilterCartContainer>
-        <CartHeader title="جستجو و فیلتر چت روم‌ها بر اساس معیارهای مختلف" />
-        <CardContent>
-          {""}
-          {/* <CardMainContent
-            placeHolder="جستجو بر اساس نام چت روم، توضیحات یا نوع..."
-            searchQuery={searchQuery}
-            setSearchQuery={setSearchQuery}
-          /> */}
-        </CardContent>
-      </FilterCartContainer>
+      <FilterAndSearch
+        description="جستجو و فیلتر چت روم ها بر اساس معیارهای مختلف"
+        isfilter={true}
+        itemsbtn={filterChatRoomArray}
+      />
 
       <RoomsAndPagination />
 
