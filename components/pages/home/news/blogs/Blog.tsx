@@ -35,7 +35,7 @@ export default function Blog({ blog }: { blog: BlogType }) {
           <p className="text-xl font-semibold mb-4">{blog.title}</p>
 
           <div className="flex justify-between items-end gap-2 mt-auto">
-            <p className="opacity-40 line-clamp-3">{blog.summary}</p>
+            <p className="opacity-40 line-clamp-3 text-justify">{blog.summary}</p>
             <span className="text-secondary-100 !opacity-100 flex-shrink-0 cursor-pointer">
               بیشتر
             </span>
@@ -44,4 +44,4 @@ export default function Blog({ blog }: { blog: BlogType }) {
       </div>
     </div>
   );
-}
+} 
