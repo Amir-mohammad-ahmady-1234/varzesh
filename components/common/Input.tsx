@@ -10,6 +10,7 @@ interface PropsType {
   changeFn?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   size?: "sm" | "md" | "lg" | "xl";
   className?: string;
+  disabled?: boolean;
 }
 
 function Input({
@@ -21,6 +22,7 @@ function Input({
   value,
   changeFn,
   size = "md",
+  disabled = false,
   className = "",
 }: PropsType) {
   return (
@@ -38,6 +40,7 @@ function Input({
           onChange={changeFn}
           size={size}
           className={className}
+          disabled={disabled}
         />
       </div>
       {err && <p className="text-error-500 text-sm">{err}</p>}
