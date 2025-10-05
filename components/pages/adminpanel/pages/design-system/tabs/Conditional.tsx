@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import ColorsTab from "./ColorsTab";
 import TypographyTab from "./TypographyTab";
