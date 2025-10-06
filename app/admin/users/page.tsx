@@ -20,13 +20,19 @@ export const metadata = {
     "لیست کاربران سایت با قابلیت حذف اپدیت اضافه و خواندن دیتای انها و موارد دیگر ...",
 };
 
-export default function UsersPage() {
+export default async function UsersPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | undefined }>;
+}) {
   const stats = {
     totalUsers: 82,
     activeUser: 22,
     blockUsers: 34,
     admins: 32,
   };
+
+  const params = await searchParams;
 
   return (
     <MainLayout>
@@ -70,6 +76,7 @@ export default function UsersPage() {
         description="جستجو و فیلتر کاربران بر اساس معیارهای مختلف"
         isfilter={true}
         itemsbtn={filterUsersArr}
+        params={params}
       />
 
       <SelectedCard />

@@ -14,7 +14,11 @@ export const metadata = {
   description: "مدیریت روم های سایت",
 };
 
-export default function ChatRoomsPage() {
+export default async function ChatRoomsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | undefined }>;
+}) {
   const stats = {
     total: mockChatRooms.length,
     active: mockChatRooms.filter((r) => r.status === "active").length,
@@ -24,6 +28,8 @@ export default function ChatRoomsPage() {
     ),
     totalMessages: mockChatRooms.reduce((sum, r) => sum + r.messageCount, 0),
   };
+
+  const params = await searchParams;
 
   return (
     <MainLayout>
@@ -35,6 +41,7 @@ export default function ChatRoomsPage() {
         description="جستجو و فیلتر چت روم ها بر اساس معیارهای مختلف"
         isfilter={true}
         itemsbtn={filterChatRoomArray}
+        params={params}
       />
 
       <RoomsAndPagination />

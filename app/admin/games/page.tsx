@@ -7,6 +7,7 @@ import { filterGameArray } from "../../../mocks/admin/filters/filterArray";
 import Cart from "../../../components/common/admin/rowsList/Cart";
 import Pagination from "../../../components/pages/adminpanel/pages/support/Pagination";
 import EmptyAndPagination from "../../../components/pages/adminpanel/pages/support/EmptyAndPagination";
+import { normalizeSearchParams } from "../../../utils/normalizeSearchParams";
 
 export const metadata = {
   title: "بازی ها",
@@ -51,6 +52,7 @@ export default async function GamesPage({ searchParams }: Props) {
               description="جستجو و فیلتر بازی بر اساس معیارهای مختلف"
               isfilter={true}
               itemsbtn={filterGameArray}
+              params={normalizeSearchParams(await searchParams)}
             />
             <EmptyAndPagination datas={Game.data} pagination={Game.pagination}>
               {Game.data.map((data) => (

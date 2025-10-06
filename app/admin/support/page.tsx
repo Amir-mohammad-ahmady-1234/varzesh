@@ -11,6 +11,7 @@ import Cart from "../../../components/common/admin/rowsList/Cart";
 import { filterArray } from "../../../mocks/admin/filters/filterArray";
 import { Priority, Status } from "@prisma/client";
 import EmptyState from "../../../components/common/ui/EmptyState";
+import { normalizeSearchParams } from "../../../utils/normalizeSearchParams";
 
 export const metadata = {
   title: "پشتیبانی پنل ادمین",
@@ -58,6 +59,7 @@ export default async function SupportPage({ searchParams }: Props) {
         description="جستجو و فیلتر تیکت‌های پشتیبانی بر اساس معیارهای مختلف"
         isfilter={true}
         itemsbtn={filterArray}
+        params={normalizeSearchParams(await searchParams)}
       />
 
       <EmptyAndPagination datas={tickets.data} pagination={tickets.pagination}>

@@ -18,7 +18,11 @@ export const metadata = {
   description: "مدیریت بلاگ های سایت",
 };
 
-export default async function Blogpage() {
+export default async function Blogpage({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | undefined }>;
+}) {
   const blogs = await GetBlogs();
   const stats = {
     totalBlogs: blogs.length,
@@ -26,6 +30,8 @@ export default async function Blogpage() {
     totalViewedBlogs: 0,
     deletedBlogs: 0,
   };
+
+  const params = await searchParams;
 
   return (
     <MainLayout>
@@ -72,6 +78,7 @@ export default async function Blogpage() {
         description="جستجو و فیلتر بلاگ ها با معیار های مختلف"
         itemsbtn={filterBlogArray}
         isfilter={true}
+        params={params}
       />
 
       <div className="grid gap-4">

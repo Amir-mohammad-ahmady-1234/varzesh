@@ -15,7 +15,11 @@ export const metadata = {
   description: "مدیریت خبر های سایت",
 };
 
-export default async function page() {
+export default async function page({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | undefined }>;
+}) {
   const news = await GetAllNews();
 
   const stats = {
@@ -24,6 +28,8 @@ export default async function page() {
     totalViewedNews: 0,
     deletedNews: 0,
   };
+
+  const params = await searchParams;
 
   return (
     <MainLayout>
@@ -67,6 +73,7 @@ export default async function page() {
         description="جستجو و فیلتر بلاگ ها با معیار های مختلف"
         itemsbtn={filterBlogArray}
         isfilter={true}
+        params={params}
       />
 
       <div className="grid gap-4">

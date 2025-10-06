@@ -16,7 +16,11 @@ export const metadata = {
   description: "مدیریت پادکست های سایت",
 };
 
-export default async function PodcastPage() {
+export default async function PodcastPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | undefined }>;
+}) {
   const podcasts = await GetPodcasts();
   const stats = {
     total: podcasts.length,
@@ -24,6 +28,8 @@ export default async function PodcastPage() {
     viewed: 0,
     deleted: 0,
   } as const;
+
+  const params = await searchParams;
 
   return (
     <MainLayout>
@@ -75,6 +81,7 @@ export default async function PodcastPage() {
         description="جستجو و فیلتر پادکست ها با معیار های مختلف"
         itemsbtn={filterBlogArray}
         isfilter={true}
+        params={params}
       />
 
       <div className="grid gap-4">
