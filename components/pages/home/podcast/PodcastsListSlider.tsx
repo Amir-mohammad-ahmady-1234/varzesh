@@ -7,6 +7,7 @@ import "swiper/css";
 
 import { CiPlay1 } from "react-icons/ci";
 import { FcLike } from "react-icons/fc";
+import { FaStop } from "react-icons/fa";
 
 interface PodcastType {
   id: number;
@@ -24,7 +25,25 @@ export default function PodcastsListSlider({
 }: {
   podcasts: PodcastType[];
 }) {
-  const [isPlay, setIsPlay] = useState(false);
+  const audioRefs = useRef<Record<number, HTMLAudioElement | null>>({});
+  const [musicId, setMusicId] = useState<null | number>(null);
+
+  const handleMusic = (id: number) => {
+    const currentAudio = audioRefs.current[id];
+
+    if (musicId === id) {
+      currentAudio?.pause();
+      setMusicId(null);
+    } else {
+      Object.values(audioRefs.current).forEach((audio) => {
+        audio?.pause();
+        audio!.currentTime = 0;
+      });
+
+      currentAudio?.play();
+      setMusicId(id);
+    }
+  };
 
   return (
     <Swiper
@@ -37,17 +56,6 @@ export default function PodcastsListSlider({
       }}
     >
       {podcasts.map((podcast) => {
-        const audioRef = useRef<HTMLAudioElement>(null);
-
-        const handlePlay = () => {
-          setIsPlay((prev) => !prev);
-
-          if (audioRef.current) {
-            if (isPlay) {
-              audioRef.current.pause();
-            } else audioRef.current.play();
-          }
-        };
         return (
           <SwiperSlide key={podcast.id}>
             <div className="flex flex-col bg-tertiary-300 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all h-full max-w-sm mx-auto">
@@ -59,7 +67,7 @@ export default function PodcastsListSlider({
                   className="object-cover rounded-t-lg"
                 />
                 <button
-                  onClick={handlePlay}
+                  onClick={() => handleMusic(podcast.id)}
                   className="absolute cursor-pointer inset-0 flex items-center justify-center bg-black/40 text-neutral-100 text-4xl opacity-0 hover:opacity-100 transition"
                 >
                   <CiPlay1 />
@@ -76,16 +84,29 @@ export default function PodcastsListSlider({
 
                 <div className="flex items-center justify-between mt-auto pt-2">
                   <button
-                    onClick={handlePlay}
+                    onClick={() => handleMusic(podcast.id)}
                     className="flex cursor-pointer items-center gap-2 text-xs bg-primary-100 text-neutral-100 px-3 py-1.5 rounded-full hover:bg-primary-200 transition"
                   >
-                    <CiPlay1 className="text-sm" /> پخش
+                    {musicId === podcast.id ? (
+                      <>
+                        <FaStop /> توقف
+                      </>
+                    ) : (
+                      <>
+                        <CiPlay1 className="text-sm" /> پخش
+                      </>
+                    )}
                   </button>
                   <FcLike className="text-lg cursor-pointer hover:scale-110 transition" />
                 </div>
               </div>
 
-              <audio ref={audioRef} src={podcast.audioUrl} />
+              <audio
+                ref={(el) => {
+                  audioRefs.current[podcast.id] = el;
+                }}
+                src={podcast.audioUrl}
+              />
             </div>
           </SwiperSlide>
         );
