@@ -15,13 +15,13 @@ export const metadata = {
 };
 
 interface Props {
-  searchParams: {
+  searchParams: Promise<{
     search?: string;
     status?: string;
     League?: string;
     page?: number;
     limit?: number;
-  };
+  }>;
 }
 
 export default async function GamesPage({ searchParams }: Props) {

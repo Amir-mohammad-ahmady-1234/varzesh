@@ -15,6 +15,19 @@ export const metadata = {
   description: "مدیریت خبر های سایت",
 };
 
+export interface TNews {
+  id: number;
+  title: string;
+  summary: string;
+  firstthem: string;
+  secondthem: string;
+  League: "Acup" | "Tcup" | "Dcup";
+  step: string;
+  createdAt: string | null;
+  status: "Scheduled" | "down" | "live";
+  description: string;
+}
+
 export default async function page({
   searchParams,
 }: {
@@ -77,7 +90,7 @@ export default async function page({
       />
 
       <div className="grid gap-4">
-        {news.map((b: any) => (
+        {news.map((b: TNews) => (
           <List key={b.id} b={b} />
         ))}
       </div>

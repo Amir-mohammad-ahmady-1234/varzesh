@@ -12,7 +12,16 @@ import Cart from "../../../components/common/admin/rowsList/Cart";
 import { GetBlogs } from "../../../lib/actions/blog/GetBlogs";
 import { DeleteBlogAction } from "../../../lib/actions/blog/DeleteBlog";
 import { UpdateBlogAction } from "../../../lib/actions/blog/UpdateBlog";
+type Tblogs = {
+  id: number;
+  title: string;
+  description: string;
+  profile: string;
+  img: string;
 
+  category: string;
+  summary: string;
+};
 export const metadata = {
   title: "بلاگ",
   description: "مدیریت بلاگ های سایت",
@@ -82,13 +91,13 @@ export default async function Blogpage({
       />
 
       <div className="grid gap-4">
-        {blogs.map((b: any) => (
+        {blogs.map((b: Tblogs) => (
           <div key={b.id} className="w-full">
             <Cart
               id={b.id}
               title={b.title}
               description={b.summary}
-              date={new Date(b.createdAt ?? Date.now())}
+              date={new Date(Date.now())}
               options={[
                 {
                   title: "status",
@@ -99,8 +108,8 @@ export default async function Blogpage({
                   items: { key: "priority", value: "HIGH" },
                 },
               ]}
-              onDelete={DeleteBlogAction as any}
-              onUpdate={UpdateBlogAction as any}
+              onDelete={DeleteBlogAction}
+              onUpdate={UpdateBlogAction}
             />
           </div>
         ))}

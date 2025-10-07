@@ -8,8 +8,19 @@ export const metadata = {
   description: "ایجاد بازی جدید",
 };
 
+interface TCreateGame {
+  firstthem: string;
+  secondthem: string;
+  League: "Acup" | "Tcup" | "Dcup";
+  step: string;
+  data: Date;
+  time: Date;
+  status: "Scheduled" | "down" | "live";
+  description: string;
+}
+
 export default function page() {
-  async function handleCreateGame(payload: any) {
+  async function handleCreateGame(payload: TCreateGame) {
     "use server";
     return await CreateGame(payload);
   }

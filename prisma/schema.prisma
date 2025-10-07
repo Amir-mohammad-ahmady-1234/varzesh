@@ -91,6 +91,7 @@ model News {
   title String @unique
   img String @unique
   status NewStatus
+  
   summary String
   description String
   createdAt   DateTime @default(now())

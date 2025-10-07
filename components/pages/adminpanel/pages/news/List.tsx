@@ -4,8 +4,9 @@ import React from "react";
 import Cart from "../../../../common/admin/rowsList/Cart";
 import { DeleteBlogAction } from "../../../../../lib/actions/blog/DeleteBlog";
 import { UpdateNewsAction } from "../../../../../lib/actions/news/UpdateNews";
+import { TNews } from "../../../../../app/admin/news/page";
 
-export default function List({ b }: { b: any }) {
+export default function List({ b }: { b: TNews }) {
   return (
     <div key={b.id} className="w-full">
       <Cart
