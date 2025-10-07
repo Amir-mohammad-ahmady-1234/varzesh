@@ -3,18 +3,19 @@
 import React, { useState } from "react";
 import { MdSearch } from "react-icons/md";
 import Button from "../../Button";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import InputDesign from "../../ui/Input";
 
 interface Props {
   placehlderText?: string;
   pagename: string;
+  params: Record<string, string | undefined>;
 }
 
-export default function Search({ placehlderText, pagename }: Props) {
+export default function Search({ placehlderText, pagename, params }: Props) {
   const router = useRouter();
-  const params = useSearchParams();
-  const [searchQuery, setSearchQuery] = useState(params.get("search") || "");
+
+  const [searchQuery, setSearchQuery] = useState(params?.search || "");
 
   const handleFilterChange = (key: string, value: string) => {
     const newParams = new URLSearchParams(params.toString());

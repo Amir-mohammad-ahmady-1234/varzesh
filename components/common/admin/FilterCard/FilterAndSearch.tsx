@@ -60,6 +60,7 @@ export default function FilterAndSearch({
         <Search
           placehlderText="جست‌وجو تیکت ساپورت مد نظر"
           pagename={pagename}
+          params={params}
         />
         <div className="flex flex-wrap mt-5">
           {isfilter
