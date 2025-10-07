@@ -50,6 +50,8 @@ export default async function SupportPage({ searchParams }: Props) {
   if (!tickets.data)
     return <EmptyState title="خطا در دریافت تیکت های پشتیبانی" />;
 
+  const params = await searchParams;
+
   return (
     <MainLayout>
       <PageTitle totalsupport={stats.totalsupport ?? 0} />
@@ -62,7 +64,11 @@ export default async function SupportPage({ searchParams }: Props) {
         params={normalizeSearchParams(await searchParams)}
       />
 
-      <EmptyAndPagination datas={tickets.data} pagination={tickets.pagination}>
+      <EmptyAndPagination
+        datas={tickets.data}
+        pagination={tickets.pagination}
+        params={params as Promise<{ [key: string]: string | undefined }>}
+      >
         {tickets.data.map((data) => (
           <Cart
             key={data.id}

@@ -10,9 +10,10 @@ interface Props {
     limit: number;
     totalPages: number;
   };
+  params: Promise<{ [key: string]: string | undefined }>;
 }
 
-export default function Pagination({ pagination }: Props) {
+export default function Pagination({ pagination, params }: Props) {
   const { setCurrentPage } = useSupportStates();
 
   if (!pagination) return;
@@ -32,6 +33,7 @@ export default function Pagination({ pagination }: Props) {
           currentPage={page}
           setCurrentPage={setCurrentPage}
           totalPages={totalPages}
+          params={params}
         />
       </div>
     </div>

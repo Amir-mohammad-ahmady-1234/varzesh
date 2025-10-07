@@ -27,8 +27,6 @@ interface Props {
 export default async function GamesPage({ searchParams }: Props) {
   const { search, status, League, page, limit } = await searchParams;
 
-  console.log(search);
-
   const Game = await FindGame({
     serch: search ?? "",
     status: status as "Scheduled" | "down" | "live",
@@ -38,6 +36,8 @@ export default async function GamesPage({ searchParams }: Props) {
   });
 
   if (Game.error || !Game.data) return <p>{Game.error}</p>;
+
+  const params = await searchParams;
 
   return (
     <div className="flex h-screen bg-(--bg-secondary)">
@@ -54,7 +54,11 @@ export default async function GamesPage({ searchParams }: Props) {
               itemsbtn={filterGameArray}
               params={normalizeSearchParams(await searchParams)}
             />
-            <EmptyAndPagination datas={Game.data} pagination={Game.pagination}>
+            <EmptyAndPagination
+              params={params as Promise<{ [key: string]: string | undefined }>}
+              datas={Game.data}
+              pagination={Game.pagination}
+            >
               {Game.data.map((data) => (
                 <Cart
                   key={data.id}
@@ -89,7 +93,12 @@ export default async function GamesPage({ searchParams }: Props) {
             </EmptyAndPagination>
 
             {Game.pagination.totalPages > 1 && (
-              <Pagination pagination={Game.pagination} />
+              <Pagination
+                pagination={Game.pagination}
+                params={
+                  params as Promise<{ [key: string]: string | undefined }>
+                }
+              />
             )}
           </div>
         </section>

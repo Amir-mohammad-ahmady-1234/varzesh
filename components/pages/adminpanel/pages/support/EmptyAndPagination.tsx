@@ -14,12 +14,14 @@ interface Props {
     limit: number;
     totalPages: number;
   };
+  params: Promise<{ [key: string]: string | undefined }>;
 }
 
 export default function EmptyAndPagination({
   children,
   datas,
   pagination,
+  params,
 }: Props) {
   const { setSearchQuery, setStatusFilter, setPriorityFilter } =
     useSupportStates();
@@ -49,7 +51,7 @@ export default function EmptyAndPagination({
         children
       )}
 
-      {totalPages > 1 && <Pagination pagination={pagination} />}
+      {totalPages > 1 && <Pagination pagination={pagination} params={params} />}
     </>
   );
 }

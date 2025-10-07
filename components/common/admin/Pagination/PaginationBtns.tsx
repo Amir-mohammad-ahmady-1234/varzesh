@@ -1,17 +1,21 @@
 "use client";
 import React, { SetStateAction } from "react";
 import Button from "../../Button";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 interface Props {
   setCurrentPage: React.Dispatch<SetStateAction<number>>;
   currentPage: number;
   totalPages: number;
+  params: Promise<{ [key: string]: string | undefined }>;
 }
 
-export default function PaginationBtns({ currentPage, totalPages }: Props) {
+export default function PaginationBtns({
+  currentPage,
+  totalPages,
+  params,
+}: Props) {
   const router = useRouter();
-  const params = useSearchParams();
   const pagename = usePathname().split("/")[2];
 
   function handleChangePage(key: string, value: string) {

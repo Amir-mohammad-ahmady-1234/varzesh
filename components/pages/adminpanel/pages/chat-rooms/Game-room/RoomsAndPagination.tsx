@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import React from "react";
 import { useChatRoom } from "../../../../../../hooks/admin/chat-room/useChatRoom";
@@ -8,7 +8,11 @@ import CartContainer from "./CartContainer";
 import PageCount from "../../../../../common/admin/Pagination/PageCount";
 import PaginationBtns from "../../../../../common/admin/Pagination/PaginationBtns";
 
-export default function RoomsAndPagination() {
+export default function RoomsAndPagination({
+  params,
+}: {
+  params: Promise<{ [key: string]: string | undefined }>;
+}) {
   const {
     currentPage,
     filteredRooms,
@@ -51,6 +55,7 @@ export default function RoomsAndPagination() {
               currentPage={currentPage}
               setCurrentPage={setCurrentPage}
               totalPages={totalPages}
+              params={params}
             />
           </div>
         </div>

@@ -44,7 +44,7 @@ export default async function ChatRoomsPage({
         params={params}
       />
 
-      <RoomsAndPagination />
+      <RoomsAndPagination params={searchParams} />
 
       <SettingModal />
     </MainLayout>
