@@ -6,6 +6,7 @@ import HomeImageSlider from "../../components/pages/home/head/HomeImageSlider";
 import HomeLiveresults from "../../components/pages/home/head/HomeLiveresults";
 import HomeExercises from "../../components/pages/home/category/HomeExercises";
 import HomeNews from "../../components/pages/home/news/HomeNews";
+import ChatButton from "../../components/pages/home/ai/ChatButton";
 
 function HomePage() {
   return (
@@ -22,9 +23,10 @@ function HomePage() {
       <HomeExercises />
       <LiveViideo />
       <HomeNews />
+
+      <ChatButton />
     </Container>
   );
 }
 
 export default HomePage;
-  
