@@ -1,5 +1,5 @@
+import { uploadImage } from "../../../../lib/cloudinary";
 import prisma from "../../../../lib/db";
-import { uploadFile } from "../../../../utils/uploadFile";
 
 export type BlogProps = {
   id?: number;
@@ -13,8 +13,8 @@ export type BlogProps = {
 };
 
 export async function BlogCreate(props: BlogProps) {
-  const dbPath = await uploadFile(props.img, "uploads");
-  const dbPathprofile = await uploadFile(props.profile, "uploads");
+  const dbPath = await uploadImage(props.img);
+  const dbPathprofile = await uploadImage(props.profile);
 
   const blog = await prisma.blog.create({
     data: {

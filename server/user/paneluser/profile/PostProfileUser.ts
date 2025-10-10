@@ -1,6 +1,6 @@
+import { uploadImage } from "../../../../lib/cloudinary";
 import prisma from "../../../../lib/db";
 import { TPostProfileUser } from "../../../../types/user/profile/type";
-import { uploadFile } from "../../../../utils/uploadFile";
 
 export async function PostProfileUser({ id, email, file }: TPostProfileUser) {
   try {
@@ -19,7 +19,7 @@ export async function PostProfileUser({ id, email, file }: TPostProfileUser) {
       }
     }
 
-    const dbPath = await uploadFile(file, "uploads");
+    const dbPath = await uploadImage(file);
     await prisma.user.update({
       where: { id },
       data: { email, profileImage: dbPath },
