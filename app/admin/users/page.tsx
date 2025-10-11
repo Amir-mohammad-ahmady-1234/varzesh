@@ -13,6 +13,8 @@ import {
 } from "react-icons/pi";
 import { IoChevronUpCircleOutline } from "react-icons/io5";
 import ConditionallyRender from "../../../components/pages/adminpanel/pages/users/ConditionallyRender";
+import { getUserStatistics } from "../../../server/admin/paneladmin/users/userboxInformation";
+import { GetUserFilterQuery } from "../../../server/admin/paneladmin/users/GetUserFilterQurey/GetUserFilterQurey";
 
 export const metadata = {
   title: "لیست کاربران سایت",
@@ -25,14 +27,16 @@ export default async function UsersPage({
 }: {
   searchParams: Promise<{ [key: string]: string | undefined }>;
 }) {
-  const stats = {
-    totalUsers: 82,
-    activeUser: 22,
-    blockUsers: 34,
-    admins: 32,
-  };
-
+  const stats = await getUserStatistics();
   const params = await searchParams;
+
+  const users = await GetUserFilterQuery({
+    search: params.search ?? "",
+    status: params.status as "Blocked" | "Waiting" | "Approved",
+    page: params.page ? Number(params.page) : 1,
+    limit: params.limit ? Number(params.limit) : 5,
+    role: (params.role as "USER" | "ADMIN") ?? "USER",
+  });
 
   return (
     <MainLayout>
@@ -81,9 +85,9 @@ export default async function UsersPage({
 
       <SelectedCard />
 
-      <ConditionallyRender />
+      <ConditionallyRender users={users} />
 
-      <PaginationBtns />
+      {users.error ? <p>{users.error}</p> : <PaginationBtns users={users} />}
 
       <UserModal />
     </MainLayout>
