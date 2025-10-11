@@ -22,6 +22,7 @@ export default function NewPodcastModal({
   setIsModalOpen,
 }: Props) {
   const [state, setState] = useState<PodcastFormState>(initialState);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (state.message.success) {
@@ -42,9 +43,12 @@ export default function NewPodcastModal({
           e.preventDefault();
           const formData = new FormData(e.currentTarget);
 
+          setIsLoading(true);
+
           startTransition(async () => {
             const result = await CreatePodcast(state, formData);
             setState(result);
+            setIsLoading(false); 
           });
         }}
         className="flex flex-col gap-10"
@@ -63,6 +67,7 @@ export default function NewPodcastModal({
             err={state.message.category}
           />
         </div>
+
         <div className="flex gap-8">
           <Input
             placeholder="تصویر"
@@ -79,6 +84,7 @@ export default function NewPodcastModal({
             err={state.message.audio}
           />
         </div>
+
         <div className="w-1/2">
           <Input
             placeholder="خلاصه"
@@ -94,6 +100,7 @@ export default function NewPodcastModal({
           rows={5}
           placeholder="توضیحات"
         />
+
         <p className="text-error-500 text-sm">
           {state.message.description && state.message.description}
         </p>
@@ -104,9 +111,21 @@ export default function NewPodcastModal({
           <p className="text-success-600 text-sm">{state.message.success}</p>
         )}
 
-        <Button type="submit">ایجاد پادکست</Button>
+        <Button
+          type="submit"
+          disabled={isLoading}
+          className="relative flex items-center justify-center gap-2"
+        >
+          {isLoading ? (
+            <>
+              <span className="loader border-2 border-t-transparent border-white rounded-full w-4 h-4 animate-spin"></span>
+              در حال ایجاد...
+            </>
+          ) : (
+            "ایجاد پادکست"
+          )}
+        </Button>
       </form>
     </Modal>
   );
 }
-

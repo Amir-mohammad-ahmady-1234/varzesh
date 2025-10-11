@@ -1,6 +1,3 @@
-import { promises as fs } from "fs";
-import path from "path";
-
 const ALLOWED_AUDIO_TYPES = [
   "audio/mpeg",
   "audio/mp3",
@@ -8,7 +5,7 @@ const ALLOWED_AUDIO_TYPES = [
   "audio/webm",
 ];
 
-const MAX_AUDIO_SIZE_BYTES = 30 * 1024 * 1024; 
+const MAX_AUDIO_SIZE_BYTES = 30 * 1024 * 1024; // 30MB
 
 export async function uploadAudioFile(file: File, folder = "audio") {
   if (!file) throw new Error("فایل صوتی موجود نیست");
@@ -21,18 +18,24 @@ export async function uploadAudioFile(file: File, folder = "audio") {
     throw new Error("حجم فایل صوتی نباید بیشتر از 30 مگابایت باشد");
   }
 
-  const uploadDir = path.join(process.cwd(), "public", folder);
-  await fs.mkdir(uploadDir, { recursive: true });
+  const formData = new FormData();
+  formData.append("file", file);
+  formData.append("upload_preset", "audio_preset");
+  formData.append("folder", folder);
+  formData.append("resource_type", "video");
 
-  const safeFileName = file.name.replace(/[^a-zA-Z0-9.\-_]/g, "");
-  const fileName = `${Date.now()}-${safeFileName}`;
+  const CLOUD_NAME = process.env.CLOUDINARY_CLOUD_NAME;
 
-  const filePath = path.join(uploadDir, fileName);
+  const res = await fetch(
+    `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/video/upload`,
+    {
+      method: "POST",
+      body: formData,
+    }
+  );
 
-  const bytes = await file.arrayBuffer();
-  const buffer = Buffer.from(bytes);
-  await fs.writeFile(filePath, buffer);
+  if (!res.ok) throw new Error("آپلود فایل صوتی در Cloudinary ناموفق بود!");
 
-  return `/${folder}/${fileName}`;
+  const data = await res.json();
+  return data.secure_url;
 }
-
