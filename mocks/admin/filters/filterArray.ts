@@ -73,19 +73,17 @@ export const filterUsersArr = [
   {
     title: "نقش",
     items: [
-      { name: "همه", key: "role", value: "all" },
-      { name: "ادمین", key: "role", value: "admin" },
-      { name: "مدیر", key: "role", value: "owner" },
-      { name: "کاربر", key: "role", value: "user" },
+      { name: "ادمین", key: "role", value: "ADMIN" },
+      { name: "کاربر", key: "role", value: "USER" },
     ],
   },
   {
     title: "وضعیت",
     items: [
-      { name: "همه", key: "status", value: "all" },
-      { name: "فعال", key: "status", value: "active" },
-      { name: "غیر فعال", key: "status", value: "not-active" },
-      { name: "مسدود", key: "status", value: "ban" },
+      { name: "باز", key: "status", value: "Open" },
+      { name: "در حال برسی", key: "status", value: "Waiting" },
+      { name: "قبول شده", key: "status", value: "Approved" },
+      { name: "مسدود", key: "status", value: "Blocked" },
     ],
   },
 ];

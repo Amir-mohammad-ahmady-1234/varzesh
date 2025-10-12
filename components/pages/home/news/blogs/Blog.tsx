@@ -2,12 +2,20 @@ import React from "react";
 import Image from "next/image";
 import { CiSaveDown2 } from "react-icons/ci";
 import { BlogType } from "./BlogSlider";
+import Link from "next/link";
 
 export default function Blog({ blog }: { blog: BlogType }) {
   return (
     <div className="flex flex-col gap-6 w-full h-[400px] md:h-[450px] p-4 bg-tertiary-300 rounded-md">
       <div className="relative w-full aspect-[16/10] rounded-md overflow-hidden">
-        <Image src={blog.img} alt={blog.title} fill className="object-cover" />
+        <Link href={`/blog/${blog.id}`}>
+          <Image
+            src={blog.img}
+            alt={blog.title}
+            fill
+            className="object-cover"
+          />
+        </Link>
         <span className="absolute top-2 right-2  text-xs px-3 py-1  border">
           {blog.category}
         </span>
@@ -35,13 +43,18 @@ export default function Blog({ blog }: { blog: BlogType }) {
           <p className="text-xl font-semibold mb-4">{blog.title}</p>
 
           <div className="flex justify-between items-end gap-2 mt-auto">
-            <p className="opacity-40 line-clamp-3 text-justify">{blog.summary}</p>
-            <span className="text-secondary-100 !opacity-100 flex-shrink-0 cursor-pointer">
+            <p className="opacity-40 line-clamp-3 text-justify">
+              {blog.summary}
+            </p>
+            <Link
+              href={`/blog/${blog.id}`}
+              className="text-secondary-100 !opacity-100 flex-shrink-0 cursor-pointer"
+            >
               بیشتر
-            </span>
+            </Link>
           </div>
         </div>
       </div>
     </div>
   );
-} 
+}
