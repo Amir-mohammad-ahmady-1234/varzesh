@@ -3,7 +3,7 @@ import { MdClose } from "react-icons/md";
 
 export default function Header({ onClose }: { onClose: () => void }) {
   return (
-    <div className="flex items-center justify-between bg-secondary-100 px-4 py-3">
+    <div className="flex items-center justify-between bg-primary-100 px-4 py-3 rounded-md">
       <h3 className="text-neutral-100 font-semibold text-base md:text-lg">
         پشتیبانی آنلاین
       </h3>

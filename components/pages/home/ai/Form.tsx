@@ -66,7 +66,7 @@ export default function Form({
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex items-center p-3 border-t border-neutral-400 bg-tertiary-200"
+      className="flex items-center p-3 gap-2 border-t border-neutral-400 bg-tertiary-200"
     >
       <input
         type="text"
