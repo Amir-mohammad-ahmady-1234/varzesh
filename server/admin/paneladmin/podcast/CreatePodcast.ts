@@ -30,8 +30,7 @@ export async function PodcastCreate(props: PodcastProps) {
     });
 
     return podcast;
-  } catch (err) {
-    console.log(err);
+  } catch {
     return { error: "مشکلی در سرور رخ داده است", status: 500 };
   }
 }

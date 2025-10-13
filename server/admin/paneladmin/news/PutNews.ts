@@ -19,8 +19,7 @@ export async function PutNews(params: TUpdateNews) {
     });
 
     return news;
-  } catch (err) {
-    console.error(err);
+  } catch {
     return { error: "مشکلی در سرور رخ داده است", status: 500 };
   }
 }

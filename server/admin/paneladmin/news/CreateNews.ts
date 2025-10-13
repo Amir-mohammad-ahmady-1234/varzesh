@@ -14,8 +14,7 @@ export async function CreateNews(params: TCreateNews) {
       },
     });
     return news;
-  } catch (err) {
-    console.log(err);
+  } catch {
     return { error: "مشکلی در سرور رخ داده است", status: 500 };
   }
 }
