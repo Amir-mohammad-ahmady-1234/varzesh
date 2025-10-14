@@ -1,8 +1,4 @@
-import { FaComment } from "react-icons/fa";
-import { FaUserEdit } from "react-icons/fa";
-import { IoIosChatboxes } from "react-icons/io";
-import { IoSettingsOutline } from "react-icons/io5";
-import { MdOutlineArticle } from "react-icons/md";
+import { FaTicketAlt, FaUserEdit } from "react-icons/fa";
 import SidebarClient from "./SidebarClient";
 
 const menuItem = [
@@ -11,13 +7,10 @@ const menuItem = [
     label: "اطلاعات",
     icon: <FaUserEdit />,
   },
-  { href: "/panel/settings", label: "تنظیمات", icon: <IoSettingsOutline /> },
-  { href: "/panel/rooms", label: "روم ها", icon: <IoIosChatboxes /> },
-  { href: "/panel/messages", label: "پیام ها", icon: <FaComment /> },
   {
-    href: "/panel/article",
-    label: "مقالات ذخیره شده",
-    icon: <MdOutlineArticle />,
+    href: "/panel/ticket",
+    label: "پشتیبانی",
+    icon: <FaTicketAlt />,
   },
 ];
 
@@ -30,19 +23,28 @@ export default function Sidebar({ isSidebarOpen, children }: Props) {
   return (
     <>
       <div
-        className={`${
-          isSidebarOpen ? "block fixed top-10 right-0 z-50" : "hidden"
-        }  bg-bg-primary lg:block w-2/4 sm:w-1/3 lg:w-1/4 h-fit px-8 py-10 border-l`}
+        className={`fixed top-10 right-0 z-50 h-screen transition-all duration-300 ease-in-out bg-gradient-to-b from-bg-primary to-bg-secondary border-l border-sidebar-border shadow-2xl backdrop-blur-md
+        ${isSidebarOpen ? "translate-x-0" : "translate-x-full"}
+        lg:translate-x-0 lg:static lg:block w-3/4 sm:w-1/3 lg:w-1/4 px-6 py-10`}
       >
-        <div className="flex flex-col z-1 h-[35rem] justify-between">
-          <div className="space-y-8">
-            {children}
+        <div className="flex flex-col h-full justify-between">
+          <div className="space-y-10">
+            <div className="flex flex-col items-center text-center">
+              {children}
+            </div>
+
             <SidebarClient menuItem={menuItem} />
           </div>
 
-          <div className="p-4 border-t border-sidebar-border">
-            <div className="text-xs text-sidebar-foreground/60 text-center ">
-              نسخه {process.env.NEXT_PUBLIC_APP_VERSION ?? "1.0.0"}
+          <div className="mt-10 border-t border-sidebar-border pt-4">
+            <div className="text-xs text-sidebar-foreground/60 text-center tracking-wide">
+              نسخه{" "}
+              <span className="font-semibold text-sidebar-foreground/80">
+                {process.env.NEXT_PUBLIC_APP_VERSION ?? "1.0.0"}
+              </span>
+            </div>
+            <div className="text-[10px] text-center mt-2 text-sidebar-foreground/40">
+              طراحی شده با ❤️ توسط مهدی و امیر
             </div>
           </div>
         </div>

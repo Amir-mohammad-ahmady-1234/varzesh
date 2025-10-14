@@ -39,7 +39,7 @@ export async function createTicket({
                 content: initialMessage,
               },
             }
-          : undefined,
+          : undefined, 
       },
       include: {
         messages: true,
@@ -47,7 +47,8 @@ export async function createTicket({
     });
 
     return { success: true, ticket };
-  } catch {
+  } catch (err) {
+    console.log(err);
     return { error: "مشکلی در سرور رخ داده است", status: 500 };
   }
 }
