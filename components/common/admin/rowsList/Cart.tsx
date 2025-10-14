@@ -28,8 +28,8 @@ interface Props {
   options: Option[];
   moreDetails?: MoreDetails[];
   id: number;
-  onDelete?: (formData: FormData) => Promise<any>;
-  onUpdate?: (formData: FormData) => Promise<any>;
+  onDelete?: (formData: FormData) => Promise<unknown>;
+  onUpdate?: (formData: FormData) => Promise<unknown>;
 }
 
 export default function Cart({

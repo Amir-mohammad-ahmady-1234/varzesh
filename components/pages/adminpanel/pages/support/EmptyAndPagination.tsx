@@ -7,7 +7,7 @@ import EmptyState from "../../../../common/ui/EmptyState";
 
 interface Props {
   children: React.ReactNode;
-  datas: any;
+  datas: object[];
   pagination?: {
     total: number;
     page: number;

@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import Sidebar from "../../../components/pages/adminpanel/layout/Sidebar";
 import Topbar from "../../../components/pages/adminpanel/layout/Topbar";
 import PageTitle from "../../../components/pages/adminpanel/pages/games/PageTitle";

@@ -42,7 +42,7 @@ export async function CreateGame(input: TCreateGame) {
         status,
       },
     });
-    return { staus: 200 };
+    return { message: { success: "بازی با موفقیت ایجاد شد" } };
   } catch {
     return { error: "مشکلی در سرور رخ داده است", status: 500 };
   }

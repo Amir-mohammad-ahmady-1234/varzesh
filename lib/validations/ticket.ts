@@ -4,7 +4,7 @@ export const ticketValidation = z.object({
   title: z.string().min(3, "حداقل 3 کاراکتر اجباری میباشد"),
   description: z.string().min(3, "حداقل 3 کاراکتر اجباری میباشد"),
   priority: z.enum(["LOW", "NORMAL", "HIGH"], {
-    errorMap: (issue, ctx) => {
+    errorMap: (issue) => {
       if (issue.code === "invalid_enum_value") {
         return {
           message: "دسته بندی باید یکی از این موارد باشد: LOW, NORMAL, HIGH",
@@ -17,7 +17,7 @@ export const ticketValidation = z.object({
     },
   }),
   status: z.enum(["Open", "Waiting", "Approved", "Blocked"], {
-    errorMap: (issue, ctx) => {
+    errorMap: (issue) => {
       if (issue.code === "invalid_enum_value") {
         return {
           message:

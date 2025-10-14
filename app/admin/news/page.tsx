@@ -90,9 +90,11 @@ export default async function page({
       />
 
       <div className="grid gap-4">
-        {news.map((b: TNews) => (
-          <List key={b.id} b={b} />
-        ))}
+        {news.length > 0 ? (
+          news.map((b: TNews) => <List key={b.id} b={b} />)
+        ) : (
+          <p className="text-red-500">هیچ خبری برای نمایش وجود ندارد</p>
+        )}
       </div>
     </MainLayout>
   );

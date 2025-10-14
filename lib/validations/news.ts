@@ -1,7 +1,7 @@
 import z from "zod";
 
 const statusEnum = z.enum(["Simple", "Medium", "Special"], {
-  errorMap: (issue, ctx) => {
+  errorMap: (issue) => {
     if (issue.code === "invalid_enum_value") {
       return {
         message: "وضعیت باید بین این ها باشد :  Simple, Medium, Special",

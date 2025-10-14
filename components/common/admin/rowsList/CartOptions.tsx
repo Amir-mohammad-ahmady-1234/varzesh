@@ -12,8 +12,8 @@ import Button from "../../Button";
 
 interface Props {
   id: number;
-  onDelete?: (formData: FormData) => Promise<any>;
-  onUpdate?: (formData: FormData) => Promise<any>;
+  onDelete?: (formData: FormData) => Promise<unknown>;
+  onUpdate?: (formData: FormData) => Promise<unknown>;
 }
 
 export default function CartOptions({ id, onDelete, onUpdate }: Props) {

@@ -22,10 +22,10 @@ export interface TFormDataGame {
   status: StatusType;
   description: string;
 }
-export type TCreateGameResult =
+type TCreateGameResult =
   | { message: Record<string, string> }
-  | { status: 200 }
-  | { error: string; status: 500 };
+  | { message: { success: string } }
+  | { error: string; status: number };
 interface FormTabelAddGameProps {
   DataCreateGame: (payload: TypeCreateGame) => Promise<TCreateGameResult>;
 }

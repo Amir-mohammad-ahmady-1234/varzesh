@@ -1,7 +1,7 @@
 import z from "zod";
 
 const categoryEnum = z.enum(["FOOTBALL", "BOXING", "BASKETBALL"], {
-  errorMap: (issue, ctx) => {
+  errorMap: (issue) => {
     if (issue.code === "invalid_enum_value") {
       return {
         message:
