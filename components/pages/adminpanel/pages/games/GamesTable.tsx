@@ -15,7 +15,7 @@ const columns = [
   { key: "actions", label: "عملیات" },
 ];
 
-export default function GamesTable({ Game }: any) {
+export default function GamesTable() {
   return (
     <Table columns={columns}>
       {games.map((game) => (

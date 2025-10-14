@@ -37,7 +37,7 @@ export default function FilterAndSearch({
 
   const handleFilterChange = (key: string, value: string) => {
     const cleanParams = Object.fromEntries(
-      Object.entries(params).filter(([_, v]) => v !== undefined)
+      Object.entries(params).filter(([, v]) => v !== undefined)
     ) as Record<string, string>;
 
     const newParams = new URLSearchParams(cleanParams);

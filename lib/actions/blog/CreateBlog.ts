@@ -12,7 +12,7 @@ export interface BlogFormState {
     profile?: string;
     otherErr?: string;
     success?: string;
-    news?: any;
+    news?: string;
   };
 }
 import { BlogCreate } from "../../../server/admin/paneladmin/blog/BlogCreate";

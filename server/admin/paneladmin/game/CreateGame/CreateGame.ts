@@ -2,7 +2,7 @@ import z from "zod";
 import prisma from "../../../../../lib/db";
 import { Game } from "../../../../../lib/validations/game";
 
-type TCreateGame = z.infer<typeof Game>;
+export type TCreateGame = z.infer<typeof Game>;
 
 export async function CreateGame(input: TCreateGame) {
   try {

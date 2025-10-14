@@ -3,6 +3,16 @@
 import { PodcastCreate } from "../../../server/admin/paneladmin/podcast/CreatePodcast";
 import { podcastSchema } from "../../validations/podcast";
 
+export interface Podcast {
+  id: string;
+  title: string;
+  category: string;
+  img: string;
+  audio: string;
+  description: string;
+  summary: string;
+  createdAt: Date;
+}
 export interface PodcastFormState {
   message: {
     title?: string;
@@ -13,10 +23,17 @@ export interface PodcastFormState {
     description?: string;
     otherErr?: string;
     success?: string;
-    podcast?: any;
+    podcast?: Podcast;
   };
 }
-
+export interface PodcastFormData {
+  title: string;
+  category: string;
+  img: string;
+  audio: string;
+  description: string;
+  summary: string;
+}
 export async function CreatePodcast(
   prevState: PodcastFormState,
   formData: FormData
@@ -28,7 +45,7 @@ export async function CreatePodcast(
     audio: formData.get("audio"),
     description: formData.get("content"),
     summary: formData.get("summary"),
-  } as any;
+  };
 
   const validationResult = podcastSchema.safeParse(data);
 
@@ -42,9 +59,10 @@ export async function CreatePodcast(
   }
 
   try {
-    const podcast = await PodcastCreate(validationResult.data as any);
-    if ((podcast as any)?.error) {
-      return { message: { otherErr: (podcast as any).error } };
+    const podcast = await PodcastCreate(validationResult.data);
+
+    if ("error" in podcast) {
+      return { message: { otherErr: podcast.error } };
     }
     return { message: { success: "پادکست جدید با موفقیت ثبت شد", podcast } };
   } catch {

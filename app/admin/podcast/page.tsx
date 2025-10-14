@@ -85,7 +85,7 @@ export default async function PodcastPage({
       />
 
       <div className="grid gap-4">
-        {podcasts.map((p: any) => (
+        {podcasts.map((p) => (
           <div key={p.id} className="w-full">
             <Cart
               id={p.id}

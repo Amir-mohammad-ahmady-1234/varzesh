@@ -14,7 +14,11 @@ interface MainLayoutProps {
 
 export default function MainLayout({ children, className }: MainLayoutProps) {
   return (
-    <div className="flex h-screen bg-background overflow-hidden">
+    <div
+      className={`flex h-screen bg-background overflow-hidden ${
+        className ? "" : className
+      }`}
+    >
       <Suspense>
         <Sidebar />
         <div className="flex-1 flex flex-col overflow-hidden">

@@ -8,7 +8,7 @@ export const metadata = {
   description: "ایجاد بازی جدید",
 };
 
-interface TCreateGame {
+export interface TypeCreateGame {
   firstthem: string;
   secondthem: string;
   League: "Acup" | "Tcup" | "Dcup";
@@ -20,7 +20,7 @@ interface TCreateGame {
 }
 
 export default function page() {
-  async function handleCreateGame(payload: TCreateGame) {
+  async function handleCreateGame(payload: TypeCreateGame) {
     "use server";
     return await CreateGame(payload);
   }

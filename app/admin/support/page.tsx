@@ -19,14 +19,14 @@ export const metadata = {
 };
 
 interface Props {
-  searchParams: {
+  searchParams: Promise<{
     search?: string;
     status?: string;
     priority?: string;
     sort?: "asc" | "desc";
     page?: number;
     limit?: number;
-  };
+  }>;
 }
 
 export default async function SupportPage({ searchParams }: Props) {
@@ -41,9 +41,6 @@ export default async function SupportPage({ searchParams }: Props) {
     page: page ? Number(page) : 1,
     limit: limit ? Number(limit) : 5,
   });
-  console.log(tickets);
-  console.log(page);
-  console.log(limit);
 
   if (stats.error) return <p>{stats.error}</p>;
   if (tickets.error) return <p>{tickets.error}</p>;

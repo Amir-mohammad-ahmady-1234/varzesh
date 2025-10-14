@@ -1,7 +1,6 @@
 "use server";
 
 import { BlogDelete } from "../../../server/admin/paneladmin/blog/BlogDelete";
-import { DeleteNewsById } from "../../../server/admin/paneladmin/news/DeleteNewsById";
 
 export interface DeleteBlogState {
   message?: string;
@@ -26,7 +25,6 @@ export async function DeleteBlog(
   }
 }
 
-// Adapter for form action usage without prevState
 export async function DeleteBlogAction(formData: FormData) {
   return DeleteBlog({}, formData);
 }

@@ -9,6 +9,7 @@ import toast from "react-hot-toast";
 import Card from "../../../../../common/ui/Card";
 import FormField from "../../../../../common/ui/FormField";
 import Textarea from "../../../../../common/ui/Textarea";
+import { TypeCreateGame } from "../../../../../../app/admin/games/new/page";
 type StatusType = "Scheduled" | "live" | "down";
 type LeagueType = "Acup" | "Tcup" | "Dcup";
 export interface TFormDataGame {
@@ -21,7 +22,15 @@ export interface TFormDataGame {
   status: StatusType;
   description: string;
 }
-function FormTabelAddGame({ DataCreateGame }: any) {
+export type TCreateGameResult =
+  | { message: Record<string, string> }
+  | { status: 200 }
+  | { error: string; status: 500 };
+interface FormTabelAddGameProps {
+  DataCreateGame: (payload: TypeCreateGame) => Promise<TCreateGameResult>;
+}
+
+function FormTabelAddGame({ DataCreateGame }: FormTabelAddGameProps) {
   console.log(DataCreateGame);
 
   const [formData, setFormData] = useState<TFormDataGame>({
