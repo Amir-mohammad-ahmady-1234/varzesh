@@ -2,20 +2,20 @@ import React from "react";
 import MainLayout from "../../../components/pages/adminpanel/layout/MainLayout";
 import PageTitle from "../../../components/common/admin/PageTitle";
 import UsersActivities from "../../../components/common/admin/UsersActivities";
-import { GetAllNews } from "../../../server/admin/paneladmin/news/GetAllNews";
 import { PiArrowCounterClockwise } from "react-icons/pi";
 import { MdAllInbox, MdDeleteSweep } from "react-icons/md";
 import { LuSquareChevronDown } from "react-icons/lu";
 import FilterAndSearch from "../../../components/common/admin/FilterCard/FilterAndSearch";
 import { filterBlogArray } from "../../../mocks/admin/filters/filterArray";
 import List from "../../../components/pages/adminpanel/pages/news/List";
+import { NewsFilter } from "../../../server/admin/paneladmin/news/NewsFilter";
 
 export const metadata = {
   title: "اخبار",
   description: "مدیریت خبر های سایت",
 };
 
-export interface TNews {
+ export interface TNews {
   id: number;
   title: string;
   summary: string;
@@ -33,20 +33,28 @@ export default async function page({
 }: {
   searchParams: Promise<{ [key: string]: string | undefined }>;
 }) {
-  const news = await GetAllNews();
+  const params = await searchParams;
+
+  // const news = await GetAllNews();
+  const news = await NewsFilter({
+    search: params.search ?? "",
+    limit: +(params.limit ?? 5),
+    page: +(params.page ?? 1),
+    status: params.status as "Simple" | "Medium" | "Special",
+  });
+
+  if (news.error || !news.data) return <p>{news.error}</p>;
 
   const stats = {
-    totalNews: news.length,
-    savedNews: 0,
-    totalViewedNews: 0,
-    deletedNews: 0,
+    totalNews: news.data.length,
+    savedNews: 7,
+    totalViewedNews: 4,
+    deletedNews: 8,
   };
-
-  const params = await searchParams;
 
   return (
     <MainLayout>
-      <PageTitle title="اخبار" desc={`مدیریت ${"X"} اخبار سایت و تغییر انها`} />
+      <PageTitle title="اخبار" desc={`مدیریت ${news.data.length} اخبار سایت و تغییر انها`} />
 
       <UsersActivities
         stats={stats}
@@ -90,8 +98,8 @@ export default async function page({
       />
 
       <div className="grid gap-4">
-        {news.length > 0 ? (
-          news.map((b: TNews) => <List key={b.id} b={b} />)
+        {news.data.length > 0 ? (
+          news.data.map((b: TNews) => <List key={b.id} b={b} />)
         ) : (
           <p className="text-red-500">هیچ خبری برای نمایش وجود ندارد</p>
         )}

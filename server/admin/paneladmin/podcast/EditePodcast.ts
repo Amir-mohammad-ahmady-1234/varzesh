@@ -1,7 +1,7 @@
 import { PodcastCategory } from "@prisma/client";
 import prisma from "../../../../lib/db";
 
-interface EditPodcastInput {
+export interface EditPodcastInput {
   id: number;
   title?: string;
   img?: string;

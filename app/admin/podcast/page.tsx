@@ -10,6 +10,8 @@ import FilterAndSearch from "../../../components/common/admin/FilterCard/FilterA
 import { filterBlogArray } from "../../../mocks/admin/filters/filterArray";
 import Cart from "../../../components/common/admin/rowsList/Cart";
 import { GetPodcasts } from "../../../lib/actions/podcast/GetPodcasts";
+import { DeletePodcastAction } from "../../../lib/actions/podcast/DeleteBlog";
+import { UpdatePodcastAction } from "../../../lib/actions/podcast/UpdateBlog";
 
 export const metadata = {
   title: "پادکست",
@@ -21,15 +23,16 @@ export default async function PodcastPage({
 }: {
   searchParams: Promise<{ [key: string]: string | undefined }>;
 }) {
+  const params = await searchParams;
+
   const podcasts = await GetPodcasts();
+
   const stats = {
     total: podcasts.length,
     saved: 0,
     viewed: 0,
     deleted: 0,
   } as const;
-
-  const params = await searchParams;
 
   return (
     <MainLayout>
@@ -98,6 +101,8 @@ export default async function PodcastPage({
                   items: { key: "category", value: String(p.category) },
                 },
               ]}
+              onDelete={DeletePodcastAction}
+              onUpdate={UpdatePodcastAction}
             />
           </div>
         ))}
