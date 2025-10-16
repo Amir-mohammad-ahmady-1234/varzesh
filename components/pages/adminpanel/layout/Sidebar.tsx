@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import {
   MdDashboard,
   MdSportsFootball,
-  MdChat,
   MdSupport,
   MdPalette,
   MdPeople,
@@ -24,7 +23,6 @@ export default function Sidebar() {
   const menuItems = [
     { href: "/admin/dashboard", label: "داشبورد", icon: MdDashboard },
     { href: "/admin/games", label: "مدیریت بازی‌ها", icon: MdSportsFootball },
-    { href: "/admin/chat-rooms", label: "چت روم‌ها", icon: MdChat },
     { href: "/admin/support", label: "پشتیبانی", icon: MdSupport },
     { href: "/admin/design-system", label: "سیستم طراحی", icon: MdPalette },
     { href: "/admin/users", label: "کاربران", icon: MdPeople },
