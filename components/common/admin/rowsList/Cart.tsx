@@ -30,6 +30,7 @@ interface Props {
   id: number;
   onDelete?: (formData: FormData) => Promise<unknown>;
   onUpdate?: (formData: FormData) => Promise<unknown>;
+  onChangeStatus?: (formData: FormData) => Promise<unknown>;
 }
 
 export default function Cart({
@@ -41,6 +42,7 @@ export default function Cart({
   id,
   onDelete,
   onUpdate,
+  onChangeStatus,
 }: Props) {
   return (
     <div
@@ -55,7 +57,12 @@ export default function Cart({
             <CartTitle title={title} options={options} />
           </ChartContent>
 
-          <CartOptions id={id} onDelete={onDelete} onUpdate={onUpdate} />
+          <CartOptions
+            id={id}
+            onDelete={onDelete}
+            onUpdate={onUpdate}
+            onChangeStatus={onChangeStatus}
+          />
         </div>
       </Card>
     </div>

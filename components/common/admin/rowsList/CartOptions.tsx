@@ -7,6 +7,8 @@ import {
   MdDelete,
   MdEdit,
 } from "react-icons/md";
+import { TbStatusChange } from "react-icons/tb";
+
 import { useSupportHandlers } from "../../../../hooks/admin/support/useSupportHandlers";
 import Button from "../../Button";
 
@@ -14,9 +16,15 @@ interface Props {
   id: number;
   onDelete?: (formData: FormData) => Promise<unknown>;
   onUpdate?: (formData: FormData) => Promise<unknown>;
+  onChangeStatus?: (formData: FormData) => Promise<unknown>;
 }
 
-export default function CartOptions({ id, onDelete, onUpdate }: Props) {
+export default function CartOptions({
+  id,
+  onDelete,
+  onUpdate,
+  onChangeStatus,
+}: Props) {
   const { handleTicketClick, handleQuickReply } = useSupportHandlers();
   const [isEditing, setIsEditing] = useState(false);
 
@@ -52,6 +60,20 @@ export default function CartOptions({ id, onDelete, onUpdate }: Props) {
         >
           <MdEdit className="w-4 h-4" />
         </Button>
+      )}
+
+      {onChangeStatus && (
+        <form action={onChangeStatus} className="inline-flex">
+          <input type="hidden" name="id" value={id} />
+          <Button
+            size="sm"
+            variant="ghost"
+            type="submit"
+            className="cursor-pointer"
+          >
+            <TbStatusChange className="w-4 h-4" />
+          </Button>
+        </form>
       )}
 
       {onDelete && (

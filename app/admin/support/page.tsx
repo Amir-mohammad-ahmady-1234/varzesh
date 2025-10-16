@@ -12,6 +12,7 @@ import { filterArray } from "../../../mocks/admin/filters/filterArray";
 import { Priority, Status } from "@prisma/client";
 import EmptyState from "../../../components/common/ui/EmptyState";
 import { normalizeSearchParams } from "../../../utils/normalizeSearchParams";
+import { ChangeSupportStatusAction } from "../../../lib/actions/support/changeSupportStatus";
 
 export const metadata = {
   title: "پشتیبانی پنل ادمین",
@@ -83,6 +84,7 @@ export default async function SupportPage({ searchParams }: Props) {
                 items: { key: "priority", value: data.priority },
               },
             ]}
+            onChangeStatus={ChangeSupportStatusAction}
           />
         ))}
       </EmptyAndPagination>
