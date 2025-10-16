@@ -3,12 +3,12 @@
 import { revalidatePath } from "next/cache";
 import { ApprovedSupport } from "../../../server/admin/paneladmin/support/ApprovedSupport/ApprovedSupport";
 
-export interface changeStatusStatus {
+export interface changeStatusState {
   message?: string;
 }
 
 export async function ChangeSupportStatus(
-  prevState: changeStatusStatus,
+  prevState: changeStatusState,
   formData: FormData
 ) {
   const idValue = formData.get("id");

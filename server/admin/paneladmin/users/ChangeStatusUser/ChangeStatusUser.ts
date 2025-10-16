@@ -8,7 +8,7 @@ export async function ChangeStatusUserDelete(id: number) {
     if (!exist) {
       return { error: "چنین تیکتی وجود ندارد", status: 404 };
     }
-    const change = prisma.user.update({
+    const change = await prisma.user.update({
       where: { id },
       data: {
         status: "Blocked",
@@ -34,7 +34,8 @@ export async function ChangeStatusUserVrify(id: number) {
     if (!exist) {
       return { error: "چنین تیکتی وجود ندارد", status: 404 };
     }
-    const change = prisma.user.update({
+
+    const change = await prisma.user.update({
       where: { id },
       data: {
         status: "Approved",

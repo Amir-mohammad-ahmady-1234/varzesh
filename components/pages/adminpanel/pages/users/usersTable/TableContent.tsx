@@ -4,9 +4,7 @@ import {
   MdCalendarToday,
   MdCheckBox,
   MdCheckBoxOutlineBlank,
-  MdEdit,
   MdEmail,
-  MdMoreVert,
   MdVisibility,
 } from "react-icons/md";
 import {
@@ -16,10 +14,15 @@ import {
   getStatusColor,
   getStatusText,
 } from "../../../../../../hooks/admin/users/usersHandlers";
+import { TbStatusChange } from "react-icons/tb";
+
 import Button from "../../../../../common/Button";
 import { useUsersStates } from "../../../../../../hooks/admin/users/useUsersStates";
 import Badge from "../../../../../common/ui/Badge";
 import { UserData } from "../pagination/PaginationBtns";
+import { ChangeUserStatusAction } from "../../../../../../lib/actions/user/changeUserStatus";
+import { ImBlocked } from "react-icons/im";
+import { ChangeStatusToBlock } from "../../../../../../lib/actions/user/ChangeStatusToBlocked";
 
 export default function TableContent({ user }: { user: UserData }) {
   const { toggleUserSelection, selectedUsers, handleUserClick } =
@@ -92,26 +95,32 @@ export default function TableContent({ user }: { user: UserData }) {
           >
             <MdVisibility className="w-4 h-4" />
           </Button>
-          <Button
-            size="sm"
-            variant="ghost"
-            onClick={() => {
-              // Handle edit
-            }}
-            className="cursor-pointer"
-          >
-            <MdEdit className="w-4 h-4" />
-          </Button>
-          <Button
-            size="sm"
-            variant="ghost"
-            onClick={() => {
-              // Handle menu
-            }}
-            className="cursor-pointer"
-          >
-            <MdMoreVert className="w-4 h-4" />
-          </Button>
+
+          <form action={ChangeUserStatusAction}>
+            <input type="hidden" name="id" value={user.id} />
+
+            <Button
+              size="sm"
+              variant="ghost"
+              className="cursor-pointer"
+              type="submit"
+            >
+              <TbStatusChange />
+            </Button>
+          </form>
+
+          <form action={ChangeStatusToBlock}>
+            <input type="hidden" name="id" value={user.id} />
+
+            <Button
+              size="sm"
+              variant="ghost"
+              className="cursor-pointer"
+              type="submit"
+            >
+              <ImBlocked />
+            </Button>
+          </form>
         </div>
       </td>
     </>
