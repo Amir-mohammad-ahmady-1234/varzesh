@@ -131,24 +131,13 @@ export const filterNewsArray = [
       { name: "صعودی", key: "sort", value: "asc" },
     ],
   },
-  {
-    title: "بازدید",
-    items: [
-      { name: "بالای صد یازدید", key: "view", value: "OverHundred" },
-      { name: "بالای هزار بازدید", key: "view", value: "OverThousand" },
-      {
-        name: "بالای ده هزار بازدید",
-        key: "view",
-        value: "OverHundredThousand",
-      },
-    ],
-  },
+
   {
     title: "وضعیت",
     items: [
-      { name: "ساده", key: "Popularity", value: "Simple" },
-      { name: "معمولی", key: "Popularity", value: "Medium" },
-      { name: "خاص", key: "Popularity", value: "Special" },
+      { name: "ساده", key: "status", value: "Simple" },
+      { name: "معمولی", key: "status", value: "Medium" },
+      { name: "خاص", key: "status", value: "Special" },
     ],
   },
 ];

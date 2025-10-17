@@ -35,7 +35,6 @@ export default async function page({
 }) {
   const params = await searchParams;
 
-  // const news = await GetAllNews();
   const news = await NewsFilter({
     search: params.search ?? "",
     limit: +(params.limit ?? 5),
@@ -47,9 +46,9 @@ export default async function page({
 
   const stats = {
     totalNews: news.data.length,
-    savedNews: 7,
-    totalViewedNews: 4,
-    deletedNews: 8,
+    savedNews: 0,
+    totalViewedNews: 0,
+    deletedNews: 0,
   };
 
   return (

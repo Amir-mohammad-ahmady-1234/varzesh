@@ -17,7 +17,7 @@ export default function List({ b }: { b: TNews }) {
         options={[
           {
             title: "status",
-            items: { key: "status", value: "Simple" },
+            items: { key: "status", value: b.status },
           },
         ]}
         onDelete={() => DeleteBlogAction(b.id)}
