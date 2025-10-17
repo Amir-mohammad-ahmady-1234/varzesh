@@ -1,9 +1,0 @@
--- CreateTable
-CREATE TABLE "Message" (
-    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    "ticketId" INTEGER NOT NULL,
-    "content" TEXT NOT NULL,
-    "userId" INTEGER NOT NULL,
-    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT "Message_ticketId_fkey" FOREIGN KEY ("ticketId") REFERENCES "Ticket" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
-);

@@ -7,7 +7,7 @@ import { IoSaveSharp } from "react-icons/io5";
 import { CgViewCols } from "react-icons/cg";
 import { PiDeviceTabletSpeakerDuotone } from "react-icons/pi";
 import FilterAndSearch from "../../../components/common/admin/FilterCard/FilterAndSearch";
-import { filterBlogArray } from "../../../mocks/admin/filters/filterArray";
+import { filterNewsArray } from "../../../mocks/admin/filters/filterArray";
 import Cart from "../../../components/common/admin/rowsList/Cart";
 import { GetPodcasts } from "../../../lib/actions/podcast/GetPodcasts";
 import { DeletePodcastAction } from "../../../lib/actions/podcast/DeleteBlog";
@@ -82,7 +82,7 @@ export default async function PodcastPage({
 
       <FilterAndSearch
         description="جستجو و فیلتر پادکست ها با معیار های مختلف"
-        itemsbtn={filterBlogArray}
+        itemsbtn={filterNewsArray}
         isfilter={true}
         params={params}
       />

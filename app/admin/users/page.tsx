@@ -40,7 +40,7 @@ export default async function UsersPage({
 
   return (
     <MainLayout>
-      <PageTitle />
+      <PageTitle users={users} />
 
       <UsersActivities
         stats={stats}

@@ -1,3 +1,15 @@
+interface CatType {
+  name: string;
+  key: string;
+  value: string;
+}
+
+interface AuthorType {
+  name: string;
+  key: string;
+  value: string;
+}
+
 export const filterArray = [
   {
     title: "مرتب‌ سازی",
@@ -88,35 +100,28 @@ export const filterUsersArr = [
   },
 ];
 
-export const filterBlogArray = [
-  {
-    title: "مرتب‌ سازی",
-    items: [
-      { name: "نزولی", key: "sort", value: "desc" },
-      { name: "صعودی", key: "sort", value: "asc" },
-    ],
-  },
-  {
-    title: "بازدید",
-    items: [
-      { name: "بالای صد یازدید", key: "view", value: "OverHundred" },
-      { name: "بالای هزار بازدید", key: "view", value: "OverThousand" },
-      {
-        name: "بالای ده هزار بازدید",
-        key: "view",
-        value: "OverHundredThousand",
-      },
-    ],
-  },
-  {
-    title: "محبوبیت",
-    items: [
-      { name: "پاین", key: "Popularity", value: "LOW" },
-      { name: "عادی", key: "Popularity", value: "NORMAL" },
-      { name: "بالا", key: "Popularity", value: "HIGH" },
-    ],
-  },
-];
+export function filterBlogArray(
+  categoryItems: CatType[],
+  authorItems: AuthorType[]
+) {
+  return [
+    {
+      title: "مرتب‌ سازی",
+      items: [
+        { name: "نزولی", key: "sort", value: "desc" },
+        { name: "صعودی", key: "sort", value: "asc" },
+      ],
+    },
+    {
+      title: "دسته بندی",
+      items: categoryItems,
+    },
+    {
+      title: "نویسنده",
+      items: authorItems,
+    },
+  ];
+}
 
 export const filterNewsArray = [
   {

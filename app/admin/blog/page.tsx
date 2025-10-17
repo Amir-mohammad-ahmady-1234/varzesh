@@ -9,9 +9,10 @@ import { PiDeviceTabletSpeakerDuotone } from "react-icons/pi";
 import FilterAndSearch from "../../../components/common/admin/FilterCard/FilterAndSearch";
 import { filterBlogArray } from "../../../mocks/admin/filters/filterArray";
 import Cart from "../../../components/common/admin/rowsList/Cart";
-import { GetBlogs } from "../../../lib/actions/blog/GetBlogs";
 import { DeleteBlogAction } from "../../../lib/actions/blog/DeleteBlog";
 import { UpdateBlogAction } from "../../../lib/actions/blog/UpdateBlog";
+import { BlogFilter } from "../../../server/admin/paneladmin/blog/BlogFilter";
+
 type Tblogs = {
   id: number;
   title: string;
@@ -22,6 +23,7 @@ type Tblogs = {
   category: string;
   summary: string;
 };
+
 export const metadata = {
   title: "بلاگ",
   description: "مدیریت بلاگ های سایت",
@@ -32,15 +34,38 @@ export default async function Blogpage({
 }: {
   searchParams: Promise<{ [key: string]: string | undefined }>;
 }) {
-  const blogs = await GetBlogs();
+  const params = await searchParams;
+
+  const blogs = await BlogFilter({
+    author: params.author,
+    category: params.category,
+    limit: params.limit ? Number(params.limit) : 5,
+    page: params.page ? Number(params.page) : 1,
+    search: params.search ?? "",
+  });
+
+  if (!blogs.data) return;
+
+  const categories = [...new Set(blogs.data.map((blog) => blog.category))];
+  const categoryItems = categories.map((cat) => ({
+    name: cat,
+    key: "category",
+    value: cat,
+  }));
+
+  const authors = [...new Set(blogs.data.map((blog) => blog.author))];
+  const authorItems = authors.map((author) => ({
+    name: author,
+    key: "author",
+    value: author,
+  }));
+
   const stats = {
-    totalBlogs: blogs.length,
+    totalBlogs: blogs.data.length,
     savedBlogs: 0,
     totalViewedBlogs: 0,
     deletedBlogs: 0,
   };
-
-  const params = await searchParams;
 
   return (
     <MainLayout>
@@ -85,13 +110,13 @@ export default async function Blogpage({
 
       <FilterAndSearch
         description="جستجو و فیلتر بلاگ ها با معیار های مختلف"
-        itemsbtn={filterBlogArray}
+        itemsbtn={filterBlogArray(categoryItems, authorItems)}
         isfilter={true}
         params={params}
       />
 
       <div className="grid gap-4">
-        {blogs.map((b: Tblogs) => (
+        {blogs.data.map((b: Tblogs) => (
           <div key={b.id} className="w-full">
             <Cart
               id={b.id}

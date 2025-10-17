@@ -6,7 +6,7 @@ import { PiArrowCounterClockwise } from "react-icons/pi";
 import { MdAllInbox, MdDeleteSweep } from "react-icons/md";
 import { LuSquareChevronDown } from "react-icons/lu";
 import FilterAndSearch from "../../../components/common/admin/FilterCard/FilterAndSearch";
-import { filterBlogArray } from "../../../mocks/admin/filters/filterArray";
+import { filterNewsArray } from "../../../mocks/admin/filters/filterArray";
 import List from "../../../components/pages/adminpanel/pages/news/List";
 import { NewsFilter } from "../../../server/admin/paneladmin/news/NewsFilter";
 
@@ -15,7 +15,7 @@ export const metadata = {
   description: "مدیریت خبر های سایت",
 };
 
- export interface TNews {
+export interface TNews {
   id: number;
   title: string;
   summary: string;
@@ -54,7 +54,10 @@ export default async function page({
 
   return (
     <MainLayout>
-      <PageTitle title="اخبار" desc={`مدیریت ${news.data.length} اخبار سایت و تغییر انها`} />
+      <PageTitle
+        title="اخبار"
+        desc={`مدیریت ${news.data.length} اخبار سایت و تغییر انها`}
+      />
 
       <UsersActivities
         stats={stats}
@@ -92,7 +95,7 @@ export default async function page({
 
       <FilterAndSearch
         description="جستجو و فیلتر بلاگ ها با معیار های مختلف"
-        itemsbtn={filterBlogArray}
+        itemsbtn={filterNewsArray}
         isfilter={true}
         params={params}
       />
