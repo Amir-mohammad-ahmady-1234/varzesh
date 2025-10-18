@@ -1,5 +1,6 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
 import { createTicket } from "../../../server/user/paneluser/support/createTicket/createTicket";
 
 export async function createTicketAction(data: {
@@ -9,5 +10,7 @@ export async function createTicketAction(data: {
   status: "Open" | "Waiting" | "Approved" | "Blocked";
   userId: number;
 }) {
-  return await createTicket(data);
+  const ticket = await createTicket(data);
+  revalidatePath("/panel/support");
+  return ticket;
 }

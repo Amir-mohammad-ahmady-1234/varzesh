@@ -1,5 +1,6 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
 import { DeleteNewsById } from "../../../server/admin/paneladmin/news/DeleteNewsById";
 
 export interface DeleteNewsState {
@@ -13,6 +14,7 @@ export async function DeleteNews(id: number) {
 
   try {
     await DeleteNewsById(id);
+    revalidatePath("/admin/news");
     return { message: "خبر حذف شد" };
   } catch {
     return { message: "حذف با خطا مواجه شد" };

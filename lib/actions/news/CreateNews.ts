@@ -13,6 +13,7 @@ export interface BlogFormState {
 import { $Enums } from "@prisma/client";
 import { newsSchema } from "../../validations/news";
 import { CreateNews } from "../../../server/admin/paneladmin/news/CreateNews";
+import { revalidatePath } from "next/cache";
 
 export async function CreateNewsCart(
   prevState: BlogFormState,
@@ -42,6 +43,7 @@ export async function CreateNewsCart(
 
   try {
     const news = await CreateNews(validationData.data);
+    revalidatePath("/admin/news");
     return { message: { success: "خبر جدید با موفقیت ثبت شد", news } };
   } catch (err) {
     console.log(err);

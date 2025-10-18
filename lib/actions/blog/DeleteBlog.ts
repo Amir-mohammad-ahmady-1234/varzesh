@@ -1,5 +1,6 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
 import { BlogDelete } from "../../../server/admin/paneladmin/blog/BlogDelete";
 
 export interface DeleteBlogState {
@@ -19,6 +20,7 @@ export async function DeleteBlog(
 
   try {
     await BlogDelete({ id });
+    revalidatePath("/admin/blog");
     return { message: "بلاگ حذف شد" };
   } catch {
     return { message: "حذف با خطا مواجه شد" };

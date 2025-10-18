@@ -1,5 +1,6 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
 import { PodcastCreate } from "../../../server/admin/paneladmin/podcast/CreatePodcast";
 import { podcastSchema } from "../../validations/podcast";
 
@@ -64,6 +65,7 @@ export async function CreatePodcast(
     if ("error" in podcast) {
       return { message: { otherErr: podcast.error } };
     }
+    revalidatePath("/admin/podcast");
     return { message: { success: "پادکست جدید با موفقیت ثبت شد", podcast } };
   } catch {
     return { message: { otherErr: "خطای غیر منتظره" } };

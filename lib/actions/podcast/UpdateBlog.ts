@@ -1,5 +1,6 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
 import { editPodcast } from "../../../server/admin/paneladmin/podcast/EditePodcast";
 import { PodcastCategory } from "@prisma/client";
 
@@ -38,7 +39,7 @@ export async function UpdatePodcast(
     if (res.status !== 200) {
       return { message: res.error || "خطا در بروزرسانی پادکست" };
     }
-
+    revalidatePath("/admin/podcast");
     return { message: "بروزرسانی پادکست با موفقیت انجام شد ✅" };
   } catch (err) {
     console.error(err);

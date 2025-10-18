@@ -1,5 +1,6 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
 import { PutNews } from "../../../server/admin/paneladmin/news/PutNews";
 
 export interface UpdateNewsState {
@@ -31,6 +32,7 @@ export async function UpdateNews(
         ...(description ? { description: String(description) } : {}),
       },
     });
+    revalidatePath("/admin/news");
     return { message: "بروزرسانی موفق بود" };
   } catch {
     return { message: "بروزرسانی با خطا مواجه شد" };

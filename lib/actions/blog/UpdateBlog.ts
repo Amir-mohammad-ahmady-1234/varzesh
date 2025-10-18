@@ -1,5 +1,6 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
 import { BlogUpdate } from "../../../server/admin/paneladmin/blog/BlogEdite";
 
 export interface UpdateBlogState {
@@ -31,6 +32,7 @@ export async function UpdateBlog(
         ...(description ? { description: String(description) } : {}),
       },
     });
+    revalidatePath("/admin/blog");
     return { message: "بروزرسانی موفق بود" };
   } catch {
     return { message: "بروزرسانی با خطا مواجه شد" };

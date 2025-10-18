@@ -15,6 +15,7 @@ export interface BlogFormState {
     news?: string;
   };
 }
+import { revalidatePath } from "next/cache";
 import { BlogCreate } from "../../../server/admin/paneladmin/blog/BlogCreate";
 import { blogSchema } from "../../validations/blog";
 
@@ -45,6 +46,7 @@ export async function CreateBlog(prevState: BlogFormState, formData: FormData) {
 
   try {
     const blog = await BlogCreate(validationData.data);
+    revalidatePath("/admin/blog");
 
     return { message: { success: "بلاگ جدید با موفقیت ثبت شد", blog } };
   } catch {
