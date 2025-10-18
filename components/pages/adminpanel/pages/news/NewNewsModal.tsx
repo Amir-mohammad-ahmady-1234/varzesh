@@ -5,8 +5,8 @@ import Modal from "../../../../common/Modal";
 import Input from "../../../../common/Input";
 import Textarea from "../../../../common/ui/Textarea";
 import type { BlogFormState } from "../../../../../lib/actions/blog/CreateBlog";
-import Button from "../../../../common/Button";
 import { CreateNewsCart } from "../../../../../lib/actions/news/CreateNews";
+import LoadingButton from "../../../../common/LoadingButton";
 
 interface Props {
   isModalOpen: boolean;
@@ -21,6 +21,7 @@ const initialState: BlogFormState = {
 
 export default function NewNewsModal({ isModalOpen, setIsModalOpen }: Props) {
   const [state, setState] = useState<BlogFormState>(initialState);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (state.message.success) {
@@ -41,9 +42,12 @@ export default function NewNewsModal({ isModalOpen, setIsModalOpen }: Props) {
           e.preventDefault();
           const formData = new FormData(e.currentTarget);
 
+          setIsLoading(true);
+
           startTransition(async () => {
             const result = await CreateNewsCart(state, formData);
             setState(result);
+            setIsLoading(false);
           });
         }}
         className="flex flex-col gap-10"
@@ -96,7 +100,7 @@ export default function NewNewsModal({ isModalOpen, setIsModalOpen }: Props) {
           <p className="text-success-600 text-sm">{state.message.success}</p>
         )}
 
-        <Button type="submit">ایجاد</Button>
+        <LoadingButton btnText="ایجاد خبر" isLoading={isLoading} />
       </form>
     </Modal>
   );

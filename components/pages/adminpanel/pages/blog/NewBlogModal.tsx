@@ -6,7 +6,7 @@ import Input from "../../../../common/Input";
 import Textarea from "../../../../common/ui/Textarea";
 import { CreateBlog } from "../../../../../lib/actions/blog/CreateBlog";
 import type { BlogFormState } from "../../../../../lib/actions/blog/CreateBlog";
-import Button from "../../../../common/Button";
+import LoadingButton from "../../../../common/LoadingButton";
 
 interface Props {
   isModalOpen: boolean;
@@ -21,6 +21,7 @@ const initialState: BlogFormState = {
 
 export default function NewBlogModal({ isModalOpen, setIsModalOpen }: Props) {
   const [state, setState] = useState<BlogFormState>(initialState);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     if (state.message.success) {
@@ -41,9 +42,12 @@ export default function NewBlogModal({ isModalOpen, setIsModalOpen }: Props) {
           e.preventDefault();
           const formData = new FormData(e.currentTarget);
 
+          setIsLoading(true);
+
           startTransition(async () => {
             const result = await CreateBlog(state, formData);
             setState(result);
+            setIsLoading(false);
           });
         }}
         className="flex flex-col gap-10"
@@ -109,7 +113,7 @@ export default function NewBlogModal({ isModalOpen, setIsModalOpen }: Props) {
           <p className="text-success-600 text-sm">{state.message.success}</p>
         )}
 
-        <Button type="submit">ایجاد بلاگ</Button>
+        <LoadingButton btnText="ایجاد بلاگ" isLoading={isLoading} />
       </form>
     </Modal>
   );

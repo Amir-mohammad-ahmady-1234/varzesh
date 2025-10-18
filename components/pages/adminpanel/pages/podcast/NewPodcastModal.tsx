@@ -6,7 +6,7 @@ import Input from "../../../../common/Input";
 import Textarea from "../../../../common/ui/Textarea";
 import { CreatePodcast } from "../../../../../lib/actions/podcast/CreatePodcast";
 import type { PodcastFormState } from "../../../../../lib/actions/podcast/CreatePodcast";
-import Button from "../../../../common/Button";
+import LoadingButton from "../../../../common/LoadingButton";
 
 interface Props {
   isModalOpen: boolean;
@@ -48,7 +48,7 @@ export default function NewPodcastModal({
           startTransition(async () => {
             const result = await CreatePodcast(state, formData);
             setState(result);
-            setIsLoading(false); 
+            setIsLoading(false);
           });
         }}
         className="flex flex-col gap-10"
@@ -110,21 +110,7 @@ export default function NewPodcastModal({
         {state.message.success && (
           <p className="text-success-600 text-sm">{state.message.success}</p>
         )}
-
-        <Button
-          type="submit"
-          disabled={isLoading}
-          className="relative flex items-center justify-center gap-2"
-        >
-          {isLoading ? (
-            <>
-              <span className="loader border-2 border-t-transparent border-white rounded-full w-4 h-4 animate-spin"></span>
-              در حال ایجاد...
-            </>
-          ) : (
-            "ایجاد پادکست"
-          )}
-        </Button>
+        <LoadingButton btnText="ایجاد پادکست" isLoading={isLoading} />
       </form>
     </Modal>
   );
