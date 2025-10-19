@@ -23,7 +23,7 @@ function Dropdown({ DropItems, usage = "header" }: Props) {
       {DropItems?.map((item) => (
         <Link
           key={item.id}
-          href={`${item.link}`}
+          href={`${item.link ?? ""}`}
           className="relative"
           onMouseEnter={() => setOpenDropdown(item.id)}
           onMouseLeave={() => setOpenDropdown(null)}
