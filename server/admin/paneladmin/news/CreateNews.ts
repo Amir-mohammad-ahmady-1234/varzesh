@@ -1,6 +1,6 @@
 import { Prisma } from "@prisma/client";
-import prisma from "../../../../lib/db";
 import { uploadImage } from "../../../../lib/cloudinary";
+import { prisma } from "../../../../lib/db";
 
 type TCreateNews = Prisma.NewsCreateInput;
 export async function CreateNews(params: TCreateNews) {

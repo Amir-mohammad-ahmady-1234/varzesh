@@ -1,6 +1,6 @@
 import React from "react";
 import Table from "../../../common/ui/Table";
-import prisma from "../../../../lib/db";
+import { prisma } from "../../../../lib/db";
 
 async function HomeLiveresults() {
   const games = await prisma.game.findMany({
