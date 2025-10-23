@@ -16,31 +16,6 @@ export interface TicketType {
   icon: IconType;
 }
 
-export const usersCardInfo: TicketType[] = [
-  { id: 1, title: "کل چت روم ها", value: "total", color: "blue", icon: MdChat },
-  {
-    id: 2,
-    title: "روم‌های فعال",
-    value: "active",
-    color: "green",
-    icon: MdChat,
-  },
-  {
-    id: 3,
-    title: "کل شرکت‌کنندگان",
-    value: "totalParticipants",
-    color: "purple",
-    icon: MdChat,
-  },
-  {
-    id: 4,
-    title: "کل پیام‌ها",
-    value: "totalMessages",
-    color: "orange",
-    icon: MdChat,
-  },
-];
-
 export const userTicketInfo: TicketType[] = [
   {
     id: 1,

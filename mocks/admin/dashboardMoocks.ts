@@ -1,16 +1,5 @@
 import { MdChat, MdPeople, MdSportsFootball, MdSupport } from "react-icons/md";
-import { DashboardStats } from "../../types/adminPanelTypes";
 import { BoxInfoDashboardA } from "../../server/admin/paneladmin/dashboard/BoxInformation/BoxInformation";
-export const mockDashboardStats: DashboardStats = {
-  totalUsers: 15420,
-  activeUsers: 3240,
-  totalGames: 156,
-  liveGames: 3,
-  totalMessages: 89650,
-  todayMessages: 2340,
-  openTickets: 23,
-  resolvedTickets: 187,
-};
 
 export async function SiteStatistics() {
   const { ActiveUsers, Messages, OpenTickets, Users } =

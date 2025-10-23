@@ -38,23 +38,6 @@ export const filterArray = [
   },
 ];
 
-export const filterChatRoomArray = [
-  {
-    title: "مرتب‌ سازی",
-    items: [
-      { name: "نزولی", key: "sort", value: "desc" },
-      { name: "صعودی", key: "sort", value: "asc" },
-    ],
-  },
-  {
-    title: "وضعیت",
-    items: [
-      { name: "فعال", key: "status", value: "active" },
-      { name: "غیرفعال", key: "status", value: "inactive" },
-    ],
-  },
-];
-
 export const filterGameArray = [
   {
     title: "مرتب‌ سازی",

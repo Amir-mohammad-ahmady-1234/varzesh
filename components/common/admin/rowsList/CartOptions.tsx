@@ -1,15 +1,8 @@
 "use client";
 import React, { useState } from "react";
-import {
-  MdMoreVert,
-  MdReply,
-  MdVisibility,
-  MdDelete,
-  MdEdit,
-} from "react-icons/md";
+import { MdDelete, MdEdit } from "react-icons/md";
 import { TbStatusChange } from "react-icons/tb";
 
-import { useSupportHandlers } from "../../../../hooks/admin/support/useSupportHandlers";
 import Button from "../../Button";
 
 interface Props {
@@ -25,12 +18,11 @@ export default function CartOptions({
   onUpdate,
   onChangeStatus,
 }: Props) {
-  const { handleTicketClick, handleQuickReply } = useSupportHandlers();
   const [isEditing, setIsEditing] = useState(false);
 
   return (
     <div className="flex items-center gap-2 flex-shrink-0">
-      <Button
+      {/* <Button
         size="sm"
         variant="ghost"
         onClick={() => {
@@ -49,7 +41,7 @@ export default function CartOptions({
         className="cursor-pointer"
       >
         <MdVisibility className="w-4 h-4" />
-      </Button>
+      </Button> */}
 
       {onUpdate && (
         <Button
@@ -90,7 +82,7 @@ export default function CartOptions({
         </form>
       )}
 
-      <Button
+      {/* <Button
         size="sm"
         variant="ghost"
         onClick={() => {
@@ -99,7 +91,7 @@ export default function CartOptions({
         className="cursor-pointer"
       >
         <MdMoreVert className="w-4 h-4" />
-      </Button>
+      </Button> */}
 
       {isEditing && onUpdate && (
         <form action={onUpdate} className="flex items-center gap-2 ml-2">
