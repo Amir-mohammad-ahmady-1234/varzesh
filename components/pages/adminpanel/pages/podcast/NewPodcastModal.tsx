@@ -4,7 +4,10 @@ import React, { startTransition, useEffect, useState } from "react";
 import Modal from "../../../../common/Modal";
 import Input from "../../../../common/Input";
 import Textarea from "../../../../common/ui/Textarea";
-import { CreatePodcast, PodcastFormState } from "../../../../../lib/actions/podcast/CreatePodcast";
+import {
+  CreatePodcast,
+  PodcastFormState,
+} from "../../../../../lib/actions/podcast/CreatePodcast";
 import LoadingButton from "../../../../common/LoadingButton";
 
 interface Props {
@@ -46,7 +49,7 @@ export default function NewPodcastModal({
 
           startTransition(async () => {
             const result = await CreatePodcast(state, formData);
-            setState(result);
+            setState(result as PodcastFormState);
             setIsLoading(false);
           });
         }}

@@ -1,21 +1,19 @@
 import z from "zod";
 
-const statusEnum = z.enum(["Simple", "Medium", "Special"], {
-  errorMap: (issue) => {
-    if (issue.code === "invalid_enum_value") {
-      return {
-        message: "وضعیت باید بین این ها باشد :  Simple, Medium, Special",
-      };
+const statusEnum = z
+  .enum(["Simple", "Medium", "Special"])
+  .superRefine((value, ctx) => {
+    const allowed = ["Simple", "Medium", "Special"];
+    if (!allowed.includes(value)) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "وضعیت باید بین این‌ها باشد: Simple, Medium, Special",
+      });
     }
-    if (issue.code === "invalid_type") {
-      return { message: "انتخاب دسته بندی الزامی است" };
-    }
-    return { message: "مقدار وارد شده برای دسته‌بندی نامعتبر است" };
-  },
-});
+  });
 
 export const newsSchema = z.object({
-  title: z.string().min(3, "حداقل 3 کاراکتر اجباری میباشد"),
+  title: z.string().min(3, "حداقل 3 کاراکتر اجباری می‌باشد"),
   status: statusEnum,
   img: z
     .instanceof(File, { message: "فایل وارد شده معتبر نمی‌باشد" })
@@ -26,6 +24,6 @@ export const newsSchema = z.object({
       (file) => ["image/jpeg", "image/png", "image/webp"].includes(file.type),
       { message: "فرمت فایل فقط باید PNG, JPG یا WEBP باشد" }
     ),
-  description: z.string().min(20, "حداقل 20 کاراکتر اجباری میباشد"),
-  summary: z.string().min(5, "حداقل 5 کاراکتر اجباری میباشد"),
+  description: z.string().min(20, "حداقل 20 کاراکتر اجباری می‌باشد"),
+  summary: z.string().min(5, "حداقل 5 کاراکتر اجباری می‌باشد"),
 });

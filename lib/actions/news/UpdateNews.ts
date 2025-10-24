@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { PutNews } from "../../../server/admin/paneladmin/news/PutNews";
+import { $Enums } from "@prisma/client";
 
 export interface UpdateNewsState {
   message?: string;
@@ -27,7 +28,7 @@ export async function UpdateNews(
       data: {
         ...(title ? { title: String(title) } : {}),
         ...(summary ? { summary: String(summary) } : {}),
-        ...(status ? { status: String(status) } : {}),
+        ...(status ? { status: status as $Enums.NewStatus } : {}),
         ...(description ? { description: String(description) } : {}),
       },
     });

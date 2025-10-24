@@ -2,7 +2,7 @@ import { Prisma } from "@prisma/client";
 import { uploadImage } from "../../../../lib/cloudinary";
 import { prisma } from "../../../../lib/db";
 
-type TCreateNews = Prisma.NewsCreateInput;
+type TCreateNews = Omit<Prisma.NewsCreateInput, "img"> & { img: File };
 export async function CreateNews(params: TCreateNews) {
   const imgPath = await uploadImage(params.img);
 

@@ -1,19 +1,17 @@
 import z from "zod";
 
-const categoryEnum = z.enum(["FOOTBALL", "BOXING", "BASKETBALL"], {
-  errorMap: (issue) => {
-    if (issue.code === "invalid_enum_value") {
-      return {
+const categoryEnum = z
+  .enum(["FOOTBALL", "BOXING", "BASKETBALL"])
+  .superRefine((value, ctx) => {
+    const allowed = ["FOOTBALL", "BOXING", "BASKETBALL"];
+    if (!allowed.includes(value)) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
         message:
           "دسته بندی باید یکی از این موارد باشد: FOOTBALL, BOXING, BASKETBALL",
-      };
+      });
     }
-    if (issue.code === "invalid_type") {
-      return { message: "انتخاب دسته بندی الزامی است" };
-    }
-    return { message: "مقدار وارد شده برای دسته‌بندی نامعتبر است" };
-  },
-});
+  });
 
 export const podcastSchema = z.object({
   title: z.string().min(3, "حداقل 3 کاراکتر اجباری میباشد"),

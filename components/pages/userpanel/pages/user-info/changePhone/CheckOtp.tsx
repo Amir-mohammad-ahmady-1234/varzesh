@@ -16,7 +16,7 @@ export default function CheckOtp() {
     if (!otp) router.push("/panel/user-info");
   }, [router]);
 
-  function handleSubmit(e) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
 

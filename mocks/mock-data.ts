@@ -103,9 +103,9 @@ export const mockUsers: User[] = [
 export const mockGames: Game[] = [
   {
     id: "1",
-    homeTeam: "پرسپولیس",
-    awayTeam: "استقلال",
-    league: "لیگ برتر ایران",
+    firstthem: "پرسپولیس",
+    seccondthem: "استقلال",
+    League: "لیگ برتر ایران",
     status: "live",
     startTime: "2024-01-20T18:00:00Z",
     score: { home: 1, away: 0 },
@@ -113,9 +113,9 @@ export const mockGames: Game[] = [
   },
   {
     id: "2",
-    homeTeam: "سپاهان",
-    awayTeam: "تراکتور",
-    league: "لیگ برتر ایران",
+    firstthem: "سپاهان",
+    seccondthem: "تراکتور",
+    League: "لیگ برتر ایران",
     status: "finished",
     startTime: "2024-01-19T16:00:00Z",
     endTime: "2024-01-19T18:00:00Z",
@@ -124,9 +124,9 @@ export const mockGames: Game[] = [
   },
   {
     id: "3",
-    homeTeam: "فولاد",
-    awayTeam: "گل‌گهر",
-    league: "لیگ برتر ایران",
+    firstthem: "فولاد",
+    seccondthem: "گل‌گهر",
+    League: "لیگ برتر ایران",
     status: "scheduled",
     startTime: "2024-01-21T15:30:00Z",
   },

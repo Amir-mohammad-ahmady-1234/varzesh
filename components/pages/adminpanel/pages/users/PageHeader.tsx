@@ -8,20 +8,15 @@ import PageHeader from "../../../../common/ui/PageHeader";
 import EmptyState from "../../../../common/ui/EmptyState";
 import { UserData } from "./pagination/PaginationBtns";
 
-type UsersResponse =
-  | {
-      data: UserData[];
-      pagination: {
-        total: number;
-        page: number;
-        limit: number;
-        totalPages: number;
-      };
-    }
-  | {
-      error: string;
-      status: number;
-    };
+export type UsersResponse = {
+  data: UserData[];
+  pagination: {
+    total: number;
+    page: number;
+    limit: number;
+    totalPages: number;
+  };
+};
 
 export interface PageTitleProps {
   users: UsersResponse;

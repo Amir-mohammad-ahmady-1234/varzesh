@@ -10,21 +10,21 @@ export interface changeStatusStatus {
 export async function ChangeUserStatusToBlock(
   prevState: changeStatusStatus,
   formData: FormData
-) {
+): Promise<void> {
   const idValue = formData.get("id");
   const id = Number(idValue);
 
   if (!id || Number.isNaN(id)) {
-    return { message: "شناسه کاربر نامعتبر است" };
+    // return { message: "شناسه کاربر نامعتبر است" };
   }
 
   try {
     await ChangeStatusUserDelete(id);
     revalidatePath("/admin/users");
 
-    return { message: "وضعیت کاربر به مسدود شده تغییر یافت" };
+    // return { message: "وضعیت کاربر به مسدود شده تغییر یافت" };
   } catch {
-    return { message: "تغییر وضعیت با خطا مواجه شد" };
+    // return { message: "تغییر وضعیت با خطا مواجه شد" };
   }
 }
 

@@ -1,5 +1,7 @@
 import MainLayout from "../../../components/pages/adminpanel/layout/MainLayout";
-import PageTitle from "../../../components/pages/adminpanel/pages/users/PageHeader";
+import PageTitle, {
+  UsersResponse,
+} from "../../../components/pages/adminpanel/pages/users/PageHeader";
 import FilterAndSearch from "../../../components/common/admin/FilterCard/FilterAndSearch";
 import { filterUsersArr } from "../../../mocks/admin/filters/filterArray";
 import SelectedCard from "../../../components/pages/adminpanel/pages/users/SelectedCard";
@@ -40,7 +42,7 @@ export default async function UsersPage({
 
   return (
     <MainLayout>
-      <PageTitle users={users} />
+      <PageTitle users={users as UsersResponse} />
 
       <UsersActivities
         stats={stats}
@@ -85,9 +87,13 @@ export default async function UsersPage({
 
       <SelectedCard />
 
-      <ConditionallyRender users={users} />
+      <ConditionallyRender users={users as UsersResponse} />
 
-      {users.error ? <p>{users.error}</p> : <PaginationBtns users={users} />}
+      {users.error ? (
+        <p>{users.error}</p>
+      ) : (
+        <PaginationBtns users={users as UsersResponse} />
+      )}
 
       <UserModal />
     </MainLayout>
