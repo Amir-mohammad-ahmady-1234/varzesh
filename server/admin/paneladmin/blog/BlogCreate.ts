@@ -1,5 +1,5 @@
 import { uploadImage } from "../../../../lib/cloudinary";
-import prisma from "../../../../lib/db";
+import { prisma } from "../../../../lib/db";
 
 export type BlogProps = {
   id?: number;

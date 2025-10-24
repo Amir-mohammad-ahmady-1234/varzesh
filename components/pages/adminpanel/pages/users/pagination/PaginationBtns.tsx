@@ -2,6 +2,7 @@
 import React from "react";
 import Button from "../../../../../common/Button";
 import { $Enums } from "@prisma/client";
+import { PageTitleProps } from "../PageHeader";
 
 export interface UserData {
   email: string | null;
@@ -37,7 +38,7 @@ export interface userCompleteType {
   };
 }
 
-export default function PaginationBtns({ users }: userCompleteType) {
+export default function PaginationBtns({ users }: PageTitleProps) {
   const { pagination } = users;
   const { total, page, limit, totalPages } = pagination;
 

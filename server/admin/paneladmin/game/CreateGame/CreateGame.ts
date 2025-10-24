@@ -1,6 +1,6 @@
 import z from "zod";
-import prisma from "../../../../../lib/db";
 import { Game } from "../../../../../lib/validations/game";
+import { prisma } from "../../../../../lib/db";
 
 export type TCreateGame = z.infer<typeof Game>;
 

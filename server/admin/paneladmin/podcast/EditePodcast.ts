@@ -1,5 +1,5 @@
 import { PodcastCategory } from "@prisma/client";
-import prisma from "../../../../lib/db";
+import { prisma } from "../../../../lib/db";
 
 export interface EditPodcastInput {
   id: number;

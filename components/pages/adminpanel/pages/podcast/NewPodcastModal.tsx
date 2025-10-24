@@ -4,8 +4,7 @@ import React, { startTransition, useEffect, useState } from "react";
 import Modal from "../../../../common/Modal";
 import Input from "../../../../common/Input";
 import Textarea from "../../../../common/ui/Textarea";
-import { CreatePodcast } from "../../../../../lib/actions/podcast/CreatePodcast";
-import type { PodcastFormState } from "../../../../../lib/actions/podcast/CreatePodcast";
+import { CreatePodcast, PodcastFormState } from "../../../../../lib/actions/podcast/CreatePodcast";
 import LoadingButton from "../../../../common/LoadingButton";
 
 interface Props {

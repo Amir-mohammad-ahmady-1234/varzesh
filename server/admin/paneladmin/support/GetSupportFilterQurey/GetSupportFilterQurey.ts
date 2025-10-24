@@ -1,5 +1,5 @@
 import { Priority, Prisma, Status } from "@prisma/client";
-import prisma from "../../../../../lib/db";
+import { prisma } from "../../../../../lib/db";
 type TGetSupportFilterQuery = {
   serch?: string;
   status?: "Blocked" | "Waiting" | "Approved" | "Open";

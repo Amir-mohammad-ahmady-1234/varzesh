@@ -10,7 +10,7 @@ export interface UpdateBlogState {
 export async function UpdateBlog(
   prevState: UpdateBlogState,
   formData: FormData
-) {
+): Promise<void> {
   const idValue = formData.get("id");
   const title = formData.get("title");
   const summary = formData.get("summary");
@@ -19,7 +19,7 @@ export async function UpdateBlog(
 
   const id = Number(idValue);
   if (!id || Number.isNaN(id)) {
-    return { message: "شناسه بلاگ نامعتبر است" };
+    // return { message: "شناسه بلاگ نامعتبر است" };
   }
 
   try {
@@ -33,9 +33,9 @@ export async function UpdateBlog(
       },
     });
     revalidatePath("/admin/blog");
-    return { message: "بروزرسانی موفق بود" };
+    // return { message: "بروزرسانی موفق بود" };
   } catch {
-    return { message: "بروزرسانی با خطا مواجه شد" };
+    // return { message: "بروزرسانی با خطا مواجه شد" };
   }
 }
 

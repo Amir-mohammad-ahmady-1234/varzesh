@@ -3,8 +3,8 @@
 import { LoginSchema } from "../../validations/auth";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import prisma from "../../db";
 import { cookies } from "next/headers";
+import { prisma } from "../../db";
 
 export interface userLoginState {
   message: {

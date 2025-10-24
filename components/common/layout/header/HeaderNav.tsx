@@ -2,7 +2,12 @@
 
 import Dropdown from "./Dropdown";
 
-export const headerItems = [
+export const headerItems: {
+  id: number;
+  name: string;
+  link: string;
+  dropdown?: { name: string;  link: string; id: number }[];
+}[] = [
   {
     id: 1,
     name: "خانه",

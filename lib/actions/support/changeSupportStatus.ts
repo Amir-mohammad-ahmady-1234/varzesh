@@ -10,20 +10,20 @@ export interface changeStatusState {
 export async function ChangeSupportStatus(
   prevState: changeStatusState,
   formData: FormData
-) {
+): Promise<void> {
   const idValue = formData.get("id");
   const id = Number(idValue);
 
   if (!id || Number.isNaN(id)) {
-    return { message: "شناسه تیکت نامعتبر است" };
+    // return { message: "شناسه تیکت نامعتبر است" };
   }
 
   try {
     await ApprovedSupport(id);
     revalidatePath("/admin/support");
-    return { message: "وضعیت تیکت به حل شده تغییر یافت" };
+    // return { message: "وضعیت تیکت به حل شده تغییر یافت" };
   } catch {
-    return { message: "تغییر وضعیت با خطا مواجه شد" };
+    // return { message: "تغییر وضعیت با خطا مواجه شد" };
   }
 }
 

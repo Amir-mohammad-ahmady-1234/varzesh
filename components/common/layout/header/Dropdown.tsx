@@ -5,12 +5,19 @@ import DropdownMenuHeader from "./DropdownMenuHeader";
 import Button from "../../Button";
 import Link from "next/link";
 
-interface Props {
-  DropItems?: {
+interface DropItem {
+  id: number;
+  name: string;
+  link?: string;
+  dropdown?: {
     id: number;
     name: string;
     link: string;
   }[];
+}
+
+interface Props {
+  DropItems?: DropItem[];
   usage?: string;
 }
 
@@ -23,12 +30,14 @@ function Dropdown({ DropItems, usage = "header" }: Props) {
       {DropItems?.map((item) => (
         <Link
           key={item.id}
-          href={`${item.link ?? ""}`}
+          href={item.dropdown?.[0]?.link ?? item.link ?? "#"}
           className="relative"
           onMouseEnter={() => setOpenDropdown(item.id)}
           onMouseLeave={() => setOpenDropdown(null)}
         >
-          <DropdownMenuHeader item={item} isOpen={openDropdown === item.id} />
+          {item.dropdown && (
+            <DropdownMenuHeader item={item} isOpen={openDropdown === item.id} />
+          )}
           <Button
             variant={usage === "header" ? "ghost" : "primary"}
             size="md"

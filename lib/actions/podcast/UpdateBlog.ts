@@ -11,7 +11,7 @@ export interface UpdatePodcastState {
 export async function UpdatePodcast(
   prevState: UpdatePodcastState,
   formData: FormData
-) {
+): Promise<void> {
   const idValue = formData.get("id");
   const title = formData.get("title") as string | null;
   const img = formData.get("img") as string | null;
@@ -22,7 +22,7 @@ export async function UpdatePodcast(
 
   const id = Number(idValue);
   if (!id || Number.isNaN(id)) {
-    return { message: "شناسه پادکست نامعتبر است" };
+    // return { message: "شناسه پادکست نامعتبر است" };
   }
 
   try {
@@ -37,13 +37,13 @@ export async function UpdatePodcast(
     });
 
     if (res.status !== 200) {
-      return { message: res.error || "خطا در بروزرسانی پادکست" };
+      // return { message: res.error || "خطا در بروزرسانی پادکست" };
     }
     revalidatePath("/admin/podcast");
-    return { message: "بروزرسانی پادکست با موفقیت انجام شد ✅" };
+    // return { message: "بروزرسانی پادکست با موفقیت انجام شد ✅" };
   } catch (err) {
     console.error(err);
-    return { message: "خطای سرور در هنگام بروزرسانی پادکست" };
+    // return { message: "خطای سرور در هنگام بروزرسانی پادکست" };
   }
 }
 

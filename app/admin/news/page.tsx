@@ -9,6 +9,7 @@ import FilterAndSearch from "../../../components/common/admin/FilterCard/FilterA
 import { filterNewsArray } from "../../../mocks/admin/filters/filterArray";
 import List from "../../../components/pages/adminpanel/pages/news/List";
 import { NewsFilter } from "../../../server/admin/paneladmin/news/NewsFilter";
+import { News } from "@prisma/client";
 
 export const metadata = {
   title: "اخبار",
@@ -101,7 +102,7 @@ export default async function page({
 
       <div className="grid gap-4">
         {news.data.length > 0 ? (
-          news.data.map((b: TNews) => <List key={b.id} b={b} />)
+          news.data.map((b: News) => <List key={b.id} b={b} />)
         ) : (
           <p className="text-red-500">هیچ خبری برای نمایش وجود ندارد</p>
         )}

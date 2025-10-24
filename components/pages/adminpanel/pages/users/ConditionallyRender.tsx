@@ -5,10 +5,10 @@ import EmptyState from "../../../../common/ui/EmptyState";
 import Button from "../../../../common/Button";
 import Card from "../../../../common/ui/Card";
 import UsersTableList from "./usersTable/UsersTableList";
-import { userCompleteType } from "./pagination/PaginationBtns";
 import { useUsersStates } from "../../../../../hooks/admin/users/useUsersStates";
+import { PageTitleProps } from "./PageHeader";
 
-export default function ConditionallyRender({ users }: userCompleteType) {
+export default function ConditionallyRender({ users }: PageTitleProps) {
   const { viewMode } = useUsersStates();
 
   return (

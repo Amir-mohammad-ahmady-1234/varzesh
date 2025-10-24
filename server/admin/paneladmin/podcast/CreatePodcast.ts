@@ -1,6 +1,6 @@
-import prisma from "../../../../lib/db";
 import { uploadAudioFile } from "../../../../utils/uploadAudioFile";
 import { uploadImage } from "../../../../lib/cloudinary";
+import { prisma } from "../../../../lib/db";
 
 export type PodcastCategory = "FOOTBALL" | "BOXING" | "BASKETBALL";
 

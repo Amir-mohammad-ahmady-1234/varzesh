@@ -6,10 +6,14 @@ export const metadata = {
   description: "نمایش جزئیات کاربر در پنل ادمین",
 };
 
-export default async function UserPage({ params }: { params: { id: string } }) {
-  const { user, error, message, status } = await GetPageUserById(
-    Number(params.id)
-  );
+export default async function UserPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+
+  const { user, error, message, status } = await GetPageUserById(Number(id));
 
   if (error || status === 500)
     return (

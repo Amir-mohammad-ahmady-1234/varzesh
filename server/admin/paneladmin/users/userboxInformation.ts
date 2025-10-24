@@ -1,4 +1,5 @@
-import prisma from "../../../../lib/db";
+import { prisma } from "../../../../lib/db";
+
 export async function getUserStatistics() {
   try {
     const [totalUsers, activeUsers, blockedUsers, totalAdmins] =

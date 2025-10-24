@@ -1,10 +1,10 @@
 "use server";
 
-import prisma from "../../db";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { cookies } from "next/headers";
 import { createUserSchema } from "../../validations/auth";
+import { prisma } from "../../db";
 export interface userRegesterState {
   message: {
     firstname?: string;

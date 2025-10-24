@@ -12,8 +12,8 @@ export async function ProfileButton() {
       id: 1,
       name: user?.firstname ?? "کاربر",
       dropdown: [
-        { id: 1, name: "پروفایل کاربری" },
-        { id: 2, name: "خروح" },
+        { id: 1, name: "پروفایل کاربری", link: "/panel" },
+        { id: 2, name: "خروح", link: "" },
       ],
     },
   ];

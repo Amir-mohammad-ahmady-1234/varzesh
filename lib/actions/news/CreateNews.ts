@@ -2,12 +2,14 @@
 
 export interface BlogFormState {
   message: {
-    title: string;
-    img: string;
-    status: $Enums.NewStatus;
-    summary: string;
-    description: string;
+    title?: string;
+    img?: string;
+    status?: $Enums.NewStatus;
+    summary?: string;
+    description?: string;
     createdAt?: Date | string;
+    success?: string;
+    otherErr?: string;
   };
 }
 import { $Enums } from "@prisma/client";

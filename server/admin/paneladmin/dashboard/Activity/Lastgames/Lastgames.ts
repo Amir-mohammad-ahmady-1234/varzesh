@@ -1,4 +1,4 @@
-import prisma from "../../../../../../lib/db";
+import { prisma } from "../../../../../../lib/db";
 
 export async function Lastgames() {
   const games = await prisma.game.findMany({

@@ -1,5 +1,5 @@
 import { authenticator } from "otplib";
-import prisma from "../../../../lib/db";
+import { prisma } from "../../../../lib/db";
 
 export default async function PutphoneUser(id: number) {
   try {

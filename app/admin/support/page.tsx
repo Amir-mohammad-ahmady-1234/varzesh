@@ -9,7 +9,7 @@ import supportboxInformation from "../../../server/admin/paneladmin/support/supp
 import FilterAndSearch from "../../../components/common/admin/FilterCard/FilterAndSearch";
 import Cart from "../../../components/common/admin/rowsList/Cart";
 import { filterArray } from "../../../mocks/admin/filters/filterArray";
-import { Priority, Status } from "@prisma/client";
+import { Priority, Status, Ticket } from "@prisma/client";
 import EmptyState from "../../../components/common/ui/EmptyState";
 import { normalizeSearchParams } from "../../../utils/normalizeSearchParams";
 import { ChangeSupportStatusAction } from "../../../lib/actions/support/changeSupportStatus";
@@ -67,7 +67,7 @@ export default async function SupportPage({ searchParams }: Props) {
         pagination={tickets.pagination}
         params={params as Promise<{ [key: string]: string | undefined }>}
       >
-        {tickets.data.map((data) => (
+        {tickets.data.map((data: Ticket) => (
           <Cart
             key={data.id}
             id={data.id}

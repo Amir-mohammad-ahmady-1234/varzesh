@@ -42,8 +42,8 @@ export default function InputDesign({
     "w-full px-[0.75rem] py-[0.5rem] text-right rounded-medium border font-IRANYekan transition-all duration-200 ease-in-out",
     "focus:outline-none focus:shadow-[0_0_0_2px_rgba(0,119,255,0.2)]",
     error ? "border-error-500 bg-[rgba(255,0,0,0.05)]" : "border-neutral-300",
-    leftIcon && "pl-10",
-    rightIcon && "pr-10",
+    leftIcon ? "pl-10" : "",
+    rightIcon ? "pr-10" : "",
     inputSizes[size],
     className
   );

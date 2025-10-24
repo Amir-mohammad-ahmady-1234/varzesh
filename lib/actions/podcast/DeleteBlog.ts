@@ -10,20 +10,20 @@ export interface DeleteBlogState {
 export async function DeleteSelectedPodcast(
   prevState: DeleteBlogState,
   formData: FormData
-) {
+): Promise<void> {
   const idValue = formData.get("id");
   const id = Number(idValue);
 
   if (!id || Number.isNaN(id)) {
-    return { message: "شناسه بلاگ نامعتبر است" };
+    // return { message: "شناسه بلاگ نامعتبر است" };
   }
 
   try {
     await DeletePodcast(id);
     revalidatePath("/admin/podcast");
-    return { message: "بلاگ حذف شد" };
+    // return { message: "بلاگ حذف شد" };
   } catch {
-    return { message: "حذف با خطا مواجه شد" };
+    // return { message: "حذف با خطا مواجه شد" };
   }
 }
 

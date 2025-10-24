@@ -67,7 +67,7 @@ export default function Topbar() {
         <div className="flex items-center gap-1 sm:gap-2">
           <Button
             variant="ghost"
-            size="icon"
+            size="sm"
             onClick={toggleTheme}
             aria-label={
               theme === "dark" ? "تغییر به حالت روشن" : "تغییر به حالت تاریک"
@@ -83,7 +83,7 @@ export default function Topbar() {
 
           <Button
             variant="ghost"
-            size="icon"
+            size="sm"
             onClick={toggleDirection}
             aria-label={isRTL ? "تغییر به انگلیسی" : "تغییر به فارسی"}
             className="rounded-full"
@@ -94,7 +94,7 @@ export default function Topbar() {
           <div className="relative">
             <Button
               variant="ghost"
-              size="icon"
+              size="sm"
               className="relative rounded-full"
               onClick={() => setShowNotifications(!showNotifications)}
             >
@@ -176,12 +176,7 @@ export default function Topbar() {
 
       {showSearch && (
         <div className="mt-3 md:hidden transition-all">
-          <Input
-            type="text"
-            placeholder="جستجو..."
-            className="w-full"
-            autoFocus
-          />
+          <Input type="text" placeholder="جستجو..." className="w-full" />
         </div>
       )}
     </header>

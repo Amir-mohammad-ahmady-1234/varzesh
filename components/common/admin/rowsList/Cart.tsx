@@ -28,9 +28,9 @@ interface Props {
   options: Option[];
   moreDetails?: MoreDetails[];
   id: number;
-  onDelete?: (formData: FormData) => Promise<unknown>;
-  onUpdate?: (formData: FormData) => Promise<unknown>;
-  onChangeStatus?: (formData: FormData) => Promise<unknown>;
+  onDelete?: (formData: FormData) => Promise<void>;
+  onUpdate?: (formData: FormData) => Promise<void>;
+  onChangeStatus?: (formData: FormData) => Promise<void>;
 }
 
 export default function Cart({

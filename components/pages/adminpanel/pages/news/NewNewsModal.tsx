@@ -4,8 +4,10 @@ import React, { startTransition, useEffect, useState } from "react";
 import Modal from "../../../../common/Modal";
 import Input from "../../../../common/Input";
 import Textarea from "../../../../common/ui/Textarea";
-import type { BlogFormState } from "../../../../../lib/actions/blog/CreateBlog";
-import { CreateNewsCart } from "../../../../../lib/actions/news/CreateNews";
+import {
+  BlogFormState,
+  CreateNewsCart,
+} from "../../../../../lib/actions/news/CreateNews";
 import LoadingButton from "../../../../common/LoadingButton";
 
 interface Props {
@@ -24,10 +26,10 @@ export default function NewNewsModal({ isModalOpen, setIsModalOpen }: Props) {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    if (state.message.success) {
+    if (state.message.status) {
       setIsModalOpen(false);
     }
-  }, [state.message.success, setIsModalOpen]);
+  }, [state.message.success, setIsModalOpen, state.message.status]);
 
   return (
     <Modal

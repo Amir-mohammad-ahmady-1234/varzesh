@@ -1,14 +1,14 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { BlogDelete } from "../../../server/admin/paneladmin/blog/BlogDelete";
+import { prisma } from "../../db";
 
-export interface DeleteBlogState {
+export interface DeleteNewsState {
   message?: string;
 }
 
-export async function DeleteBlog(
-  prevState: DeleteBlogState,
+export async function DeleteNews(
+  prevState: DeleteNewsState,
   formData: FormData
 ): Promise<void> {
   const idValue = formData.get("id");
@@ -18,14 +18,14 @@ export async function DeleteBlog(
     // return { message: "شناسه بلاگ نامعتبر است" };
   }
   try {
-    await BlogDelete({ id });
-    revalidatePath("/admin/blog");
+    await prisma.news.delete({ where: { id: id } });
+    revalidatePath("/admin/news");
     // return { message: "بلاگ حذف شد" };
   } catch {
     // return { message: "حذف با خطا مواجه شد" };
   }
 }
 
-export async function DeleteBlogAction(formData: FormData) {
-  return DeleteBlog({}, formData);
+export async function DeleteNewsAction(formData: FormData) {
+  return DeleteNews({}, formData);
 }

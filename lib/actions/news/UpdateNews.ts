@@ -10,7 +10,7 @@ export interface UpdateNewsState {
 export async function UpdateNews(
   prevState: UpdateNewsState,
   formData: FormData
-) {
+): Promise<void> {
   const idValue = formData.get("id");
   const title = formData.get("title");
   const summary = formData.get("summary");
@@ -19,9 +19,8 @@ export async function UpdateNews(
 
   const id = Number(idValue);
   if (!id || Number.isNaN(id)) {
-    return { message: "شناسه خبر نامعتبر است" };
+    // return { message: "شناسه خبر نامعتبر است" };
   }
-
   try {
     await PutNews({
       id,
@@ -33,9 +32,9 @@ export async function UpdateNews(
       },
     });
     revalidatePath("/admin/news");
-    return { message: "بروزرسانی موفق بود" };
+    // return { message: "بروزرسانی موفق بود" };
   } catch {
-    return { message: "بروزرسانی با خطا مواجه شد" };
+    // return { message: "بروزرسانی با خطا مواجه شد" };
   }
 }
 

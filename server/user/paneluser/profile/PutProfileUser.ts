@@ -1,4 +1,4 @@
-import prisma from "../../../../lib/db";
+import { prisma } from "../../../../lib/db";
 import { TPostProfileUser } from "../../../../types/user/profile/type";
 
 export default async function PutProfileUser({

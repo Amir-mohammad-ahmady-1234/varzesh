@@ -2,11 +2,11 @@
 
 import React from "react";
 import Cart from "../../../../common/admin/rowsList/Cart";
-import { DeleteBlogAction } from "../../../../../lib/actions/blog/DeleteBlog";
 import { UpdateNewsAction } from "../../../../../lib/actions/news/UpdateNews";
-import { TNews } from "../../../../../app/admin/news/page";
+import { News } from "@prisma/client";
+import { DeleteNewsAction } from "../../../../../lib/actions/news/DeleteNews";
 
-export default function List({ b }: { b: TNews }) {
+export default function List({ b }: { b: News }) {
   return (
     <div key={b.id} className="w-full">
       <Cart
@@ -20,7 +20,7 @@ export default function List({ b }: { b: TNews }) {
             items: { key: "status", value: b.status },
           },
         ]}
-        onDelete={() => DeleteBlogAction(b.id)}
+        onDelete={DeleteNewsAction}
         onUpdate={UpdateNewsAction}
       />
     </div>

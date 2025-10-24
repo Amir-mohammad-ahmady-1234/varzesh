@@ -57,15 +57,16 @@ export default function Sidebar({ isSidebarOpen, setIsSidebarOpen }: Props) {
                     }`}
                   >
                     <div className="flex flex-col gap-2 pr-4 text-sm text-gray-300">
-                      {item.dropdown.map((sub) => (
-                        <a
-                          key={sub.id}
-                          href="#"
-                          className="hover:text-primary-100 transition-colors py-1"
-                        >
-                          {sub.name}
-                        </a>
-                      ))}
+                      {item.dropdown &&
+                        item.dropdown.map((sub) => (
+                          <a
+                            key={sub.id}
+                            href="#"
+                            className="hover:text-primary-100 transition-colors py-1"
+                          >
+                            {sub.name}
+                          </a>
+                        ))}
                     </div>
                   </div>
                 )}

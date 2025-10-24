@@ -6,9 +6,28 @@ import { MdAdd, MdDownload, MdRefresh } from "react-icons/md";
 import { useUsersStates } from "../../../../../hooks/admin/users/useUsersStates";
 import PageHeader from "../../../../common/ui/PageHeader";
 import EmptyState from "../../../../common/ui/EmptyState";
-import { userCompleteType } from "./pagination/PaginationBtns";
+import { UserData } from "./pagination/PaginationBtns";
 
-export default function PageTitle(users: userCompleteType) {
+type UsersResponse =
+  | {
+      data: UserData[];
+      pagination: {
+        total: number;
+        page: number;
+        limit: number;
+        totalPages: number;
+      };
+    }
+  | {
+      error: string;
+      status: number;
+    };
+
+export interface PageTitleProps {
+  users: UsersResponse;
+}
+
+export default function PageTitle(users: PageTitleProps) {
   const { exportSelectedUsers } = useUsersStates();
 
   return (
