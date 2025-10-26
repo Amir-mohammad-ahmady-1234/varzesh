@@ -6,7 +6,6 @@ import Circles from "../../../../components/pages/auth/Circles";
 import RegesterForm from "../../../../components/pages/auth/regesterForm/RegesterForm";
 import SubmitButton from "../../../../components/pages/auth/SubmitButton";
 import RulesAccept from "../../../../components/pages/auth/regesterForm/RulesAccept";
-import OAuthButtons from "../../../../components/pages/auth/OAuthButtons";
 
 function Page() {
   const [checked, setChecked] = useState(false);
@@ -28,8 +27,6 @@ function Page() {
           </SubmitButton>
         </RegesterForm>
 
-        {/* regester with OAuth ( OAuth: regster with google or email ) */}
-        <OAuthButtons />
       </div>
     </>
   );

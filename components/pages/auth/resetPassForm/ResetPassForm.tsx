@@ -6,7 +6,6 @@ import Step1 from "./SendPhone";
 import Step2 from "./SendOtp";
 import Step3 from "./SetNewPass";
 
-import OAuthButtons from "../OAuthButtons";
 import SubmitButton from "../SubmitButton";
 
 function ResetPassForm() {
@@ -23,7 +22,6 @@ function ResetPassForm() {
         setStep={setStep}
       >
         <SubmitButton page="sendPhone" />
-        <OAuthButtons />
       </Step1>
     );
 
@@ -31,7 +29,6 @@ function ResetPassForm() {
     return (
       <Step2 otp={otp} setOtp={setOtp} setStep={setStep}>
         <SubmitButton page="sendOtp" setStep={setStep} />
-        <OAuthButtons />
       </Step2>
     );
 

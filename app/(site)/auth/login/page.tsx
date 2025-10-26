@@ -3,7 +3,6 @@ import React from "react";
 import Circles from "../../../../components/pages/auth/Circles";
 import LoginForm from "../../../../components/pages/auth/loginForm/LoginForm";
 import SubmitButton from "../../../../components/pages/auth/SubmitButton";
-import OAuthButtons from "../../../../components/pages/auth/OAuthButtons";
 
 export const metadata = {
   title: "ثبت نام",
@@ -22,9 +21,6 @@ function page() {
         <LoginForm>
           <SubmitButton page="login" />
         </LoginForm>
-
-        {/* regester with OAuth ( OAuth: regster with google or email ) */}
-        <OAuthButtons />
       </div>
     </>
   );

@@ -32,13 +32,18 @@ function SubmitButton({
           {page === "setNewPass" && "تغییر رمز عبور"}
         </Button>
 
+        {/* 👇 این بخش فقط اصلاح شده برای ریسپانسیو زیبا */}
         <div
-          className={`flex ${
-            (page === "regester" || page === "sendPhone") && "flex-row-reverse"
-          } items-center justify-between mt-2`}
+          className={`flex flex-col items-center justify-center gap-3 mt-4 text-center sm:flex-row sm:justify-between sm:text-right ${
+            (page === "regester" || page === "sendPhone") &&
+            "sm:flex-row-reverse"
+          }`}
         >
           {(page === "login" || page === "sendOtp") && (
-            <Link href="/auth/resetPass" className="text-secondary-300">
+            <Link
+              href="/auth/resetPass"
+              className="text-secondary-300 text-sm sm:text-base hover:text-secondary-200 transition-colors"
+            >
               {page === "login" ? (
                 "رمز عبور را فراموش کردید؟"
               ) : (
@@ -46,13 +51,14 @@ function SubmitButton({
               )}
             </Link>
           )}
-          <p className="text-sm text-lef ">
+
+          <p className="text-sm sm:text-base leading-relaxed">
             {page === "regester"
-              ? "از قبل ثبت نام کرده اید؟"
+              ? "از قبل ثبت نام کرده‌اید؟"
               : "اگر عضو سایت نیستید؟"}
             <Link
               href={page === "regester" ? "/auth/login" : "/auth/register"}
-              className="text-lg font-bold text-secondary-100 underline underline-offset-4 "
+              className="ml-2 text-secondary-100 font-bold underline underline-offset-4 hover:text-secondary-200 transition-colors"
             >
               {page === "regester" ? "ورود" : "ثبت نام"}
             </Link>

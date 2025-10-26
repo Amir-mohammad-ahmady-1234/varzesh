@@ -2,7 +2,7 @@
 
 import React, { startTransition, useActionState, useEffect } from "react";
 import toast from "react-hot-toast";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import {
   userRegester,
   userRegesterState,
@@ -14,6 +14,8 @@ const initialState: userRegesterState = {
 };
 
 function RegesterForm({ children }: { children: React.ReactNode }) {
+  const router = useRouter();
+
   const [state, formAction] = useActionState<userRegesterState, FormData>(
     userRegester,
     initialState
@@ -21,15 +23,15 @@ function RegesterForm({ children }: { children: React.ReactNode }) {
   console.log(state);
 
   useEffect(() => {
-    if (state.message.success === "ثبت‌ نام موفق") {
+    if (state.message.success === "ورود موفق") {
       toast.success("ثبت‌ نام موفق");
-      redirect("/");
+      router.push("/");
     }
 
     if (state.message.otherErr) {
-      toast.error(state.message.otherErr);
+      toast.error(state.message?.otherErr);
     }
-  }, [state.message]);
+  }, [state.message, router]);
 
   return (
     <form
