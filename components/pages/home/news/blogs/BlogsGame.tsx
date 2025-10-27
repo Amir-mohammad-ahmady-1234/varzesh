@@ -7,7 +7,7 @@ async function BlogsGame() {
   const blogs = await GetBlogs();
 
   return (
-    <div className="flex flex-col gap-6 m-10">
+    <div className="flex flex-col gap-6 sm:m-4 lg:m-8">
       <SectionContainer title="مقالات ورزشی">
         <BlogSlider blogs={blogs} />
       </SectionContainer>

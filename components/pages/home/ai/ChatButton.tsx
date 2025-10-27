@@ -12,7 +12,7 @@ export default function ChatButton() {
   }
 
   return (
-    <div className="fixed bottom-6 right-6 z-[900]">
+    <div className="fixed bottom-8 right-6 z-[900]">
       <div className="relative">
         <div className="absolute -inset-2 rounded-full bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 opacity-60 animate-pulse"></div>
 

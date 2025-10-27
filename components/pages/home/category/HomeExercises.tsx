@@ -12,7 +12,6 @@ const exercises = [
   { title: "شنا", img: "/assets/img/home/exp2.png", reverse: false },
   { title: "تنیس", img: "/assets/img/home/exp4.png", reverse: true },
   { title: "بسکتبال", img: "/assets/img/home/exp3.png", reverse: false },
-  { title: "تنیس روی میز", img: "/assets/img/home/exp5.png", reverse: true },
   { title: "والیبال ساحلی", img: "/assets/img/home/exp1.png", reverse: false },
 ];
 
