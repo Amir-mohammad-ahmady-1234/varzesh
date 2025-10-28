@@ -11,14 +11,15 @@ import ChatButton from "../../components/pages/home/ai/ChatButton";
 function HomePage() {
   return (
     <Container className="flex flex-col space-y-8">
-      <section className="flex gap-5">
-        <div className="w-2/3">
+      <section className="flex flex-col gap-5">
+        <div className="w-full h-52 sm:h-64 md:h-80 lg:h-96 xl:h-[500px] rounded-lg overflow-hidden shadow-lg">
           <HomeImageSlider />
         </div>
-        <div className="w-1/3 ">
+        <div>
           <HomeLiveresults />
         </div>
       </section>
+
       <HomeDeepSearch />
       <HomeExercises />
       <LiveViideo />

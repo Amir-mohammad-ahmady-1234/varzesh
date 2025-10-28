@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { FiX, FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { headerItems } from "../header/HeaderNav";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 type Props = {
   isSidebarOpen: boolean;
@@ -9,6 +11,8 @@ type Props = {
 
 export default function Sidebar({ isSidebarOpen, setIsSidebarOpen }: Props) {
   const [openDropdown, setOpenDropdown] = useState<number | null>(null);
+
+  const pathname = usePathname();
 
   const toggleDropdown = (id: number) => {
     setOpenDropdown(openDropdown === id ? null : id);
@@ -46,7 +50,20 @@ export default function Sidebar({ isSidebarOpen, setIsSidebarOpen }: Props) {
                     )}
                   </span>
                 )}
-                <span className="text-right">{item.name}</span>
+                <Link
+                  href={item.link}
+                  className={`text-right cursor-pointer ${
+                    item.link &&
+                    item.link !== "/" &&
+                    pathname.startsWith(item.link)
+                      ? "text-primary-100"
+                      : ""
+                  } ${
+                    item.link === "/" && pathname === "/" && "text-primary-100"
+                  }`}
+                >
+                  {item.name}
+                </Link>
               </button>
 
               <div className="text-right">
