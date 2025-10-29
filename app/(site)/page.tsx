@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Container from "../../components/common/Container";
 import HomeDeepSearch from "../../components/pages/home/head/HomeDeepSearch";
 import LiveViideo from "../../components/common/LiveViideo";
@@ -7,6 +7,7 @@ import HomeLiveresults from "../../components/pages/home/head/HomeLiveresults";
 import HomeExercises from "../../components/pages/home/category/HomeExercises";
 import HomeNews from "../../components/pages/home/news/HomeNews";
 import ChatButton from "../../components/pages/home/ai/ChatButton";
+import HomeLiveresultsSkeleton from "../../components/skeletons/HomeLiveresultsSkeleton";
 
 function HomePage() {
   return (
@@ -16,7 +17,9 @@ function HomePage() {
           <HomeImageSlider />
         </div>
         <div>
-          <HomeLiveresults />
+          <Suspense fallback={<HomeLiveresultsSkeleton />}>
+            <HomeLiveresults />
+          </Suspense>
         </div>
       </section>
 

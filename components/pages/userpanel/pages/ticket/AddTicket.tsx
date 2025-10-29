@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Input from "../../../../common/Input";
 import { ticketValidation } from "../../../../../lib/validations/ticket";
 import { createTicketAction } from "../../../../../lib/actions/ticket/createTicketAction";
+import toast from "react-hot-toast";
 
 interface AddTicketProps {
   userId: number;
@@ -50,6 +51,8 @@ export default function AddTicket({ userId }: AddTicketProps) {
       return;
     }
 
+    toast.success("تیکت با موفقیت ثبت شد");
+
     setFields({
       title: "",
       priority: "NORMAL",
@@ -60,7 +63,9 @@ export default function AddTicket({ userId }: AddTicketProps) {
   }
 
   function handleChange(
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
   ) {
     const { name, value } = e.target;
     setFields((prev) => ({ ...prev, [name]: value }));
@@ -115,23 +120,72 @@ export default function AddTicket({ userId }: AddTicketProps) {
           )}
         </div>
 
+        {/* اولویت و وضعیت */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-          <Input
-            placeholder="LOW / NORMAL / HIGH"
-            title="اولویت"
-            name="priority"
-            value={fields.priority}
-            changeFn={handleChange}
-            err={fields.error.priority}
-          />
-          <Input
-            placeholder="Open / Waiting / Approved / Blocked"
-            title="وضعیت"
-            name="status"
-            value={fields.status}
-            changeFn={handleChange}
-            err={fields.error.status}
-          />
+          {/* اولویت */}
+          <div>
+            <label
+              htmlFor="priority"
+              className="block text-sm sm:text-base font-semibold text-neutral-200 mb-2"
+            >
+              اولویت
+            </label>
+            <select
+              id="priority"
+              name="priority"
+              value={fields.priority}
+              onChange={handleChange}
+              className={`w-full border rounded-[10px] px-4 py-3 text-sm sm:text-base bg-tertiary-200 
+                          text-neutral-100 focus:outline-none focus:ring-2 transition-all
+                          ${
+                            fields.error.priority
+                              ? "border-error-500 focus:ring-error-400"
+                              : "border-tertiary-500 focus:ring-primary-300"
+                          }`}
+            >
+              <option value="LOW">کم</option>
+              <option value="NORMAL">متوسط</option>
+              <option value="HIGH">زیاد</option>
+            </select>
+            {fields.error.priority && (
+              <p className="text-sm text-error-500 mt-1">
+                {fields.error.priority}
+              </p>
+            )}
+          </div>
+
+          {/* وضعیت */}
+          <div>
+            <label
+              htmlFor="status"
+              className="block text-sm sm:text-base font-semibold text-neutral-200 mb-2"
+            >
+              وضعیت
+            </label>
+            <select
+              id="status"
+              name="status"
+              value={fields.status}
+              onChange={handleChange}
+              className={`w-full border rounded-[10px] px-4 py-3 text-sm sm:text-base bg-tertiary-200 
+                          text-neutral-100 focus:outline-none focus:ring-2 transition-all
+                          ${
+                            fields.error.status
+                              ? "border-error-500 focus:ring-error-400"
+                              : "border-tertiary-500 focus:ring-primary-300"
+                          }`}
+            >
+              <option value="Open">باز</option>
+              <option value="Waiting">در انتظار</option>
+              <option value="Approved">تأیید شده</option>
+              <option value="Blocked">مسدود شده</option>
+            </select>
+            {fields.error.status && (
+              <p className="text-sm text-error-500 mt-1">
+                {fields.error.status}
+              </p>
+            )}
+          </div>
         </div>
 
         {fields.error.general && (
