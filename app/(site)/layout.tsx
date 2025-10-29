@@ -1,7 +1,6 @@
 import Header from "../../components/common/layout/header/Header";
 import Footer from "../../components/common/layout/footer/Footer";
 import { BtnConditionallyGenerator } from "../../components/common/layout/header/Auth-Or-Profile-btn/BtnConditionallyGenerator";
-import { Suspense } from "react";
 
 export const metadata = {
   title: "ورزش 3",
@@ -16,17 +15,13 @@ export default async function RootLayout({
 }>) {
   return (
     <>
-      <Suspense>
-        <Header>
-          <BtnConditionallyGenerator />
-        </Header>
+      <Header>
+        <BtnConditionallyGenerator />
+      </Header>
 
-        <Suspense>
-          <main className="flex-grow ">{children}</main>
-        </Suspense>
+      <main className="flex-grow ">{children}</main>
 
-        <Footer />
-      </Suspense>
+      <Footer />
     </>
   );
 }

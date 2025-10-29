@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import PageTitle from "../../../components/pages/userpanel/pages/user-info/PageTitle";
 import { GetUserById } from "../../../server/user/getuserbyid/GetUserById";
 import GetProfileDataUser from "../../../server/user/paneluser/profile/GetProfileDataUser";
@@ -24,15 +23,11 @@ export default async function UserPanelLayout({
 }: Props) {
   return (
     <div className="rounded-2xl p-6">
-      <Suspense>
-        <PageTitle />
-      </Suspense>
+      <PageTitle />
 
       <div className="space-y-15">
-        <Suspense>
-          {changeUserInfo}
-          {changePhone}
-        </Suspense>
+        {changeUserInfo}
+        {changePhone}
       </div>
     </div>
   );

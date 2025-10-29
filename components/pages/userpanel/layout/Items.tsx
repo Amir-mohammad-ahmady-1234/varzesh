@@ -18,7 +18,9 @@ export default function Items({ item, pathname }: Props) {
     <div className="flex items-center" key={item.href}>
       {item.icon}
       <Button
-        className={`hover:text-primary-100 ${isActive && "text-primary-100"}`}
+        className={`hover:text-primary-100 ${
+          isActive && item.href !== "/" && "text-primary-100"
+        }`}
         variant="ghost"
         size="md"
       >

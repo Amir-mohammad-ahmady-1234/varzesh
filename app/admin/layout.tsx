@@ -3,7 +3,6 @@ import "../../styles/globals.css";
 import type React from "react";
 import type { Metadata } from "next";
 import { Vazirmatn } from "next/font/google";
-import { Suspense } from "react";
 import { DesignSystemProvider } from "../../context/DesignSystemContext";
 // import { GetUserById } from "../../server/user/getuserbyid/GetUserById";
 // import { redirect } from "next/navigation";
@@ -30,9 +29,7 @@ export default async function RootLayout({
 
   return (
     <div className={vazirmatn.variable} dir="rtl" suppressHydrationWarning>
-      <Suspense>
-        <DesignSystemProvider>{children}</DesignSystemProvider>
-      </Suspense>
+      <DesignSystemProvider>{children}</DesignSystemProvider>
     </div>
   );
 }

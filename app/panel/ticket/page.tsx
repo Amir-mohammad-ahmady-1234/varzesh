@@ -12,55 +12,57 @@ export default async function Page() {
 
   if (error)
     return (
-      <div className="flex items-center justify-center py-20">
-        <p className="text-[var(--color-error-500)] text-lg font-semibold">
+      <div className="flex items-center justify-center py-16 px-4 sm:px-0">
+        <p className="text-error-500 text-center text-base sm:text-lg font-semibold">
           خطا در دریافت اطلاعات: {error}
         </p>
       </div>
     );
 
   return (
-    <div className="max-w-5xl mx-auto px-5 py-16 space-y-20">
-      <div className="text-center space-y-3">
-        <h1 className="text-3xl font-extrabold text-neutral-100">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 space-y-12 sm:space-y-20">
+      <div className="text-center space-y-2 sm:space-y-3">
+        <h4 className="text-2xl sm:text-3xl font-extrabold text-neutral-100">
           مرکز پشتیبانی کاربران
-        </h1>
-        <p className="text-neutral-400 text-sm sm:text-base">
-          در این بخش می‌تونی تیکت‌های خودت رو مشاهده یا تیکت جدید ثبت کنی.
+        </h4>
+        <p className="text-neutral-400 text-sm sm:text-base leading-relaxed">
+          در این بخش می‌تونی تیکت‌هات رو مشاهده یا تیکت جدید ثبت کنی.
         </p>
       </div>
 
       {tickets?.length ? (
         <section
-          className="bg-[var(--color-tertiary-300)] border border-[var(--color-tertiary-500)] 
-                     rounded-[var(--radius-medium)] shadow-sm p-6 sm:p-10 space-y-8"
+          className="bg-tertiary-300 border border-tertiary-500
+                     rounded-radius-medium shadow-sm p-4 sm:p-8 space-y-6 sm:space-y-8"
         >
-          <h2 className="text-xl font-bold text-neutral-100 text-center">
+          <h5 className="text-lg sm:text-xl font-bold text-neutral-100 text-center">
             تیکت‌های شما
-          </h2>
-          <TicketsList tickets={tickets} />
+          </h5>
+          <div className="overflow-x-auto">
+            <TicketsList tickets={tickets} />
+          </div>
         </section>
       ) : (
         <div
-          className="flex flex-col items-center justify-center py-16 text-neutral-400 
-                     bg-[var(--color-tertiary-300)] rounded-[var(--radius-medium)] border border-[var(--color-tertiary-500)]"
+          className="flex flex-col items-center justify-center py-12 sm:py-16 px-4 text-center text-neutral-400
+                     bg-tertiary-300 rounded-radius-medium border border-tertiary-500"
         >
-          <p className="text-lg font-semibold text-neutral-200">
+          <p className="text-base sm:text-lg font-semibold text-neutral-200">
             هنوز هیچ تیکتی ثبت نکردی 😅
           </p>
-          <p className="text-sm mt-2 text-neutral-400">
+          <p className="text-xs sm:text-sm mt-2 text-neutral-400">
             برای ارسال درخواست جدید از بخش زیر اقدام کن.
           </p>
         </div>
       )}
 
       <section
-        className="bg-[var(--color-tertiary-300)] border border-[var(--color-tertiary-500)] 
-                   rounded-[var(--radius-medium)] shadow-sm p-6 sm:p-10"
+        className="bg-tertiary-300 border border-tertiary-500
+                   rounded-radius-medium shadow-sm p-4 sm:p-8"
       >
-        <h2 className="text-xl font-bold text-neutral-100 text-center mb-8">
+        <h5 className="text-lg sm:text-xl font-bold text-neutral-100 text-center mb-6 sm:mb-8">
           ارسال تیکت جدید
-        </h2>
+        </h5>
         <AddTicket userId={user.userId} />
       </section>
     </div>

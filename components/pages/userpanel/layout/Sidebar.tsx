@@ -1,5 +1,6 @@
 import { FaTicketAlt, FaUserEdit } from "react-icons/fa";
 import SidebarClient from "./SidebarClient";
+import { MdLogout } from "react-icons/md";
 
 const menuItem = [
   {
@@ -11,6 +12,11 @@ const menuItem = [
     href: "/panel/ticket",
     label: "پشتیبانی",
     icon: <FaTicketAlt />,
+  },
+  {
+    href: "/",
+    label: "بازگشت",
+    icon: <MdLogout className="text-error-500" />,
   },
 ];
 

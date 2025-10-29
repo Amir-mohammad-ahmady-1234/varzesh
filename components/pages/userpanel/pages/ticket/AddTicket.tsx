@@ -28,7 +28,6 @@ export default function AddTicket({ userId }: AddTicketProps) {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-
     setFields((prev) => ({ ...prev, error: {} }));
 
     const validateData = ticketValidation.safeParse(fields);
@@ -68,14 +67,15 @@ export default function AddTicket({ userId }: AddTicketProps) {
   }
 
   return (
-    <div className="max-w-xl mx-auto px-6 py-12">
-      <h3 className="text-2xl font-extrabold text-neutral-100 text-center mb-8">
+    <div className="w-full max-w-2xl mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-12">
+      <h6 className="text-xl sm:text-2xl font-extrabold text-neutral-100 text-center mb-8">
         ارسال مشکل به پشتیبانی سایت
-      </h3>
+      </h6>
 
       <form
         onSubmit={handleSubmit}
-        className="bg-tertiary-300 border border-tertiary-500 rounded-[8px] shadow-sm p-6 flex flex-col gap-6"
+        className="bg-tertiary-300 border border-tertiary-500 
+                   rounded-radius-medium shadow-sm p-4 sm:p-6 md:p-8 flex flex-col gap-6"
       >
         <Input
           placeholder="برای مثال: خطا در ورود به حساب کاربری"
@@ -89,7 +89,7 @@ export default function AddTicket({ userId }: AddTicketProps) {
         <div>
           <label
             htmlFor="ticket-desc"
-            className="block text-sm font-semibold text-neutral-200 mb-2"
+            className="block text-sm sm:text-base font-semibold text-neutral-200 mb-2"
           >
             شرح مشکل
           </label>
@@ -99,13 +99,14 @@ export default function AddTicket({ userId }: AddTicketProps) {
             placeholder="مشکل خود را به طور کامل توضیح دهید..."
             value={fields.description}
             onChange={handleChange}
-            className={`w-full border rounded-md px-4 py-3 text-sm focus:outline-none focus:ring-2 transition-all resize-none min-h-[130px]
-                ${
-                  fields.error.description
-                    ? "border-error-500 focus:ring-error-400"
-                    : "border-tertiary-500 focus:ring-primary-300"
-                }
-                bg-tertiary-200 text-neutral-100 placeholder:text-neutral-500`}
+            className={`w-full border rounded-[10px] px-4 py-3 text-sm sm:text-base leading-relaxed
+                        focus:outline-none focus:ring-2 transition-all resize-none min-h-[160px]
+                        ${
+                          fields.error.description
+                            ? "border-error-500 focus:ring-error-400"
+                            : "border-tertiary-500 focus:ring-primary-300"
+                        }
+                        bg-tertiary-200 text-neutral-100 placeholder:text-neutral-500`}
           />
           {fields.error.description && (
             <p className="text-sm text-error-500 mt-1">
@@ -114,9 +115,9 @@ export default function AddTicket({ userId }: AddTicketProps) {
           )}
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
           <Input
-            placeholder="کم، متوسط، زیاد"
+            placeholder="LOW / NORMAL / HIGH"
             title="اولویت"
             name="priority"
             value={fields.priority}
@@ -124,7 +125,7 @@ export default function AddTicket({ userId }: AddTicketProps) {
             err={fields.error.priority}
           />
           <Input
-            placeholder="باز، در انتظار، بسته"
+            placeholder="Open / Waiting / Approved / Blocked"
             title="وضعیت"
             name="status"
             value={fields.status}
@@ -134,15 +135,18 @@ export default function AddTicket({ userId }: AddTicketProps) {
         </div>
 
         {fields.error.general && (
-          <p className="text-sm text-error-500">{fields.error.general}</p>
+          <p className="text-sm text-error-500 text-center">
+            {fields.error.general}
+          </p>
         )}
 
         <button
           type="submit"
-          className="w-full font-bold rounded-[8px] py-3 mt-4 text-neutral-100 bg-primary-100 hover:bg-primary-300
-          transition-all shadow-md cursor-pointer"
+          className="w-full font-bold rounded-[10px] py-3 sm:py-3.5 mt-2
+                     text-neutral-100 bg-primary-100 hover:bg-primary-300
+                     transition-all shadow-md active:scale-[0.98]"
         >
-          ارسال
+          ارسال تیکت
         </button>
       </form>
     </div>
