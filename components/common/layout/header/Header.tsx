@@ -12,19 +12,24 @@ export type HeaderItemHeader = {
   dropdown?: DropdownItemHeader[];
 };
 
-export default function Header({ children }: { children: React.ReactNode }) {
+interface Props {
+  children: React.ReactNode;
+  isAdmin: boolean;
+}
+
+export default function Header({ children, isAdmin }: Props) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
     <>
       <header className="p-4">
         {/* mobile  */}
-        <MobileHeader setIsSidebarOpen={setIsSidebarOpen}>
+        <MobileHeader setIsSidebarOpen={setIsSidebarOpen} isAdmin={isAdmin}>
           {children}
         </MobileHeader>
 
         {/* desktop */}
-        <DesktopHeader>{children}</DesktopHeader>
+        <DesktopHeader isAdmin={isAdmin}>{children}</DesktopHeader>
       </header>
 
       <Sidebar

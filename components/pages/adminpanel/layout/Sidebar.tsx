@@ -15,6 +15,7 @@ import { cn } from "../../../../lib/utils";
 import Button from "../../../common/Button";
 import { FaBlog, FaPodcast } from "react-icons/fa";
 import { ImNewspaper } from "react-icons/im";
+import { CiLogout } from "react-icons/ci";
 
 export default function Sidebar() {
   const [collapsed, setCollapsed] = useState(false);
@@ -29,6 +30,7 @@ export default function Sidebar() {
     { href: "/admin/blog", label: "بلاگ", icon: FaBlog },
     { href: "/admin/podcast", label: "پادکست", icon: FaPodcast },
     { href: "/admin/news", label: "اخبار", icon: ImNewspaper },
+    { href: "/", label: "خروج", icon: CiLogout },
   ];
 
   return (

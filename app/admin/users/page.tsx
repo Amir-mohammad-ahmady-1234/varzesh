@@ -37,7 +37,7 @@ export default async function UsersPage({
     status: params.status as "Blocked" | "Waiting" | "Approved",
     page: params.page ? Number(params.page) : 1,
     limit: params.limit ? Number(params.limit) : 5,
-    role: (params.role as "USER" | "ADMIN") ?? "USER",
+    role: params.role as "USER" | "ADMIN",
   });
 
   return (

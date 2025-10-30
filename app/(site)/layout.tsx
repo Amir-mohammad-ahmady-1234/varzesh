@@ -1,6 +1,7 @@
 import Header from "../../components/common/layout/header/Header";
 import Footer from "../../components/common/layout/footer/Footer";
 import { BtnConditionallyGenerator } from "../../components/common/layout/header/Auth-Or-Profile-btn/BtnConditionallyGenerator";
+import { GetUserById } from "../../server/user/getuserbyid/GetUserById";
 
 export const metadata = {
   title: "ورزش 3",
@@ -13,9 +14,13 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const user = await GetUserById();
+
+  const isAdmin = user && typeof user !== "boolean" && user.role === "ADMIN";
+
   return (
     <>
-      <Header>
+      <Header isAdmin={isAdmin}>
         <BtnConditionallyGenerator />
       </Header>
 

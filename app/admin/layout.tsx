@@ -4,6 +4,8 @@ import type React from "react";
 import type { Metadata } from "next";
 import { Vazirmatn } from "next/font/google";
 import { DesignSystemProvider } from "../../context/DesignSystemContext";
+import { GetUserById } from "../../server/user/getuserbyid/GetUserById";
+import { redirect } from "next/navigation";
 // import { GetUserById } from "../../server/user/getuserbyid/GetUserById";
 // import { redirect } from "next/navigation";
 
@@ -23,9 +25,9 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // const tokenId = await GetUserById();
+  const tokenId = await GetUserById();
 
-  // if (tokenId && tokenId.role === "USER") return redirect("/");
+  if (tokenId && tokenId.role === "USER") return redirect("/");
 
   return (
     <div className={vazirmatn.variable} dir="rtl" suppressHydrationWarning>
