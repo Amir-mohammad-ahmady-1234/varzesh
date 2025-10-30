@@ -5,7 +5,6 @@ import PageTitle, {
 import FilterAndSearch from "../../../components/common/admin/FilterCard/FilterAndSearch";
 import { filterUsersArr } from "../../../mocks/admin/filters/filterArray";
 import SelectedCard from "../../../components/pages/adminpanel/pages/users/SelectedCard";
-import PaginationBtns from "../../../components/pages/adminpanel/pages/users/pagination/PaginationBtns";
 import UserModal from "../../../components/pages/adminpanel/pages/users/UserModal";
 import UsersActivities from "../../../components/common/admin/UsersActivities";
 import {
@@ -17,6 +16,7 @@ import { IoChevronUpCircleOutline } from "react-icons/io5";
 import ConditionallyRender from "../../../components/pages/adminpanel/pages/users/ConditionallyRender";
 import { getUserStatistics } from "../../../server/admin/paneladmin/users/userboxInformation";
 import { GetUserFilterQuery } from "../../../server/admin/paneladmin/users/GetUserFilterQurey/GetUserFilterQurey";
+import UsersPagination from "../../../components/pages/adminpanel/pages/users/pagination/UsersPagination";
 
 export const metadata = {
   title: "لیست کاربران سایت",
@@ -92,7 +92,10 @@ export default async function UsersPage({
       {users.error ? (
         <p>{users.error}</p>
       ) : (
-        <PaginationBtns users={users as UsersResponse} />
+        <UsersPagination
+          params={Promise.resolve(params)}
+          pagination={users.pagination}
+        />
       )}
 
       <UserModal />
