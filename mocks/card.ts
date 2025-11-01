@@ -48,7 +48,7 @@ export const onlineVideos = [
   },
   {
     id: 2,
-    image: "/assets/img/videopage/default.jfif",
+    image: "/assets/img/videopage/default.png",
     title: "کشتی ازاد",
     views: 80,
     label: "کشتی",
@@ -66,7 +66,7 @@ export const onlineVideos = [
   },
   {
     id: 4,
-    image: "/assets/img/videopage/images.jfif",
+    image: "/assets/img/videopage/images.png",
     title: "هادی چوپان مستر المپیا",
     views: 55,
     label: "مستر المپیا",

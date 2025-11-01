@@ -3,11 +3,11 @@ import React from "react";
 
 function FooterBadgeBar() {
   const images = [
-    "/assets/img/footer/Union.png",
-    "/assets/img/footer/Union(1).png",
-    "/assets/img/footer/Vector(1).png",
-    "/assets/img/footer/Vector(2).png",
-    "/assets/img/footer/Vector(3).png",
+    "/assets/img/footer/dart.png",
+    "/assets/img/footer/ball.png",
+    "/assets/img/footer/basketball.png",
+    "/assets/img/footer/box.png",
+    "/assets/img/footer/valiball.png",
   ];
 
   return (

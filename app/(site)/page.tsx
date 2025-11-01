@@ -68,11 +68,12 @@ export const metadata: Metadata = {
 function HomePage() {
   return (
     <Container className="flex flex-col space-y-8">
-      <section className="flex flex-col gap-5">
-        <div className="w-full h-52 sm:h-64 md:h-80 lg:h-96 xl:h-[500px] rounded-lg overflow-hidden shadow-lg">
+      <section className="flex flex-col md:flex-row gap-5">
+        <div className="w-full md:w-2/3 h-52 sm:h-64 md:h-80 lg:h-96 xl:h-[500px] rounded-lg overflow-hidden shadow-lg">
           <HomeImageSlider />
         </div>
-        <div>
+
+        <div className="w-full md:w-1/3">
           <Suspense fallback={<HomeLiveresultsSkeleton />}>
             <HomeLiveresults />
           </Suspense>
