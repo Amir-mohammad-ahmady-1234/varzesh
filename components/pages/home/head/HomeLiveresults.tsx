@@ -2,8 +2,6 @@ import React from "react";
 import Table from "../../../common/ui/Table";
 import { prisma } from "../../../../lib/db";
 
-const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-
 async function HomeLiveresults() {
   const games = await prisma.game.findMany({
     orderBy: { data: "desc" },

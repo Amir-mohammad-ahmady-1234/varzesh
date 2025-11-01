@@ -8,6 +8,62 @@ import HomeExercises from "../../components/pages/home/category/HomeExercises";
 import HomeNews from "../../components/pages/home/news/HomeNews";
 import ChatButton from "../../components/pages/home/ai/ChatButton";
 import HomeLiveresultsSkeleton from "../../components/skeletons/HomeLiveresultsSkeleton";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "ورزش 3 | اخبار و پادکست‌های ورزشی",
+  description:
+    "در ورزش 3 می‌توانید جدیدترین اخبار، بلاگ‌ها و پادکست‌های ورزشی را دنبال کنید؛ از فوتبال تا بوکس و بدنسازی.",
+  keywords: [
+    "فوتبال",
+    "بوکس",
+    "شنا",
+    "تیراندازی",
+    "بدنسازی",
+    "پادکست ورزشی",
+    "اخبار ورزش",
+  ],
+  openGraph: {
+    title: "ورزش 3 | اخبار و پادکست‌های ورزشی",
+    description:
+      "در ورزش 3 می‌توانید جدیدترین اخبار، بلاگ‌ها و پادکست‌های ورزشی را دنبال کنید.",
+    siteName: "ورزش 3",
+    url: "https://varzesh-frg6.vercel.app/",
+    type: "website",
+    locale: "fa_IR",
+    images: [
+      {
+        url: "/assets/img/logo/logo.png",
+        width: 1200,
+        height: 630,
+        alt: "لوگوی سایت ورزش 3",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ورزش 3 | اخبار و پادکست‌های ورزشی",
+    description:
+      "در ورزش 3 می‌توانید جدیدترین اخبار، بلاگ‌ها و پادکست‌های ورزشی را دنبال کنید؛ از فوتبال تا بوکس و بدنسازی.",
+    creator: "@amirMohammad",
+    images: ["/assets/img/logo/logo.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
+  },
+  alternates: {
+    canonical: "https://varzesh-frg6.vercel.app/",
+  },
+};
 
 function HomePage() {
   return (
