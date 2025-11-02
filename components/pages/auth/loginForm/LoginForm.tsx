@@ -56,6 +56,18 @@ function LoginForm({ children }: { children?: React.ReactNode }) {
         err={state.message?.password}
       />
 
+      <div className="w-full rounded-[var(--radius-medium)] bg-primary-100/10 border border-primary-200 px-4 py-3 text-sm leading-6 text-[var(--color-neutral-200)]">
+        <p className="font-semibold text-primary-100 mb-1">ورود ادمین</p>
+        <p>
+          برای ورود به عنوان{" "}
+          <span className="text-primary-200 font-semibold">ادمین</span> شماره{" "}
+          <span className="text-secondary-100 font-bold">09134117901</span> را
+          وارد کن. رمز را نمی‌دانی؟{" "}
+          <span className="text-primary-300 font-semibold">فراموشی رمز</span> را
+          بزن.
+        </p>
+      </div>
+
       {children}
     </form>
   );

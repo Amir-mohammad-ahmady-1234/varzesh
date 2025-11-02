@@ -41,16 +41,16 @@ function Step3({ children }: Props) {
       <Input
         name="password"
         type="password"
-        placeholder="رمز عبور"
-        title="رمز عبور"
+        placeholder="رمز جدید"
+        title="رمز جدید"
         err={state.message.password}
       />
 
       <Input
         name="new-password"
         type="password"
-        placeholder="رمز جدید"
-        title="رمز جدید"
+        placeholder="تکرار رمز"
+        title="تکرار رمز"
         err={state.message.newPassword}
       />
       {children}
