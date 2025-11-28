@@ -1,5 +1,6 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
 import { GetUserById } from "../../../server/user/getuserbyid/GetUserById";
 import { PostProfileUser } from "../../../server/user/paneluser/profile/PostProfileUser";
 import { changeInfoSchema } from "../../validations/panel";
@@ -44,6 +45,7 @@ export async function putProfileInfo(
       email,
       file: profile,
     });
+    revalidatePath("/panel/user-info");
 
     if (status !== 200 || error) return { message: { email: error } };
 
